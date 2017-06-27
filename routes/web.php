@@ -33,7 +33,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/',"Admin\IndexController@index"); //后台首页
 
 
-    Route::resource('user', 'Admin\UserController'); //用户详情信息表
+    Route::resource('userinfo', 'Admin\UserinfoController'); //用户详情信息表
     Route::resource('register', 'Admin\RegisterController'); //加载注册表
     Route::resource('follow', 'Admin\FollowController'); //粉丝表
     Route::resource('message', 'Admin\MessageController'); //微博内容表

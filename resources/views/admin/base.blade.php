@@ -208,8 +208,8 @@
                     </a>
                   </li>
                 <li class="sidebar-nav-link">
-                    <a href="/admin/user">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 用户管理
+                    <a href="/admin/userinfo">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 用户详情
                     </a>
                 </li>
 				
