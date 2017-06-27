@@ -218,16 +218,10 @@
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 注册信息
                     </a>
 				</li>
-			 
-				 <li class="sidebar-nav-link">
-                    <a href="/admin/follow">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 关注
-                    </a>
-                </li>
 			
 				<li class="sidebar-nav-link">
-                    <a href="/admin/fans">
-					<i class="am-icon-table sidebar-nav-link-logo"></i> 粉丝
+                    <a href="/admin/follow">
+					<i class="am-icon-table sidebar-nav-link-logo"></i>关注 粉丝
                     </a>
                 </li>
 				<li class="sidebar-nav-link">
@@ -236,28 +230,13 @@
                     </a>
                 </li>
 				<li class="sidebar-nav-link">
-                    <a href="">
-					<i class="am-icon-table sidebar-nav-link-logo"></i> 点赞
-                    </a>
-                </li>
-				<li class="sidebar-nav-link">
                     <a href="/admin/forward">
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 转发
                     </a>
                 </li>
 				<li class="sidebar-nav-link">
-                    <a href="/admin/collections">
-					<i class="am-icon-table sidebar-nav-link-logo"></i> 收藏
-                    </a>
-                </li>
-				<li class="sidebar-nav-link">
                     <a href="/admin/comments">
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 评论
-                    </a>
-                </li>
-				<li class="sidebar-nav-link">
-                    <a href="/admin/content">
-					<i class="am-icon-table sidebar-nav-link-logo"></i> 内容
                     </a>
                 </li>
 				<li class="sidebar-nav-link">
@@ -271,8 +250,13 @@
                     </a>
                 </li>
 				<li class="sidebar-nav-link">
-                    <a href="/admin/priviles">
+                    <a href="/admin/privileges">
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 管理员权限
+                    </a>
+                </li>
+								<li class="sidebar-nav-link">
+                    <a href="/admin/department">
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 部门
                     </a>
                 </li>
             </ul>

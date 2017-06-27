@@ -39,6 +39,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('message', 'Admin\MessageController'); //微博内容表
     Route::resource('forward', 'Admin\ForwardController'); //转发微博表
     Route::resource('comments', 'Admin\CommentsController'); //评论表
+    Route::resource('department', 'Admin\DepartmentController'); //评论表
 	Route::resource('content', 'Admin\ContentController'); //内容状态表
 	Route::resource('url', 'Admin\UrlController'); //友情链接
 	Route::resource('admin', 'Admin\AdminController'); //管理员信息
