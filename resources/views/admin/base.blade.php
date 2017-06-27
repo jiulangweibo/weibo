@@ -206,14 +206,80 @@
                     <a href="/admin" class="active">
                         <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
                     </a>
-                </li>
+                
                 <li class="sidebar-nav-link">
                     <a href="/admin/user">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 用户管理
                     </a>
                 </li>
-
-
+				
+				<li class="sidebar-nav-link">
+                    <a href="/admin/register">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 注册信息
+                    </a>
+				</li>
+				   <li class="sidebar-nav-link">
+                    <a href="/admin/userinfo">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 用户详情
+                    </a>
+                </li>
+			   </li>
+				   <li class="sidebar-nav-link">
+                    <a href="/admin/follow">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 关注
+                    </a>
+                </li>
+				</li>
+				<li class="sidebar-nav-link">
+                    <a href="/admin/fans">
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 粉丝
+                    </a>
+                </li>
+				<li class="sidebar-nav-link">
+                    <a href="/admin/message">
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 微博内容
+                    </a>
+                </li>
+				<li class="sidebar-nav-link">
+                    <a href="">
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 点赞
+                    </a>
+                </li>
+				<li class="sidebar-nav-link">
+                    <a href="/admin/forward">
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 转发
+                    </a>
+                </li>
+				<li class="sidebar-nav-link">
+                    <a href="/admin/collections">
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 收藏
+                    </a>
+                </li>
+								<li class="sidebar-nav-link">
+                    <a href="/admin/comments">
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 评论
+                    </a>
+                </li>
+				<li class="sidebar-nav-link">
+                    <a href="/admin/content">
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 内容
+                    </a>
+                </li>
+				<li class="sidebar-nav-link">
+                    <a href="/admin/url">
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 友情链接
+                    </a>
+                </li>
+				<li class="sidebar-nav-link">
+                    <a href="/admin/admin">
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 管理员信息
+                    </a>
+                </li>
+				<li class="sidebar-nav-link">
+                    <a href="/admin/priviles">
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 管理员权限
+                    </a>
+                </li>
             </ul>
         </div>
 
