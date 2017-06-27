@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 //网站后台路由配置
 Route::get('/admin',"Admin\IndexController@index"); //加载后台登录界面
+Route::get('/admin/user',"Admin\UserController@index"); 
