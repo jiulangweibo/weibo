@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resource('user', 'Admin\UserController'); //用户详情信息表
     Route::resource('register', 'Admin\RegisterController'); //加载注册表
-    Route::resource('follw', 'Admin\FollwController'); //粉丝表
+    Route::resource('follow', 'Admin\FollowController'); //粉丝表
     Route::resource('message', 'Admin\MessageController'); //微博内容表
     Route::resource('forward', 'Admin\ForwardController'); //转发微博表
     Route::resource('comments', 'Admin\CommentsController'); //评论表

@@ -206,7 +206,7 @@
                     <a href="/admin" class="active">
                         <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
                     </a>
-                
+                  </li>
                 <li class="sidebar-nav-link">
                     <a href="/admin/user">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 用户管理
@@ -218,18 +218,13 @@
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 注册信息
                     </a>
 				</li>
-				   <li class="sidebar-nav-link">
-                    <a href="/admin/userinfo">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 用户详情
-                    </a>
-                </li>
-			   </li>
-				   <li class="sidebar-nav-link">
+			 
+				 <li class="sidebar-nav-link">
                     <a href="/admin/follow">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 关注
                     </a>
                 </li>
-				</li>
+			
 				<li class="sidebar-nav-link">
                     <a href="/admin/fans">
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 粉丝
@@ -255,7 +250,7 @@
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 收藏
                     </a>
                 </li>
-								<li class="sidebar-nav-link">
+				<li class="sidebar-nav-link">
                     <a href="/admin/comments">
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 评论
                     </a>

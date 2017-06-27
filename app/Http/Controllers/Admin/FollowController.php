@@ -11,6 +11,6 @@ class FollowController extends Controller
     public function index()
 	{
    		$list =Follow::all();
-    	return $lis;
+    	return $list;
     }
 }
