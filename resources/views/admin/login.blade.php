@@ -48,7 +48,7 @@
 				
 				
 		<!--form class="am-form tpl-form-line-form" action="{{url('admin/dologin')}}" method="post">
-           <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+
           <div class="am-form-group">
            <input type="text" name="admin_name" class="tpl-form-input" id="user-name" placeholder="请输入姓名"/>{{url('admin/dologin')}}
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -66,23 +66,33 @@
 
            </div>
         </form -->
-						<form action="{{url('admin/dologin')}}" method="post">{{url('admin/dologin')}}
+					@if(session("msg"))
+            <center><p class="login-box-msg" style="color:red;">{{session("msg")}}</p></center>
+			@endif
+		
+		<form class="am-form tpl-form-line-form" action="/admin/dologin" method="post">
           <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-          <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="admin_name" placeholder="Name"/>
+          <div class="am-form-group">
+            <input type="text" name="admin_name" class="tpl-form-input" id="user-name" placeholder="请输入姓名"/>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
-          <div class="form-group has-feedback">
-            <input type="password" name="admin_password" class="form-control" placeholder="Password"/>
+          <div class="am-form-group">
+            <input type="password"  name="admin_password" class="form-control" placeholder="请输入密码"/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
-
+            <div class="col-xs-8">    
+              <div class="checkbox icheck">
+                <label>
+                  
+                </label>
+              </div>                        
+            </div><!-- /.col -->
           </div>
           <div class="row">
 
-            <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">登 陆</button>
+            <div class="am-form-group">
+              <button type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">登 陆</button>
             </div><!-- /.col -->
           </div>
         </form>

@@ -34,8 +34,8 @@ class LoginController extends Controller
             if(md5($admin_password)==$user->admin_password){
                 //存储session跳转页面
                 session()->push("adminuser",$user);             
-                //return redirect("admin");
-               echo "测试成功!";
+                return redirect("admin");
+                //echo "测试成功!";
             }
         }
         return back()->with("msg","账号或密码错误！");
