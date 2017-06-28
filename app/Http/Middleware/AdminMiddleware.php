@@ -20,7 +20,6 @@ class AdminMiddleware
             return redirect('admin/login');
         }
         
-        
-      
+        return $next($request);//继续往后走
     }
 }
