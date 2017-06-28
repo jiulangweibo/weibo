@@ -34,7 +34,7 @@ Route::post('/admin/dologin',"Admin\LoginController@doLogin"); //执行后台登
 Route::get('/admin/logout',"Admin\LoginController@logout"); //执行退出
 
 
-Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin'], function () {
     Route::get('/',"Admin\IndexController@index"); //后台首页
 
 

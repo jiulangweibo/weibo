@@ -21,20 +21,6 @@ class AdminMiddleware
         }
         
         
-         //判断是否是超级用户
-        if(session("adminuser")->email=="admin@lamp.com"){
-            return $next($request);
-        }
-        //判断权限
-        $nodelist = session("nodelist");
-        foreach($nodelist as $v){
-            //判断权限
-            if($request->is($v['url']) && $request->isMethod($v['method'])){
-                return $next($request);
-            }
-        }
-        return back()->with("err","抱歉你没有此操作权限!");
-        
-        //return $next($request);
+      
     }
 }

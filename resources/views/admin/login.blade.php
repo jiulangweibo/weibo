@@ -44,37 +44,51 @@
                 </div>
 
 
+				
+				
+				
+		<!--form class="am-form tpl-form-line-form" action="{{url('admin/dologin')}}" method="post">
+           <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+          <div class="am-form-group">
+           <input type="text" name="admin_name" class="tpl-form-input" id="user-name" placeholder="请输入姓名"/>{{url('admin/dologin')}}
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" name="password" class="tpl-form-input" placeholder="请输入密码"/>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="row">
 
-                <form class="am-form tpl-form-line-form">
-                    <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入账号">
-
-                    </div>
-
-                    <div class="am-form-group">
-                        <input type="password" class="tpl-form-input" id="user-name" placeholder="请输入密码">
-
-                    </div>
-                    <div class="am-form-group tpl-login-remember-me">
-                        <input id="remember-me" type="checkbox">
-                        <label for="remember-me">
-       
-                        记住密码
-                         </label>
-
-                    </div>
-
-
-
-
-
-
-                    <div class="am-form-group">
+          </div>
+              <div class="am-form-group">
 
                         <button type="button" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">提交</button>
 
-                    </div>
-                </form>
+           </div>
+        </form -->
+						<form action="{{url('admin/dologin')}}" method="post">{{url('admin/dologin')}}
+          <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+          <div class="form-group has-feedback">
+            <input type="text" class="form-control" name="admin_name" placeholder="Name"/>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" name="admin_password" class="form-control" placeholder="Password"/>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="row">
+
+          </div>
+          <div class="row">
+
+            <div class="col-xs-4">
+              <button type="submit" class="btn btn-primary btn-block btn-flat">登 陆</button>
+            </div><!-- /.col -->
+          </div>
+        </form>
+				
+				
+				
             </div>
         </div>
     </div>
@@ -82,5 +96,4 @@
     <script src="{{asset('myadmin/assets/js/app.js')}}"></script>
 
 </body>
-
 </html>
