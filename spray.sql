@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-06-24 10:09:30
+Date: 2017-06-28 08:51:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,13 +20,12 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
-  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `admin_name` varchar(32) NOT NULL COMMENT '管理员名称',
-  `admin_id` int(32) DEFAULT NULL COMMENT '管理员id',
+  `admin_id` int(32) NOT NULL COMMENT '管理员id',
   `admin_password` varchar(32) NOT NULL COMMENT '管理员密码',
   `admin_time` int(32) DEFAULT NULL COMMENT '管理员添加时间',
-  `admin-phone` int(11) DEFAULT NULL COMMENT '管理员联系方式',
-  PRIMARY KEY (`id`)
+  `admin_phone` int(11) DEFAULT NULL COMMENT '管理员联系方式',
+  PRIMARY KEY (`admin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -34,32 +33,16 @@ CREATE TABLE `admin` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for collections
--- ----------------------------
-DROP TABLE IF EXISTS `collections`;
-CREATE TABLE `collections` (
-  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
-  `message_id` int(32) DEFAULT NULL COMMENT '微博id',
-  `user_id` int(32) DEFAULT NULL COMMENT '收藏用户id',
-  `collections_time` int(32) DEFAULT NULL COMMENT '收藏时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of collections
--- ----------------------------
-
--- ----------------------------
 -- Table structure for comments
 -- ----------------------------
 DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
-  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
+  `comments_id` int(32) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论内容id',
   `message_id` int(32) DEFAULT NULL COMMENT '所评论的微博id',
   `user_id` int(32) DEFAULT NULL COMMENT '评论用户id',
   `comments_content` varchar(255) DEFAULT NULL COMMENT '评论内容',
   `comments_time` int(32) DEFAULT NULL COMMENT '评论时间',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`comments_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -71,10 +54,8 @@ CREATE TABLE `comments` (
 -- ----------------------------
 DROP TABLE IF EXISTS `content`;
 CREATE TABLE `content` (
-  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `message_id` int(32) DEFAULT NULL COMMENT '微博id',
-  `status` int(1) DEFAULT NULL COMMENT '内容状态',
-  PRIMARY KEY (`id`)
+  `status` int(1) DEFAULT NULL COMMENT '内容状态'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -82,36 +63,17 @@ CREATE TABLE `content` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for count
+-- Table structure for department
 -- ----------------------------
-DROP TABLE IF EXISTS `count`;
-CREATE TABLE `count` (
-  `message_id` int(32) NOT NULL COMMENT '微博消息id',
-  `comment_count` int(32) DEFAULT NULL COMMENT '评论数',
-  `praise_count` int(32) DEFAULT NULL COMMENT '点赞数',
-  `foward_count` int(32) DEFAULT NULL COMMENT '转发数',
-  `onclicknum` int(32) DEFAULT NULL COMMENT '点击数',
-  PRIMARY KEY (`message_id`)
+DROP TABLE IF EXISTS `department`;
+CREATE TABLE `department` (
+  `id` int(32) NOT NULL,
+  `title` varchar(32) DEFAULT NULL COMMENT '部门名称',
+  `pricileges_id` int(32) DEFAULT NULL COMMENT '权限id'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of count
--- ----------------------------
-
--- ----------------------------
--- Table structure for fans
--- ----------------------------
-DROP TABLE IF EXISTS `fans`;
-CREATE TABLE `fans` (
-  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(32) NOT NULL,
-  `count` int(32) DEFAULT NULL COMMENT '粉丝数量',
-  `fans_id` int(32) DEFAULT NULL COMMENT '粉丝id',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of fans
+-- Records of department
 -- ----------------------------
 
 -- ----------------------------
@@ -119,11 +81,11 @@ CREATE TABLE `fans` (
 -- ----------------------------
 DROP TABLE IF EXISTS `follow`;
 CREATE TABLE `follow` (
-  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(32) NOT NULL,
-  `follow_id` int(32) NOT NULL COMMENT '关注用户id',
-  `count` int(16) DEFAULT NULL COMMENT '关注数量',
-  PRIMARY KEY (`id`)
+  `fans_count` int(32) NOT NULL COMMENT '粉丝数量',
+  `follow_count` int(16) DEFAULT NULL COMMENT '关注人数量',
+  `suser_id` int(16) DEFAULT NULL COMMENT '被关注人id',
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -135,11 +97,9 @@ CREATE TABLE `follow` (
 -- ----------------------------
 DROP TABLE IF EXISTS `forward`;
 CREATE TABLE `forward` (
-  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `users_id` int(32) DEFAULT NULL COMMENT '被转发发布者id',
   `message_id` int(32) DEFAULT NULL COMMENT '被转发微博id',
-  `user_id` int(11) DEFAULT NULL COMMENT '转发用户id',
-  PRIMARY KEY (`id`)
+  `su_id` int(11) DEFAULT NULL COMMENT '转发用户id'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -151,13 +111,14 @@ CREATE TABLE `forward` (
 -- ----------------------------
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE `message` (
-  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `message_id` int(32) DEFAULT NULL COMMENT '微博消息id',
+  `praise_count` int(32) DEFAULT NULL COMMENT '点赞数',
   `user_id` int(32) DEFAULT NULL COMMENT '发布者id',
   `content` mediumtext COMMENT '内容',
   `picname` varchar(32) DEFAULT NULL COMMENT '图片',
+  `foward_count` int(32) DEFAULT NULL COMMENT '转发数',
   `publish_time` int(32) DEFAULT NULL COMMENT '发表时间',
-  PRIMARY KEY (`id`)
+  `onclicknum` int(32) DEFAULT NULL COMMENT '点击数'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -170,7 +131,6 @@ CREATE TABLE `message` (
 DROP TABLE IF EXISTS `privileges`;
 CREATE TABLE `privileges` (
   `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
-  `admin_id` int(32) DEFAULT NULL COMMENT '管理员id',
   `title` varchar(32) DEFAULT NULL COMMENT '权限描述',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -217,7 +177,6 @@ CREATE TABLE `url` (
 DROP TABLE IF EXISTS `userinfo`;
 CREATE TABLE `userinfo` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL COMMENT '用户id',
   `nickname` varchar(32) NOT NULL COMMENT '用户昵称',
   `password` varchar(32) NOT NULL COMMENT '密码',
   `email` varchar(32) DEFAULT NULL COMMENT 'email',
