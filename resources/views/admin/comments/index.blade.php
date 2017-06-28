@@ -27,7 +27,7 @@
                         @foreach($list as $vs)
                         <tr class="gradeX">
                             <td>{{$vs->mssage_id}}</td>
-                            <td>{{$vs-user_id}}</td>
+                            <td>{{$vs->user_id}}</td>
                             <td>{{$vs->comments_id}}</td>
                             <td>{{$vs->comments_content}}</td>
                             <td>{{$vs->comments_time}}</td>

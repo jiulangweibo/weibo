@@ -28,7 +28,7 @@
                                             <td>{{$ov->user_id}}</td>
                                             <td>{{$ov->suser_id}}</td>
                                             <td>{{$ov->follow_count}}</td>
-                                            <td>{{$ov->fans->count}}</td>
+                                            <td>{{$ov->fans_count}}</td>
                                             <td>
                                                 <div class="tpl-table-black-operation">
                                                     <a href="javascript:;">
