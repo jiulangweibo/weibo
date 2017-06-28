@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : linux-mysql
+Source Server         : localhost_3306
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : spray
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-06-28 20:26:41
+Date: 2017-06-28 21:59:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,11 +44,12 @@ CREATE TABLE `comments` (
   `comments_content` varchar(255) DEFAULT NULL COMMENT '评论内容',
   `comments_time` int(32) DEFAULT NULL COMMENT '评论时间',
   PRIMARY KEY (`comments_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comments
 -- ----------------------------
+INSERT INTO `comments` VALUES ('1', '1', '1', '好羡慕', '2017101');
 
 -- ----------------------------
 -- Table structure for department
@@ -59,11 +60,12 @@ CREATE TABLE `department` (
   `title` varchar(32) DEFAULT NULL COMMENT '部门名称',
   `pricileges_id` int(32) DEFAULT NULL COMMENT '权限id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of department
 -- ----------------------------
+INSERT INTO `department` VALUES ('1', '扫黄部', '1');
 
 -- ----------------------------
 -- Table structure for follow
@@ -80,6 +82,7 @@ CREATE TABLE `follow` (
 -- ----------------------------
 -- Records of follow
 -- ----------------------------
+INSERT INTO `follow` VALUES ('1', '232', '433', '2');
 
 -- ----------------------------
 -- Table structure for forward
@@ -95,6 +98,7 @@ CREATE TABLE `forward` (
 -- ----------------------------
 -- Records of forward
 -- ----------------------------
+INSERT INTO `forward` VALUES ('1', '1', '2');
 
 -- ----------------------------
 -- Table structure for message
@@ -111,11 +115,12 @@ CREATE TABLE `message` (
   `onclicknum` int(32) DEFAULT NULL COMMENT '点击数',
   `status` int(2) NOT NULL DEFAULT '1',
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of message
 -- ----------------------------
+INSERT INTO `message` VALUES ('1', '1', '1', '王之新今天跟张龙在缠绵', null, '11', null, '67', '1');
 
 -- ----------------------------
 -- Table structure for privileges
@@ -125,11 +130,12 @@ CREATE TABLE `privileges` (
   `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(32) DEFAULT NULL COMMENT '权限描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of privileges
 -- ----------------------------
+INSERT INTO `privileges` VALUES ('1', '只能查看用户');
 
 -- ----------------------------
 -- Table structure for register
@@ -143,11 +149,12 @@ CREATE TABLE `register` (
   `nickname` varchar(16) NOT NULL COMMENT '用户昵称',
   `register_time` int(32) DEFAULT NULL COMMENT '注册时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of register
 -- ----------------------------
+INSERT INTO `register` VALUES ('1', '1', '979971886@qq.com', '', '王之新傻逼', '2017062811');
 
 -- ----------------------------
 -- Table structure for url
@@ -157,11 +164,12 @@ CREATE TABLE `url` (
   `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `url` varchar(32) DEFAULT NULL COMMENT '链接地址',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of url
 -- ----------------------------
+INSERT INTO `url` VALUES ('1', 'www.baidu.com');
 
 -- ----------------------------
 -- Table structure for userinfo
@@ -184,9 +192,10 @@ CREATE TABLE `userinfo` (
   `register_time` int(32) DEFAULT NULL COMMENT '注册时间',
   `QQ` int(11) DEFAULT NULL COMMENT 'QQ',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
-INSERT INTO `userinfo` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1234@qq.com', '2147483647', '23', 'w', 'm', null, null, null, null, null, null, null);
+INSERT INTO `userinfo` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1234@qq.com', '2147483647', '23', 'w', 'm', null, '10.23', '北京市昌平区育荣教育园区', '张龙', '1', null, '11111233');
+INSERT INTO `userinfo` VALUES ('2', 'zhangsan', '', 'zhangsan@qq.com', '1234567890', '21', 'm', 'w', null, '01.01', '北京市昌平区', '王之新', '1', null, '77222772');
