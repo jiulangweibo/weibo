@@ -28,8 +28,13 @@ Route::get('/admin/',"Admin\UserController@index");
 Route::get('/admin/',"Admin\UserController@index");
 Route::get('/admin/',"Admin\UserController@index"); */
 
+//网站后台路由配置
+Route::get('/admin/login',"Admin\LoginController@login"); //加载后台登录界面
+Route::post('/admin/dologin',"Admin\LoginController@doLogin"); //执行后台登录
+Route::get('/admin/logout',"Admin\LoginController@logout"); //执行退出
 
-Route::group(['prefix' => 'admin'], function () {
+
+Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
     Route::get('/',"Admin\IndexController@index"); //后台首页
 
 
