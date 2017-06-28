@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use  App\Model\Userinfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,8 @@ class UserinfoController extends Controller
     public function index()
     {
         //
-		return view("admin.userinfo.index");
+        $list = Userinfo::all();
+		return view("admin.userinfo.index",["list"=>$list]);
     }
 
     /**

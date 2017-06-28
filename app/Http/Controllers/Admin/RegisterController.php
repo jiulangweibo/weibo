@@ -10,8 +10,8 @@ class RegisterController extends Controller
 {
   public function index()
 	{
-   		$info =Register::all();
-    	return $info;
+   		$info = Register::all();
+    	return view("admin.register.index",["info"=>$info]);
     }
 
 
