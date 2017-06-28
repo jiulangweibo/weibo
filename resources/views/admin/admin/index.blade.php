@@ -16,18 +16,22 @@
                                 <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
                                     <thead>
                                         <tr>
-                                            <th>被转发者ID</th>
-                                            <th>被转发微博ID</th>
-                                            <th>转发用户ID</th>
+                                            <th>管理员名称</th>
+                                            <th>管理员ID</th>
+                                            <th>管理员密码</th>
+                                            <th>添加时间</th>
+                                            <th>联系方式</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($list as $vo)
                                         <tr class="gradeX">
-                                            <td>{{$vo->user_id}}</td>
-                                            <td>{{$vo->message_id}}</td>
-                                            <td>{{$vo->su_id}}</td>
+                                            <td>{{$vo->admin_name}}</td>
+                                            <td>{{$vo->admin_id}}</td>
+                                            <td>{{$vo->admin_password}}</td>
+                                            <td>{{$vo->admin_time}}</td>
+                                            <td>{{$vo->admin_phone}}</td>
                                             <td>
                                                 <div class="tpl-table-black-operation">
                                                     <a href="javascript:;">

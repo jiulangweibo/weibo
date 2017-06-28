@@ -31,7 +31,7 @@ class LoginController extends Controller
         $user = \DB::table("admin")->where("admin_name",$admin_name)->first();
         if(!empty($user)){
             //判断密码
-            if($admin_password==$user->admin_password){
+            if(md5($admin_password)==$user->admin_password){
                 //存储session跳转页面
                 session()->push("adminuser",$user);             
                 //return redirect("admin");
