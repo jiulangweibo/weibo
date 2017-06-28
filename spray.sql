@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-06-28 08:51:01
+Date: 2017-06-28 20:26:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,16 +21,17 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `admin_name` varchar(32) NOT NULL COMMENT '管理员名称',
-  `admin_id` int(32) NOT NULL COMMENT '管理员id',
+  `admin_id` int(32) unsigned NOT NULL AUTO_INCREMENT COMMENT '管理员id',
   `admin_password` varchar(32) NOT NULL COMMENT '管理员密码',
   `admin_time` int(32) DEFAULT NULL COMMENT '管理员添加时间',
   `admin_phone` int(11) DEFAULT NULL COMMENT '管理员联系方式',
   PRIMARY KEY (`admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
+INSERT INTO `admin` VALUES ('admin', '1', '21232f297a57a5a743894a0e4a801fc3', null, '2147483647');
 
 -- ----------------------------
 -- Table structure for comments
@@ -50,26 +51,14 @@ CREATE TABLE `comments` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for content
--- ----------------------------
-DROP TABLE IF EXISTS `content`;
-CREATE TABLE `content` (
-  `message_id` int(32) DEFAULT NULL COMMENT '微博id',
-  `status` int(1) DEFAULT NULL COMMENT '内容状态'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of content
--- ----------------------------
-
--- ----------------------------
 -- Table structure for department
 -- ----------------------------
 DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
-  `id` int(32) NOT NULL,
+  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(32) DEFAULT NULL COMMENT '部门名称',
-  `pricileges_id` int(32) DEFAULT NULL COMMENT '权限id'
+  `pricileges_id` int(32) DEFAULT NULL COMMENT '权限id',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -81,7 +70,7 @@ CREATE TABLE `department` (
 -- ----------------------------
 DROP TABLE IF EXISTS `follow`;
 CREATE TABLE `follow` (
-  `user_id` int(32) NOT NULL,
+  `user_id` int(32) unsigned NOT NULL,
   `fans_count` int(32) NOT NULL COMMENT '粉丝数量',
   `follow_count` int(16) DEFAULT NULL COMMENT '关注人数量',
   `suser_id` int(16) DEFAULT NULL COMMENT '被关注人id',
@@ -97,9 +86,10 @@ CREATE TABLE `follow` (
 -- ----------------------------
 DROP TABLE IF EXISTS `forward`;
 CREATE TABLE `forward` (
-  `users_id` int(32) DEFAULT NULL COMMENT '被转发发布者id',
+  `users_id` int(32) unsigned NOT NULL COMMENT '被转发发布者id',
   `message_id` int(32) DEFAULT NULL COMMENT '被转发微博id',
-  `su_id` int(11) DEFAULT NULL COMMENT '转发用户id'
+  `su_id` int(11) DEFAULT NULL COMMENT '转发用户id',
+  PRIMARY KEY (`users_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -111,14 +101,16 @@ CREATE TABLE `forward` (
 -- ----------------------------
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE `message` (
-  `message_id` int(32) DEFAULT NULL COMMENT '微博消息id',
+  `message_id` int(32) unsigned NOT NULL AUTO_INCREMENT COMMENT '微博消息id',
   `praise_count` int(32) DEFAULT NULL COMMENT '点赞数',
   `user_id` int(32) DEFAULT NULL COMMENT '发布者id',
   `content` mediumtext COMMENT '内容',
   `picname` varchar(32) DEFAULT NULL COMMENT '图片',
   `foward_count` int(32) DEFAULT NULL COMMENT '转发数',
   `publish_time` int(32) DEFAULT NULL COMMENT '发表时间',
-  `onclicknum` int(32) DEFAULT NULL COMMENT '点击数'
+  `onclicknum` int(32) DEFAULT NULL COMMENT '点击数',
+  `status` int(2) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`message_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -192,8 +184,9 @@ CREATE TABLE `userinfo` (
   `register_time` int(32) DEFAULT NULL COMMENT '注册时间',
   `QQ` int(11) DEFAULT NULL COMMENT 'QQ',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
+INSERT INTO `userinfo` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1234@qq.com', '2147483647', '23', 'w', 'm', null, null, null, null, null, null, null);
