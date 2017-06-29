@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : 1
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : spray
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-06-28 21:59:20
+Date: 2017-06-29 22:34:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,12 +26,13 @@ CREATE TABLE `admin` (
   `admin_time` int(32) DEFAULT NULL COMMENT '管理员添加时间',
   `admin_phone` int(11) DEFAULT NULL COMMENT '管理员联系方式',
   PRIMARY KEY (`admin_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
 INSERT INTO `admin` VALUES ('admin', '1', '21232f297a57a5a743894a0e4a801fc3', null, '2147483647');
+INSERT INTO `admin` VALUES ('333', '2', '1a100d2c0dab19c4430e7d73762b3423', null, '333');
 
 -- ----------------------------
 -- Table structure for comments
@@ -58,26 +59,28 @@ DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
   `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(32) DEFAULT NULL COMMENT '部门名称',
-  `pricileges_id` int(32) DEFAULT NULL COMMENT '权限id',
+  `privileges_id` int(32) DEFAULT NULL COMMENT '权限id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of department
 -- ----------------------------
 INSERT INTO `department` VALUES ('1', '扫黄部', '1');
+INSERT INTO `department` VALUES ('10', '2', '2');
+INSERT INTO `department` VALUES ('11', '3', '3');
 
 -- ----------------------------
 -- Table structure for follow
 -- ----------------------------
 DROP TABLE IF EXISTS `follow`;
 CREATE TABLE `follow` (
-  `user_id` int(32) unsigned NOT NULL,
+  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `fans_count` int(32) NOT NULL COMMENT '粉丝数量',
   `follow_count` int(16) DEFAULT NULL COMMENT '关注人数量',
   `suser_id` int(16) DEFAULT NULL COMMENT '被关注人id',
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of follow
@@ -130,12 +133,13 @@ CREATE TABLE `privileges` (
   `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(32) DEFAULT NULL COMMENT '权限描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of privileges
 -- ----------------------------
 INSERT INTO `privileges` VALUES ('1', '只能查看用户');
+INSERT INTO `privileges` VALUES ('2', '2');
 
 -- ----------------------------
 -- Table structure for register
@@ -197,5 +201,5 @@ CREATE TABLE `userinfo` (
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
-INSERT INTO `userinfo` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1234@qq.com', '2147483647', '23', 'w', 'm', null, '10.23', '北京市昌平区育荣教育园区', '张龙', '1', null, '11111233');
+INSERT INTO `userinfo` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1234@qq.com', '2147483647', '23', 'w', 'm', null, '10.23', '北京市昌平区育荣教育园区', '张龙', '0', null, '11111233');
 INSERT INTO `userinfo` VALUES ('2', 'zhangsan', '', 'zhangsan@qq.com', '1234567890', '21', 'm', 'w', null, '01.01', '北京市昌平区', '王之新', '1', null, '77222772');
