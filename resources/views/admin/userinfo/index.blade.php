@@ -40,22 +40,19 @@
                                             <td>{{$v->email}}</td>
                                             <td>{{$v->phone}}</td>
                                             <td>{{$v->age}}</td>
-                                            <td>{{$v->sex}}</td>
-                                            <td>{{$v->sexual}}</td>
+                                            <td>@if ($v->sex=="w")女 @else 男 @endif</td>
+                                            <td>@if ($v->sexual=="w")女 @else 男 @endif</td>
                                             <td>{{$v->picnam}}</td>
                                             <td>{{$v->birthday}}</td>
                                             <td>{{$v->address}}</td>
                                             <td>{{$v->name}}</td>
-                                            <td>{{$v->status}}</td>
+                                            <td>@if ($v->status=="0")禁用 @else 启用 @endif</td>
                                             <td>{{$v->register_time}}</td>
                                             <td>{{$v->QQ}}</td>
                                             <td>
                                                 <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
+                                                    <a href="/admin/userinfo/{{ $v->id }}/edit">
                                                         <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
                                                     </a>
                                                 </div>
                                             </td>
