@@ -33,18 +33,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //表单验证
-        $this->validate($request, [
-            'admin_name' => 'required|max:16',
-            'admin_password' => 'required|max:16|min:6',
-            'admin_phone' => 'required|integer',
-        ]);
-        //判断重复密码
-        if($request->input("admin_password")!=$request->input("repassword")){
-            return back()->with("err","密码和重复密码不一致!");
-            //return "密码和重复密码不一致";
-        }  
+
         
         //获取指定的部分数据
         $data = $request->only("admin_name","admin_password","admin_phone");
