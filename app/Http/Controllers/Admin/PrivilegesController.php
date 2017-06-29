@@ -21,7 +21,7 @@ class PrivilegesController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.privileges.add");
     }
 
     /**
@@ -32,7 +32,20 @@ class PrivilegesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //表单验证
+        $this->validate($request, [
+            'title' => 'required|max:10',
+        ]);
+
+        //获取指定的部分数据
+        $data = $request->only('title');
+        $id = Privileges::insertGetId($data);
+        
+        if($id>0){
+            return redirect('admin/privileges');
+        }else{
+           return back()->with("err","添加失败!");
+        }
     }
 
     /**
@@ -77,6 +90,6 @@ class PrivilegesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return 1;
     }
 }
