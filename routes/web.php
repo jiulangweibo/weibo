@@ -14,19 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-/* //网站后台路由配置
-Route::get('/admin',"Admin\IndexController@index"); //加载后台登录界面
-Route::get('/admin/user',"Admin\UserController@index"); //加载用户管理
-Route::get('/admin/register',"Admin\follw@index"); //加载注册表
-Route::get('/admin/follw',"Admin\FollwController@index"); //粉丝表
-Route::get('/admin/',"Admin\UserController@index");
-Route::get('/admin/',"Admin\UserController@index");
-Route::get('/admin/',"Admin\UserController@index");
-Route::get('/admin/',"Admin\UserController@index");
-Route::get('/admin/',"Admin\UserController@index");
-Route::get('/admin/',"Admin\UserController@index");
-Route::get('/admin/',"Admin\UserController@index");
-Route::get('/admin/',"Admin\UserController@index"); */
+
+
 
 //网站后台路由配置
 Route::get('/admin/login',"Admin\LoginController@login"); //加载后台登录界面

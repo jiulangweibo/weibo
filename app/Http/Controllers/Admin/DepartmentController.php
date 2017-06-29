@@ -22,6 +22,7 @@ class DepartmentController extends Controller
     public function create()
     {
         //
+		return view ("admin.department.add");
     }
 
     /**
@@ -33,6 +34,15 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         //
+		$data = $request->only("title",'privileges_id');
+		//return $data;
+		$id = Department::insertGetId($data);
+		
+		if($id>0){
+            return redirect('admin/department');
+        }else{
+           return back()->with("err","添加失败!");
+        }
     }
 
     /**
