@@ -52,7 +52,7 @@
                                                     <a href="javascript:;">
                                                         <i class="am-icon-pencil"></i> 编辑
                                                     </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                    <a href="javascript:doDel({{ $v->id }});" class="tpl-table-black-operation-del">
                                                         <i class="am-icon-trash"></i> 删除
                                                     </a>
                                                 </div>
@@ -71,7 +71,19 @@
 
 
                 </div>
-					    @endsection
+				@endsection
+				       <form style="display:none;" action="" name="myform" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        </form>
+					    
+							               <script>
+            function doDel(id){
+				if(id){confirm("是否删除信息？")
+                document.myform.action = "/admin/department/"+id;
+                document.myform.submit();
+				}
+            }
+          </script>
 						
-							
 		
