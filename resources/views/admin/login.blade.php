@@ -66,7 +66,7 @@
 
            </div>
         </form -->
-					@if(session("msg"))
+			@if(session("msg"))
             <center><p class="login-box-msg" style="color:red;">{{session("msg")}}</p></center>
 			@endif
 		
