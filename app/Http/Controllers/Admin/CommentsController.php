@@ -41,7 +41,7 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($message_id)
     {
         //
     }
@@ -52,9 +52,10 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($message_id)
     {
-        //
+		$v = Comments::where("message_id","=",$message_id)->first();
+        return view("admin.comments.edit",['v'=>$v]);
     }
 
     /**
@@ -64,9 +65,37 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+	 
+	 
+	 /*
     public function update(Request $request, $id)
     {
-        //
+        //$input = $request->only(['status']);
+        $m = Comments::where("comments_id",$id)->update($input);
+        if($m){
+            echo "修改用户状态成功!";
+            return redirect("admin/comments");
+        }else{
+            echo "修改用户状态失败!";
+        }
+    }
+	*/
+	 public function update(Request $request,$message_id)
+    {
+        
+        //获取要修改的数据
+        $data = $request->only('user_id','comments_content','comments_time');
+        //执行修改
+        $sid = Comments::where("message_id",$message_id)->update($data);
+        //判断
+        if($sid>0){
+            $info = "评论修改成功！";
+        }else{
+            $info = "修改失败！";
+        }
+        
+        //return view("admin.stu.info",['info'=>$info]);
+        return redirect("admin/comments")->with("err",$info);
     }
 
     /**
@@ -75,8 +104,11 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($comments_id)
     {
-        //
+		Comments::where("comments_id",$comments_id)->delete();
+
+
+        return redirect('admin/comments');
     }
 }
