@@ -49,7 +49,7 @@
                                             <td>{{$v->privileges_id}}</td>
                                             <td>
                                                 <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
+                                                    <a href="/admin/department/{{ $v->id }}/edit">
                                                         <i class="am-icon-pencil"></i> 编辑
                                                     </a>
                                                     <a href="javascript:doDel({{ $v->id }});" class="tpl-table-black-operation-del">

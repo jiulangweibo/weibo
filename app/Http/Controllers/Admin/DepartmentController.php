@@ -64,7 +64,8 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $v = Department::where("id","=",$id)->first();
+        return view("admin.department.edit",['v'=>$v]);
     }
 
     /**
@@ -76,7 +77,15 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->only(['title','privileges_id']);
+        $m = Department::where("id",$id)->update($input);
+        if($m){
+            echo "修改权限名称成功!";
+            return redirect("admin/department");
+        }else{
+            echo "修改权限名称失败!";
+            return redirect("admin/department");
+        }
     }
 
     /**
