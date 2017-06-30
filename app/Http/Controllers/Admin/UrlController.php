@@ -70,6 +70,8 @@ class UrlController extends Controller
     public function edit($id)
     {
         //
+		 $v = Url::where("id","=",$id)->first();
+        return view("admin.url.edit",['v'=>$v]);
     }
 
     /**
@@ -82,6 +84,14 @@ class UrlController extends Controller
     public function update(Request $request, $id)
     {
         //
+		 $input = $request->only("url");
+        $m = Url::where("id",$id)->update($input);
+        if($m){
+            echo "修改用户状态成功!";
+            return redirect("admin/url");
+        }else{
+            echo "修改用户状态失败!";
+        }
     }
 
     /**
@@ -92,8 +102,6 @@ class UrlController extends Controller
      */
     public function destroy($id)
     {
-        //
-		\DB::table('url')->delete($id);
-        return redirect("admin/url");
+       
     }
 }

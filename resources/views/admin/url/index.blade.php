@@ -1,21 +1,35 @@
-@extends('admin.base')
+﻿@extends('admin.base')
 @section('content')
-<div class="row">
-
+<div class="row-content am-cf">
+                <div class="row">
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="am-form-group">
-                                        <div class="am-u-sm-12 am-u-sm-push-12">
-                                            <a href="/admin/url/create"> <button type="button" class="am-btn am-btn-primary tpl-btn-bg-color-success ">新增</button></a>
+                                <div class="widget-title  am-cf">文章列表</div>
+
+
+                            </div>
+                            <div class="widget-body  am-fr">
+
+                                <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                                    <div class="am-form-group">
+                                        <div class="am-btn-toolbar">
+                                            <div class="am-btn-group am-btn-group-xs">
+                                                <a href="/admin/url/create"><button type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</button></a>
+                                            </div>
                                         </div>
                                     </div>
-                                <div class="widget-function am-fr">
-                                    <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>
-                            </div>
-                            <div class="widget-body  widget-body-lg am-fr">
+                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
+                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                                        <input type="text" class="am-form-field ">
+                                        <span class="am-input-group-btn">
+                                            <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button"></button>
+                                        </span>
+                                    </div>
+                                </div>
 
+										
                                 <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
                                     <thead>
                                         <tr>
@@ -31,7 +45,7 @@
                                             <td>{{$v->url}}</td>
                                             <td>
                                                 <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
+                                                    <a href="/admin/url/{{$v->id}}/edit">
                                                         <i class="am-icon-pencil"></i> 编辑
                                                     </a>
                                                     <a href="javascript:;" class="tpl-table-black-operation-del">
