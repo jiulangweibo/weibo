@@ -21,7 +21,8 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        //
+        //返回add界面
+		return view("admin.comments.add");
     }
 
     /**
@@ -32,7 +33,20 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //表单验证
+        $this->validate($request, [
+            'title' => 'required|max:10',
+        ]);
+
+        //获取指定的部分数据
+        $data = $request->only('title');
+        $id = comments::insertGetId($data);
+        
+        if($id>0){
+            return redirect('admin/comments');
+        }else{
+           return back()->with("err","添加失败!");
+        }
     }
 
     /**

@@ -10,6 +10,19 @@
                     <a href="javascript:;" class="am-icon-cog"></a>
                 </div>
             </div>
+			<div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+								<div class="am-form-group">
+									<div class="am-btn-toolbar">
+										<div class="am-btn-group am-btn-group-xs">
+											<a href="/admin/comments/create">
+											<button type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</button>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+			
             <div class="widget-body  widget-body-lg am-fr">
 
                 <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
@@ -35,13 +48,13 @@
 								<div class="tpl-table-black-operation">
 									<a href="/admin/comments/{{ $vs->comments_id }}/edit">
 										<i class="am-icon-pencil"></i> 编辑
-									</a>&nbsp;&nbsp;
+									</a>
 									<!--
 									<a href="/admin/comments{{ $vs->comments_id }}/edit">
 										<i class="am-icon-pencil"></i> 删除
 									</a>
 									-->
-									<td><button onclick="doDel({{$vs->comments_id}})" class="btn btn-xs btn-danger">删除</button> 
+									<td><button onclick="doDel({{$vs->comments_id}})" class="btn btn-xs btn-danger"><i class="am-icon-pencil"></i>删除</button> 
 
 								</div>
 							</td>
