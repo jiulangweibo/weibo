@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index.index');
 });
 
 
@@ -42,3 +42,6 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 
  
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
