@@ -88,5 +88,8 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         //
+		Department::where("id",$id)->delete();
+
+        return redirect('admin/department');
     }
 }

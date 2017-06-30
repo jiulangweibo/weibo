@@ -22,6 +22,8 @@ class UrlController extends Controller
     public function create()
     {
         //
+		  return view("admin.url.create");
+		
     }
 
     /**
@@ -33,6 +35,19 @@ class UrlController extends Controller
     public function store(Request $request)
     {
         //
+		 //获取要添加的数据
+        $data = $request->only('url');
+        //执行添加
+        $id = \DB::table("url")->insertGetId($data);
+        //判断
+        if($id>0){
+            $info = "信息添加成功！";
+        }else{
+            $info = "信息添加失败！";
+        }
+        
+        //return view("admin.stu.info",['info'=>$info]);
+        return redirect("admin/url")->with("err",$info);
     }
 
     /**
@@ -78,5 +93,7 @@ class UrlController extends Controller
     public function destroy($id)
     {
         //
+		\DB::table('url')->delete($id);
+        return redirect("admin/url");
     }
 }
