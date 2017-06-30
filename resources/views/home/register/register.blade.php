@@ -143,7 +143,7 @@ $CONFIG.page = 'mobile';
                     </div>
                 </div>
                 <div class="W_reg_sidebar">
-                	<p class="p1 line">已有帐号，<a href="http://weibo.com/login.php">直接登录»</a></p>
+                	<p class="p1 line">已有帐号，<a href="/">直接登录»</a></p>
                     <p>微博注册帮助</p>
                     <div class="reg_help">
                     	<ul class="help_list">

@@ -71,7 +71,7 @@ $CONFIG['vid']='1007935760841';
           </div>
           <div class="gn_login">
 	          <ul class="gn_login_list">
-	            	<li><a href="http://weibo.com/signup/signup.php" class="S_txt1" target="_top">注册</a></li>
+	            	<li><a href="/register" class="S_txt1" target="_top">注册</a></li>
 	            	<li class="W_vline S_line1"></li>
 	            	<li><a node-type="loginBtn" href="javascript:void(0)" class="S_txt1" target="_top">登录</a></li>
 	          </ul>
@@ -434,7 +434,7 @@ $CONFIG['vid']='1007935760841';
 					<p class=" S_txt1">请打开微博客户端“扫一扫”</p>
 
 					<div class="info_list info_list1">
-						<span class="S_txt2">还没有微博？</span><a target="_blank" href="http://weibo.com/signup/signup.php">立即注册!</a>
+						<span class="S_txt2">还没有微博？</span><a target="_blank" href="/register">立即注册!</a>
 					</div>
 
 					<div class="opacity_bg" node-type="scan_mask" style="display:none"></div>
