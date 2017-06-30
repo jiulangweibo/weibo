@@ -98,8 +98,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($admin_id)
     {
         //
+        Admin::where("admin_id",$admin_id)->delete();
+
+        return redirect('admin/admin');
     }
 }
