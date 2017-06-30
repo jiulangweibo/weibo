@@ -22,6 +22,8 @@ class UrlController extends Controller
     public function create()
     {
         //
+		  return view("admin.url.create");
+		
     }
 
     /**
@@ -33,6 +35,19 @@ class UrlController extends Controller
     public function store(Request $request)
     {
         //
+		 //获取要添加的数据
+        $data = $request->only('url');
+        //执行添加
+        $id = \DB::table("url")->insertGetId($data);
+        //判断
+        if($id>0){
+            $info = "信息添加成功！";
+        }else{
+            $info = "信息添加失败！";
+        }
+        
+        //return view("admin.stu.info",['info'=>$info]);
+        return redirect("admin/url")->with("err",$info);
     }
 
     /**
@@ -55,6 +70,8 @@ class UrlController extends Controller
     public function edit($id)
     {
         //
+		 $v = Url::where("id","=",$id)->first();
+        return view("admin.url.edit",['v'=>$v]);
     }
 
     /**
@@ -67,6 +84,14 @@ class UrlController extends Controller
     public function update(Request $request, $id)
     {
         //
+		 $input = $request->only("url");
+        $m = Url::where("id",$id)->update($input);
+        if($m){
+            echo "修改用户状态成功!";
+            return redirect("admin/url");
+        }else{
+            echo "修改用户状态失败!";
+        }
     }
 
     /**
@@ -77,6 +102,6 @@ class UrlController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
     }
 }
