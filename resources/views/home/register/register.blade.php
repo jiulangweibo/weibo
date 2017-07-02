@@ -1,6 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
 <!-- saved from url=(0034)http://weibo.com/signup/signup.php -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html xmlns="#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--注册登录header-->
 
 <link href="./css/frame.css" type="text/css" rel="stylesheet">
@@ -24,6 +24,27 @@ $CONFIG.city = '';
 $CONFIG.closeSendsms = '';
 $CONFIG.page = 'mobile';
 </script>
+---------------------------------------------------------------------------------------------------------------------------------------
+                    <form class="am-form tpl-form-border-form tpl-form-border-br" action="/admin/privileges" method="post">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label" name="title">手机号</label>
+                            <div class="am-u-sm-9">
+                                <input type="text" class="tpl-form-input" id="user-name" name="title" placeholder="请输入权限名称">
+                                <small>设置密码</small>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <input type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success " value="立即注册" />
+                            </div>
+                        </div>
+                    </form>
+
+-------------====================================================================================================================================================
+
+
+
 	<div class="W_nologin">
 	    <div class="W_header_line"></div>
     	<div class="W_reg_header W_logo_wave">
@@ -33,7 +54,7 @@ $CONFIG.page = 'mobile';
                     		        	<div class="main_tab_line">
 					<a class="W_f22 W_Yahei cur" href="javascript:void(0);">个人注册</a>
 					<span class="vline">|</span>
-					<a class="W_f22 W_Yahei" href="http://e.weibo.com/register/register">官方注册</a>
+					<a class="W_f22 W_Yahei" href="#">官方注册</a>
 				</div>
 			                        <div class="W_reg_info clearfix" id="pl_account_regmobile">
             	<div class="W_reg_form">
@@ -49,36 +70,36 @@ $CONFIG.page = 'mobile';
                                 <div style="position:absolute; top:320px; left:100px; z-index:99;display:none;" class="layer_menu_list msg_set_select layer_set_country" node-type="mobilesea_selectlayer">
 						            <!-- 选中态 select, a内增加 em -->
 						            <ul class="y_scroll">
-						            						            						            						                <li class="select" action-type="select" action-data="key=CH&amp;code=0086"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>中国</a></li>
-						            						            						            						                <li action-type="select" action-data="key=HK&amp;code=00852"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>中国香港</a></li>
-						            						            						            						                <li action-type="select" action-data="key=MO&amp;code=00853"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>中国澳门</a></li>
-						            						            						            						                <li action-type="select" action-data="key=TW&amp;code=00886"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>中国台湾</a></li>
-						            						            						            						                <li action-type="select" action-data="key=US&amp;code=001"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>美国</a></li>
-						            						            						            						                <li action-type="select" action-data="key=CA&amp;code=001"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>加拿大</a></li>
-						            						            						            						                <li action-type="select" action-data="key=BR&amp;code=0055"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>巴西</a></li>
-						            						            						            						                <li action-type="select" action-data="key=MY&amp;code=0060"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>马来西亚</a></li>
-						            						            						            						                <li action-type="select" action-data="key=AU&amp;code=0061"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>澳洲</a></li>
-						            						            						            						                <li action-type="select" action-data="key=JP&amp;code=0081"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>日本</a></li>
-						            						            						            						                <li action-type="select" action-data="key=KP&amp;code=0082"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>韩国</a></li>
-						            						            						            						                <li action-type="select" action-data="key=SG&amp;code=0065"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>新加坡</a></li>
-						            						            						            						                <li action-type="select" action-data="key=UK&amp;code=0044"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>英国</a></li>
-						            						            						            						                <li action-type="select" action-data="key=FR&amp;code=0033"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>法国</a></li>
-						            						            						            						                <li action-type="select" action-data="key=RU&amp;code=007"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>俄罗斯</a></li>
-						            						            						            						                <li action-type="select" action-data="key=ID&amp;code=0091"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>印度</a></li>
-						            						            						            						                <li action-type="select" action-data="key=TH&amp;code=0066"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>泰国</a></li>
-						            						            						            						                <li action-type="select" action-data="key=DE&amp;code=0049"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>德国</a></li>
-						            						            						            						                <li action-type="select" action-data="key=IN&amp;code=0062"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>印尼</a></li>
-						            						            						            						                <li action-type="select" action-data="key=KH&amp;code=00855"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>柬埔寨</a></li>
-						            						            						            						                <li action-type="select" action-data="key=MM&amp;code=0095"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>缅甸</a></li>
-						            						            						            						                <li action-type="select" action-data="key=BN&amp;code=00673"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>文莱</a></li>
-						            						            						            						                <li action-type="select" action-data="key=PH&amp;code=0063"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>菲律宾</a></li>
-						            						            						            						                <li action-type="select" action-data="key=VN&amp;code=0084"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>越南</a></li>
-						            						            						            						                <li action-type="select" action-data="key=LA&amp;code=00856"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>老挝</a></li>
-						            						            </ul>
-						        </div>
+										<li class="select" action-type="select" action-data="key=CH&amp;code=0086"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>中国</a></li>
+										<li action-type="select" action-data="key=HK&amp;code=00852"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>中国香港</a></li>
+										<li action-type="select" action-data="key=MO&amp;code=00853"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>中国澳门</a></li>
+										<li action-type="select" action-data="key=TW&amp;code=00886"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>中国台湾</a></li>
+										<li action-type="select" action-data="key=US&amp;code=001"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>美国</a></li>
+										<li action-type="select" action-data="key=CA&amp;code=001"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>加拿大</a></li>
+										<li action-type="select" action-data="key=BR&amp;code=0055"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>巴西</a></li>
+										<li action-type="select" action-data="key=MY&amp;code=0060"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>马来西亚</a></li>
+										<li action-type="select" action-data="key=AU&amp;code=0061"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>澳洲</a></li>
+										<li action-type="select" action-data="key=JP&amp;code=0081"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>日本</a></li>
+										<li action-type="select" action-data="key=KP&amp;code=0082"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>韩国</a></li>
+										<li action-type="select" action-data="key=SG&amp;code=0065"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>新加坡</a></li>
+										<li action-type="select" action-data="key=UK&amp;code=0044"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>英国</a></li>
+										<li action-type="select" action-data="key=FR&amp;code=0033"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>法国</a></li>
+										<li action-type="select" action-data="key=RU&amp;code=007"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>俄罗斯</a></li>
+										<li action-type="select" action-data="key=ID&amp;code=0091"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>印度</a></li>
+										<li action-type="select" action-data="key=TH&amp;code=0066"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>泰国</a></li>
+										<li action-type="select" action-data="key=DE&amp;code=0049"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>德国</a></li>
+										<li action-type="select" action-data="key=IN&amp;code=0062"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>印尼</a></li>
+										<li action-type="select" action-data="key=KH&amp;code=00855"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>柬埔寨</a></li>
+										<li action-type="select" action-data="key=MM&amp;code=0095"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>缅甸</a></li>
+										<li action-type="select" action-data="key=BN&amp;code=00673"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>文莱</a></li>
+										<li action-type="select" action-data="key=PH&amp;code=0063"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>菲律宾</a></li>
+										<li action-type="select" action-data="key=VN&amp;code=0084"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>越南</a></li>
+										<li action-type="select" action-data="key=LA&amp;code=00856"><a href="javascript:void(0);"><em class="W_ico12 icon_addone"></em>老挝</a></li>
+									</ul>
+								</div>
 						        </div>
                             </div>
-                            <div class="attachment">或使用<a node-type="link_regemail" href="http://weibo.com/signup/mobile.php?lang=zh-cn&amp;inviteCode=&amp;from=&amp;appsrc=&amp;backurl=&amp;showlogo=">邮箱注册</a></div>
+                            <div class="attachment">或使用<a node-type="link_regemail" href="#">邮箱注册</a></div>
                         </div>
                         <div class="tips" node-type="mobilesea_tip"></div>
                     </div>
@@ -123,7 +144,7 @@ $CONFIG.page = 'mobile';
                         	<a href="javascript:void(0);" class="W_btn_e" action-type="btn_sms_activation" node-type="btn_sms_activation" action-data="type=sendsms"><span>免费获取短信激活码</span></a>
                         	<a href="javascript:void(0);" class="W_btn_e_disable" style="display:none" node-type="btn_sms_activation_disable"><span><em node-type="sms_timer">180</em>秒后重新获取短信</span></a>
                         	<input node-type="activation" name="pincode" type="text" class="W_input" value="" maxlength="6">
-                            <div class="attachment"><a href="http://help.weibo.com/faq/q/2375/20136#20136" target="_blank">收不到验证码？</a></div>
+                            <div class="attachment"><a href="#">收不到验证码？</a></div>
                         </div>
                         <div class="tips" node-type="activation_tip">
                         </div>
@@ -136,9 +157,9 @@ $CONFIG.page = 'mobile';
                     </div>
                     <div class="info_list clearfix">
                         <div class="inp verify">
-                        	<p class="agreement"><a href="http://weibo.com/signup/v5/protocol" target="_blank">微博服务使用协议</a></p>
-                        	<p class="agreement"><a href="http://weibo.com/signup/v5/privacy" target="_blank">微博个人信息保护政策</a></p>
-                            <p class="agreement"><a href="http://news.sina.com.cn/c/2012-12-29/051425921660.shtml" target="_blank">全国人大常委会关于加强网络信息保护的决定</a></p>
+                        	<p class="agreement"><a href="#" target="_blank">微博服务使用协议</a></p>
+                        	<p class="agreement"><a href="#" target="_blank">微博个人信息保护政策</a></p>
+                            <p class="agreement"><a href="#" target="_blank">全国人大常委会关于加强网络信息保护的决定</a></p>
                         </div>
                     </div>
                 </div>
@@ -147,12 +168,12 @@ $CONFIG.page = 'mobile';
                     <p>微博注册帮助</p>
                     <div class="reg_help">
                     	<ul class="help_list">
-                        	<li><i>1</i><a target="_blank" href="http://help.weibo.com/faq/q/76/15955#15955">微博注册操作指南</a></li>
-                            <li><i>2</i><a target="_blank" href="http://help.weibo.com/faq/q/200/13091#13091">手机注册时提示手机号码已被绑定怎么办?</a></li>
-                            <li><i>3</i><a target="_blank" href="http://help.weibo.com/faq/q/200/276#276">注册微博时昵称显示“已经被注册”如何处理?</a></li>
-                            <li><i>4</i><a target="_blank" href="http://help.weibo.com/faq/q/200/13043#13043">注册时提示"你所使用的IP地址异常",该怎么办?</a></li>
+                        	<li><i>1</i><a target="_blank" href="#">微博注册操作指南</a></li>
+                            <li><i>2</i><a target="_blank" href="#">手机注册时提示手机号码已被绑定怎么办?</a></li>
+                            <li><i>3</i><a target="_blank" href="#">注册微博时昵称显示“已经被注册”如何处理?</a></li>
+                            <li><i>4</i><a target="_blank" href="#">注册时提示"你所使用的IP地址异常",该怎么办?</a></li>
                         </ul>
-                        <a target="_blank" href="http://help.weibo.com/faq/q/201" class="help_more">更多帮助»</a>
+                        <a target="_blank" href="#" class="help_more">更多帮助»</a>
                     </div>
                 </div>
             </div>
@@ -162,8 +183,8 @@ $CONFIG.page = 'mobile';
 	<div class="left_link">
 		<i class="footer_logo"></i>
 		<em class="company_name">北京微梦创科网络技术有限公司</em>
-        <a href="http://weibo.com/aj/static/jww.html">京网文[2011]0398-130号</a>
-        <a href="http://www.miibeian.gov.cn/">京ICP备12002058号</a>
+        <a href="#">京网文[2011]0398-130号</a>
+        <a href="#">京ICP备12002058号</a>
 	</div>
 	<div class="copy">
 		<span>Copyright © 2009-2017 WEIBO</span>
@@ -177,7 +198,7 @@ $CONFIG.page = 'mobile';
 
 </div>
 <!-- SUDA_CODE_START -->
-<noscript> &lt;img width="0" height="0" src="http://beacon.sina.com.cn/a.gif?noScript" border="0" alt="" /&gt; </noscript>
+<noscript> &lt;img width="0" height="0" src="#" border="0" alt="" /&gt; </noscript>
 <script type="text/javascript" charset="utf-8">
 (function() {
     var doc = document,
@@ -186,7 +207,7 @@ $CONFIG.page = 'mobile';
     wa.type = 'text/javascript';
     wa.charset = 'utf-8';
     wa.async = true;
-    wa.src = 'http://js.t.sinajs.cn/open/analytics/js/suda.js?version=52c19e8a1ac6f049';
+    wa.src = "#";
     s.parentNode.insertBefore(wa, s);
 })();
 </script>
