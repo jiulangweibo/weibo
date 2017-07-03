@@ -1,33 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Home;
 
-use  App\Model\Userinfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use \App\Model\Userinfo;
 
 class UserinfoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
-    {
-        //
-        $list = Userinfo::all();
-		return view("admin.userinfo.index",["list"=>$list]);
+	{
+   		//
     }
-
-    /**
+    
+        /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+		//
     }
 
     /**
@@ -49,8 +42,7 @@ class UserinfoController extends Controller
      */
     public function show($id)
     {
-        $v = Userinfo::where("id","=",$id)->first();
-        return view("admin.userinfo.show",['v'=>$v]);
+        //
     }
 
     /**
@@ -61,8 +53,7 @@ class UserinfoController extends Controller
      */
     public function edit($id)
     {
-        $v = Userinfo::where("id","=",$id)->first();
-        return view("admin.userinfo.edit",['v'=>$v]);
+        //
     }
 
     /**
@@ -74,13 +65,7 @@ class UserinfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->only(['status']);
-        $m = Userinfo::where("id",$id)->update($input);
-        if($m){
-            echo "修改用户状态成功!";
-            return redirect("admin/userinfo");
-        }else{
-            echo "修改用户状态失败!";
+        //
         }
     }
 
@@ -92,6 +77,6 @@ class UserinfoController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
     }
 }

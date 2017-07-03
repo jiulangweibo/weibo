@@ -8,10 +8,20 @@ use \App\Model\Privileges;
 
 class PrivilegesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
 	{
-   		$list =Privileges::all();
-    	return view('admin.privileges.index',["list"=>$list]);
+   		
+        //dd($request);
+        //判断并执行搜索和封装搜索条件
+        $where = [];
+        if ($request->only('title')) {
+           $title = $request->input("title");   
+           $where['title']=$title;
+        }
+        
+        $list =Privileges::where("title","like",'%'.$title.'%')->paginate(2);
+        //dd($list);
+    	return view('admin.privileges.index',["list"=>$list,'where'=>$where]);
     }
     
         /**
@@ -68,6 +78,8 @@ class PrivilegesController extends Controller
     public function edit($id)
     {
         //
+        $v = Privileges::where("id","=",$id)->first();
+        return view("admin.privileges.edit",['v'=>$v]);
     }
 
     /**
@@ -80,6 +92,14 @@ class PrivilegesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $input = $request->only(['title']);
+        $m = Privileges::where("id",$id)->update($input);
+        if($m){
+            echo "修改用户状态成功!";
+            return redirect("admin/privileges");
+        }else{
+            echo "修改用户状态失败!";
+        }
     }
 
     /**
@@ -90,6 +110,8 @@ class PrivilegesController extends Controller
      */
     public function destroy($id)
     {
-        return 1;
+        Privileges::where("id",$id)->delete();
+
+        return redirect('admin/privileges');
     }
 }

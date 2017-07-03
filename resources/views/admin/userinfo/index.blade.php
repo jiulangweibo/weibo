@@ -15,41 +15,30 @@
                                 <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
                                     <thead>
                                         <tr>
-                                            <th>ID号</th>
                                             <th>用户昵称</th>
-                                            <th>邮箱</th>
                                             <th>手机</th>
                                             <th>年龄</th>
                                             <th>性别</th>
-                                            <th>性取向</th>
-                                            <th>头像</th>
-                                            <th>生日</th>
-                                            <th>详细地址</th>
                                             <th>用户姓名</th>
                                             <th>用户状态</th>
-                                            <th>注册时间</th>
-                                            <th>QQ</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($list as $v)
                                         <tr class="gradeX">
-                                            <td>{{$v->id}}</td>
                                             <td>{{$v->nickname}}</td>
-                                            <td>{{$v->email}}</td>
                                             <td>{{$v->phone}}</td>
                                             <td>{{$v->age}}</td>
                                             <td>@if ($v->sex=="w")女 @else 男 @endif</td>
-                                            <td>@if ($v->sexual=="w")女 @else 男 @endif</td>
-                                            <td>{{$v->picnam}}</td>
-                                            <td>{{$v->birthday}}</td>
-                                            <td>{{$v->address}}</td>
                                             <td>{{$v->name}}</td>
                                             <td>@if ($v->status=="0")禁用 @else 启用 @endif</td>
-                                            <td>{{$v->register_time}}</td>
-                                            <td>{{$v->QQ}}</td>
                                             <td>
+														<div class="tpl-table-black-operation">
+                                                    <a href="/admin/userinfo/{{ $v->id }}">
+                                                        <i class="am-icon-pencil"></i> 详情
+                                                    </a>
+                                                </div>
                                                 <div class="tpl-table-black-operation">
                                                     <a href="/admin/userinfo/{{ $v->id }}/edit">
                                                         <i class="am-icon-pencil"></i> 编辑

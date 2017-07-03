@@ -27,9 +27,8 @@ Route::get('/admin/logout',"Admin\LoginController@logout"); //执行退出
 
 Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
     Route::get('/',"Admin\IndexController@index"); //后台首页
-
-
     Route::resource('userinfo', 'Admin\UserinfoController'); //用户详情信息表
+    //Route::get('/userinfo/{id}','Admin\UserinfoController@show');
     Route::resource('register', 'Admin\RegisterController'); //加载注册表
     Route::resource('follow', 'Admin\FollowController'); //粉丝表
     Route::resource('message', 'Admin\MessageController'); //微博内容表

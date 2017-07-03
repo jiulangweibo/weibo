@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{asset('myadmin/assets/css/amazeui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('myadmin/assets/css/amazeui.datatables.min.css')}}" />
     <link rel="stylesheet" href="{{asset('myadmin/assets/css/app.css')}}">
+    <link href="{{asset('myadmin/assets/css/bootstrap.min.css')}}" type="text/css" rel="stylesheet">
     <script src="{{asset('myadmin/assets/js/jquery.min.js')}}"></script>
 
 </head>
