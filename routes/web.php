@@ -66,3 +66,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/register', 'RegisterController@index');
 Route::post('/register/add', 'RegisterController@store');
+Route::post('/dologin',"Home\LoginController@doLogin"); //执行登录
+Route::get('/login',"Home\LoginController@login"); //执行加载登录
+
