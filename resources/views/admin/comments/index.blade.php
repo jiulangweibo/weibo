@@ -47,18 +47,13 @@
                             <td>
 								<div class="tpl-table-black-operation">
 									<a href="/admin/comments/{{ $vs->comments_id }}/edit">
-										<i class="am-icon-pencil"></i> 编辑
-									</a>
-									<!--
-									<a href="/admin/comments{{ $vs->comments_id }}/edit">
-										<i class="am-icon-pencil"></i> 删除
-									</a>
-									-->
-									<td><button onclick="doDel({{$vs->comments_id}})" class="btn btn-xs btn-danger"><i class="am-icon-pencil"></i>删除</button> 
-
+										<i class="am-icon-pencil"></i>编辑</a>
+								<!--<button onclick="doDel({{$vs->comments_id}})"><i class="am-icon-trash"></i>删除</button> -->
+								 <a href="javascript:doDel({{$vs->comments_id}})" class="tpl-table-black-operation-del">
+                                                        <i class="am-icon-trash"></i> 删除
+                                                    </a>
 								</div>
-							</td>
-                        </tr>
+						</tr>
                         @endforeach
                         <!-- more data -->
                     </tbody>

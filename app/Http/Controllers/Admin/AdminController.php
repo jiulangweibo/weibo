@@ -41,8 +41,8 @@ class AdminController extends Controller
         $admin_id = Admin::insertGetId($data);
         
          if($admin_id>0){
-            //echo "添加成功";
-            return redirect('admin/admin');
+            echo "添加成功";
+            //return redirect('admin/admin');
         }else{
            return back()->with("err","添加失败!");
         } 

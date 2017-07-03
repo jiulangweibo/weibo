@@ -14,9 +14,7 @@
 Route::get('/', function () {
     return view('home.index.index');
 });
-Route::get('/register', function () {
-    return view('home.register.register');
-});
+
 
 
 //网站后台路由配置
@@ -34,7 +32,7 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
     Route::resource('message', 'Admin\MessageController'); //微博内容表
     Route::resource('forward', 'Admin\ForwardController'); //转发微博表
     Route::resource('comments', 'Admin\CommentsController'); //评论表
-    Route::resource('department', 'Admin\DepartmentController'); //评论表
+    Route::resource('department', 'Admin\DepartmentController'); //部门表
 	Route::resource('content', 'Admin\ContentController'); //内容状态表
 	Route::resource('url', 'Admin\UrlController'); //友情链接
 	Route::resource('admin', 'Admin\AdminController'); //管理员信息
@@ -58,6 +56,7 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 	//Route::resource('url', 'Admin\UrlController'); //友情链接
 	//Route::resource('admin', 'Admin\AdminController'); //管理员信息
 	//Route::resource('privileges', 'Admin\PrivilegesController'); //管理员权限
+	//Route::resource('/register', 'RegisterController'); //注册表
 	
 
  
@@ -66,3 +65,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/register', 'RegisterController@index');
+Route::post('/register/add', 'RegisterController@store');
