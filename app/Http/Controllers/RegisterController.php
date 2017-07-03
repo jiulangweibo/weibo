@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Model\Register;
 
 class RegisterController extends Controller
 {
@@ -23,20 +24,21 @@ class RegisterController extends Controller
         return view('home.register.register');
     }
 	
+
 	
 	   public function store(Request $request)
     {
         //表单验证
-        $this->validate($request, [
-            'title' => 'required|max:10',
-        ]);
+      
 
         //获取指定的部分数据
-        $data = $request->only('title');
-        $id = register::insertGetId($data);
+        $data = $request->only('email','password');
+		$data['password'] = md5($data['password']);
+        $id = Register::insertGetId($data);
         
         if($id>0){
-            return redirect('admin/comments');
+
+            return redirect('/');
         }else{
            return back()->with("err","添加失败!");
         }

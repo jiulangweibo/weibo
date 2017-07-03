@@ -33,13 +33,10 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //表单验证
-        $this->validate($request, [
-            'title' => 'required|max:10',
-        ]);
+        
 
         //获取指定的部分数据
-        $data = $request->only('title');
+        $data = $request->only('message_id','user_id','comments_content','comments_time');
         $id = comments::insertGetId($data);
         
         if($id>0){

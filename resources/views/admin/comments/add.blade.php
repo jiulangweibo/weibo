@@ -12,8 +12,7 @@
                 </div>
                 <div class="widget-body am-fr">
 
-                    <form class="am-form tpl-form-border-form tpl-form-border-br"  method="post">
-                        <input type="hidden" name="_method" value="put">
+                    <form class="am-form tpl-form-border-form tpl-form-border-br"  method="post" action="/admin/comments">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="am-form-group">
 						<label for="user-name" class="am-u-sm-5 am-form-label center-bolck" >被评论微博ID</label>
