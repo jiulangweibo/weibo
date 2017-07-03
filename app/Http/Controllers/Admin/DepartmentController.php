@@ -8,10 +8,17 @@ use \App\Model\Department;
 
 class DepartmentController extends Controller
 {
-     public function index()
+     public function index(Request $request)
 	{
-   		$list =Department::all();
-    	return view('admin.department.index',["list"=>$list]);
+   		//判断并执行搜索和封装搜索条件
+        $where = [];
+        if ($request->only('title')) {
+           $title = $request->input("title");   
+           $where['title']=$title;
+        }
+        
+        $list =department::where("title","like",'%'.$title.'%')->paginate(2);
+    	return view('admin.department.index',["list"=>$list,'where'=>$where]);
     }
     
         /**

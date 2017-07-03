@@ -6,6 +6,7 @@ use  App\Model\Userinfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class UserinfoController extends Controller
 {
     /**
@@ -13,11 +14,19 @@ class UserinfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $list = Userinfo::all();
-		return view("admin.userinfo.index",["list"=>$list]);
+        //封装搜索条件
+		
+       $where = [];
+        if ($request->only('nickname')) {
+           $nickname = $request->input("nickname");   
+           $where['nickname']=$nickname;
+        }
+        
+        $list =Userinfo::where("nickname","like",'%'.$nickname.'%')->paginate(2);
+       // dd($list);
+    	return view('admin.userinfo.index',["list"=>$list,'where'=>$where]);
     }
 
     /**
