@@ -8,10 +8,16 @@ use \App\Model\Comments;
 
 class CommentsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
 	{
-   		$list = Comments::all();
-    	return view("admin.comments.index",["list"=>$list]);
+   		// $list = Comments::all();
+         $where = [];
+        if ($request->only('user_id')) {
+           $user_id = $request->input("user_id");   
+           $where['user_id']=$user_id;
+        }
+        $list =Comments::where("user_id","like",'%'.$user_id.'%')->paginate(2);
+    	return view("admin.comments.index",["list"=>$list,'where'=>$where]);
     }
     
         /**

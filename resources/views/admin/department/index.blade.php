@@ -1,5 +1,6 @@
 @extends('admin.base')
 @section('content')
+<link href="{{asset('myadmin/assets/css/bootstrap.min.css')}}" type="text/css" rel="stylesheet">
 <div class="row">
 
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
@@ -24,14 +25,16 @@
                                         </div>
                                     </div>
                                 </div>
-								<div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                        <input type="text" class="am-form-field ">
-                                        <span class="am-input-group-btn">
-											<button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button"></button>
-										</span>
+							 <form action="/admin/department" method="get">
+                                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
+                                        <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                                            <input type="text" class="am-form-field " name="title" placeholder="权限名">
+                                            <span class="am-input-group-btn">
+                                                <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="submit"></button>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                                 <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
                                     <thead>
                                         <tr>
@@ -62,7 +65,7 @@
                                         <!-- more data -->
                                     </tbody>
                                 </table>
-
+                                 {{ $list->appends($where)->links() }}
                             </div>
                         </div>
                     </div>

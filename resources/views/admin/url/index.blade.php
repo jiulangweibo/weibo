@@ -1,5 +1,6 @@
 ﻿@extends('admin.base')
 @section('content')
+<link href="{{asset('myadmin/assets/css/bootstrap.min.css')}}" type="text/css" rel="stylesheet">
 <div class="row-content am-cf">
                 <div class="row">
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
@@ -20,14 +21,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                        <input type="text" class="am-form-field ">
-                                        <span class="am-input-group-btn">
-                                            <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button"></button>
-                                        </span>
+                              <form action="/admin/url" method="get">
+                                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
+                                        <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                                            <input type="text" class="am-form-field " name="url" placeholder="">
+                                            <span class="am-input-group-btn">
+                                                <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="submit"></button>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
 
 										
                                 <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
@@ -48,7 +51,7 @@
                                                     <a href="/admin/url/{{$v->id}}/edit">
                                                         <i class="am-icon-pencil"></i> 编辑
                                                     </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                    <a href="javascript:doDel({{ $v->id }});" class="tpl-table-black-operation-del">
                                                         <i class="am-icon-trash"></i> 删除
                                                     </a>
                                                 </div>
@@ -58,12 +61,25 @@
                                         <!-- more data -->
                                     </tbody>
                                 </table>
-
+                                 {{ $list->appends($where)->links() }}
                             </div>
                         </div>
                     </div>
                 </div>
 			  @endsection
-	
+	           
+        <form style="display:none;" action="" name="myform" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        </form>
+                        
+        <script>
+            function doDel(id){
+                if(id){confirm("是否删除信息？")
+                document.myform.action = "/admin/url/"+id;
+                document.myform.submit();
+                }
+            }
+        </script>
 
 		

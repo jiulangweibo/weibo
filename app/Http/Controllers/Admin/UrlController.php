@@ -8,10 +8,17 @@ use \App\Model\Url;
 
 class UrlController extends Controller
 {
-    public function index()
+    public function index(Request $request)
 	{
-   		$list =Url::all();
-    	return view('admin.url.index',["list"=>$list]);
+         //判断并执行搜索和封装搜索条件
+   		 $where = [];
+            if ($request->only('url')) {
+             $url = $request->input("url");   
+             $where['url']=$url;
+        }
+        
+        $list =Url::where("url","like",'%'.$url.'%')->paginate(5);
+    	return view('admin.url.index',["list"=>$list,'where'=>$where]);
     }
     
         /**
@@ -102,6 +109,8 @@ class UrlController extends Controller
      */
     public function destroy($id)
     {
-       
+        Url::where("id",$id)->delete();
+
+        return redirect('admin/url');
     }
 }

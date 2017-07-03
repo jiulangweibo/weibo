@@ -1,5 +1,6 @@
 @extends('admin.base')
 @section('content')
+<link href="{{asset('myadmin/assets/css/bootstrap.min.css')}}" type="text/css" rel="stylesheet">
 <div class="row">
 
     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
@@ -59,7 +60,7 @@
                     </tbody>
                 </table>
 				
-				
+				 {{ $list->appends($where)->links() }}
 				
 		<form action="" style="display:none;" id="mydeleteform" method="post">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">

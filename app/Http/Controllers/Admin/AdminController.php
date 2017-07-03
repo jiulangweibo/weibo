@@ -8,10 +8,17 @@ use \App\Model\Admin;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
 	{
-   		$list =Admin::all();
-    	return view('admin.admin.index',["list"=>$list]);
+   		 //判断并执行搜索和封装搜索条件
+        $where = [];
+        if ($request->only('admin_name')) {
+           $admin_name = $request->input("admin_name");   
+           $where['admin_name']=$admin_name;
+        }
+        
+        $list =Admin::where("admin_name","like",'%'.$admin_name.'%')->paginate(2);
+    	return view('admin.admin.index',["list"=>$list,'where'=>$where]);
     }
     
         /**
