@@ -419,75 +419,31 @@ $CONFIG['vid']='1007935760841';
 				<div class="info_header">
 					<div class="tab clearfix">
 						<a href="javascript:void(0);" node-type="normal_tab" action-type="switchTab" action-data="type=normal" suda-uatrack="key=tblog_weibologin3&amp;value=ordinary_login" class="cur W_fb"><!-- <span class="W_icon_rec"><span class="W_icon_rec_txt">推荐</span><span class="W_arrow_bor W_arrow_bor_r"><i class="S_spetxt"></i></span></span>-->帐号登录</a>
-						<a href="javascript:void(0);" node-type="qrcode_tab" action-type="switchTab" action-data="type=qrcode" suda-uatrack="key=tblog_weibologin3&amp;value=qrcode_login">安全登录</a>
+						
 					</div>
 					<!-- qrcode_target  qrcode_phone 点击时相互切换 -->
 					<a href="javascript:void(0);" node-type="message_tab" action-type="switchTab" action-data="type=message" class="qrcode_target qrcode_phone"></a>
-				</div>
-				<!-- 登录框content -->
-
-				<div class="login_content" node-type="qrcode_form" style="display:none">
-					
-
-					<img src="about:blank;" style="height: 150px; width: 150px;" node-type="qrcode_src" height="150" width="150" alt="">
-
-					<p class=" S_txt1">请打开微博客户端“扫一扫”</p>
-
-					<div class="info_list info_list1">
-						<span class="S_txt2">还没有微博？</span><a target="_blank" href="/register">立即注册!</a>
-					</div>
-
-					<div class="opacity_bg" node-type="scan_mask" style="display:none"></div>
-					<div class="result res_error" node-type="scan_error" style="display:none">
-						<span class="W_icon icon_rederrorB"></span>
-						<div class="res_info">出错了，<a href="javascript:void(0);" action-type="re_scan">重新扫描</a></div>
-					</div>
-					<div class="result res_succ" node-type="scan_success" style="display:none">
-						<span class="W_icon icon_succB"></span>
-						<div class="res_info">扫码成功</div>
-					</div>
 				</div>
 
 
 				<!-- /result end -->
 
 
-
-				<div class="W_login_form" node-type="normal_form">
-					<!--<div class="info_list pre_info clearfix" node-type="prename_box" style="display:none"></div>-->
-					<div class="info_list username" node-type="username_box">
-						<div class="input_wrap">
-							<input id="loginname" type="text" class="W_input" maxlength="128" autocomplete="off" action-data="text=邮箱/会员帐号/手机号" action-type="text_copy" name="username" node-type="username" tabindex="1">
-						</div>
-					</div>
-					<div class="info_list password" node-type="password_box">
-						<div class="input_wrap">
-							<input type="password" class="W_input" maxlength="24" autocomplete="off" value="" action-type="text_copy" name="password" node-type="password" tabindex="2">
-							<span class="enter_psw">请输入密码</span>
-						</div>
-					</div>
-					<!-- 输入验证码 -->
-					<div class="info_list verify clearfix" style="display: none;" node-type="verifycode_box">
-						<div class="input_wrap W_fl">
-							<input type="text" class="W_input" maxlength="6" autocomplete="off" value="验证码" action-data="text=请输入验证码" action-type="text_copy" name="verifycode" node-type="verifycode" tabindex="3" disabled="">
-						</div>
-						<a class="code W_fl" onclick="return false;" href="javascript:void(0);"><img width="95" height="34" action-type="btn_change_verifycode" node-type="verifycode_image" src="about:blank"></a>
-
-					</div>
-					<!-- /输入验证码 -->
-
-					<!-- 微盾 -->
-					<div class="info_list wei_dun clearfix" style="display:none" node-type="vsncode_box">
-						<a href="https://vdun.weibo.com/report_loss" node-type="btn_vsncode_recover" class="lost W_fr S_txt2">微盾挂失</a>
-						<div class="input_wrap W_fl">
-							<input type="text" value="动态密码" action-data="text=请输入微盾动态码" action-type="text_copy" class="W_input" name="vsncode" node-type="vsncode" tabindex="4" maxlength="6" autocomplete="off" disabled="">
-						</div>
-					</div>
-					<!-- /微盾 -->
-					<div class="info_list auto_login clearfix">
-						<div class="right W_fr"><a href="javascript:void(0);" onclick="var loginname=document.getElementById(&#39;loginname&#39;).value;window.open(&#39;https://security.weibo.com/iforgot/loginname?entry=weibo&amp;loginname=&#39;+loginname);" node-type="btn_password_recover" suda-data="key=tblog_weibologin3&amp;value=click_forgetpwd" class="S_txt2">忘记密码</a></div>
-						<label for="login_form_savestate" class="W_fl W_label" title="建议在网吧或公共电脑上取消该选项。" action-data="content=建议在网吧或公共电脑上取消该选项。" action-type="customTip"><input type="checkbox" id="login_form_savestate" checked="checked" node-type="savestate" tabindex="5" class="W_checkbox"><span class="S_txt2">记住我</span></label>
-					</div>
+                <form action="/doLogin" method="post">
+    				<div class="W_login_form" node-type="normal_form">
+    					<!--<div class="info_list pre_info clearfix" node-type="prename_box" style="display:none"></div>-->
+    					<div class="info_list username" node-type="username_box">
+    						<div class="input_wrap">
+    							<input id="loginname" type="text" class="W_input" maxlength="128" autocomplete="off" action-data="text=邮箱/会员帐号/手机号" action-type="text_copy" name="nickname" node-type="nickname" tabindex="1">
+    						</div>
+    					</div>
+    					<div class="info_list password" node-type="password_box">
+    						<div class="input_wrap">
+    							<input type="password" class="W_input" maxlength="24" autocomplete="off" value="" action-type="text_copy" name="password" node-type="password" tabindex="2">
+    							<span class="enter_psw">请输入密码</span>
+    						</div>
+    					</div>
+ 
 					<div class="info_list login_btn">
 						<a href="javascript:void(0)" class="W_btn_a btn_32px" action-type="btn_submit" node-type="submitBtn" suda-data="key=tblog_weibologin3&amp;value=click_sign" tabindex="6"><span node-type="submitStates">登录</span></a>
 					</div>
@@ -496,7 +452,7 @@ $CONFIG['vid']='1007935760841';
 					</div>
 
 				</div>
-
+                </form>
 				<!-- 短信登陆 -->
 				<div class="W_login_form" node-type="message_form" style="display:none">
 					<div class="info_list phone">

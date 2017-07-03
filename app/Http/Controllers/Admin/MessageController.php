@@ -8,10 +8,18 @@ use \App\Model\Message;
 
 class MessageController extends Controller
 {
-    public function index()
+    public function index(Request $request)
 	{
-   		$list =Message::all();
-    	return view('admin.message.index',["list"=>$list]);
+   		 //判断并执行搜索和封装搜索条件
+        $where = [];
+        if ($request->only('content')) {
+           $content = $request->input("content");   
+           $where['content']=$content;
+        }
+        
+        $list =Message::where("content","like",'%'.$content.'%')->paginate(2);
+        //dd($list);
+    	return view('admin.message.index',["list"=>$list,'where'=>$where]);
     }
     
         /**
