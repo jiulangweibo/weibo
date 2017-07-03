@@ -10,7 +10,7 @@ class LoginController extends Controller
   //加载登录模板
    public function login()
    {
-       return view("home.login");
+       return view("home.login.index");
    }
    //执行用户登录
 	public function doLogin(Request $request)
