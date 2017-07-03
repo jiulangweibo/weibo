@@ -8,10 +8,17 @@ use \App\Model\Register;
 
 class RegisterController extends Controller
 {
-  public function index()
+  public function index(Request $request)
 	{
-   		$info = Register::all();
-    	return view("admin.register.index",["info"=>$info]);
+   		$where = [];
+        if ($request->only('nickname')) {
+           $nickname = $request->input("nickname");   
+           $where['nickname']=$nickname;
+        }
+        
+        $list =Register::where("nickname","like",'%'.$nickname.'%')->paginate(2);
+       // dd($list);
+    	return view('admin.register.index',["list"=>$list,'where'=>$where]);
     }
     
         /**
