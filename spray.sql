@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-06-29 22:34:40
+Date: 2017-07-03 14:09:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -66,9 +66,8 @@ CREATE TABLE `department` (
 -- ----------------------------
 -- Records of department
 -- ----------------------------
-INSERT INTO `department` VALUES ('1', '扫黄部', '1');
+INSERT INTO `department` VALUES ('1', '这个部', '1');
 INSERT INTO `department` VALUES ('10', '2', '2');
-INSERT INTO `department` VALUES ('11', '3', '3');
 
 -- ----------------------------
 -- Table structure for follow
@@ -147,10 +146,9 @@ INSERT INTO `privileges` VALUES ('2', '2');
 DROP TABLE IF EXISTS `register`;
 CREATE TABLE `register` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '注册id',
-  `user_id` int(11) NOT NULL COMMENT '用户id',
-  `email` varchar(32) NOT NULL COMMENT 'email',
-  `password` varchar(32) NOT NULL COMMENT '用户密码',
-  `nickname` varchar(16) NOT NULL COMMENT '用户昵称',
+  `email` varchar(32) DEFAULT NULL COMMENT 'email',
+  `password` varchar(32) DEFAULT NULL COMMENT '用户密码',
+  `nickname` varchar(16) DEFAULT NULL COMMENT '用户昵称',
   `register_time` int(32) DEFAULT NULL COMMENT '注册时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -158,7 +156,6 @@ CREATE TABLE `register` (
 -- ----------------------------
 -- Records of register
 -- ----------------------------
-INSERT INTO `register` VALUES ('1', '1', '979971886@qq.com', '', '王之新傻逼', '2017062811');
 
 -- ----------------------------
 -- Table structure for url
@@ -168,12 +165,13 @@ CREATE TABLE `url` (
   `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `url` varchar(32) DEFAULT NULL COMMENT '链接地址',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of url
 -- ----------------------------
 INSERT INTO `url` VALUES ('1', 'www.baidu.com');
+INSERT INTO `url` VALUES ('2', null);
 
 -- ----------------------------
 -- Table structure for userinfo
@@ -181,8 +179,9 @@ INSERT INTO `url` VALUES ('1', 'www.baidu.com');
 DROP TABLE IF EXISTS `userinfo`;
 CREATE TABLE `userinfo` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nickname` varchar(32) NOT NULL COMMENT '用户昵称',
-  `password` varchar(32) NOT NULL COMMENT '密码',
+  `user_id` int(11) DEFAULT NULL,
+  `nickname` varchar(32) DEFAULT NULL COMMENT '用户昵称',
+  `password` varchar(32) DEFAULT NULL COMMENT '密码',
   `email` varchar(32) DEFAULT NULL COMMENT 'email',
   `phone` int(11) DEFAULT NULL COMMENT '手机号',
   `age` int(3) DEFAULT NULL COMMENT '年龄',
@@ -201,5 +200,26 @@ CREATE TABLE `userinfo` (
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
-INSERT INTO `userinfo` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1234@qq.com', '2147483647', '23', 'w', 'm', null, '10.23', '北京市昌平区育荣教育园区', '张龙', '0', null, '11111233');
-INSERT INTO `userinfo` VALUES ('2', 'zhangsan', '', 'zhangsan@qq.com', '1234567890', '21', 'm', 'w', null, '01.01', '北京市昌平区', '王之新', '1', null, '77222772');
+INSERT INTO `userinfo` VALUES ('1', null, 'admin', '21232f297a57a5a743894a0e4a801fc3', '1234@qq.com', '2147483647', '23', 'w', 'm', null, '10.23', '北京市昌平区育荣教育园区', '张龙', '0', null, '11111233');
+
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '注册id',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户id',
+  `email` varchar(60) DEFAULT NULL COMMENT 'email',
+  `password` varchar(255) DEFAULT NULL COMMENT '用户密码',
+  `nickname` varchar(16) DEFAULT NULL COMMENT '用户昵称',
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `name` varchar(60) DEFAULT NULL COMMENT '注册时间',
+  `created_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+INSERT INTO `users` VALUES ('1', '1', '979971886@qq.com', '', '王之新傻逼', null, '2017062811', null);
+INSERT INTO `users` VALUES ('2', null, '1@qq.com', '$2y$10$6tETMiXVcqXzvcnI8akPv.FKuSKmO0OXuwckQ3nJpxjy2xkcqCi9G', null, '2017-06-30 02:34:06', '1', '2017-06-30 02:34:06');
