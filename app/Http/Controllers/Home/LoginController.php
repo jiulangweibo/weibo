@@ -22,7 +22,7 @@ class LoginController extends Controller
         $home_password = $request->input("home_password");
         //dd($home_password);
         //获取对应用户信息 
-        $user = \DB::table("register")->where("nickname",$home_name)->first();
+        $user = \DB::table("register")->where("email",$home_name)->first();
         if(!empty($user)){
             //判断密码
             if(md5($home_password)==$user->password){
