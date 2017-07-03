@@ -10,7 +10,7 @@ class LoginController extends Controller
   //加载登录模板
    public function login()
    {
-       return view("home.login");
+       return view("home.login.index");
    }
    //执行用户登录
 	public function doLogin(Request $request)
@@ -22,7 +22,7 @@ class LoginController extends Controller
         $home_password = $request->input("home_password");
         //dd($home_password);
         //获取对应用户信息 
-        $user = \DB::table("register")->where("nickname",$home_name)->first();
+        $user = \DB::table("register")->where("email",$home_name)->first();
         if(!empty($user)){
             //判断密码
             if(md5($home_password)==$user->password){
