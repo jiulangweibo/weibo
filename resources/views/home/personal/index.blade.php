@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>凤凰网微博-点滴生活，精彩世界</title>
-<link href="./styles/MyWB.css" type="text/css" rel="stylesheet" />
-<link href="./styles/global.css" type="text/css" rel="stylesheet" />
+<link href="../styles/MyWB.css" type="text/css" rel="stylesheet" />
+<link href="../styles/global.css" type="text/css" rel="stylesheet" />
 <script language="javascript">
 <!--
 
@@ -22,12 +22,12 @@ window.onload = function(){
       <!-- top部分的LogoDIV -->
     	<div id="topLogo">
         	<!-- topLogo部分的icoDIV -->
-            <div id="topLogoIco"> <a href="CustomerIndex.html"><img src="././images/logo_ipad.png" width="72" height="72" alt="" /></a>
+            <div id="topLogoIco"> <a href="CustomerIndex.html"><img src="../images/logo_ipad.png" width="72" height="72" alt="" /></a>
           </div>
             <!-- topLogo部分的icoDIV结束 -->
             
             <!-- topLogo部分的wordDIV -->
-            <div id="topLogoWord"> <a href="CustomerIndex.html"><img src="././images/LogoMaker.gif" width="128" height="60" alt="" /></a>
+            <div id="topLogoWord"> <a href="CustomerIndex.html"><img src="../images/LogoMaker.gif" width="128" height="60" alt="" /></a>
           </div>
             <!-- topLogo部分的wordDIV -->
         </div>
@@ -74,7 +74,7 @@ window.onload = function(){
                     </div>
                     <!-- 左侧mainBannerMenuTopWord1DIV 结束-->
                     <!-- 左侧mainBannerMenuTopWord2DIV 开始 -->
-                    <div id="mainBannerMenuTopWord2"><img src="././images/mainBannerMenuTopWord2.gif" title="" alt="" /><a href="CustomerIndex.html">发微博</a></div>
+                    <div id="mainBannerMenuTopWord2"><img src="../images/mainBannerMenuTopWord2.gif" title="" alt="" /><a href="CustomerIndex.html">发微博</a></div>
                     <!-- 左侧mainBannerMenuTopWord2DIV 结束 -->
                 </div>
             	<!-- 左侧mainBannerMenuTopDIV 结束-->
@@ -90,22 +90,22 @@ window.onload = function(){
                      <div id="mainBannerContent2People">
                        <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 开始 -->
                         <div id="mainBannerContent2PeopleImg">
-                          	<img src="././images/mainBannerContent2People1Img.gif" width="54" height="54" alt="" title="" />
+                          	<img src="../images/mainBannerContent2People1Img.gif" width="54" height="54" alt="" title="" />
                         </div>
                         <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 结束 -->
                         <!-- 第一个人微博 mainBannerContent2peopleWord DIV 开始  -->
                         <div id="mainBannerContent2PeopleWord">
-<img src="././images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" /> <font class="f1"><a href="#" class="a1">DarkDemon</a></font><font class="f2"> 【真相】 记得小时候书本上总说中国用世界7%的耕地养活了22%的人口，可是它没有告诉我们，这22%的人口养了世界60%的公务员；这22%的人口的教育经费只占世界的3%；这22%的人口的财富97%集中在其中1%的人手里；这22%的人口中的90%吃着全世界最毒的食物，缴纳着最高的税，干着最脏最累的活??? </font><br />
-						<font class="f3">今天&nbsp;&nbsp;11:11<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="././images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
+<img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" /> <font class="f1"><a href="#" class="a1">DarkDemon</a></font><font class="f2"> 【真相】 记得小时候书本上总说中国用世界7%的耕地养活了22%的人口，可是它没有告诉我们，这22%的人口养了世界60%的公务员；这22%的人口的教育经费只占世界的3%；这22%的人口的财富97%集中在其中1%的人手里；这22%的人口中的90%吃着全世界最毒的食物，缴纳着最高的税，干着最脏最累的活??? </font><br />
+						<font class="f3">今天&nbsp;&nbsp;11:11<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
                         <a href="#" class="a1"><font class="style2">爱转发</font></a>&nbsp;&nbsp;<font class="f3">和其他31人转发过</font><br />
                             <!--微博回复栏-->
                             <div id="mainBannerContent2PeopleWordBack">
                                  <table width="400" border="0" cellpadding="0" cellspacing="0">
                                       <tr>
-                                        <td><img src="././images/huifu3.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@依然</a>：事实胜于雄辩~~~<span style="color:#ccc">今天 12:20</span>   <a href="#">回复</a></td>
+                                        <td><img src="../images/huifu3.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@依然</a>：事实胜于雄辩~~~<span style="color:#ccc">今天 12:20</span>   <a href="#">回复</a></td>
                                       </tr>
                                       <tr>
-                                        <td><img src="././images/huifu2.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@呆呆</a>：让那帮吃人饭不办人事的人去坐动车吧！！！<span style="color:#ccc">今天 12:10</span><a href="#">回复</a></td>
+                                        <td><img src="../images/huifu2.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@呆呆</a>：让那帮吃人饭不办人事的人去坐动车吧！！！<span style="color:#ccc">今天 12:10</span><a href="#">回复</a></td>
                                       </tr>
                                     </table>
                             </div><br />
@@ -115,30 +115,30 @@ window.onload = function(){
                     <div id="mainBannerContent2People">
                         <!-- 第二个人微博 mainBannerContent2PeopleImg DIV 开始 -->
                         <div id="mainBannerContent2PeopleImg">
-                          	<img src="././images/mainBannerContent2People1Img.gif" width="54" height="54" alt="" title="" />
+                          	<img src="../images/mainBannerContent2People1Img.gif" width="54" height="54" alt="" title="" />
                         </div>
                         <!-- 第二个人微博 mainBannerContent2PeopleImg DIV 结束 -->
                         <!-- 第二个人微博 mainBannerContent2PeopleWord DIV 开始 -->
                         <div id="mainBannerContent2PeopleWord">
-                        <img src="././images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic" title="" /> <font class="f1"><a href="#" class="a1">DarkDemon</a></font><font class="f2">&nbsp;&nbsp;你我都是这“奇迹”国中的一员... 
+                        <img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic" title="" /> <font class="f1"><a href="#" class="a1">DarkDemon</a></font><font class="f2">&nbsp;&nbsp;你我都是这“奇迹”国中的一员... 
 </font><br /><br />
-                        <img src="././images/SCT.gif" width="34" height="166" alt="" title="" /><br /><br />
-						<font class="f3">07月30日&nbsp;&nbsp;12:56<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(4)</a>&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="././images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
+                        <img src="../images/SCT.gif" width="34" height="166" alt="" title="" /><br /><br />
+						<font class="f3">07月30日&nbsp;&nbsp;12:56<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(4)</a>&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
                         <a href="#" class="a1"><font class="style2">爱转发</font></a>&nbsp;&nbsp;<font class="f3">和其他26人转发过</font><br />
                         <!--微博回复栏-->
                             <div id="mainBannerContent2PeopleWordBack">
                                  <table width="400" border="0" cellpadding="0" cellspacing="0">
                                           <tr>
-                                            <td><img src="././images/huifu1.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@灵步传奇</a>：社会啊~~~<a href="#"><span style="color:#ccc">08:0112:00</span>回复</a></td>
+                                            <td><img src="../images/huifu1.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@灵步传奇</a>：社会啊~~~<a href="#"><span style="color:#ccc">08:0112:00</span>回复</a></td>
                                           </tr>
                                           <tr>
-                                            <td><img src="././images/huifu4.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@DarkDemon</a>：恩啊，唉~~~~<a href="#"><span style="color:#ccc">07月31 12:00</span>回复</a></td>
+                                            <td><img src="../images/huifu4.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@DarkDemon</a>：恩啊，唉~~~~<a href="#"><span style="color:#ccc">07月31 12:00</span>回复</a></td>
                                           </tr>
                                           <tr>
-                                            <td><img src="././images/huifu1.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@灵步传奇</a>：无颜以对啊..<a href="#">.<span style="color:#ccc">07月31 12:00</span>回复</a></td>
+                                            <td><img src="../images/huifu1.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@灵步传奇</a>：无颜以对啊..<a href="#">.<span style="color:#ccc">07月31 12:00</span>回复</a></td>
                                           </tr>
                                           <tr>
-                                            <td><img src="././images/huifu2.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@呆呆</a>：我也无语啊！！<a href="#"><span style="color:#ccc">07月30 13:00</span>回复</a></td>
+                                            <td><img src="../images/huifu2.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@呆呆</a>：我也无语啊！！<a href="#"><span style="color:#ccc">07月30 13:00</span>回复</a></td>
                                           </tr>
                                         </table>
 
@@ -163,7 +163,7 @@ window.onload = function(){
                 <div id="mainRightPostionFirstLine">
                     <!-- 右侧mainRightPostionFirstLineIcon DIV 开始 -->
                     <div id="mainRightPostionFirstLineIcon">
-                    <a href="#"><img src="././images/MainRightFirstLineTitle.gif" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
+                    <a href="#"><img src="../images/MainRightFirstLineTitle.gif" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
                     </div>
                     <!-- 右侧mainRightPostionFirstLineIcon DIV 结束 -->
                     <!-- 右侧mainRightPostionFirstLineWord1 DIV 开始 -->
@@ -186,19 +186,19 @@ window.onload = function(){
                 <div id="mainRightPostionFifthLine">
                     <div id="mainRightPositionFifthLineContent">
                     <a href="#" onclick="" class="a1"><font class="style4">我关注的话题</font>
-                    <img src="././images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>
+                    <img src="../images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>
                     </div>
               </div>
                 <!-- 右侧mainRightPostionSixthLine DIV 开始 -->
               <div id="mainRightPostionSixthLine">
                     <div id="mainRightPositionSixthLineContent">
                     <a href="#" onclick="" class="a1"><font class="style4">我关注的</font>
-                    <img src="././images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>
+                    <img src="../images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>
                     </div>
                     <ul>
-                    <a href="#" class="a1"><li><img src="././images/WBXM.gif" border="0" /><br /><font class="style2">微博小秘</font></li></a>
-                    <a href="#" class="a1"><li><img src="././images/AXXR.gif" border="0" /><br /><font class="style2">&nbsp;&nbsp;转&nbsp;&nbsp;发</font></li></a>
-                    <a href="#" class="a1"><li><img src="././images/LBXR.gif" border="0" /><br /><font class="style2">微博新人</font></li></a>
+                    <a href="#" class="a1"><li><img src="../images/WBXM.gif" border="0" /><br /><font class="style2">微博小秘</font></li></a>
+                    <a href="#" class="a1"><li><img src="../images/AXXR.gif" border="0" /><br /><font class="style2">&nbsp;&nbsp;转&nbsp;&nbsp;发</font></li></a>
+                    <a href="#" class="a1"><li><img src="../images/LBXR.gif" border="0" /><br /><font class="style2">微博新人</font></li></a>
                     </ul>
                 </div>
                  <!-- 右侧mainRightPostionSeventhLine DIV 开始 -->

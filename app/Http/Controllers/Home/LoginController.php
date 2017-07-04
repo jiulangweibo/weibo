@@ -7,7 +7,10 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 class LoginController extends Controller
 {
-
+	public function login()
+	{
+		return view("home.login.index");
+	}
    //执行用户登录
 	public function doLogin(Request $request)
    {
