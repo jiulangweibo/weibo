@@ -33,8 +33,8 @@
         <!-- top部分的文字导航 -->
         <div id="topWordMenu">
         	<ul>
-            	<li><a href="CustomerIndex.html">首页</a></li>
-                <li><a href="MyWB.html">我的微博</a></li>
+            	<li><a href="/indexs">首页</a></li>
+                <li><a href="/personal">我的微博</a></li>
                 <li><a href="#">找人</a></li>
                 <li><a href="setting.html">设置</a></li>
                 <li><a href="#">手机</a></li>
