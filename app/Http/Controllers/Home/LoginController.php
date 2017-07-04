@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
 	public function login()
 	{
-		return view("home.login.index");
+		return view("home.indexs.index");
 	}
    //执行用户登录
 	public function doLogin(Request $request)
@@ -27,7 +27,7 @@ class LoginController extends Controller
                 //存储session跳转页面
                 session()->push("homeuser",$user);
                 //return 2;
-                return redirect("home/personal");
+                return redirect("/personal");
                 //echo "测试成功!";
             }
         }
@@ -39,6 +39,6 @@ class LoginController extends Controller
    public function logout(Request $request)
    {
        $request->session()->forget('homeuser');
-       return redirect("home/login");
+       return redirect("/");
    }
 }
