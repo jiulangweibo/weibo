@@ -64,8 +64,11 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/register', 'RegisterController@index');
-Route::post('/register/add', 'RegisterController@store');
-Route::post('/dologin',"Home\LoginController@doLogin"); //执行登录
-Route::get('/login',"Home\LoginController@login"); //执行加载登录
 
+Route::group(['prefix' => 'home','middleware'=>'home'], function () {
+	Route::get('/register', 'RegisterController@index');          //加载注册页
+	Route::post('/register/add', 'RegisterController@store');	  //加载注册方法
+	Route::post('/dologin',"Home\LoginController@doLogin"); 	  //执行登录
+	Route::get('/login',"Home\LoginController@login");            //执行加载登录
+	Route::get('/personal',"Home\personalController@index");
+});

@@ -48,19 +48,20 @@
     	<!-- banner部分的登入部分 -->
         <div id="bannerLogin">
         	<!-- banner部分表单 -->
-            <form id="bannerLoginForm" action="CustomerIndex.html" method="post" onsubmit="return checkForm()">
+            <form id="bannerLoginForm" action="/home/dologin" method="post" onsubmit="return checkForm()">
               <!-- 注册提示 -->
+			  <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
               <div id="bannerLoginFormWord">即刻登录，分享心情</div>
               <div id="bannerLoginFormID">
-              	  <div id="userIdWord">邮箱|手机号码登入</div>
+              	  <div id="userIdWord">手机号登录</div>
                   <div id="userIdInput">
-                    <input name="userId" type="text" class="textForm" id="userId" value="" />
+                    <input name="nickname" type="text" class="textForm" id="userId" value="" />
                   </div>
               </div>
               <div id="bannerLoginFormPass">
               	<div id="userPassWord">密码</div>
                 <div id="userPassInput">
-                  	<input name="userPass" type="password" class="textForm" id="userPass" value="" />
+                  	<input name="password" type="password" class="textForm" id="userPass" value="" />
                 </div>
               	<div id="submitDIV">
               	  <input name="submit" type="submit" id="submit" value="登   录" />

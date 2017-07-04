@@ -7,29 +7,24 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 class LoginController extends Controller
 {
-  //加载登录模板
-   public function login()
-   {
-       return view("home.login.index");
-   }
+
    //执行用户登录
 	public function doLogin(Request $request)
    {
-
-        
+        //return 1;
         //执行登陆判断
-        $home_name = $request->input("home_name");
-        $home_password = $request->input("home_password");
+        $home_name = $request->input("nickname");
+        $home_password = $request->input("password");
         //dd($home_password);
         //获取对应用户信息 
-        $user = \DB::table("register")->where("email",$home_name)->first();
+        $user = \DB::table("register")->where("nickname",$home_name)->first();
         if(!empty($user)){
             //判断密码
             if(md5($home_password)==$user->password){
                 //存储session跳转页面
                 session()->push("homeuser",$user);
-                //return 1;
-                return redirect("/");
+                //return 2;
+                return redirect("home/personal");
                 //echo "测试成功!";
             }
         }
