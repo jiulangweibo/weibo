@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>头像设置 - 灵步微博</title>
-<link href="styles/global.css" type="text/css" rel="stylesheet" />
-<link href="styles/avatar.css" type="text/css" rel="stylesheet" />
+<link href="./styles/global.css" type="text/css" rel="stylesheet" />
+<link href="./styles/avatar.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             <!-- bannerLeft部分的topDIV -->
           <div class="top" id="bannerTop">
             <!-- bannerLeftTop部分的picDIV -->
-                <div class="pic1" id="bannerTopPic"><img src="images/tx2.jpg" width="96" height="96" align="absmiddle" style="filter:   alpha(opacity=50)" />
+                <div class="pic1" id="bannerTopPic"><img src="./images/tx2.jpg" width="96" height="96" align="absmiddle" style="filter:   alpha(opacity=50)" />
             </div>
                 <!-- bannerLeftTop部分的picDIV结束 -->
                 <!-- bannerLeftTop部分的wordDIV -->
@@ -44,13 +44,13 @@
                 <table width="564" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td width="410" height="270" align="center">
-                            <div class="left1" id="bannerBottomLeft"><img src="images/tx1.jpg" width="212" height="166" alt="wanglihong" border="0" /></div>
+                            <div class="left1" id="bannerBottomLeft"><img src="./images/tx1.jpg" width="212" height="166" alt="wanglihong" border="0" /></div>
                         </td>
                         <td height="270" valign="top">
                             <div class="right1" id="bannerBottomRight">
-                                <p><img src="images/tx2.jpg" width="96" height="96" alt="wanglihong" /></p>
-                                <p><img src="images/tx3.jpg" width="48" height="48" alt="wanglihong" /></p>
-                                <p><img src="images/tx4.jpg" width="32" height="32" alt="wanglihong" /></p>
+                                <p><img src="./images/tx2.jpg" width="96" height="96" alt="wanglihong" /></p>
+                                <p><img src="./images/tx3.jpg" width="48" height="48" alt="wanglihong" /></p>
+                                <p><img src="./images/tx4.jpg" width="32" height="32" alt="wanglihong" /></p>
                             </div>
                         </td>
                     </tr>

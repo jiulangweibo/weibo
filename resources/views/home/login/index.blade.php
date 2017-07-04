@@ -3,10 +3,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>登录 灵步网微薄-点滴生活，精彩每一天</title>
-<link href="styles/global.css" type="text/css" rel="stylesheet" />
-<link href="styles/login.css" type="text/css" rel="stylesheet" />
-<script src="script/login.js" language="javascript"></script>
-<script src="script/trim.js" language="javascript"></script>
+<link href="./styles/global.css" type="text/css" rel="stylesheet" />
+<link href="./styles/login.css" type="text/css" rel="stylesheet" />
+<script src="./script/login.js" language="javascript"></script>
+<script src="./script/trim.js" language="javascript"></script>
 </head>
 
 <body>
@@ -17,12 +17,12 @@
     	<!-- top部分的LogoDIV -->
     	<div id="topLogo">
         	<!-- topLogo部分的icoDIV -->
-            <div id="topLogoIco"> <a href="index.html"><img src="images/logo_ipad.png" width="72" height="72" alt="" /></a>
+            <div id="topLogoIco"> <a href="index.html"><img src="./images/logo_ipad.png" width="72" height="72" alt="" /></a>
           </div>
             <!-- topLogo部分的icoDIV结束 -->
             
             <!-- topLogo部分的wordDIV -->
-            <div id="topLogoWord"> <a href="index.html"><img src="images/LogoMaker.gif" width="128" height="60" alt="" /></a>
+            <div id="topLogoWord"> <a href="index.html"><img src="./images/LogoMaker.gif" width="128" height="60" alt="" /></a>
           </div>
             <!-- topLogo部分的wordDIV -->
         </div>
@@ -31,7 +31,7 @@
         <!-- top部分的文字导航 -->
         <div id="topWordMenu">
         	<ul>
-            	<li>已有灵步账号，<a href="login.html">请登录</a></li>
+            	<li>已有灵步账号，<a href="/login">请登录</a></li>
                 <li><a href="SBGG.html">随便逛逛</a></li>
                 <li><a href="#">手机</a></li>
                 <li><a href="#">帮助</a></li>
@@ -93,7 +93,7 @@
             <div class="cs">
            		赶快来注册一个吧
             </div>
-            <div class="ds"><a href="register.html"><img src="images/anniu.gif" alt="立即注册" width="155" height="48" border="0" title="在这注册" /></a>
+            <div class="ds"><a href="/register"><img src="./images/anniu.gif" alt="立即注册" width="155" height="48" border="0" title="在这注册" /></a>
             </div>
    	</div>
   </div>

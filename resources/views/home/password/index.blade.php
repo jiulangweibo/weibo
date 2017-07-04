@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>密码设置 - 灵步微博</title>
-<link href="styles/global.css" type="text/css" rel="stylesheet" />
-<link href="styles/password.css" type="text/css" rel="stylesheet" />
+<link href="./styles/global.css" type="text/css" rel="stylesheet" />
+<link href="./styles/password.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>

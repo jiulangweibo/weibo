@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>好友管理 灵步网微博-点滴生活，精彩每一天！</title>
-<link href="styles/global.css" type="text/css" rel="stylesheet">
-<link href="styles/friend maneger.css" type="text/css" rel="stylesheet">
+<link href="./styles/global.css" type="text/css" rel="stylesheet">
+<link href="./styles/friend maneger.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <!-- 页面整体 -->
@@ -15,13 +15,13 @@
     	 <div id="topLogo">
         	<!-- topLogo部分的icoDIV -->
             <div id="topLogoIco">
-           	  <img src="images/logo_ipad.png" width="72" height="72" alt="" />
+           	  <img src="./images/logo_ipad.png" width="72" height="72" alt="" />
             </div>
             <!-- topLogo部分的icoDIV结束 -->
             
             <!-- topLogo部分的wordDIV -->
             <div id="topLogoWord">
-       	    	<img src="images/LogoMaker.gif" width="128" height="60" alt="" />
+       	    	<img src="./images/LogoMaker.gif" width="128" height="60" alt="" />
             </div>
             <!-- topLogo部分的wordDIV -->
         </div>
@@ -46,7 +46,7 @@
       <tr>
         <td width="21" rowspan="7" class="td1"></td>
         <td height="60" align="center" valign="middle" bgcolor="#FFFFFF" class="td2">
-        <img src="images/MainRightFirstLineTitle.gif" width="48" height="48" alt="" /></td>
+        <img src="./images/MainRightFirstLineTitle.gif" width="48" height="48" alt="" /></td>
         <td height="60" class="td3"><font color="#000000" size="3"><b>你关注的人（4）</b></font></td>
         <td rowspan="7" class="td1 height"></td>
       </tr>
@@ -56,40 +56,40 @@
         <form id="form2" name="form2" method="post" action="">
         <div id="search">
           <input type="text" name="textfield2" id="textfield2" />
-          <img src="images/sousuo1.gif" alt="" width="27" height="25" align="absmiddle" />
+          <img src="./images/sousuo1.gif" alt="" width="27" height="25" align="absmiddle" />
         </div>
         </form></td>
       </tr>
       <tr>
         <td height="105" align="center" valign="middle" class="td2">
-        <img src="images/mainBannerContent2People2Img.gif" width="54" height="54" alt="" /></td>
+        <img src="./images/mainBannerContent2People2Img.gif" width="54" height="54" alt="" /></td>
         <td height="105" align="left" valign="bottom" class="td3"><font color="#005dc3" size="3" face="微软小黑"><b>微博小弟</b></font>
-        <img src="images/1.gif" width="17" height="15" alt="" />
+        <img src="./images/1.gif" width="17" height="15" alt="" />
         <br /><font color="#000000" size="2">北京  朝阳区</font>
         <br /><font color="#000000" size="2">给力，够狠，一针见血！</font>
        
-       <div id="focus1"><img src="images/ok.png" alt="" width="16" height="16" align="texttop" /> 已关注<img src="images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>
+       <div id="focus1"><img src="./images/ok.png" alt="" width="16" height="16" align="texttop" /> 已关注<img src="./images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>
       </tr>
       <tr>
-        <td width="67" height="105" align="center" valign="middle" class="td2"><img src="images/WBXM.gif" alt="" width="48" height="48" align="absbottom" /></td>
+        <td width="67" height="105" align="center" valign="middle" class="td2"><img src="./images/WBXM.gif" alt="" width="48" height="48" align="absbottom" /></td>
         <td height="105" align="left" valign="bottom" class="td3"><font color="#005dc3" size="3" face="微软小黑"><b>微博小秘</b></font>
-        <img src="images/1.gif" width="17" height="15" alt="" /><br /><font color="#000000" size="2">北京  朝阳区</font>
+        <img src="./images/1.gif" width="17" height="15" alt="" /><br /><font color="#000000" size="2">北京  朝阳区</font>
         <br /><font color="#000000" size="2">面包会有的，牛奶会有的，一切都会好起来的！</font>
-        <div id="focus2"><img src="images/ok.png" alt="" width="16" height="16" align="absbottom" />已关注<img src="images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>
+        <div id="focus2"><img src="./images/ok.png" alt="" width="16" height="16" align="absbottom" />已关注<img src="./images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>
       </tr>
       <tr>
-        <td height="105" align="center" valign="middle" class="td2"><img src="images/mainBannerContent2People3Img.gif.gif" alt="" width="54" height="54" /></td>
+        <td height="105" align="center" valign="middle" class="td2"><img src="./images/mainBannerContent2People3Img.gif.gif" alt="" width="54" height="54" /></td>
         <td height="105" align="left" valign="bottom" class="td3"><font color="#005dc3" size="3" face="微软小黑"><b>微博新人</b></font>
-        <img src="images/1.gif" width="17" height="15" alt="" /><br /><font color="#000000" size="2">北京</font>
+        <img src="./images/1.gif" width="17" height="15" alt="" /><br /><font color="#000000" size="2">北京</font>
         <br /><font color="#000000" size="2">我们都是阳光向上的有力少年！</font>
-        <div id="focus3"><img src="images/ok.png" alt="" width="16" height="16" align="absbottom" />已关注<img src="images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>
+        <div id="focus3"><img src="./images/ok.png" alt="" width="16" height="16" align="absbottom" />已关注<img src="./images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>
       </tr>
       <tr>
-        <td height="105" valign="middle" class="td2"><img src="images/face/4.jpg" width="48" height="48" alt="" /></td>
+        <td height="105" valign="middle" class="td2"><img src="./images/face/4.jpg" width="48" height="48" alt="" /></td>
         <td height="105" align="left" valign="bottom" class="td3"><font color="#005dc3" size="3" face="微软小黑"><b>黄海波</b></font>
-        <img src="images/1.gif" width="17" height="15" alt="" /><br /><font color="#000000" size="2">北京</font>
+        <img src="./images/1.gif" width="17" height="15" alt="" /><br /><font color="#000000" size="2">北京</font>
         <br /><font color="#000000" size="2">希望大家能继续支持《媳妇的美好时代》！</font>
-        <div id="focus3"><img src="images/ok.png" alt="" width="16" height="16" align="absbottom" />已关注<img src="images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>
+        <div id="focus3"><img src="./images/ok.png" alt="" width="16" height="16" align="absbottom" />已关注<img src="./images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>
       </tr>
       <tr>
         <td height="35" class="td2"></td>
@@ -110,7 +110,7 @@
         <td height="101" align="left" valign="top">
         <div id="search1"><form id="form1" name="form1" method="post" action="">
           <input name="textfield" type="text" class="form3" id="textfield" />
-          <img src="images/sousuo2.gif" alt="" width="27" height="25" align="middle" /> 
+          <img src="./images/sousuo2.gif" alt="" width="27" height="25" align="middle" /> 
         </form>
         </div>
         <br /> 
@@ -118,11 +118,11 @@
       </tr>
       <tr>
         <td height="126"> &nbsp;&nbsp;&nbsp;<font color="#666666" size="3">我关注的</font>
-           <br /><img src="images/mainBannerContent2People2Img.gif" alt="" width="54" height="54" class="img" />
-           <img src="images/WBXM.gif" alt="" width="48" height="48" class="img" />
-           <img src="images/mainBannerContent2People3Img.gif.gif" alt="" width="54" height="54" class="img" />
+           <br /><img src="./images/mainBannerContent2People2Img.gif" alt="" width="54" height="54" class="img" />
+           <img src="./images/WBXM.gif" alt="" width="48" height="48" class="img" />
+           <img src="./images/mainBannerContent2People3Img.gif.gif" alt="" width="54" height="54" class="img" />
            <br />&nbsp;&nbsp;&nbsp;<font color="#005dc3"> 微博小弟&nbsp;&nbsp;   微博小秘&nbsp;&nbsp;   微博新人</font>
-           <img src="images/face/4.jpg" alt="" width="48" height="48" class="img" />
+           <img src="./images/face/4.jpg" alt="" width="48" height="48" class="img" />
            <br />&nbsp;&nbsp;&nbsp;<font color="#005dc3"> 黄海波</font></br></td>
       </tr>
         <tr>

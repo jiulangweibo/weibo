@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>注册 灵步网微博-点滴生活，精彩每一天</title>
-<link href="styles/register.css" type="text/css" rel="stylesheet">
-<link href="styles/global.css" type="text/css" rel="stylesheet">
-<script src="script/sitedata_bas.js" language="javascript"></script>
-<script src="script/datecreate.js" language="javascript"></script>
-<script src="script/trim.js" language="javascript"></script>
-<script src="script/register.js" language="javascript"></script>
+<link href="./styles/register.css" type="text/css" rel="stylesheet">
+<link href="./styles/global.css" type="text/css" rel="stylesheet">
+<script src="./script/sitedata_bas.js" language="javascript"></script>
+<script src="./script/datecreate.js" language="javascript"></script>
+<script src="./script/trim.js" language="javascript"></script>
+<script src="./script/register.js" language="javascript"></script>
 </head>
 <body>
 <div id="container">
@@ -31,7 +31,7 @@
         <!-- top部分的文字导航 -->
         <div id="topWordMenu">
         	<ul>
-            	<li>已有灵步账号，<a href="login.html">请登录</a></li>
+            	<li>已有灵步账号，<a href="/login">请登录</a></li>
                 <li><a href="SBGG.html">随便逛逛</a></li>
                 <li><a href="#">手机</a></li>
                 <li><a href="#">帮助</a></li>
@@ -43,8 +43,8 @@
   <div id="banner">
     <div id="bannerTop">
       <div id="bannerWord1">加入灵步微博</div>
-      <div id="bannerWord2">如果你已经是灵步网注册用户，请直接<a href="login.html">登陆微博</a></div>
-      <div id="bannerWord3">已经是灵步微博用户？<a href="login.html">登陆微博</a></div>
+      <div id="bannerWord2">如果你已经是灵步网注册用户，请直接<a href="/login">登陆微博</a></div>
+      <div id="bannerWord3">已经是灵步微博用户？<a href="/login">登陆微博</a></div>
     </div>
     <div id="main">
       <form action="CustomerIndex.html" method="post" onsubmit="return checkForm()">

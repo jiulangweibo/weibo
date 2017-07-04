@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>账号设置 - 灵步微博</title>
-<link href="styles/global.css" type="text/css" rel="stylesheet" />
-<link href="styles/account.css" type="text/css" rel="stylesheet" />
-<script src="script/sitedata_bas.js" language="javascript"></script>
+<link href="./styles/global.css" type="text/css" rel="stylesheet" />
+<link href="./styles/account.css" type="text/css" rel="stylesheet" />
+<script src="./script/sitedata_bas.js" language="javascript"></script>
 </head>
 
 <body>
