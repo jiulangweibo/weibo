@@ -42,7 +42,7 @@ window.onload = function(){
                 <li><a href="setting.html">设置</a></li>
                 <li><a href="#">手机</a></li>
                 <li><a href="#">帮助</a></li>
-                <li><a href="index.html">退出</a></li>
+                <li><a href="/logout">退出</a></li>
             </ul>
         </div>
         <!-- top部分的文字导航结束 -->
@@ -59,7 +59,7 @@ window.onload = function(){
                 </div>
             	<!-- 左侧mainBannerTopImgDIV 结束 -->
                 <!-- 左侧mainBannerToWordDIV 开始 -->
-                <div id="mainBannerTopWord"><font color="#330000"><b>DarkDemon</b></font><br />
+                <div id="mainBannerTopWord"><font color="#330000"><b>{{Session::get('homeuser')[0]->nickname}}</b></font><br />
                 <a href="#">http://t.ifeng.com/DarkDemon</a> 
                 </div>
             	<!-- 左侧mainBannerTopWordDIV 结束 -->
@@ -95,7 +95,7 @@ window.onload = function(){
                         <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 结束 -->
                         <!-- 第一个人微博 mainBannerContent2peopleWord DIV 开始  -->
                         <div id="mainBannerContent2PeopleWord">
-<img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" /> <font class="f1"><a href="#" class="a1">DarkDemon</a></font><font class="f2"> 【真相】 记得小时候书本上总说中国用世界7%的耕地养活了22%的人口，可是它没有告诉我们，这22%的人口养了世界60%的公务员；这22%的人口的教育经费只占世界的3%；这22%的人口的财富97%集中在其中1%的人手里；这22%的人口中的90%吃着全世界最毒的食物，缴纳着最高的税，干着最脏最累的活??? </font><br />
+                        <img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" /> <font class="f1"><a href="#" class="a1">{{Session::get('homeuser')[0]->nickname}}:</a></font><font class="f2">&nbsp;&nbsp;{{$info->content}}</font><br />
 						<font class="f3">今天&nbsp;&nbsp;11:11<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
                         <a href="#" class="a1"><font class="style2">爱转发</font></a>&nbsp;&nbsp;<font class="f3">和其他31人转发过</font><br />
                             <!--微博回复栏-->
@@ -120,7 +120,7 @@ window.onload = function(){
                         <!-- 第二个人微博 mainBannerContent2PeopleImg DIV 结束 -->
                         <!-- 第二个人微博 mainBannerContent2PeopleWord DIV 开始 -->
                         <div id="mainBannerContent2PeopleWord">
-                        <img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic" title="" /> <font class="f1"><a href="#" class="a1">DarkDemon</a></font><font class="f2">&nbsp;&nbsp;你我都是这“奇迹”国中的一员... 
+                        <img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic" title="" /> <font class="f1"><a href="#" class="a1">{{Session::get('homeuser')[0]->nickname}}:</a></font><font class="f2">&nbsp;&nbsp;{{$info->content}}
 </font><br /><br />
                         <img src="../images/SCT.gif" width="34" height="166" alt="" title="" /><br /><br />
 						<font class="f3">07月30日&nbsp;&nbsp;12:56<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(4)</a>&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
@@ -168,14 +168,13 @@ window.onload = function(){
                     <!-- 右侧mainRightPostionFirstLineIcon DIV 结束 -->
                     <!-- 右侧mainRightPostionFirstLineWord1 DIV 开始 -->
                     <div id="mainRightPostionFirstLineWord1">                 
-                    &nbsp;<font color="#005DC3" ><b><a href="MyWB.html" class="a1">DarkDemon</a></b></font><br />
-                    &nbsp;天津&nbsp;&nbsp;河西区
+                    &nbsp;<font color="#005DC3" ><b><a href="MyWB.html" class="a1">{{Session::get('homeuser')[0]->nickname}}</a></b></font><br />
                     </div>
                     <!-- 右侧mainRightPostionFirstLineWord1 DIV 结束 -->
                     <!-- 右侧mainRightPostionFirstLineWord2 DIV 开始 -->
                     <div id="mainRightPostionFirstLineWord2">
                     <ul id="ul1">
-                    <li><a href="MyWB.html" class="a1"><font class="style1">2</font><br /><font class="style2">微博</font></a></li>
+                    <li><a href="/personal" class="a1"><font class="style1">2</font><br /><font class="style2">微博</font></a></li>
                     <li><a href="friend.html" class="a1"><font class="style1">12</font><br /><font class="style2">关注</font></a></li>
                     <li><a href="focusonyou.html" class="a1"><font class="style1">23</font><br /><font class="style2">粉丝</font></a></li>
                     </ul>

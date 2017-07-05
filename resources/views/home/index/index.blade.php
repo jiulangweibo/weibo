@@ -55,7 +55,7 @@
               <div id="bannerLoginFormID">
               	  <div id="userIdWord">手机号登录</div>
                   <div id="userIdInput">
-                    <input name="phone" type="text" class="textForm" id="userId" value="" />
+                    <input name="nickname" type="text" class="textForm" id="userId" value="" />
                   </div>
               </div>
               <div id="bannerLoginFormPass">
@@ -81,22 +81,27 @@
     	<div id="mainLeft">
         	<!-- main左栏的推荐用户部分 -->
         	<div id="faceShowWord">他（她）们在这里</div>
+            
             <div id="faceShow">
+           
             	<div id="faceShow1">
+
                 	<table width="180" border="0" cellspacing="0" cellpadding="0">
+                      
+                      @foreach ($list as $v)
                       <tr>
                         <td width="60" height="60" align="center"><a href="star.html" title="黄海波"><img src="./images/face/1.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60"  align="center"><a href="#" title="商界杂志"><img src="./images/face/2.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60" align="center"><a href="#" title="韦唯"><img src="./images/face/3.jpg" alt="" width="48" height="48" /></a></td>
                       </tr>
+					  
                       <tr>
-                        <td height="20"  align="center"><a href="#">黄海波</a></td>
-                        <td  align="center"><a href="#">商界杂志</a></td>
-                        <td  align="center"><a href="#">韦唯</a></td>
+                        <td height="20"  align="center"><a href="#">{{$v->nickname}}</a></td>
+                        
                       </tr>
+                      @endforeach
                     </table>
               </div>
-              <div id="faceShow2">
+               
+           <!--    <div id="faceShow2">
                 	<table width="180" border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td width="60" height="60"  align="center"><a href="#" title="怪帥姜聲揚"><img src="./images/face/4.jpg" alt="" width="48" height="48" /></a></td>
@@ -109,8 +114,8 @@
                         <td  align="center"><a href="#">柯云路</a></td>
                       </tr>
                 </table>
-                </div>
-              	 <div id="faceShow3">
+                </div> -->
+              	<!--  <div id="faceShow3">
                      <table width="180" border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td width="60" height="60"  align="center"><a href="#" title="李立军"><img src="./images/face/7.jpg" alt="" width="48" height="48" /></a></td>
@@ -123,8 +128,8 @@
                         <td  align="center"><a href="#">时事辩论</a></td>
                       </tr>
                     </table>
-                </div>
-              <div id="faceShow4">
+                </div> -->
+             <!--  <div id="faceShow4">
                 	<table width="180" border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td width="60" height="60"  align="center"><a href="#" title="程鹤麟"><img src="./images/face/10.jpg" alt="" width="48" height="48" /></a></td>
@@ -137,8 +142,8 @@
                         <td  align="center"><a href="#">邓浩志</a></td>
                       </tr>
                   </table>
-                 </div>
-                  <div id="faceShow5">
+                 </div> -->
+              <!--     <div id="faceShow5">
                 	<table width="180" border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td width="60" height="60"  align="center"><a href="#" title="程鹤麟"><img src="./images/face/13.jpg" alt="" width="48" height="48" /></a></td>
@@ -151,26 +156,37 @@
                         <td  align="center"><a href="#">怪帥姜聲</a></td>
                       </tr>
                     </table>
-                </div>
+                </div> -->
           </div>
             <!-- main左栏的推荐用户部分结束 -->
         </div>
         <!-- main部分左栏结束 -->
         <!-- main部分中间部分开始-->
         <div id="mainBody">
+		
           <div id="hotword">热门微博</div>
+		  
           <div id="stateShow">
             <div class="stateShow" id="stateShow1">
+			
               <div class="stateShowWord">
+			  
                 <table width="450" border="0" cellpadding="0" cellspacing="0">
+				@foreach ($add as $vo)
                   <tr>
+				  
                     <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/16.jpg" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">乡下妹</a> 1998年8月26日《人民日报》发表文章《百年老站新站长》，赞美汉口火车站站长刘志祥，其中有这样一句“职工们说：刘志祥是用他一身正气为人、两袖清风处事的人格魅力感染我们，激励我们的。”2005年，刘志祥因买凶杀害举报人、贪贿4000万被判死缓。2011年2月，其兄铁道部部长刘志军被双规。 </td>
+                    <td width="390"><a href="#">{{$vo->user_id}}</a> {{$vo->content}} </td>
                   </tr>
+				@endforeach
                 </table>
               </div>
-              <div class="stateShowtime"> 07月31日 08:02 </div>
+			   
+              <div class="stateShowtime"> 
+                    <td width="390"><a href="#">{{$vo->publish_time}}</a>  </div>
+			   
             </div>
+			
             <div class="stateShow" id="stateShow2">
               <div class="stateShowWord">
                 <table width="450" border="0" cellpadding="0" cellspacing="0">
