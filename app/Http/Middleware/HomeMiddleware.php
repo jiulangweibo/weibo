@@ -17,7 +17,7 @@ class HomeMiddleware
     {
         //判断会员是否没有登录
         if(!$request->session()->has('homeuser')){
-            return redirect('home/login');
+            return redirect('/login');
         }
         
         return $next($request);//继续往后走
