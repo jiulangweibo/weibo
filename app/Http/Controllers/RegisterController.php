@@ -32,12 +32,11 @@ class RegisterController extends Controller
       
 
         //获取指定的部分数据
-        $data = $request->only('email','password');
+        $data = $request->only('phone','password','nickname');
 		$data['password'] = md5($data['password']);
         $id = Register::insertGetId($data);
         
         if($id>0){
-
             return redirect('/');
         }else{
            return back()->with("err","添加失败!");

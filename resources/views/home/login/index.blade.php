@@ -56,8 +56,8 @@
           </tr>
            <tr>
              <td class="le"></td>
-             <td class="ld">手机/邮箱</td>
-             <td class="if"><input name="nickname" type="text" class="la" id="userId" /></td>
+             <td class="ld">手机号登陆</td>
+             <td class="if"><input name="phone" type="text" class="la" id="userId" /></td>
              <td></td>
            </tr>
            <tr>

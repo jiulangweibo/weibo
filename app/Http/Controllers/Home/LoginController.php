@@ -16,11 +16,11 @@ class LoginController extends Controller
    {
         //return 1;
         //执行登陆判断
-        $home_name = $request->input("nickname");
+        $home_phone = $request->input("phone");
         $home_password = $request->input("password");
         //dd($home_password);
         //获取对应用户信息 
-        $user = \DB::table("register")->where("nickname",$home_name)->first();
+        $user = \DB::table("register")->where("phone",$home_phone)->first();
         if(!empty($user)){
             //判断密码
             if(md5($home_password)==$user->password){
