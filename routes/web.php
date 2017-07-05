@@ -61,11 +61,16 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 
  
 //});
-Auth::routes();
+Route::post('/dologin',"Home\LoginController@doLogin"); 	  //执行登录
+Route::get('/login',"Home\LoginController@login");            //执行加载登录
+Route::get('/register', 'RegisterController@index');          //加载注册页
+Route::post('/register/add', 'RegisterController@store');	  //加载注册方法
+Route::get('/personal',"Home\personalController@index");      //加载个人主页
+Route::get('/logout',"Home\LoginController@logout");		  //执行登录退出
+Route::get('/indexs',"Home\IndexsController@index");		  //执行加载登录后首页
+Route::get('/setting',"Home\SettingController@index");		  //执行加载设置视图
+Route::get('/account',"Home\AccountController@index");		  //执行加载账号设置视图
+Route::get('/password',"Home\PasswordController@index");	  //执行加载修改密码视图
+Route::get('/avatar',"Home\AvatarController@index");		  //执行加载修改头像视图
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/register', 'RegisterController@index');
-Route::post('/register/add', 'RegisterController@store');
-Route::post('/dologin',"Home\LoginController@doLogin"); //执行登录
-Route::get('/login',"Home\LoginController@login"); //执行加载登录
 

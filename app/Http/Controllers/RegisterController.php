@@ -21,7 +21,7 @@ class RegisterController extends Controller
 	 //定义方法显示
     public function index()
     {	//返回视图
-        return view('home.register.register');
+        return view('home.register.index');
     }
 	
 
