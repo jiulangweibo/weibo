@@ -39,7 +39,7 @@
                 <li><a href="/setting">设置</a></li>
                 <li><a href="#">手机</a></li>
                 <li><a href="#">帮助</a></li>
-                <li><a href="index.html">退出</a></li>
+                <li><a href="/logout">退出</a></li>
             </ul>
         </div>
         <!-- top部分的文字导航结束 -->
