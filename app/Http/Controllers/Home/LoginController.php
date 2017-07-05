@@ -13,7 +13,8 @@ class LoginController extends Controller
             return view("home.login.index");
             return redirect('/login');
         }
-        return redirect('/indexs');
+		$request->session()->forget('homeuser');
+        return redirect('/login');
 	}
    //执行用户登录
 	public function doLogin(Request $request)
