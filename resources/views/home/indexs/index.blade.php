@@ -39,7 +39,7 @@
                 <li><a href="/setting">设置</a></li>
                 <li><a href="#">手机</a></li>
                 <li><a href="#">帮助</a></li>
-                <li><a href="index.html">退出</a></li>
+                <li><a href="/logout">退出</a></li>
             </ul>
         </div>
         <!-- top部分的文字导航结束 -->
@@ -305,22 +305,23 @@
                     	<!-- 右侧mainRightPostionFirstLine DIV 开始 -->
                     	<div id="mainRightPostionFirstLine">
                             <!-- 右侧mainRightPostionFirstLineIcon DIV 开始 -->
+                            
                             <div style="height:58px;">
                             <div id="mainRightPostionFirstLineIcon">
-                            	<a href="MyWB.html"><img src="./images/MainRightFirstLineTitle.gif" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
+                            	<a href="/personal"><img src="./images/MainRightFirstLineTitle.gif" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
                             </div>
                             <!-- 右侧mainRightPostionFirstLineIcon DIV 结束 -->
                             <!-- 右侧mainRightPostionFirstLineWord1 DIV 开始 -->
-                            <div id="mainRightPostionFirstLineWord1">                 
-                            &nbsp;<font color="#005DC3" ><b><a href="MyWB.html" class="a1">DarkDemon</a></b></font><br />
-                            &nbsp;天津&nbsp;&nbsp;河西区
+                            <div id="mainRightPostionFirstLineWord1">               
+                            &nbsp;<font color="#005DC3" ><b><a href="/personal" class="a1">{{Session::get('homeuser')[0]->nickname}}  </a></b></font><br />
                             </div>
                             </div>
+                            
                             <!-- 右侧mainRightPostionFirstLineWord1 DIV 结束 -->
                         	<!-- 右侧mainRightPostionFirstLineWord2 DIV 开始 -->
                           <div id="mainRightPostionFirstLineWord2">
                                 <ul>
-                                	<a href="MyWB.html" class="a1"><li><font class="style1">2</font><br /><font class="style2">微博</font></li></a>
+                                	<a href="/personal" class="a1"><li><font class="style1">2</font><br /><font class="style2">微博</font></li></a>
    								    <a href="friend.html" class="a1"><li><font class="style1">12</font><br /><font class="style2">关注</font></li></a>
    								    <a href="focusonyou.html" class="a1"><li><font class="style1">23</font><br /><font class="style2">粉丝</font></li></a>
                                 </ul>
