@@ -16,15 +16,14 @@ class IndexController extends Controller
     public function index()
     {
         //
-		$add=Message::all();
+		$list = Userinfo::all();
+		$add =  Message::all();
 		
-		foreach($add as $k=>$v){
-			//echo($v->user_id);
-        $list = Userinfo::where('user_id',$v->user_id)->first();
-		dump($list->nickname);
-		//return view('home.index.index',["list"=>$list->nickname,"add"=>$add]);
-		}
+       
+
+        return view('home.index.index',["list"=>$list,"add"=>$add]);
 		
+	
 			
 
       

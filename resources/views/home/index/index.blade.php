@@ -88,16 +88,16 @@
 
                 	<table width="180" border="0" cellspacing="0" cellpadding="0">
                       
-                      
+                      @foreach ($list as $v)
                       <tr>
                         <td width="60" height="60" align="center"><a href="star.html" title="黄海波"><img src="./images/face/1.jpg" alt="" width="48" height="48" /></a></td>
                       </tr>
 					  
                       <tr>
-                        <td height="20"  align="center"><a href="#">{{$list}}</a></td>
+                        <td height="20"  align="center"><a href="#">{{$v->nickname}}</a></td>
                         
                       </tr>
-                      
+                      @endforeach
                     </table>
               </div>
                
