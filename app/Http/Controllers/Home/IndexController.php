@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Home;
-
+use  App\Model\Userinfo;
+use  App\Model\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Message;
-use App\Model\Register;
 
-class personalController extends Controller
+class IndexController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +16,17 @@ class personalController extends Controller
     public function index()
     {
         //
-        $id = session()->get("homeuser")[0]->id;
-        //dd ($id);
-        $info = Message::where("user_id",$id)->first();
-        //dump($info);
-		return view("home.personal.index",["info" => $info]);
+		$list = Userinfo::all();
+		$add =  Message::all();
+		
+       
+
+        return view('home.index.index',["list"=>$list,"add"=>$add]);
+		
+	
+			
+
+      
     }
 
     /**
