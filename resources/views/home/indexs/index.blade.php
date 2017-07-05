@@ -36,7 +36,7 @@
             	<li><a href="/indexs">首页</a></li>
                 <li><a href="/personal">我的微博</a></li>
                 <li><a href="#">找人</a></li>
-                <li><a href="setting.html">设置</a></li>
+                <li><a href="/setting">设置</a></li>
                 <li><a href="#">手机</a></li>
                 <li><a href="#">帮助</a></li>
                 <li><a href="index.html">退出</a></li>
