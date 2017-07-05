@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Model\Register;
+use \App\Model\Userinfo;
+use Illuminate\Database\Seeder\UsersTableSeeder;
 
 class RegisterController extends Controller
 {
@@ -34,7 +36,11 @@ class RegisterController extends Controller
         //获取指定的部分数据
         $data = $request->only('phone','password','nickname');
 		$data['password'] = md5($data['password']);
+        $data['register_time'] = date("Y-m-d H:i:s",time());
         $id = Register::insertGetId($data);
+        $data['status'] = 0;
+        
+        $userinfo = Userinfo::insertGetId($data);
         
         if($id>0){
             return redirect('/');
