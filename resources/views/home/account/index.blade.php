@@ -9,7 +9,9 @@
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1"  action="/account/{{ $list->user_id }}" method="post">
+<input type="hidden" name="_method" value="put">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 <!-- container部分DIV -->
 <div id="container">
     <!-- banner部分DIV -->
@@ -18,78 +20,100 @@
         <div class="left" id="left">
             <table width="564" border="0" cellpadding="0" cellspacing="0" class="left">
                 <!-- 昵称 -->
+
+				
                 <tr>
-                    <td width="120" height="50" align="right"><strong>昵称</strong></td>
+                    <td width="120" height="50" align="right"><strong>用户名</strong></td>
                     <td width="20" height="60">&nbsp;</td>
                     <td width="425" height="60"><label>
-                         <input name="textfield" type="text" class="n1" id="textfield" value="DarkDemon" readonly="readonly" />
+                         <input name="nickname" type="text" class="n1" id="textfield" value="{{$list->nickname}}"/>
+
 <br />
                               您的昵称将显示在您的主页中</label></td>
                 </tr>
                 <!-- 个性域名 -->
                 <tr>
-                    <td width="120" height="70" align="right"><strong>个性域名</strong></td>
+        <td width="120" height="70" align="right"><strong>邮箱</strong></td>
                     <td width="20" height="70">&nbsp;</td>
                     <td width="425" height="70"><label>
-                         <input name="textfield2" type="text" class="n2" id="textfield2" value="http://t.lingbu.com/DarkDemon" readonly="readonly" />
+                         <input name="email" type="text" class="n1" id="textfield2" value="{{$list->email}}"   />
 <br />
-                              您的个性域名已注册</label></td>
+                              您的个邮箱已注册</label></td>
                 </tr>
                 <!-- 邮箱 -->
                 <tr>
-                    <td width="120" height="49" align="right"><strong>邮箱</strong></td>
+                    <td width="120" height="49" align="right"><strong>手机号</strong></td>
                     <td width="20" height="49">&nbsp;</td>
                     <td width="425" height="49"><label>
-                         <input name="textfield3" type="text" class="n3" id="textfield3" />
+                         <input name="phone" type="text" class="n1" id="textfield3" value="{{$list->phone}}"/>
                              </label></td>
                 </tr>
                 <!-- 地址 -->
-                <tr>
-                    <td width="120" height="52" align="right"><strong>地址</strong></td>
-                    <td width="20" height="52">&nbsp;</td>
-                    <td width="425" height="52"><label>
-            <select name="region1" class="tb" id="region1">
-</select>
-          </label>
-            <label>
-              <select name="region2" class="tb" id="region2">
-</select>
-              <select name="region3" class="tb" id="region3">
-              </select>
-              <br />
-            你在哪？让你周围的更多的朋友找到你</label></td>
-                </tr>
-                <!-- 个人站点 -->
-                <tr>
-                    <td width="120" height="68" align="right"><strong>个人站点</strong></td>
-                    <td width="20" height="68">&nbsp;</td>
-                    <td width="425" height="68"><label>
-                        <input name="textfield4" type="text" class="n1" id="textfield4" />
-                        <br />
-                         你的网站、博客地址，让大家更多地了解你</label></td>
-                </tr>
-                <!-- 个性签名 -->
-                <tr>
-                    <td width="120" height="180" align="right"><strong>个性签名</strong></td>
-                    <td width="20" height="180">&nbsp;</td>
-                    <td width="425" height="180">
-                       <div>
-                            <label>
-                                  <textarea name="textfield5" class="n4" id="textfield5"></textarea>
-                            </label>
-                       </div></td>
-                </tr>
-                <!-- 隐私 -->
-                <tr>
-                    <td width="120" height="29" align="right"><strong>隐私</strong></td>
-                    <td width="20" height="29">&nbsp;</td>
-                    <td width="425" height="29"><label>
-                       <input name="sec" type="radio" id="radio" value="sec" checked="checked" />
-                        所有人可见
-                       <input type="radio" name="sec" id="radio2" value="sec" />
-                        关注我的人可见
+               <tr>
+                    <td width="120" height="49" align="right"><strong>年龄</strong></td>
+                    <td width="20" height="49">&nbsp;</td>
+                    <td width="425" height="49"><label>
+                         <input name="age" type="text" class="n1" id="textfield3" value="{{$list->age}}"/>
                              </label></td>
                 </tr>
+                <!-- 个人站点-->
+                              <tr>
+                    <td width="120" height="49" align="right"><strong>性别</strong></td>
+                    <td width="20" height="49">&nbsp;</td>
+                    <td width="425" height="49">
+						 <input  type="radio" name="sex"  value="0"/>男
+                         <input  type="radio" name="sex"  value="1"/>女
+                             </td>
+                </tr>
+               <!--个性签名 -->
+			   
+						
+                <!-- 隐私 -->
+               <tr>
+                    <td width="120" height="49" align="right"><strong>兴趣性</strong></td>
+                    <td width="20" height="49">&nbsp;</td>
+                    <td width="425" height="49"><label>
+                         <input name="sexual" type="text" class="n1" id="textfield3" value="{{$list->sexual}}"/>
+                             </label></td>
+                </tr>
+				 <tr>
+                    <td width="120" height="49" align="right"><strong>生日</strong></td>
+                    <td width="20" height="49">&nbsp;</td>
+                    <td width="425" height="49"><label>
+                         <input name="birthday" type="text" class="n1" id="textfield3" value="{{$list->bithday}}"/>
+                             </label></td>
+                </tr>
+			  
+				<tr>
+                    <td width="120" height="49" align="right"><strong>真实姓名</strong></td>
+                    <td width="20" height="49">&nbsp;</td>
+                    <td width="425" height="49"><label>
+                         <input name="name" type="text" class="n1" id="textfield3" value="{{$list->name}}"/>
+                             </label></td>
+                </tr>
+				<tr>
+                    <td width="120" height="49" align="right"><strong>QQ</strong></td>
+                    <td width="20" height="49">&nbsp;</td>
+                    <td width="425" height="49"><label>
+                         <input name="QQ" type="text" class="n1" id="textfield3" value="{{$list->QQ}}"/>
+                             </label></td>
+                </tr>
+				<tr>
+                    <td width="120" height="52" align="right"><strong>地址</strong></td>
+                    <td width="20" height="52">&nbsp;</td>
+                    <td width="425" height="52">
+						<label>
+							<select name="region1" class="tb" id="region1">
+							</select>
+						</label>
+						<label>
+							<select name="region2" class="tb" id="region2">
+							</select>
+							<select name="region3" class="tb" id="region3">
+							</select>
+							</label></td>
+                </tr>
+
                 <!-- 保存按钮 -->
                 <tr>
                     <td width="120" height="44" align="right">&nbsp;</td>
@@ -100,6 +124,8 @@
                 </tr>
             </table>
         </div>
+		
+		</form>
         <!-- banner_left部分DIV结束 -->
         <!-- banner_right部分DIV -->
         <div class="right" id="right">
@@ -111,6 +137,6 @@
     <!-- banner部分DIV结束 -->
 </div>
 <!-- container部分DI结束V -->
-</form>
+
 </body>
 </html>
