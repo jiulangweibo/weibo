@@ -45,43 +45,44 @@
    <!-- 页面左部 -->
    <div id="left">
    <!--页面左部表单设置-->
-   <form id="LoginForm" action="CustomerIndex.html" method="post" onsubmit="return checkForm()">
-     <table width="565" border="0" cellspacing="0" cellpadding="0">
-       <tr class="lb">
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-       <tr>
-         <td class="le"></td>
-         <td class="ld">手机/邮箱</td>
-         <td class="if"><input name="userId" type="text" class="la" id="userId" /></td>
-         <td></td>
-       </tr>
-       <tr>
-         <td class="le"></td>
-         <td class="ld">密码</td>
-         <td class="if"><input name="passWord" type="password" class="la" id="passWord" /></td>
-         <td></td>
-       </tr>
-       <tr>
-         <td class="le"></td>
-         <td class="ld"></td>
-         <td><input name="checkbox" type="checkbox" id="checkbox" checked="checked" />
-           下次自动登陆&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">忘记密码</a></td>
-         <td></td>
-       </tr>
-       <tr>
-         <td class="le"></td>
-         <td class="ld"></td>
-         <td><a href="#">
-           <input name="button" type="submit" class="lc" id="button" value="登  录" />
-         </a></td>
-         <td></td>
-       </tr>
-     </table>
-     </form>
+   <form id="LoginForm" action="/dologin" method="post" >
+      <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+        <table width="565" border="0" cellspacing="0" cellpadding="0">
+          <tr class="lb">
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+          </tr>
+           <tr>
+             <td class="le"></td>
+             <td class="ld">手机/邮箱</td>
+             <td class="if"><input name="nickname" type="text" class="la" id="userId" /></td>
+             <td></td>
+           </tr>
+           <tr>
+             <td class="le"></td>
+             <td class="ld">密码</td>
+             <td class="if"><input name="password" type="password" class="la" id="passWord" /></td>
+             <td></td>
+           </tr>
+           <tr>
+             <td class="le"></td>
+             <td class="ld"></td>
+             <td><input name="checkbox" type="checkbox" id="checkbox" checked="checked" />
+               下次自动登陆&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">忘记密码</a></td>
+             <td></td>
+           </tr>
+           <tr>
+             <td class="le"></td>
+             <td class="ld"></td>
+             <td><a href="#">
+               <input name="button" type="submit" class="lc" id="button" value="登  录" />
+             </a></td>
+             <td></td>
+           </tr>
+         </table>
+         </form>
      <!--页面左部表单结束-->
    </div>
    <!-- 页面右部 -->
