@@ -27,8 +27,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID号</th>
-                                            <th>用户ID</th>
-                                            <th>用户邮箱</th>
+                                            <th>手机号</th>
                                             <th>用户昵称</th>
                                             <th>注册时间</th>
                                             <th>操作</th>
@@ -38,8 +37,7 @@
                                     @foreach ($list as $v)
                                         <tr class="gradeX">
                                             <td>{{$v->id}}</td>
-                                            <td>{{$v->user_id}}</td>
-                                            <td>{{$v->email}}</td>
+                                            <td>{{$v->phone}}</td>
                                             <td>{{$v->nickname}}</td>
                                             <td>{{$v->register_time}}</td>
                                             <td>
