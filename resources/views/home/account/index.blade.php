@@ -61,20 +61,21 @@
                     <td width="120" height="49" align="right"><strong>性别</strong></td>
                     <td width="20" height="49">&nbsp;</td>
                     <td width="425" height="49">
-						 <input  type="radio" name="sex"  value="0"/>男
-                         <input  type="radio" name="sex"  value="1"/>女
-                             </td>
+						 <input  type="radio" name="sex"  value="m"/>男
+                         <input  type="radio" name="sex"  value="w"/>女
+                    </td>
                 </tr>
                <!--个性签名 -->
 			   
 						
                 <!-- 隐私 -->
                <tr>
-                    <td width="120" height="49" align="right"><strong>兴趣性</strong></td>
+                    <td width="120" height="49" align="right"><strong>性取向</strong></td>
                     <td width="20" height="49">&nbsp;</td>
-                    <td width="425" height="49"><label>
-                         <input name="sexual" type="text" class="n1" id="textfield3" value="{{$list->sexual}}"/>
-                             </label></td>
+					<td width="425" height="49">
+						 <input  type="radio" name="sexual"  value="m"/>男
+                         <input  type="radio" name="sexual"  value="w"/>女
+                    </td>
                 </tr>
 				 <tr>
                     <td width="120" height="49" align="right"><strong>生日</strong></td>
