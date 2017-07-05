@@ -55,7 +55,7 @@
               <div id="bannerLoginFormID">
               	  <div id="userIdWord">手机号登录</div>
                   <div id="userIdInput">
-                    <input name="nickname" type="text" class="textForm" id="userId" value="" />
+                    <input name="phone" type="text" class="textForm" id="userId" value="" />
                   </div>
               </div>
               <div id="bannerLoginFormPass">
