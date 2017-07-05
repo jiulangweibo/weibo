@@ -68,7 +68,7 @@ Route::post('/register/add', 'RegisterController@store');	  //加载注册方法
 Route::get('/logout',"Home\LoginController@logout");		  //执行登录退出
 
 
-Route::group(['prefix' => 'home','middleware'=>'home'], function () {
+Route::group(['prefix' => '/','middleware'=>'home'], function () {
   //  Route::get('/',"Home\RegisterController@index"); //前台定义前缀
 Route::get('/indexs',"Home\IndexsController@index");		  //执行加载登录后首页
 Route::get('/personal',"Home\personalController@index");      //加载个人主页
