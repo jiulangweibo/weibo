@@ -7,9 +7,13 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 class LoginController extends Controller
 {
-	public function login()
+	public function login(Request $request)
 	{
-		return view("home.login.index");
+		if(!$request->session()->has('homeuser')){
+            return view("home.login.index");
+            return redirect('/login');
+        }
+        return redirect('/indexs');
 	}
    //执行用户登录
 	public function doLogin(Request $request)
@@ -25,6 +29,7 @@ class LoginController extends Controller
             //判断密码
             if(md5($home_password)==$user->password){
                 //存储session跳转页面
+                $request->session()->forget('homeuser');
                 session()->push("homeuser",$user);
                 //return 2;
                 return redirect("/indexs");
