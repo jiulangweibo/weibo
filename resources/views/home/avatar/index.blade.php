@@ -8,7 +8,9 @@
 </head>
 
 <body>
-<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
+<form action="/avatar/upload" method="post" enctype="multipart/form-data" name="form1" id="form1">
+
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <!-- container部分DIV -->
 <div id="container">
     <!-- banner部分DIV -->
@@ -25,14 +27,14 @@
             <div class="word" id="bannerTopWord">
                     <!-- 文件搜索区 -->
                     <label>
-                        <input type="file" name="fileField" id="fileField"/>
+                        <input type="file" name="picname" id="fileField"/>
                     </label>
               </div>
               <!-- 文件搜索区结束 -->
               <!-- bannerLeftTop部分的wordDIV -->
               <div class="left2" id="bannerLeftTopBtn">
                 <label>
-                  <input name="button" type="submit" class="btn" id="button" value="提交" />
+                  <input name="button" type="submit" class="btn" id="button" value="提2交" />
                 </label>
               </div>
               <!-- bannerLfetTop部分的btnDIV -->

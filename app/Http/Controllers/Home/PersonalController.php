@@ -20,8 +20,10 @@ class personalController extends Controller
         $id = session()->get("homeuser")[0]->id;
         //dd ($id);
         $info = Message::where("user_id",$id)->first();
+        $list = Register::where("id",$id)->first();
+		
         //dump($info);
-		return view("home.personal.index",["info" => $info]);
+		return view("home.personal.index",["info" => $info,"list"=>$list]);
     }
 
     /**
