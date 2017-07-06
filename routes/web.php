@@ -82,3 +82,4 @@ Route::get('/avatar',"Home\AvatarController@index");		  //执行加载修改头�
 
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图
 });
+Route::post('/avatar/upload',"Home\AvatarController@uploadFile");	
