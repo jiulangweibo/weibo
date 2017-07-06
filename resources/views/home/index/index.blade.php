@@ -48,14 +48,14 @@
     	<!-- banner部分的登入部分 -->
         <div id="bannerLogin">
         	<!-- banner部分表单 -->
-            <form id="bannerLoginForm" action="/dologin" method="post" onsubmit="return checkForm()">
+            <form id="bannerLoginForm" action="/dologin" method="post" >
               <!-- 注册提示 -->
 			  <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
               <div id="bannerLoginFormWord">即刻登录，分享心情</div>
               <div id="bannerLoginFormID">
               	  <div id="userIdWord">手机号登录</div>
                   <div id="userIdInput">
-                    <input name="nickname" type="text" class="textForm" id="userId" value="" />
+                    <input name="phone" type="text" class="textForm" id="userId" value="" />
                   </div>
               </div>
               <div id="bannerLoginFormPass">

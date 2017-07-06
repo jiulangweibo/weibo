@@ -61,8 +61,9 @@
                     <td width="120" height="49" align="right"><strong>性别</strong></td>
                     <td width="20" height="49">&nbsp;</td>
                     <td width="425" height="49">
-						 <input  type="radio" name="sex"  value="m"/>男
-                         <input  type="radio" name="sex"  value="w"/>女
+                         <input  type="radio" name="sex"  value="m" "@if ($list->sex=='m')" checked @endif />男
+                         <input  type="radio" name="sex"  value="w" "@if ($list->sex=='w')" checked @endif />女
+						
                     </td>
                 </tr>
                <!--个性签名 -->
@@ -73,18 +74,28 @@
                     <td width="120" height="49" align="right"><strong>性取向</strong></td>
                     <td width="20" height="49">&nbsp;</td>
 					<td width="425" height="49">
-						 <input  type="radio" name="sexual"  value="m"/>男
-                         <input  type="radio" name="sexual"  value="w"/>女
+                         <input  type="radio" name="sexual"  value="m" "@if ($list->sexual=='m')" checked @endif />男
+                         <input  type="radio" name="sexual"  value="w" "@if ($list->sexual=='w')" checked @endif />女
+                   
+           
+						 
+						 
                     </td>
                 </tr>
 				 <tr>
                     <td width="120" height="49" align="right"><strong>生日</strong></td>
                     <td width="20" height="49">&nbsp;</td>
                     <td width="425" height="49"><label>
-                         <input name="birthday" type="text" class="n1" id="textfield3" value="{{$list->bithday}}"/>
+                         <input name="birthday" type="text" class="n1" id="textfield3" value="{{$list->birthday}}"/>
                              </label></td>
                 </tr>
-			  
+				<tr>
+                    <td width="120" height="49" align="right"><strong>地址</strong></td>
+                    <td width="20" height="49">&nbsp;</td>
+                    <td width="425" height="49"><label>
+                         <input name="address" type="text" class="n1" id="address" value="{{$list->address}}"/>
+                             </label></td>
+                </tr>
 				<tr>
                     <td width="120" height="49" align="right"><strong>真实姓名</strong></td>
                     <td width="20" height="49">&nbsp;</td>
@@ -99,21 +110,7 @@
                          <input name="QQ" type="text" class="n1" id="textfield3" value="{{$list->QQ}}"/>
                              </label></td>
                 </tr>
-				<tr>
-                    <td width="120" height="52" align="right"><strong>地址</strong></td>
-                    <td width="20" height="52">&nbsp;</td>
-                    <td width="425" height="52">
-						<label>
-							<select name="region1" class="tb" id="region1">
-							</select>
-						</label>
-						<label>
-							<select name="region2" class="tb" id="region2">
-							</select>
-							<select name="region3" class="tb" id="region3">
-							</select>
-							</label></td>
-                </tr>
+				
 
                 <!-- 保存按钮 -->
                 <tr>
@@ -125,13 +122,12 @@
                 </tr>
             </table>
         </div>
-		
+
 		</form>
         <!-- banner_left部分DIV结束 -->
         <!-- banner_right部分DIV -->
         <div class="right" id="right">
-           <p>在这里
-              ，你可以设置你账号的基本信息，隐私信息等</p>
+           <p>在这里你可以设置你账号的基本信息</p>
         </div>
         <!-- banner_right部分DIV结束 -->
     </div>

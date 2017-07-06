@@ -82,6 +82,9 @@
              <td></td>
            </tr>
          </table>
+         @if(session("msg"))
+            <center><p class="login-box-msg" style="color:red;">{{session("msg")}}</p></center>
+      @endif
          </form>
      <!--页面左部表单结束-->
    </div>

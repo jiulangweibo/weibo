@@ -16,7 +16,7 @@ class AccountController extends Controller
    		//
 
 		//return view("home.account.index");
-
+		
 		$id =session()->get('homeuser')[0]->id;
 		//dd ($id);
 		$list = Userinfo::where("user_id",$id)->first();
@@ -31,7 +31,7 @@ class AccountController extends Controller
 	}
     public function update(Request $request, $id)
     {
-        $input = $request->only('nickname','email','age','sex','sexual','birthday','name','QQ');
+        $input = $request->only('nickname','email','age','sex','sexual','birthday','address','name','QQ');
         //$input = $request->all();
 		//return($input);die;
         $m = Userinfo::where("user_id",$id)->update($input);
