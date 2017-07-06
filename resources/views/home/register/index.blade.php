@@ -54,7 +54,7 @@
           <td>&nbsp;</td>
           <td align="center" valign="middle" class="wordleft">昵 &nbsp; &nbsp;&nbsp;&nbsp;称</td>
           <td align="center" valign="middle"><input name="nickname" type="text" class="form" id="userName" onfocus="getfocus(this,img2)" onblur="checkUserName(img2,this)" maxlength="20" /></td>
-          <td align="left" valign="middle" class="wordright"><img name="img2" width="16" height="16" id="img2" /><div class="registertip" id="userNametip">请输入4到20位数字、字符、中文，一旦注册，不得修改</div></td>
+          <td align="left" valign="middle" class="wordright"><img name="img2" width="16" height="16" id="img2" /><div class="registertip" id="userNametip">请输入4到20位数字、字符、中文</div></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
@@ -93,6 +93,9 @@
           <td colspan="4" align="center" valign="middle"><input type="submit" disabled="disabled" name="button" id="button" value="立即注册" class="button"/></td>
           </tr>
       </table>
+      @if(session("err"))
+            <center><p class="login-box-msg" style="color:red;">{{session("err")}}</p></center>
+      @endif
     </form>
     </div>
     <!-- footer部分 -->
