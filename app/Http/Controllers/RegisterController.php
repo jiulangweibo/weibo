@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Model\Register;
 use \App\Model\Userinfo;
-//use Illuminate\Database\Seeder\UsersTableSeeder;
 
 class RegisterController extends Controller
 {
@@ -30,36 +29,32 @@ class RegisterController extends Controller
 	
 	   public function store(Request $request)
     {
-        //表单验证
-		
 
-        //获取指定的部分数据
-       /* $phone = $request->only('phone');
- 
-        $nickname = $request->only('nickname');
-		$register =Register::where("phone",$phone)->first();
-		$nickname =Register::where("nickname",$nickname)->first(); */
-		//判断账号是否存在
-		
-			
-			$data = $request->only('phone','password','nickname');
-			$data['password'] = md5($data['password']);
-			$data['register_time'] = date("Y-m-d H:i:s",time());
-			
-			$id = Register::insertGetId($data);
-			//return($id);
-			//同时添加数据到userinfo表中 并且 userinfo表中的user_id = register中的主键id;
-			$data['user_id']=$id;
-			//return($data);
-			$dd = Userinfo::insertGetId($data);
-			
-			if($dd>0 && $id>0){
-				return redirect('/');
-			}else{
-			   return back()->with("err","添加失败!");
-			}
-		
-		
-	
+            $phone = $request->input("phone");
+            $password = $request->input("password");
+            $user = Register::where("phone",$phone)->first();
+            //dd($user);
+            
+                if($phone !== $user -> phone){
+        			$data = $request->only('phone','password','nickname');
+        			$data['password'] = md5($data['password']);
+        			$data['register_time'] = date("Y-m-d H:i:s",time());
+        			
+        			$id = Register::insertGetId($data);
+        			//return($id);
+        			//同时添加数据到userinfo表中 并且 userinfo表中的user_id = register中的主键id;
+        			$data['user_id']=$id;
+        			//return($data);
+        			$dd = Userinfo::insertGetId($data);
+        			
+        			if($dd>0 && $id>0){
+        				return redirect('/');
+        			}else{
+        			   return back()->with("err","注册失败,请重新注册！");
+        			}
+    		    }
+    		    return back()->with("err","手机号或昵称重复！");
+            
+	       
     }
 }
