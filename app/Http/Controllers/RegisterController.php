@@ -34,8 +34,9 @@ class RegisterController extends Controller
             $password = $request->input("password");
             $user = Register::where("phone",$phone)->first();
             //dd($user);
-            
-                if($phone !== $user -> phone){
+            //dd($phone);
+            //dd($user -> phone);
+                if(empty($user)){
         			$data = $request->only('phone','password','nickname');
         			$data['password'] = md5($data['password']);
         			$data['register_time'] = date("Y-m-d H:i:s",time());
