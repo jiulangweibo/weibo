@@ -18,15 +18,7 @@ class IndexController extends Controller
         //
 		$list = Userinfo::all();
 		$add =  Message::all();
-		
-       
-
-        return view('home.index.index',["list"=>$list,"add"=>$add]);
-		
-	
-			
-
-      
+        return view('home.index.index',["list"=>$list,"add"=>$add]);  
     }
 
     /**
