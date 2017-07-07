@@ -16,14 +16,40 @@ class IndexController extends Controller
     public function index()
     {
         //
-		$list = Userinfo::all();
-		$add =  Message::all();
+		$list=Userinfo::all();
+		$info=Message::all();
+		$add = [];
+		foreach($info as $k=>$v){
+			$aa = $info[$k]->user_id;
+			
+		//dump($aa);
+		//die;
 		
-       
-
-        return view('home.index.index',["list"=>$list,"add"=>$add]);
+		//$id = session()->get("homeuser")[0]->id;
+        //dd($id);
+			
+		//$add= Userinfo::where("user_id",$id)->first();
+		$add[] = Userinfo::where("user_id",$aa)->first();
+		//dd($list->nickname);
+		//$user= Userinfo::where("phone",$phone)->first();
+       //mp($add->nickname);
+	   //$info[$k]['nickname']=$add->nickname;
+		 //dump($add->nickname);die;
+		// dump($add->nickname);
+		$acc=Message::where("user_id",$aa)->first();
+		//echo"<pre>";
+		//var_dump($acc->content);die;
+		$add[$k]->content=$acc->content;
+		$add[$k]->publish_time=$acc->publish_time;
+		//$add[$k]['nickname']=$add->o;
 		
+		
+		}
 	
+		//echo"<pre>";
+		//var_dump($add[$k]->content);
+		//var_dump($add);
+		return view('home.index.index',['list'=>$list,'add'=>$add]);
 			
 
       
