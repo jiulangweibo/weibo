@@ -17,10 +17,8 @@ class IndexController extends Controller
     {
 
 		$list = Userinfo::all();
-		$add =  Message::all();
-        return view('home.index.index',["list"=>$list,"add"=>$add]);  
-		$list=Userinfo::all();
-		$info=Message::all();
+		$info = Message::all();
+       
 		$add = [];
 		foreach($info as $k=>$v){
 			$aa = $info[$k]->user_id;
