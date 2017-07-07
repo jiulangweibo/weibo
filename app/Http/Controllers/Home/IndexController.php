@@ -17,11 +17,10 @@ class IndexController extends Controller
     {
 
 		$list = Userinfo::all();
-		$add =  Message::all();
-        return view('home.index.index',["list"=>$list,"add"=>$add]);  
-		$list=Userinfo::all();
-		$info=Message::all();
+		$info = Message::all();
+       
 		$add = [];
+		
 		foreach($info as $k=>$v){
 			$aa = $info[$k]->user_id;
 			
@@ -32,6 +31,7 @@ class IndexController extends Controller
         //dd($id);
 			
 		//$add= Userinfo::where("user_id",$id)->first();
+		
 		$add[] = Userinfo::where("user_id",$aa)->first();
 		//dd($list->nickname);
 		//$user= Userinfo::where("phone",$phone)->first();
@@ -44,8 +44,6 @@ class IndexController extends Controller
 		//var_dump($acc->content);die;
 		$add[$k]->content=$acc->content;
 		$add[$k]->publish_time=$acc->publish_time;
-		//$add[$k]['nickname']=$add->o;
-		
 		
 		}
 	
