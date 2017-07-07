@@ -15,12 +15,10 @@ class IndexController extends Controller
      */
     public function index()
     {
-        //
-<<<<<<< HEAD
+
 		$list = Userinfo::all();
 		$add =  Message::all();
         return view('home.index.index',["list"=>$list,"add"=>$add]);  
-=======
 		$list=Userinfo::all();
 		$info=Message::all();
 		$add = [];
@@ -54,11 +52,7 @@ class IndexController extends Controller
 		//echo"<pre>";
 		//var_dump($add[$k]->content);
 		//var_dump($add);
-		return view('home.index.index',['list'=>$list,'add'=>$add]);
-			
-
-      
->>>>>>> 70a496f7aee44b8b01219730f44c0f7a5ff8c8e8
+		return view('home.index.index',['list'=>$list,'add'=>$add]);  
     }
 
     /**
