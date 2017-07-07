@@ -20,6 +20,10 @@ class LoginController extends Controller
    //执行用户登录
 	public function doLogin(Request $request)
    {
+      $this->validate($request, [
+            'phone' => 'required|max:11',
+            'password' => 'required|max:20|min:6',
+        ]);
 
         $home_phone = $request->input("phone");
         $home_password = $request->input("password");
