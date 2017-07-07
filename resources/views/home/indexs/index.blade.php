@@ -31,14 +31,13 @@
         <!-- top部分的LogoDIV结束 -->
         
         <!-- top部分的文字导航 -->
-        <div id="topWordMenu">
+	<div id="topWordMenu">
         	<ul>
             	<li><a href="/indexs">首页</a></li>
                 <li><a href="/personal">我的微博</a></li>
-                <li><a href="#">找人</a></li>
-                <li><a href="/setting">设置</a></li>
+                <li><a href="/account">设置</a></li>
+                <li><a href="/password">修改密码</a></li>
                 <li><a href="#">手机</a></li>
-                <li><a href="#">帮助</a></li>
                 <li><a href="/logout">退出</a></li>
             </ul>
         </div>

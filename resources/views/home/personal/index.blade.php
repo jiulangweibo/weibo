@@ -36,12 +36,11 @@ window.onload = function(){
         <!-- top部分的文字导航 -->
         <div id="topWordMenu">
         	<ul>
-            	<li><a href="CustomerIndex.html">首页</a></li>
-                <li><a href="MyWB.html">我的微博</a></li>
-                <li><a href="#">找人</a></li>
-                <li><a href="setting.html">设置</a></li>
+            	<li><a href="/indexs">首页</a></li>
+                <li><a href="/personal">我的微博</a></li>
+                <li><a href="/account">设置</a></li>
+                <li><a href="/password">修改密码</a></li>
                 <li><a href="#">手机</a></li>
-                <li><a href="#">帮助</a></li>
                 <li><a href="/logout">退出</a></li>
             </ul>
         </div>
@@ -130,12 +129,12 @@ window.onload = function(){
                 <div id="mainRightPostionFirstLine">
                     <!-- 右侧mainRightPostionFirstLineIcon DIV 开始 -->
                     <div id="mainRightPostionFirstLineIcon">
-                    <a href="#"><img src="../images/MainRightFirstLineTitle.gif" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
+                    <a href="/personal"><img src="../images/MainRightFirstLineTitle.gif" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
                     </div>
                     <!-- 右侧mainRightPostionFirstLineIcon DIV 结束 -->
                     <!-- 右侧mainRightPostionFirstLineWord1 DIV 开始 -->
                     <div id="mainRightPostionFirstLineWord1">                 
-                    &nbsp;<font color="#005DC3" ><b><a href="MyWB.html" class="a1">{{Session::get('homeuser')[0]->nickname}}</a></b></font><br />
+                    &nbsp;<font color="#005DC3" ><b><a href="/personal" class="a1">{{$list->nickname}}</a></b></font><br />
                     </div>
                     <!-- 右侧mainRightPostionFirstLineWord1 DIV 结束 -->
                     <!-- 右侧mainRightPostionFirstLineWord2 DIV 开始 -->
