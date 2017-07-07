@@ -15,11 +15,13 @@ class MessageController extends Controller
         if ($request->only('content')) {
            $content = $request->input("content");   
            $where['content']=$content;
+		   
         }
         
         $list =Message::where("content","like",'%'.$content.'%')->paginate(2);
         //dd($list);
     	return view('admin.message.index',["list"=>$list,'where'=>$where]);
+		
     }
     
         /**

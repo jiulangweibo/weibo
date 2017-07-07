@@ -179,20 +179,27 @@
             <!--不同人的内容-->
             <div id="mainBannerContent">
             	<!--个人展示-->
+				
             	<div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
+				@foreach ($list as $v)
                   <div class="stateShowWord">
                     <table width="450" border="0" cellpadding="0" cellspacing="0" class="stateTable">
+					
                       <tr>
                         <td width="70" align="center" valign="top"><a href="#"><img src="./images/face/16.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="380" ><a href="#">乡下妹</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />【视频：超模的儿子每月需要30万元生活费？】- 超模琳达·伊万格丽斯塔为四岁的儿子向他的父亲、法国亿万富翁弗朗索瓦-亨利·皮诺特索要每月4.6万美元的抚养费。在视频中，《华尔街日报》的Robert Frank和Kelsey Hubbard讨论了富豪家庭在孩子身上的花销。 </td>
+                        <td width="380" ><a href="#">{{$v->nickname}}</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />{{$v->content}}</td>
                       </tr>
+					  
                     </table>
                   </div>
+				  
                    <div class="stateImgShow"><img src="./images/state1.jpg" /></div>            
-                  <div class="stateShowtime"> 07月31日 08:02 </div>
+                  <div class="stateShowtime">{{$v-> publish_time}} </div>
                   <div class="stateOp"><a class="opState" onclick="reXianShi(this)">回复</a><a class="opState">转发</a><a class="opState" onclick="delState(this)">删除</a></div>
                   <div class="huifu"></div>
+				  @endforeach
                 </div>
+				
                  <!--个人展示结束-->
                   <!--个人展示-->
                 <div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">

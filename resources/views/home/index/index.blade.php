@@ -167,27 +167,29 @@
           <div id="hotword">热门微博</div>
 		  
           <div id="stateShow">
+		  @foreach ($add as $vo)
             <div class="stateShow" id="stateShow1">
 			
               <div class="stateShowWord">
 			  
                 <table width="450" border="0" cellpadding="0" cellspacing="0">
-				@foreach ($add as $vo)
+				
                   <tr>
 				  
                     <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/16.jpg" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">{{$vo->user_id}}</a> {{$vo->content}} </td>
+                    <td width="390"><a href="#">{{$vo->nickname}}</a> {{$vo->content}} </td>
                   </tr>
-				@endforeach
+				
                 </table>
+				
               </div>
 			   
               <div class="stateShowtime"> 
                     <td width="390"><a href="#">{{$vo->publish_time}}</a>  </div>
 			   
             </div>
-			
-            <div class="stateShow" id="stateShow2">
+			@endforeach
+            <!--div class="stateShow" id="stateShow2">
               <div class="stateShowWord">
                 <table width="450" border="0" cellpadding="0" cellspacing="0">
                   <tr>
@@ -230,7 +232,7 @@
                 </table>
               </div>
               <div class="stateShowtime"> 07月31日 17:53 </div>
-            </div>
+            </div-->
           </div>
   </div>
         <!-- main部分中间部分结束 -->

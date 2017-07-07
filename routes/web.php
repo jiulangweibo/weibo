@@ -77,7 +77,7 @@ Route::group(['prefix' => '/','middleware'=>'home'], function () {
 Route::get('/indexs',"Home\IndexsController@index");		  //执行加载登录后首页
 Route::get('/personal',"Home\personalController@index");      //加载个人主页
 Route::get('/setting',"Home\SettingController@index");		  //执行加载设置视图
-Route::get('/password',"Home\PasswordController@index");	  //执行加载修改密码视图
+Route::resource('/password',"Home\PasswordController");	  //执行加载修改密码视图
 Route::get('/avatar',"Home\AvatarController@index");		  //执行加载修改头像视图
 Route::post('/indexs/add',"Home\IndexsController@store");
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图
