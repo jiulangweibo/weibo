@@ -79,7 +79,7 @@ Route::get('/personal',"Home\personalController@index");      //加载个人主�
 Route::get('/setting',"Home\SettingController@index");		  //执行加载设置视图
 Route::resource('/password',"Home\PasswordController");	  //执行加载修改密码视图
 Route::get('/avatar',"Home\AvatarController@index");		  //执行加载修改头像视图
-
+Route::post('/indexs/add',"Home\IndexsController@store");
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图
 });
 Route::post('/avatar/upload',"Home\AvatarController@uploadFile");	
