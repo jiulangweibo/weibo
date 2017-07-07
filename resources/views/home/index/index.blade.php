@@ -167,18 +167,19 @@
           <div id="hotword">热门微博</div>
 		  
           <div id="stateShow">
+		  @foreach ($add as $vo)
             <div class="stateShow" id="stateShow1">
 			
               <div class="stateShowWord">
 			  
                 <table width="450" border="0" cellpadding="0" cellspacing="0">
-				@foreach ($add as $vo)
+				
                   <tr>
 				  
                     <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/16.jpg" alt="" width="48" height="48" /></a></td>
                     <td width="390"><a href="#">{{$vo->nickname}}</a> {{$vo->content}} </td>
                   </tr>
-				@endforeach
+				
                 </table>
 				
               </div>
@@ -187,7 +188,7 @@
                     <td width="390"><a href="#">{{$vo->publish_time}}</a>  </div>
 			   
             </div>
-			
+			@endforeach
             <!--div class="stateShow" id="stateShow2">
               <div class="stateShowWord">
                 <table width="450" border="0" cellpadding="0" cellspacing="0">

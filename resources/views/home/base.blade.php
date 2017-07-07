@@ -12,20 +12,42 @@
 <!-- container部分DIV -->
 <div id="container">
 	<!-- top部分DIV -->
-
-    <!-- top部分结束 -->
-    <!-- header部分DIV -->
-    <div id="header">
-        <ul>
-           <li><a href="/account" class="header" target="win">帐号设置</a></li>
-           <li><a href="/password" class="header" target="win">密码</a></li>
-           <li><a href="/avatar" class="header" target="win">头像</a></li>
-        </ul>
+	<div id="top">
+    	<!-- top部分的LogoDIV -->
+    	<div id="topLogo">
+        	<!-- topLogo部分的icoDIV -->
+            <div id="topLogoIco"> <a href="CustomerIndex.html"><img src="images/logo_ipad.png" width="72" height="72" alt="" /></a>
+          </div>
+            <!-- topLogo部分的icoDIV结束 -->
+            
+            <!-- topLogo部分的wordDIV -->
+            <div id="topLogoWord"> <a href="CustomerIndex.html"><img src="images/LogoMaker.gif" width="128" height="60" alt="" /></a>
+          </div>
+            <!-- topLogo部分的wordDIV -->
+        </div>
+        <!-- top部分的LogoDIV结束 -->
+        
+        <!-- top部分的文字导航 -->
+        <div id="topWordMenu">
+        	<ul>
+            	<li><a href="/indexs">首页</a></li>
+                <li><a href="/personal">我的微博</a></li>
+                <li><a href="/account">设置</a></li>
+                <li><a href="/password">修改密码</a></li>
+                <li><a href="#">手机</a></li>
+                <li><a href="/logout">退出</a></li>
+            </ul>
+        </div>
+        <!-- top部分的文字导航结束 -->
     </div>
-    <!-- header部分DIV结束 -->
-    	<iframe src="/account" id="win" width="765" style="height:600px"scrolling="no" name="win" onload="SetWinHeight(this)" frameborder="0"></iframe>
-        <!-- banner部分的DIV结束 -->
-  	<!-- footer部分 -->
+
+	<div id="container">
+		  @section('content')
+            这是页面主内容区。
+          @show
+    </div>
+    <!-- banner部分DIV结束 -->
+</div>
     <div id="footer">
     	<!-- footer网站链接部分 -->
     	<div id="footerLink">

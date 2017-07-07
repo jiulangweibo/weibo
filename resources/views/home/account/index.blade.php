@@ -1,23 +1,33 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>账号设置 - 灵步微博</title>
-<link href="./styles/global.css" type="text/css" rel="stylesheet" />
-<link href="./styles/account.css" type="text/css" rel="stylesheet" />
-<script src="./script/sitedata_bas.js" language="javascript"></script>
-</head>
+@extends('home.base')
+@section('content')
 
-<body>
-<form id="form1" name="form1"  action="/account/{{ $list->user_id }}" method="post">
-<input type="hidden" name="_method" value="put">
-<input type="hidden" name="_token" value="{{ csrf_token() }}">
-<!-- container部分DIV -->
-<div id="container">
+	<div id="container">
     <!-- banner部分DIV -->
     <div id="banner">
         <!-- banner部分的leftDIV -->
         <div class="left" id="left">
+			<form  action="/avatar/upload" method="post" enctype="multipart/form-data" >
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+							@if($list->picname)
+							<div class="pic1" id="bannerTopPic"><img src="http://{{ $list->picname}}" width="96" height="96" align="absmiddle" style="filter:   alpha(opacity=50)" />
+
+							</div>
+							<input type="file" name="picname" id="fileField"/>
+							 <input name="button" type="submit" class="btn" id="button" value="提交" />
+							@else
+							<div class="pic1" id="bannerTopPic"><img src="./images/tx1.jpg" width="96" height="96" align="absmiddle" style="filter:   alpha(opacity=50)" />
+						</div>
+						<input type="file" name="picname" id="fileField"/>
+						 <input name="button" type="submit" class="btn" id="button" value="提交" />
+							@endif
+							</div>                                
+			</form>
+				<form id="form1" name="form1"  action="/account/{{ $list->user_id }}" method="post">
+				<input type="hidden" name="_method" value="put">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+<!-- container部分DIV -->
+
             <table width="564" border="0" cellpadding="0" cellspacing="0" class="left">
                 <!-- 昵称 -->
 
@@ -37,8 +47,7 @@
                     <td width="20" height="70">&nbsp;</td>
                     <td width="425" height="70"><label>
                          <input name="email" type="text" class="n1" id="textfield2" value="{{$list->email}}"   />
-<br />
-                              您的个邮箱已注册</label></td>
+						 </label></td>
                 </tr>
                 <!-- 邮箱 -->
                 <tr>
@@ -132,8 +141,4 @@
         <!-- banner_right部分DIV结束 -->
     </div>
     <!-- banner部分DIV结束 -->
-</div>
-<!-- container部分DI结束V -->
-
-</body>
-</html>
+	    @endsection

@@ -31,14 +31,13 @@
         <!-- top部分的LogoDIV结束 -->
         
         <!-- top部分的文字导航 -->
-        <div id="topWordMenu">
+	<div id="topWordMenu">
         	<ul>
             	<li><a href="/indexs">首页</a></li>
                 <li><a href="/personal">我的微博</a></li>
-                <li><a href="#">找人</a></li>
-                <li><a href="/setting">设置</a></li>
+                <li><a href="/account">设置</a></li>
+                <li><a href="/password">修改密码</a></li>
                 <li><a href="#">手机</a></li>
-                <li><a href="#">帮助</a></li>
                 <li><a href="/logout">退出</a></li>
             </ul>
         </div>
@@ -58,19 +57,20 @@
                     </div>
                     <div style="float:right;">您还可以输入<font id="counter1">140</font>字！
                     </div>
-                    <form action="" method="post" id="">
+                    <form action="/indexs/add" method="post">
+                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                       <div id="mainBannerTopIssueForm">
                             <!--id="mainBannerTopIssueFrame-->
                             <div id="mainBannerTopIssueFrame">
-                              <textarea name="textfield1" rows="4" class="Size" id="textfield2"  style="overflow:hidden;border:1px #0CF solid;" onkeyup="calNum(this,counter1,0)"></textarea>
-        </div>
+                              <textarea name="content" rows="4" class="Size" id="textfield2"  style="overflow:hidden;border:1px #0CF solid;" onkeyup="calNum(this,counter1,0)"></textarea>
+                            </div>
                             <!--id="mainBannerTopIssueInsert 插入链接-->
                         <div id="mainBannerTopIssueInsert">
                             <!--4个小div-->
                         </div>
                           <!--确认发布-->
                         <div id="mainBannerTopIssueSure">
-                          <div id="mainBannerTopIssueSure2"> <a href="file" class="a1">
+                        <div id="mainBannerTopIssueSure2"> <!-- <a href="file" class="a1">
                             <div id="mainBannerTopIssueInsert1"></div>
                             <div id="mainBannerTopIssueInsert2">插入图片 </div>
                             </a>
@@ -79,9 +79,9 @@
                             <a href="javascript:biaoQingXianShi()" class="a1">
                               <div id="mainBannerTopIssueInsert5"></div>
                               <div id="mainBannerTopIssueInsert6">插入表情</div>
-                            </a>
-                            <input type="button" name="button1" id="button1" value="发布" style="background-color:#3295E6; border:none" onclick="submitState()" />
-                          </div>
+                            </a> -->
+                            <input type="submit" value="发布" style="background-color:#3295E6; border:none">
+                        </div>
                         </div>
                         </div>
                     </form> 
