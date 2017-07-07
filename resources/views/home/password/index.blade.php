@@ -8,7 +8,9 @@
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action="/password/{{ $list->user_id }}">
+<input type="hidden" name="_method" value="put">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 <!-- container部分DIV -->
 <div id="container">
     <!-- banner部分DIV -->
@@ -21,7 +23,7 @@
                      <td width="120" height="65" align="right"><strong>当前密码</strong></td>
                      <td width="20" height="65">&nbsp;</td>
                      <td height="65"><label>
-                             <input name="textfield1" type="password" class="n1" id="textfield1" />
+                             <input name="pass" type="password" class="n1" id="textfield1" />
                    <br />
                                 <a href="#">密码忘了？</a></label></td>
                  </tr>
@@ -30,7 +32,7 @@
                      <td width="120" height="65" align="right"><strong>新密码</strong></td>
                      <td width="20" height="65">&nbsp;</td>
                      <td height="65"><label>
-                             <input name="textfield2" type="password" class="n1" id="textfield2" />
+                             <input name="password" type="password" class="n1" id="textfield2" />
                    </label></td>
                  </tr>
                  <!-- 重复新密码 -->
@@ -38,7 +40,7 @@
                      <td width="120" height="65" align="right"><strong>重复新密码</strong></td>
                      <td width="20" height="65">&nbsp;</td>
                      <td height="65"><label>
-                             <input name="textfield3" type="password" class="n1" id="textfield3" />
+                             <input name="repassword" type="password" class="n1" id="textfield3" />
                    </label></td>
                  </tr>
                  <!-- 保存按钮 -->
@@ -50,6 +52,9 @@
                      </label></td>
                  </tr>
             </table>
+			 @if(session("err"))
+            <center><p class="login-box-msg"  style="color:red;">{{session("err")}}</p></center>
+      @endif
         </div>
         <!-- bannerLeft部分DIV结束 -->
         <!-- bannerRight部分DIV -->

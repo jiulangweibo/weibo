@@ -15,6 +15,7 @@ class LoginController extends Controller
             return redirect('/login');
         }
 		$request->session()->forget('homeuser');
+		return view("home.login.index");
         return redirect('/login');
 	}
    //执行用户登录
