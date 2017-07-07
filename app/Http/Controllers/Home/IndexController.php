@@ -17,40 +17,44 @@ class IndexController extends Controller
     {
 
 		$list = Userinfo::all();
-		$info = Message::all();
+		$info = Message::all()->toArray();
        
-		$add = [];
-		
+		$message = [];
+		$ccc = [];
+		$ddd = [];
+		//$acc = [];
 		foreach($info as $k=>$v){
-			$aa = $info[$k]->user_id;
+			$message[$k]['user_id'] = $v['user_id'];
+			$message[$k]['content'] = $v['content'];
+			$message[$k]['tupian'] = $v['picname'];
+			$message[$k]['publish_time'] = $v['publish_time'];
+			$message[$k]['message_id'] = $v['message_id'];
 			
-		//dump($aa);
-		//die;
 		
-		//$id = session()->get("homeuser")[0]->id;
-        //dd($id);
-			
-		//$add= Userinfo::where("user_id",$id)->first();
 		
-		$add[] = Userinfo::where("user_id",$aa)->first();
-		//dd($list->nickname);
-		//$user= Userinfo::where("phone",$phone)->first();
-       //mp($add->nickname);
-	   //$info[$k]['nickname']=$add->nickname;
-		 //dump($add->nickname);die;
-		// dump($add->nickname);
-		$acc=Message::where("user_id",$aa)->first();
-		//echo"<pre>";
-		//var_dump($acc->content);die;
-		$add[$k]->content=$acc->content;
-		$add[$k]->publish_time=$acc->publish_time;
+		//$id = session()->get("homeuser")[0]->id;		
+		
+		//$message[] = Userinfo::where("user_id",$aa)->get();
+		//$acc=Message::where("user_id",$aa)->first();
+		//$message[$k]->content=$acc->content;
+		//$message[$k]->publish_time=$acc->publish_time;
 		
 		}
-	
+		foreach($message as $k=>$v){
+			
+			$ddd[$k]= Userinfo::where('user_id',$v['user_id'])->first()->toArray();
+			$ccc[$k]['nickname']=$ddd[$k]['nickname'];
+			$ccc[$k]['picname']=$ddd[$k]['picname'];
+			
+			$message[$k]['nickname'] = $ccc[$k]['nickname'];
+			$message[$k]['touxiang'] = $ccc[$k]['picname'];
+	 
+		}
 		//echo"<pre>";
-		//var_dump($add[$k]->content);
-		//var_dump($add);
-		return view('home.index.index',['list'=>$list,'add'=>$add]);  
+		//var_dump($message);
+		return view('home.index.index',['list'=>$list,'message'=>$message]);
+			
+			
     }
 
     /**
