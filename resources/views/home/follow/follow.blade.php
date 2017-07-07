@@ -104,7 +104,7 @@
       <tr>
         <td height="60" class="font2"><br /><font color="#cccccc" size="3" face="微软小黑"><b>　　０    &nbsp;&nbsp;&nbsp;&nbsp; ４   &nbsp;&nbsp;&nbsp;&nbsp;  ３</b></font>
         <br />
-        　　<font color="#005dc3"> 微博　　关注　　粉丝</font></td>
+        　　<font color="#005dc3"><a href="/personal">微博</a>　　<a href="/follow">关注</a>　　<a href="/fans">粉丝</a></font></td>
       </tr>
       <tr>
         <td height="101" align="left" valign="top">
