@@ -89,7 +89,7 @@ window.onload = function(){
                      <div id="mainBannerContent2People">
                        <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 开始 -->
                         <div id="mainBannerContent2PeopleImg">
-                          	<img src="../images/mainBannerContent2People1Img.gif" width="54" height="54" alt="" title="" />
+                          	<img src="http://{{$list->picname}}" width="54" height="54" alt="" title="" />
                         </div>
                         <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 结束 -->
                         <!-- 第一个人微博 mainBannerContent2peopleWord DIV 开始  -->
