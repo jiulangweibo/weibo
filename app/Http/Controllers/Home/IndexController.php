@@ -16,6 +16,8 @@ class IndexController extends Controller
     public function index()
     {
 
+		$list = Userinfo::all();
+		$info = Message::all();
        
 		$add = [];
 		
