@@ -1,14 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Home;
-use  App\Model\Message;
+use App\Model\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
-use \App\Model\Message;
-=======
 
->>>>>>> 70a496f7aee44b8b01219730f44c0f7a5ff8c8e8
 class IndexsController extends Controller
 {
     public function index()
