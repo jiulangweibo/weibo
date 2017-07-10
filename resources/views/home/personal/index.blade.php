@@ -89,7 +89,7 @@ window.onload = function(){
                      <div id="mainBannerContent2People">
                        <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 开始 -->
                         <div id="mainBannerContent2PeopleImg">
-                          	<img src="../images/mainBannerContent2People1Img.gif" width="54" height="54" alt="" title="" />
+                          	<img src="http://{{$list->picname}}" width="54" height="54" alt="" title="" />
                         </div>
                         <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 结束 -->
                         <!-- 第一个人微博 mainBannerContent2peopleWord DIV 开始  -->
@@ -141,8 +141,8 @@ window.onload = function(){
                     <div id="mainRightPostionFirstLineWord2">
                     <ul id="ul1">
                     <li><a href="/personal" class="a1"><font class="style1">2</font><br /><font class="style2">微博</font></a></li>
-                    <li><a href="friend.html" class="a1"><font class="style1">12</font><br /><font class="style2">关注</font></a></li>
-                    <li><a href="focusonyou.html" class="a1"><font class="style1">23</font><br /><font class="style2">粉丝</font></a></li>
+                    <li><a href="/follow" class="a1"><font class="style1">12</font><br /><font class="style2">关注</font></a></li>
+                    <li><a href="/fans" class="a1"><font class="style1">23</font><br /><font class="style2">粉丝</font></a></li>
                     </ul>
                     </div>
                 <!-- 右侧mainRightPostionFirstLineWord2 DIV 结束 -->                    

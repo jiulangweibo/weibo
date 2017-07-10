@@ -329,8 +329,8 @@
                           <div id="mainRightPostionFirstLineWord2">
                                 <ul>
                                 	<a href="/personal" class="a1"><li><font class="style1">2</font><br /><font class="style2">微博</font></li></a>
-   								    <a href="friend.html" class="a1"><li><font class="style1">12</font><br /><font class="style2">关注</font></li></a>
-   								    <a href="focusonyou.html" class="a1"><li><font class="style1">23</font><br /><font class="style2">粉丝</font></li></a>
+   								    <a href="/follow" class="a1"><li><font class="style1">12</font><br /><font class="style2">关注</font></li></a>
+   								    <a href="/fans" class="a1"><li><font class="style1">23</font><br /><font class="style2">粉丝</font></li></a>
                                 </ul>
                            </div>
                            <!-- 右侧mainRightPostionFirstLineWord2 DIV 结束 -->                    

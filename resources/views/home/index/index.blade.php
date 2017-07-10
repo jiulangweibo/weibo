@@ -164,10 +164,10 @@
         <!-- main部分中间部分开始-->
         <div id="mainBody">
 		
-          <div id="hotword">热门微博</div>
+          <div id="hotword">最新微博消息</div>
 		  
           <div id="stateShow">
-		  @foreach ($add as $vo)
+		  @foreach ($message as $v)
             <div class="stateShow" id="stateShow1">
 			
               <div class="stateShowWord">
@@ -176,8 +176,8 @@
 				
                   <tr>
 				  
-                    <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/16.jpg" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">{{$vo->nickname}}</a> {{$vo->content}} </td>
+                    <td width="60" align="center" valign="top"><a href="#"><img src="http://{{$v['touxiang']}}" alt="" width="48" height="48" /></a></td>
+                    <td width="390"><a href="#">{{$v['nickname']}}:</a>{{$v['content']}}</td>
                   </tr>
 				
                 </table>
@@ -185,7 +185,8 @@
               </div>
 			   
               <div class="stateShowtime"> 
-                    <td width="390"><a href="#">{{$vo->publish_time}}</a>  </div>
+                    <td width="390"><a href="#">{{$v['publish_time']}}</a>
+			</div>
 			   
             </div>
 			@endforeach

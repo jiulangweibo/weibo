@@ -83,5 +83,8 @@ Route::resource('/password',"Home\PasswordController");	  //执行加载修改�
 Route::get('/avatar',"Home\AvatarController@index");		  //执行加载修改头像视图
 Route::post('/indexs/add',"Home\IndexsController@store");
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图
+
+Route::get('/follow',"Home\FollowController@index");      //加载关注主页
+Route::get('/fans',"Home\FansController@index");      //加载粉丝主页
 });
 Route::post('/avatar/upload',"Home\AvatarController@uploadFile");	
