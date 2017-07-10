@@ -18,9 +18,10 @@ class IndexController extends Controller
     {
 		$url =Url::orderBy('id','desc')->take(3)->get();
 		//dump($url);die;
-		$list = Userinfo::orderBy('register_time','asc')->get();
-		$info = Message::orderBy('onclicknum','asc')->get()->toArray();
-       
+		$list = Userinfo::orderBy('register_time','asc')->take(4)->get();
+		$info = Message::orderBy('onclicknum','desc')->take(4)->get()->toArray();
+     
+		//  dump($info);die;
 		$message = [];
 		$ccc = [];
 		$ddd = [];
@@ -54,7 +55,6 @@ class IndexController extends Controller
 		}
 		//echo"<pre>";
 		//var_dump($message);
-		krsort($message);
 		return view('home.index.index',['list'=>$list,'message'=>$message,'url'=>$url]);
 			
 			

@@ -250,11 +250,10 @@
         <!-- main部分右栏 -->
         <div id="mainRight">
         	<div id="mainRightRegister">
-            	这里有你认识的朋友吗？<br  />
-                立即加入灵步微博！
+            	 
             </div>
             <div id="registerButton"><a href="/register"><img src="./images/ico/register.gif" width="225" height="51"  /></a></div>
-            <div id="mobile">
+            <div id="mobile"><br/><br/>
             	<div id="mobileTip">用手机将精彩随身携带</div>
             	<div>
             	<table width="200" border="0" cellpadding="0" cellspacing="0">
