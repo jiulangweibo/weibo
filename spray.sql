@@ -32,7 +32,6 @@ CREATE TABLE `admin` (
 -- Records of admin
 -- ----------------------------
 INSERT INTO `admin` VALUES ('admin', '1', '21232f297a57a5a743894a0e4a801fc3', null, '2147483647');
-INSERT INTO `admin` VALUES ('333', '2', '1a100d2c0dab19c4430e7d73762b3423', null, '333');
 
 -- ----------------------------
 -- Table structure for comments
