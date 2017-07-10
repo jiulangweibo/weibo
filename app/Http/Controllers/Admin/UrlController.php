@@ -46,15 +46,37 @@ class UrlController extends Controller
         $data = $request->only('url');
         //执行添加
         $id = \DB::table("url")->insertGetId($data);
-        //判断
-        if($id>0){
-            $info = "信息添加成功！";
-        }else{
-            $info = "信息添加失败！";
+	
+		 $path = [];
+		//判断文件是否上传
+        if($request->hasFile('picname')){
+			//获取文件
+            $file = $request->file('picname');
+			//初始化
+            $disk = \Storage::disk('qiniu');
+			//生成文件名
+            $fileName = md5($file->getClientOriginalName().time().rand()).'.'.$file->getClientOriginalExtension();
+			//开始上传
+            $bool = $disk->put($fileName,file_get_contents($file->getRealPath()));
+            //判断是否成功
+			if($bool){
+                $path['url_picname']= (env('DEFAULT').'/'."$fileName");
+				
+				//返回地址
+			   
+			    $dd = Url::where("id",$id)->update($path);
+               //return "图片地址为:".$path;
+			   if($dd){
+				   //return '添加成功';
+				   return redirect('/admin/url');
+			   }
+			
+            }
+            return '上传失败';
         }
+        return '没有文件';
         
-        //return view("admin.stu.info",['info'=>$info]);
-        return redirect("admin/url")->with("err",$info);
+     
     }
 
     /**

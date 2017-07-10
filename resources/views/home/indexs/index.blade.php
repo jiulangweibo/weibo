@@ -57,12 +57,13 @@
                     </div>
                     <div style="float:right;">您还可以输入<font id="counter1">140</font>字！
                     </div>
-                    <form action="/indexs/add" method="post">
+                    <form name="myform" action="/indexs/add" method="post" onsubmit="return doSubmit()">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                       <div id="mainBannerTopIssueForm">
                             <!--id="mainBannerTopIssueFrame-->
                             <div id="mainBannerTopIssueFrame">
                               <textarea name="content" rows="4" class="Size" id="textfield2"  style="overflow:hidden;border:1px #0CF solid;" onkeyup="calNum(this,counter1,0)"></textarea>
+							  
                             </div>
                             <!--id="mainBannerTopIssueInsert 插入链接-->
                         <div id="mainBannerTopIssueInsert">
@@ -80,10 +81,30 @@
                               <div id="mainBannerTopIssueInsert5"></div>
                               <div id="mainBannerTopIssueInsert6">插入表情</div>
                             </a> -->
-                            <input type="submit" value="发布" style="background-color:#3295E6; border:none">
+                            <input type="submit" onclick="" value="发布" style="background-color:#3295E6; border:none">
                         </div>
                         </div>
                         </div>
+									<script>
+				//提交判断
+				function doSubmit(){
+					return content();
+				}
+				
+				//验证姓名
+				function content(){
+					//获取姓名
+					var content=document.myform.content.value;
+					//判断
+					if(content.match(/^.+$/)==null){
+						alert("您输入的内容为空,请重新输入在完成发布!");
+						return false;
+					}
+					return true;
+				}
+
+			
+			</script>
                     </form> 
           </div>
           <!-- 表情DIV -->

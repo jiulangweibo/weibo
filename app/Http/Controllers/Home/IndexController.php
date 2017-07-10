@@ -52,6 +52,7 @@ class IndexController extends Controller
 		}
 		//echo"<pre>";
 		//var_dump($message);
+		krsort($message);
 		return view('home.index.index',['list'=>$list,'message'=>$message]);
 			
 			

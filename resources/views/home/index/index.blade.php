@@ -167,6 +167,7 @@
           <div id="hotword">最新微博消息</div>
 		  
           <div id="stateShow">
+
 		  @foreach ($message as $v)
             <div class="stateShow" id="stateShow1">
 			

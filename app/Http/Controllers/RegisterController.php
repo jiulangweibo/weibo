@@ -77,9 +77,12 @@ class RegisterController extends Controller
             return back()->with("err","验证码错误");
         }
         $phone = $request->input("phone");
+        $nickname = $request->input("nickname");
         $password = $request->input("password");
         $user = Register::where("phone",$phone)->first();
-        if(empty($user)){
+        $nickname = Register::where("nickname",$nickname)->first();
+        
+		if(empty($user && $nickname)){
             $data = $request->only('phone','password','nickname');
             $data['password'] = md5($data['password']);
             $data['register_time'] = date("Y-m-d H:i:s",time());
@@ -94,7 +97,7 @@ class RegisterController extends Controller
             return back()->with("err","注册失败,请重新注册！");
          }
         }
-        return back()->with("err","手机号重复！");
+        return back()->with("err","手机号或昵称重复！");
         
     }
 

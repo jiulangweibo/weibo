@@ -49,7 +49,7 @@
       <div id="bannerWord3">已经是灵步微博用户？<a href="/login">登陆微博</a></div>
     </div>
     <div id="main">
-      <form action="/register/add" method="post" name="myform">
+      <form action="/register/add" method="post" name="myform"	>
       <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
       <table width="765" border="0" cellpadding="0" cellspacing="0">
         <tr>
@@ -94,7 +94,7 @@
           ，并同意<a href="#">《灵步网使用协议》</a></td>
           </tr>
         <tr>
-          <td colspan="4" align="center" valign="middle"><input type="submit" disabled="disabled" name="button" id="button" value="立即注册" class="button"/></td>
+          <td colspan="4" align="center" valign="middle"><input type="submit" disabled="disabled" name="button" id="button" onclick="nickname()" value="立即注册" onclick="nickname()" class="button"/></td>
           </tr>
       </table>
       @if(session("err"))
@@ -160,21 +160,28 @@
         //     $("<span style='color:red;'>用户名不能为空</span>").insertAfter("input[name='phone']");
         //     return false;
         // }
-        if (countdown == 0) {
-            obj.removeAttribute("disabled");
-            obj.value="获取验证码";
-            countdown = 300;
-            return;
-        } else {
-            obj.setAttribute("disabled", true);
-            obj.value="重新发送(" + countdown + ")";
-            countdown--;
-            if(countdown == 299){
-                sendMobileCode();
-            }
-        }
-        setTimeout(function() {settime(obj) },1000)
+		if(phone.match(/^1[3-8][0-9]{9}$/)!==null){
+				if (countdown == 0) {
+				obj.removeAttribute("disabled");
+				obj.value="获取验证码";
+				countdown = 300;
+				return;
+				} else {
+				obj.setAttribute("disabled", true);
+				obj.value="重新发送(" + countdown + ")";
+				countdown--;
+				if(countdown == 299){
+					sendMobileCode();
+					}
+				}
+			setTimeout(function() {settime(obj) },1000)
+		}else{
+				alert("您输入的手机格式有误!");
+				return false;			
+		}
     }
+	
+	
     function sendMobileCode()
         {
          
@@ -192,5 +199,10 @@
             });
             return true;
         }
+ 
+		
+
+				
+
 </script>
 </html>
