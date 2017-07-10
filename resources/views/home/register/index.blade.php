@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <title>注册 灵步网微博-点滴生活，精彩每一天</title>
 <link href="./styles/register.css" type="text/css" rel="stylesheet">
 <link href="./styles/global.css" type="text/css" rel="stylesheet">
@@ -9,6 +10,7 @@
 <script src="./script/datecreate.js" language="javascript"></script>
 <script src="./script/trim.js" language="javascript"></script>
 <script src="./script/register.js" language="javascript"></script>
+<script src="./script/jquery-1.8.3.min.js" language="javascript"></script>
 </head>
 <body>
 <div id="container">
@@ -47,7 +49,7 @@
       <div id="bannerWord3">已经是灵步微博用户？<a href="/login">登陆微博</a></div>
     </div>
     <div id="main">
-      <form action="/register/add" method="post" >
+      <form action="/register/add" method="post" name="myform">
       <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
       <table width="765" border="0" cellpadding="0" cellspacing="0">
         <tr>
@@ -77,11 +79,13 @@
         <tr>
           <td>&nbsp;</td>
           <td align="center" valign="middle" class="wordleft">验 &nbsp;证 &nbsp;码</td>
-          <td align="center" valign="middle"><input name="verify" type="text" class="form" id="verify" onblur="checkVertyCode(img7,this)" onfocus="getfocus(this,img7)" maxlength="4" /></td>
-          <td align="left" valign="middle" class="verifyword"> <span class="wordright">
-          <div id="yanzhengma1"><img alt="" name="img7" width="16" height="16" align="absmiddle" id="img7" /></div></span>
-          <div id="yanzhengma">2356</div>
-          看不清？<a href="javascript:createCode()">换一换</a></td>
+          <td align="center" valign="middle"><input name="code" type="text" class="form" id="verify" onblur="checkVertyCode(img7,this)" onfocus="getfocus(this,img7)" maxlength="6" /></td>
+          <td align="left" valign="middle" class="verifyword"> 
+              <a  href="javascript:void(0)"  id="sendMobileCode">
+                            <input type="button" style="width:100px;height:35px" id="dyMobileButton" value="获取验证码" onclick="settime(this)" />
+                            
+              </a>
+          </td>
         </tr>
         <tr>
           <td height="35" colspan="4" align="center">
@@ -124,4 +128,69 @@
 </div>
 </div>
 </body>
+<script>
+    // var wait = 60;
+    // function time(o){
+    //   if(wait == 0){
+    //     o.removeAttribute("disabled");
+    //     o.value="获取验证码";
+    //     wait = 120;
+    //   }else{
+    //     o.setAttribute("disabled",true);
+    //     o.value="重新发送("+wait+")";
+    //     wait--;
+    //     setTimeout(function(){
+    //       time(o)
+    //     },1000)
+    //   }
+    // }
+    //document.getElementById("dyMobileButton").onclick=function(){time(this);}
+
+    //设置300秒有效时间
+    var countdown=300;
+    //定时器
+    function settime(obj) {
+        //alert(1);
+        var phone = document.myform.phone.value;
+        // if(phone.match(/^1[34578]\d{9}$/)==null){
+        //     $("<span style='color:red;'>用户名不合法请重新输入</span>").insertAfter("input[name='phone']");
+        //     return false;
+        // }
+        // if(phone == ""){
+        //     $("<span style='color:red;'>用户名不能为空</span>").insertAfter("input[name='phone']");
+        //     return false;
+        // }
+        if (countdown == 0) {
+            obj.removeAttribute("disabled");
+            obj.value="获取验证码";
+            countdown = 300;
+            return;
+        } else {
+            obj.setAttribute("disabled", true);
+            obj.value="重新发送(" + countdown + ")";
+            countdown--;
+            if(countdown == 299){
+                sendMobileCode();
+            }
+        }
+        setTimeout(function() {settime(obj) },1000)
+    }
+    function sendMobileCode()
+        {
+         
+            var phone = document.myform.phone.value;
+            //alert(123);
+            $.ajax({
+                url:'/register/sendMobileCode',
+                type:"get", 
+                data:'phone='+phone+"&num="+1,
+                dataType:'text',
+                headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
+                // success:function(data){
+                //     alert(data);                  
+                // }
+            });
+            return true;
+        }
+</script>
 </html>
