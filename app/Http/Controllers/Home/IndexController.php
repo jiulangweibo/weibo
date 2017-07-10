@@ -17,7 +17,7 @@ class IndexController extends Controller
     {
 
 		$list = Userinfo::all();
-		$info = Message::all()->toArray();
+		$info = Message::orderBy('onclicknum','asc')->get()->toArray();
        
 		$message = [];
 		$ccc = [];

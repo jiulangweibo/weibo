@@ -6,32 +6,34 @@
     <div id="banner">
         <!-- banner部分的leftDIV -->
         <div class="left" id="left">
-			<form  action="/avatar/upload" method="post" enctype="multipart/form-data" >
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-							@if($list->picname)
-							<div class="pic1" id="bannerTopPic"><img src="http://{{ $list->picname}}" width="96" height="96" align="absmiddle" style="filter:   alpha(opacity=50)" />
-
-							</div>
-							<input type="file" name="picname" id="fileField"/>
-							 <input name="button" type="submit" class="btn" id="button" value="提交" />
-							@else
-							<div class="pic1" id="bannerTopPic"><img src="./images/tx1.jpg" width="96" height="96" align="absmiddle" style="filter:   alpha(opacity=50)" />
-						</div>
-						<input type="file" name="picname" id="fileField"/>
-						 <input name="button" type="submit" class="btn" id="button" value="提交" />
-							@endif
-							</div>                                
-			</form>
-				<form id="form1" name="form1"  action="/account/{{ $list->user_id }}" method="post">
+				<form id="form1" name="form1"  action="/account/{{ $list->user_id }}" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="_method" value="put">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 <!-- container部分DIV -->
 
             <table width="564" border="0" cellpadding="0" cellspacing="0" class="left">
                 <!-- 昵称 -->
-
-				
+                @if($list->picname)
+				<tr>
+                    <td width="120" height="49" align="right"><strong>头像</strong></td>
+                    <td width="20" height="49">&nbsp;</td>
+                    <td width="425" height="49"><label>
+                      
+                     </label><div class="pic1" id="bannerTopPic"><img src="http://{{ $list->picname}}" width="96" height="96" align="absmiddle" style="filter:   alpha(opacity=50)" />
+					<input type="file" name="picname" id="fileField"/>
+					</div></td>
+                </tr>
+				@else
+									<tr>
+                    <td width="120" height="49" align="right"><strong>头像</strong></td>
+                    <td width="20" height="49">&nbsp;</td>
+                    <td width="425" height="49"><label>
+                     
+                     </label><div class="pic1" id="bannerTopPic"><img src="./images/tx1.jpg" width="96" height="96" align="absmiddle" style="filter:   alpha(opacity=50)" />
+					<input type="file" name="picname" id="fileField"/>
+					</div></td>
+                </tr>
+				@endif
                 <tr>
                     <td width="120" height="50" align="right"><strong>用户名</strong></td>
                     <td width="20" height="60">&nbsp;</td>

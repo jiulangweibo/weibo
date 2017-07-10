@@ -175,20 +175,29 @@
 			  
                 <table width="450" border="0" cellpadding="0" cellspacing="0">
 				
+				 @if($v['touxiang'])
                   <tr>
 				  
                     <td width="60" align="center" valign="top"><a href="#"><img src="http://{{$v['touxiang']}}" alt="" width="48" height="48" /></a></td>
                     <td width="390"><a href="#">{{$v['nickname']}}:</a>{{$v['content']}}</td>
                   </tr>
-				
+				  @else
+				  <tr>
+                    <td width="60" align="center" valign="top"><a href="#"><img src="./images/tx1.jpg" alt="" width="48" height="48" /></a></td>
+                    <td width="390"><a href="#">{{$v['nickname']}}:</a>{{$v['content']}}</td>
+                  </tr>
+				 @endif
                 </table>
 				
               </div>
-			   
-              <div class="stateShowtime"> 
-                    <td width="390"><a href="#">{{$v['publish_time']}}</a>
+			 <div class="stateShowtime"> 
+                    <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">点赞(1)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">转发(2)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">关注他(她)</a></td>
+					
 			</div>
-			   
             </div>
 			@endforeach
             <!--div class="stateShow" id="stateShow2">

@@ -217,10 +217,15 @@
                     </table>
                   </div>
 				  
-                   <div class="stateImgShow"><img src="http://{{$v->picname}}" /></div>            
-                  <div class="stateShowtime">{{$v-> publish_time}} </div>
-                  <div class="stateOp"><a class="opState" onclick="reXianShi(this)">回复</a><a class="opState">转发</a><a class="opState" onclick="delState(this)">删除</a></div>
-                  <div class="huifu"></div>
+                   <div class="stateImgShow"><img src="{{$v->picname}}" /></div>            
+             <div class="stateShowtime"> 
+                    <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">点赞(1)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">转发(2)</a></td>
+
+					
+			</div>
 				  @endforeach
                 </div>
 				

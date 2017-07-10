@@ -28,6 +28,7 @@ class IndexsController extends Controller
 		
 		 $path = [];
 		//判断文件是否上传
+		if($id){
         if($request->hasFile('picname')){
 			//获取文件
             $file = $request->file('picname');
@@ -37,9 +38,12 @@ class IndexsController extends Controller
             $fileName = md5($file->getClientOriginalName().time().rand()).'.'.$file->getClientOriginalExtension();
 			//开始上传
             $bool = $disk->put($fileName,file_get_contents($file->getRealPath()));
+			
             //判断是否成功
 			if($bool){
-                $path['picname']= (env('DEFAULT').'/'."$fileName");
+				//$path= (env('DEFAULT').'/'."$fileName");
+				$path['picname']= $disk->getDriver()->imagePreviewUrl($fileName,'imageView2/2/w/200/h/200/q/75');   
+               //echo$a;die;
 				
 				//返回地址
 			   
@@ -52,7 +56,10 @@ class IndexsController extends Controller
             }
             return '上传失败';
         }
-        return '没有文件';
+       return redirect('/indexs');
+		}else{
+			 return redirect('/indexs');
+		}
 		
     }
 
