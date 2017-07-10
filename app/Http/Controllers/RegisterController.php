@@ -85,7 +85,8 @@ class RegisterController extends Controller
 		if(empty($user && $nickname)){
             $data = $request->only('phone','password','nickname');
             $data['password'] = md5($data['password']);
-            $data['register_time'] = date("Y-m-d H:i:s",time());
+			$time = time()+480*60;
+            $data['register_time'] = date("Y-m-d H:i:s",$time);
                 
             $id = Register::insertGetId($data);
             $data['user_id']=$id;

@@ -20,7 +20,8 @@ class IndexsController extends Controller
         //
 		 //获取指定的部分数据
         $data = $request->only("content");
-		$data['publish_time']=date("Y-m-d H:i:s",time());
+		$publish_time = time()+480*60;
+		$data['publish_time']=date("Y-m-d H:i:s",$publish_time);
 		$data['user_id']=$user_id;	
         $id = Message::insertGetId($data);
         
