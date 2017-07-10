@@ -80,7 +80,7 @@
     	<!-- main部分左栏 -->
     	<div id="mainLeft">
         	<!-- main左栏的推荐用户部分 -->
-        	<div id="faceShowWord">他（她）们在这里</div>
+        	<div id="faceShowWord">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp新 添 加 用 户</div>
             
             <div id="faceShow">
            
@@ -258,18 +258,12 @@
             	<div id="mobileTip">用手机将精彩随身携带</div>
             	<div>
             	<table width="200" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="100" height="71" align="center"><a href="#"><img src="./images/ico/android.gif" width="64" height="63" alt="" /></a></td>
-                    <td width="100" align="center"><a href="#"><img src="./images/ico/iphone.gif" width="64" height="63" alt="" /></a></td>
+                @foreach($url as $v)
+				 <tr>
+                    <td width="100" height="71" align="center"><a href="http://{{$v->url}}" ><img src="http://{{$v->url_picname}}" width="64" title="{{$v->urlname}}" height="63" alt=""/></a></td>
+                    <td width="100" align="center"><a href="http://{{$v->url}}"><img src="http://{{$v->url_picname}}" width="64" height="63" title="{{$v->urlname}}" alt="" /></a></td>
                   </tr>
-                  <tr>
-                    <td height="71" align="center"><a href="#"><img src="./images/ico/symbianv3.gif" width="64" height="63" alt="" /></a></td>
-                    <td align="center"><a href="#"><img src="./images/ico/symbianv5.gif" width="64" height="63" alt="" /></a></td>
-                  </tr>
-                  <tr>
-                    <td height="71" align="center"><a href="#"><img src="./images/ico/Java.gif" width="64" height="63" alt="" /></a></td>
-                    <td align="center"><a href="#"><img src="./images/ico/BlackBery.gif" width="64" height="63" alt="" /></a></td>
-                  </tr>
+				@endforeach
                 </table>
                </div>
           </div>
