@@ -22,7 +22,7 @@ class IndexsController extends Controller
         //dd($id);die;
 		$list = Userinfo::where("user_id",$id)->first();
         //dump($list);die;
-		$info = Message::orderBy('publish_time','desc')->get();
+		$info = Message::orderBy('publish_time','desc')->paginate(8);
         
 		 //dump($info);die;
 		$message = [];
@@ -57,7 +57,7 @@ class IndexsController extends Controller
 	 
 		}
 		
-		return view("home.indexs.index",["list"=>$list,'message'=>$message,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam]);
+		return view("home.indexs.index",["list"=>$list,'info'=>$info,'message'=>$message,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam]);
     }
      public function store(Request $request)
     {
