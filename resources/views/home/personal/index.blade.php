@@ -5,6 +5,40 @@
 <title>凤凰网微博-点滴生活，精彩世界</title>
 <link href="../styles/MyWB.css" type="text/css" rel="stylesheet" />
 <link href="../styles/global.css" type="text/css" rel="stylesheet" />
+<style>
+  .pagination {
+  display: inline-block;
+  padding-right: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+</style>
 <script language="javascript">
 <!--
 
@@ -55,10 +89,11 @@ window.onload = function(){
             <div id="mainBannerTop">
                 <!-- 左侧mainBannerTopImgDIV 开始 -->
                 <div id="mainBannerTopImg">
+                    <img src="http://{{$list->picname}}" width="95" height="97"/>
                 </div>
             	<!-- 左侧mainBannerTopImgDIV 结束 -->
                 <!-- 左侧mainBannerToWordDIV 开始 -->
-                <div id="mainBannerTopWord"><font color="#330000"><b>{{Session::get('homeuser')[0]->nickname}}</b></font><br />
+                <div id="mainBannerTopWord"><font color="#330000"><b>{{$list->nickname}}</b></font><br />
                 <a href="#">http://t.ifeng.com/DarkDemon</a> 
                 </div>
             	<!-- 左侧mainBannerTopWordDIV 结束 -->
@@ -73,13 +108,14 @@ window.onload = function(){
                     </div>
                     <!-- 左侧mainBannerMenuTopWord1DIV 结束-->
                     <!-- 左侧mainBannerMenuTopWord2DIV 开始 -->
-                    <div id="mainBannerMenuTopWord2"><img src="../images/mainBannerMenuTopWord2.gif" title="" alt="" /><a href="CustomerIndex.html">发微博</a></div>
+                    <div id="mainBannerMenuTopWord2"><img src="../images/mainBannerMenuTopWord2.gif" title="" alt="" /><a href="indexs">发微博</a></div>
                     <!-- 左侧mainBannerMenuTopWord2DIV 结束 -->
                 </div>
             	<!-- 左侧mainBannerMenuTopDIV 结束-->
             </div>
             <!-- 左侧mainBannerMenu DIV 结束-->
             <!--自己发微博的地方-->
+            @if($list)
             <div id="mainBannerContent"> 
                 <!--给微博定位-->
                <div id="mainBannerContent1">
@@ -87,17 +123,21 @@ window.onload = function(){
                   <div id="mainBannerContent2">
                      <!--个人微博-->
                      <div id="mainBannerContent2People">
+                       @foreach($add as $v)
                        <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 开始 -->
                         <div id="mainBannerContent2PeopleImg">
                           	<img src="http://{{$list->picname}}" width="54" height="54" alt="" title="" />
                         </div>
                         <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 结束 -->
                         <!-- 第一个人微博 mainBannerContent2peopleWord DIV 开始  -->
+					
                         <div id="mainBannerContent2PeopleWord">
-                        <img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" /> <font class="f1"><a href="#" class="a1">{{$list->nickname}}:</a></font><font class="f2">&nbsp;&nbsp;{{$info->content}}</font><br />
-						<font class="f3">今天&nbsp;&nbsp;11:11<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
+                         
+                        <img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" /> <font class="f1"><a href="#" class="a1">{{$v->nickname}}:</a></font><font class="f2">&nbsp;&nbsp;{{$v->content}}</font><br />
+						<font class="f3">{{$v->publish_time}}<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
                         <a href="#" class="a1"><font class="style2">爱转发</font></a>&nbsp;&nbsp;<font class="f3">和其他31人转发过</font><br />
                             <!--微博回复栏-->
+							
                             <div id="mainBannerContent2PeopleWordBack">
                                  <table width="400" border="0" cellpadding="0" cellspacing="0">
                                       <tr>
@@ -106,20 +146,34 @@ window.onload = function(){
                                       <tr>
                                         <td><img src="../images/huifu2.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@呆呆</a>：让那帮吃人饭不办人事的人去坐动车吧！！！<span style="color:#ccc">今天 12:10</span><a href="#">回复</a></td>
                                       </tr>
+                                      
                                     </table>
-                            </div><br />
+                                    
+                            </div><br/>
+                        
 						</div>
+				
                         <!-- 第一个人微博 mainBannerContent2peopleWord DIV 结束  -->
-                        <!--第二个人的微博-->
-
-                     </div>
+                    @endforeach
+                    <center>
+                    	{{ $add->links() }} 
+                    </center>
+                    </div>
                      <!--个人微博-->
                   </div>  
                   <!--给微博定位结束-->
                </div>
                  <!--给微博定位结束-->
             </div>
+            
+			@else
+                <div id="mainBannerContent2PeopleWord">
+                    您还没有发布消息!
+                </div>
+						
+			@endif
              <!--自己发微博的地方结束-->
+             
         </div>
         <!-- 左侧mainBannerDIV 结束 -->                       
         <!-- 右侧mainRight DIV开始 -->
@@ -129,7 +183,7 @@ window.onload = function(){
                 <div id="mainRightPostionFirstLine">
                     <!-- 右侧mainRightPostionFirstLineIcon DIV 开始 -->
                     <div id="mainRightPostionFirstLineIcon">
-                    <a href="/personal"><img src="../images/MainRightFirstLineTitle.gif" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
+                    <a href="/personal"><img src="http://{{$list->picname}}" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
                     </div>
                     <!-- 右侧mainRightPostionFirstLineIcon DIV 结束 -->
                     <!-- 右侧mainRightPostionFirstLineWord1 DIV 开始 -->

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Message;
-use App\Model\Register;
+use App\Model\Userinfo;
 
 class personalController extends Controller
 {
@@ -14,16 +14,24 @@ class personalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+      public function index()
     {
         //
+		
         $id = session()->get("homeuser")[0]->id;
         //dd ($id);
-        $info = Message::where("user_id",$id)->first();
-        $list = Register::where("id",$id)->first();
+        $list= Userinfo::where("user_id",$id)->first();
 		
+		$add= Message::where("user_id",$id)->orderBy('publish_time', 'desc')->paginate(4);
+		
+		foreach($add as $k=>$v){
+			$add[$k]->nickname = $list->nickname;
+		}
+		
+		//echo"<pre>";
+		//var_dump($add);die;
         //dump($info);
-		return view("home.personal.index",["info" => $info,"list"=>$list]);
+		return view("home.personal.index",["add" => $add,"list"=>$list]);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Model\Register;
 use \App\Model\Userinfo;
+use \App\Model\Follow;
 use Session;
 //use Illuminate\support\Facades\Redis as redis;
 use iscms\Alisms\SendsmsPusher as Sms;
@@ -89,9 +90,25 @@ class RegisterController extends Controller
             $data['register_time'] = date("Y-m-d H:i:s",$time);
                 
             $id = Register::insertGetId($data);
+			if($id){
             $data['user_id']=$id;
             $dd = Userinfo::insertGetId($data);
-            
+			}else{
+				return back()->with("err","注册失败,请重新注册！");
+				die;
+			}
+			if($dd){
+			$follow['id']=$id;
+			$follow['suser_id']=null;
+			$follow['user_id']=null;
+			$follow['follow_count']=0;
+			$follow['fans_count']=0;		
+			$cc = Follow::insertGetId($follow);
+			}else{
+				return back()->with("err","注册失败,请重新注册！");
+				die;
+				 
+			}
          if($dd>0 && $id>0){
              return redirect('/');
          }else{

@@ -48,7 +48,7 @@
         <td width="21" rowspan="6" class="td1"></td>
         <td height="60" align="center" valign="middle" bgcolor="#FFFFFF" class="td2">
         <img src="./images/MainRightFirstLineTitle.gif" width="48" height="48" alt="" /></td>
-        <td height="60" class="td3"><font color="#000000" size="3"><b>关注你的人（3）</b></font></td>
+        <td height="60" class="td3"><font color="#000000" size="3"><b>关注你的人（{{ $datas->follow_count }}）</b></font></td>
         <td rowspan="6" class="td1 height"></td>
       </tr>
       <tr>
@@ -61,29 +61,17 @@
         </div>
         </form></td>
       </tr>
+      @foreach($users as $v)
       <tr>
-        <td height="105" align="center" valign="middle" class="td2"><img src="./images/face/3.jpg" width="48" height="48" alt="" /></td>
-        <td height="105" align="left" valign="bottom" class="td3"><font color="#005dc3" size="3" face="微软小黑"><b>坡姐</b></font>
+        <td height="105" align="center" valign="middle" class="td2"><img src="http://{{$v['picname']}}" width="48" height="48" alt="" /></td>
+        <td height="105" align="left" valign="bottom" class="td3"><font color="#005dc3" size="3" face="微软小黑"><b>{{ $v['nickname'] }}</b></font>
         <img src="./images/1.gif" width="17" height="15" alt="" />
-        <br /><font color="#000000" size="2">北京  朝阳区</font>
-        <br /><font color="#000000" size="2">祝大家都幸福，你们的坡姐要嫁他了，祝福我们吧！</font>
-       
+        <br /><font color="#000000" size="2">{{ $v['address'] }}</font>
+        <br /><font color="#000000" size="2">{{ $v['signature'] }}</font>
+       @endforeach
        <div id="focus1"><img src="./images/ok.png" alt="" width="16" height="16" align="texttop" /> 关注<img src="./images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>
       </tr>
-      <tr>
-        <td width="67" height="105" align="center" valign="middle" class="td2"><img src="./images/face/5.jpg" width="48" height="48" alt="" /></td>
-        <td height="105" align="left" valign="bottom" class="td3"><font color="#005dc3" size="3" face="微软小黑"><b>王宇</b></font>
-        <img src="./images/1.gif" width="17" height="15" alt="" /><br /><font color="#000000" size="2">北京  朝阳区</font>
-        <br /><font color="#000000" size="2">微博很给力，大家都要玩灵步啊！</font>
-        <div id="focus2"><img src="./images/ok.png" alt="" width="16" height="16" align="absbottom" />关注<img src="./images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>
-      </tr>
-      <tr>
-        <td height="78" align="center" valign="middle" class="td2"><img src="./images/face/8.jpg" width="48" height="48" alt="" /></td>
-        <td height="105" align="left" valign="bottom" class="td3"><font color="#005dc3" size="3" face="微软小黑"><b>小明</b></font>
-        <img src="./images/1.gif" width="17" height="15" alt="" /><br /><font color="#000000" size="2">北京</font>
-        <br /><font color="#000000" size="2">我就是传说中的冷笑话大王！</font>
-        <div id="focus3"><img src="./images/ok.png" alt="" width="16" height="16" align="absbottom" />关注<img src="./images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>
-      </tr>
+ 
       <tr>
         <td height="41" class="td2 height"></td>
         <td height="41" class="td3 height"></td>
@@ -91,11 +79,11 @@
     </table>
     <table width="200" border="0" cellpadding="0" cellspacing="0" id="tb2">
       <tr>
-        <td height="65" align="left" class="font2">　　李婷~viola
-        <br />　　天津 　滨海新区</td>
+        <td height="65" align="left" class="font2">　　{{$userss->nickname}}
+        <br />　　{{$userss->address}}</td>
       </tr>
       <tr>
-        <td height="60" class="font2"><br />　　<a href="MyWB.html"><font color="#cccccc" size="3" face="微软小黑"><b>０</b></font></a>　　<a href="friend.html"><font color="#cccccc" size="3" face="微软小黑"><b>&nbsp;&nbsp;&nbsp;４</b></font></a> 　<a href="focusonyou.html"><font color="#cccccc" size="3" face="微软小黑"><b>&nbsp;&nbsp;&nbsp;&nbsp;３</b></font></a>
+        <td height="60" class="font2"><br />　　<a href="MyWB.html"><font color="#cccccc" size="3" face="微软小黑"><b>{{$datam}}</b></font></a>　　<a href="friend.html"><font color="#cccccc" size="3" face="微软小黑"><b>&nbsp;&nbsp;&nbsp;{{ $datas->follow_count }}</b></font></a> 　<a href="focusonyou.html"><font color="#cccccc" size="3" face="微软小黑"><b>&nbsp;&nbsp;&nbsp;&nbsp;{{ $dataf->fans_count }}</b></font></a>
         <br />
         　　<font color="#005dc3"> <a href="/personal">微博</a>　　<a href="/follow">关注</a>　　<a href="/fans">粉丝</a></font></td>
       </tr>

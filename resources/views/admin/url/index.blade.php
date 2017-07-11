@@ -37,14 +37,16 @@
                                     <thead>
                                         <tr>
                                             <th>ID号</th>
+                                            <th>图片</th>
                                             <th>链接地址</th>
-                                            <th>操作</th>
+                                            <th>操作</th>	
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($list as $v)
                                         <tr class="gradeX">
                                             <td>{{$v->id}}</td>
+                                            <td><img src="http://{{$v['url_picname']}}" alt="" width="48" height="48" /></td>
                                             <td>{{$v->url}}</td>
                                             <td>
                                                 <div class="tpl-table-black-operation">

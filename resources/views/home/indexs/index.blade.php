@@ -8,6 +8,40 @@
 <script language="javascript" src="./script/CustomerIndex.js" ></script>
 <script language="javascript" src="./script/trim.js" ></script>
 <script language="javascript" src="./script/jquery-1.6.2.min.js"></script>
+<style>
+  .pagination {
+  display: inline-block;
+  padding-right: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+</style>
 </head>
 
 <body style="filter:alpha(opacity=100)" id="totop">
@@ -111,82 +145,7 @@
 			</script>
                     </form> 
           </div>
-          <!-- 表情DIV -->
-          <div id="biaoqing">
-          	<table width="200" border="1" cellspacing="0" cellpadding="0">
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-            </table>
 
-          </div>
         </div> 
             
             <!--id="mainBannerTitle 首页-->
@@ -205,30 +164,33 @@
             	<!--个人展示-->
 				
             	<div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
-				@foreach ($list as $v)
+				@foreach ($message as $v)
                   <div class="stateShowWord">
                     <table width="450" border="0" cellpadding="0" cellspacing="0" class="stateTable">
 					
                       <tr>
-                        <td width="70" align="center" valign="top"><a href="#"><img src="./images/face/16.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="380" ><a href="#">{{$v->nickname}}</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />{{$v->content}}</td>
+                        <td width="70" align="center" valign="top"><a href="#"><img src="http://{{$v['touxiang']}}" alt="" width="48" height="48" /></a></td>
+                        <td width="380" ><a href="#">{{$v['nickname']}}</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />{{$v['content']}}</td>
                       </tr>
 					  
                     </table>
                   </div>
 				  
-                   <div class="stateImgShow"><img src="{{$v->picname}}" /></div>            
-             <div class="stateShowtime"> 
+                   <div class="stateImgShow"><img src="{{$v['tupian']}}" /></div>            
+					<div class="stateShowtime"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
 					<td><a href="#">点赞(1)</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">转发(2)</a></td>
+					<td><a href="#">转发(2)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">关注他(她)</a></td>
 
 					
-			</div>
+					</div>
 				  @endforeach
                 </div>
-				
+						   <center>
+                    	{{ $info->links() }} 
+                    </center>
                  <!--个人展示结束-->
                   <!--个人展示-->
 
@@ -247,12 +209,12 @@
                             
                             <div style="height:58px;">
                             <div id="mainRightPostionFirstLineIcon">
-                            	<a href="/personal"><img src="./images/MainRightFirstLineTitle.gif" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
+                            	<a href="/personal"><img src="http://{{$list->picname}}" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
                             </div>
                             <!-- 右侧mainRightPostionFirstLineIcon DIV 结束 -->
                             <!-- 右侧mainRightPostionFirstLineWord1 DIV 开始 -->
                             <div id="mainRightPostionFirstLineWord1">               
-                            &nbsp;<font color="#005DC3" ><b><a href="/personal" class="a1">{{Session::get('homeuser')[0]->nickname}}  </a></b></font><br />
+                            &nbsp;<font color="#005DC3" ><b><a href="/personal" class="a1">{{$list->nickname}}</a></b></font><br />
                             </div>
                             </div>
                             
@@ -260,9 +222,9 @@
                         	<!-- 右侧mainRightPostionFirstLineWord2 DIV 开始 -->
                           <div id="mainRightPostionFirstLineWord2">
                                 <ul>
-                                	<a href="/personal" class="a1"><li><font class="style1">2</font><br /><font class="style2">微博</font></li></a>
-   								    <a href="/follow" class="a1"><li><font class="style1">12</font><br /><font class="style2">关注</font></li></a>
-   								    <a href="/fans" class="a1"><li><font class="style1">23</font><br /><font class="style2">粉丝</font></li></a>
+                                	<a href="/personal" class="a1"><li><font class="style1">{{$datam}}</font><br /><font class="style2">微博</font></li></a>
+   								    <a href="/follow" class="a1"><li><font class="style1">{{ $datas->follow_count }}</font><br /><font class="style2">关注</font></li></a>
+   								    <a href="/fans" class="a1"><li><font class="style1">{{ $dataf->fans_count }}</font><br /><font class="style2">粉丝</font></li></a>
                                 </ul>
                            </div>
                            <!-- 右侧mainRightPostionFirstLineWord2 DIV 结束 -->                    
@@ -291,6 +253,7 @@
                         <!-- 右侧mainRightPostionSecondLine DIV 结束 -->
                     </td>
                 </tr>
+				
                 <tr>
                   <td>  
                         <!-- 右侧mainRightPostionThirdLine DIV 开始 -->
@@ -377,6 +340,7 @@
                     </td>
                 </tr>
           </table>
+
      </div>
       <!-- 右侧mainRightDiv 结束 -->
   </div>

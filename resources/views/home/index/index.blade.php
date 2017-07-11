@@ -69,8 +69,12 @@
               	</div>
               </div>          
             </form>
-            <!-- 忘记密码 -->
-            <div id="forgetPass"><a href="#">忘记密码？</a></div>
+            
+       
+            <div id="forgetPass">@if(session("msg"))
+            <p class="login-box-msg" style="color:red;">{{session("msg")}}</p>
+            @endif</div>
+    
         </div>
         <!-- banner部分的登入部分结束 -->
   </div>
@@ -80,7 +84,7 @@
     	<!-- main部分左栏 -->
     	<div id="mainLeft">
         	<!-- main左栏的推荐用户部分 -->
-        	<div id="faceShowWord">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp新 添 加 用 户</div>
+        	<div id="faceShowWord">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新 添 加 用 户</div>
             
             <div id="faceShow">
            
@@ -90,7 +94,7 @@
                       
                       @foreach ($list as $v)
                       <tr>
-                        <td width="60" height="60" align="center"><a href="star.html" title="黄海波"><img src="./images/face/1.jpg" alt="" width="48" height="48" /></a></td>
+                        <td width="60" height="60" align="center"><a href="star.html" title="黄海波"><img src="http://{{$v['picname']}}" alt="" width="48" height="48" /></a></td>
                       </tr>
 					  
                       <tr>
