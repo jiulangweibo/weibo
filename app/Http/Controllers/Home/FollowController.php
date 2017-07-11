@@ -20,13 +20,20 @@ class FollowController extends Controller
         $datam = count(Message::where('user_id',$user_id)->get());
 
         //遍历关注人信息
-        $follow = Follow::all();
+        $follow = Follow::where('id',$user_id)->get();
+        //dd($follow);
         $list = [];
         $user = [];
         $users = [];
+        
         foreach ($follow as $k=>$v){
-            $list[$k]['suser_id'] = $v['suser_id'];
+            //dd($v);
+            if(!empty($v->suser_id)){
+
+                    $list[$k]['suser_id'] = $v['suser_id'];
+                }
         }
+        //dd($list);
         foreach ($list as $k=>$v){
             $users[$k] = Userinfo::where('user_id',$v['suser_id'])->first()->toArray();
             $user[$k]['picname'] = $users[$k]['picname'];
