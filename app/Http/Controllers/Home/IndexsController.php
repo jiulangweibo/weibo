@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers\Home;
 use App\Model\Message;
+use App\Model\Follow;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class IndexsController extends Controller
 {
-    public function index()
-	{
-   		//
+    public function index(Request $requst)
+	{	
+			//统计个人发布的微博，关注，粉丝
+   		 $user_id = session()->get('homeuser')[0]->id;
+		 $datas = Follow::where('id',$user_id)->orderBy('follow_count','desc')->first();
+		 //dd($datas);
+		  $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first();
+		 $datam = count(Message::where('user_id',$user_id)->get());
+		
+		
 		$list=Message::orderBy('publish_time', 'desc')->get();
 		
-		return view("home.indexs.index",["list"=>$list]);
+		return view("home.indexs.index",["list"=>$list,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam]);
     }
      public function store(Request $request)
     {
