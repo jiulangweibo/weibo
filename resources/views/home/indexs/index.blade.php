@@ -222,7 +222,8 @@
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
 					<td><a href="#">点赞(1)</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">转发(2)</a></td>
+					<td><a href="#">转发(2)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">关注他(她)</a></td>
 
 					
 			</div>
