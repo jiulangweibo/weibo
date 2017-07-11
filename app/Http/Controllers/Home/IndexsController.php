@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 use App\Model\Message;
 use App\Model\Follow;
+use App\Model\userinfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,10 +18,46 @@ class IndexsController extends Controller
 		  $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first();
 		 $datam = count(Message::where('user_id',$user_id)->get());
 		
+		$id = session()->get("homeuser")[0]->id;
+        //dd($id);die;
+		$list = Userinfo::where("user_id",$id)->first();
+        //dump($list);die;
+		$info = Message::orderBy('publish_time','desc')->get();
+        
+		 //dump($info);die;
+		$message = [];
+		$ccc = [];
+		$ddd = [];
+		//$acc = [];
+		foreach($info as $k=>$v){
+			$message[$k]['user_id'] = $v['user_id'];
+			$message[$k]['content'] = $v['content'];
+			$message[$k]['tupian'] = $v['picname'];
+			$message[$k]['publish_time'] = $v['publish_time'];
+			$message[$k]['message_id'] = $v['message_id'];
+			
 		
-		$list=Message::orderBy('publish_time', 'desc')->get();
 		
-		return view("home.indexs.index",["list"=>$list,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam]);
+		//$id = session()->get("homeuser")[0]->id;		
+		
+		//$message[] = Userinfo::where("user_id",$aa)->get();
+		//$acc=Message::where("user_id",$aa)->first();
+		//$message[$k]->content=$acc->content;
+		//$message[$k]->publish_time=$acc->publish_time;
+		
+		}
+		foreach($message as $k=>$v){
+			
+			$ddd[$k]= Userinfo::where('user_id',$v['user_id'])->first();
+			$ccc[$k]['nickname']=$ddd[$k]['nickname'];
+			$ccc[$k]['picname']=$ddd[$k]['picname'];
+			
+			$message[$k]['nickname'] = $ccc[$k]['nickname'];
+			$message[$k]['touxiang'] = $ccc[$k]['picname'];
+	 
+		}
+		
+		return view("home.indexs.index",["list"=>$list,'message'=>$message,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam]);
     }
      public function store(Request $request)
     {

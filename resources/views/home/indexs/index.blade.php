@@ -205,19 +205,19 @@
             	<!--个人展示-->
 				
             	<div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
-				@foreach ($list as $v)
+				@foreach ($message as $v)
                   <div class="stateShowWord">
                     <table width="450" border="0" cellpadding="0" cellspacing="0" class="stateTable">
 					
                       <tr>
-                        <td width="70" align="center" valign="top"><a href="#"><img src="./images/face/16.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="380" ><a href="#">{{$v->nickname}}</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />{{$v->content}}</td>
+                        <td width="70" align="center" valign="top"><a href="#"><img src="http://{{$v['touxiang']}}" alt="" width="48" height="48" /></a></td>
+                        <td width="380" ><a href="#">{{$v['nickname']}}</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />{{$v['content']}}</td>
                       </tr>
 					  
                     </table>
                   </div>
 				  
-                   <div class="stateImgShow"><img src="{{$v->picname}}" /></div>            
+                   <div class="stateImgShow"><img src="{{$v['tupian']}}" /></div>            
              <div class="stateShowtime"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
@@ -248,12 +248,12 @@
                             
                             <div style="height:58px;">
                             <div id="mainRightPostionFirstLineIcon">
-                            	<a href="/personal"><img src="./images/MainRightFirstLineTitle.gif" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
+                            	<a href="/personal"><img src="http://{{$list->picname}}" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
                             </div>
                             <!-- 右侧mainRightPostionFirstLineIcon DIV 结束 -->
                             <!-- 右侧mainRightPostionFirstLineWord1 DIV 开始 -->
                             <div id="mainRightPostionFirstLineWord1">               
-                            &nbsp;<font color="#005DC3" ><b><a href="/personal" class="a1">{{Session::get('homeuser')[0]->nickname}}  </a></b></font><br />
+                            &nbsp;<font color="#005DC3" ><b><a href="/personal" class="a1">{{$list->nickname}}</a></b></font><br />
                             </div>
                             </div>
                             
