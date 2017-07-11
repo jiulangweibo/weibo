@@ -90,7 +90,7 @@
                       
                       @foreach ($list as $v)
                       <tr>
-                        <td width="60" height="60" align="center"><a href="star.html" title="黄海波"><img src="./images/face/1.jpg" alt="" width="48" height="48" /></a></td>
+                        <td width="60" height="60" align="center"><a href="star.html" title="黄海波"><img src="http://{{$v['picname']}}" alt="" width="48" height="48" /></a></td>
                       </tr>
 					  
                       <tr>
