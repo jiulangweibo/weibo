@@ -22,7 +22,7 @@ class personalController extends Controller
         //dd ($id);
         $list= Userinfo::where("user_id",$id)->first();
 		
-		$add= Message::where("user_id",$id)->get();
+		$add= Message::where("user_id",$id)->paginate(4);
 		
 		foreach($add as $k=>$v){
 			$add[$k]->nickname = $list->nickname;

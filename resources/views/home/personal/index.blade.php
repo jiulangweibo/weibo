@@ -5,6 +5,40 @@
 <title>凤凰网微博-点滴生活，精彩世界</title>
 <link href="../styles/MyWB.css" type="text/css" rel="stylesheet" />
 <link href="../styles/global.css" type="text/css" rel="stylesheet" />
+<style>
+  .pagination {
+  display: inline-block;
+  padding-right: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+</style>
 <script language="javascript">
 <!--
 
@@ -112,13 +146,18 @@ window.onload = function(){
                                       <tr>
                                         <td><img src="../images/huifu2.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@呆呆</a>：让那帮吃人饭不办人事的人去坐动车吧！！！<span style="color:#ccc">今天 12:10</span><a href="#">回复</a></td>
                                       </tr>
+                                      
                                     </table>
+                                    
                             </div><br/>
                         
 						</div>
-					
+				
                         <!-- 第一个人微博 mainBannerContent2peopleWord DIV 结束  -->
                     @endforeach
+                    <center>
+                    	{{ $add->links() }} 
+                    </center>
                     </div>
                      <!--个人微博-->
                   </div>  
@@ -126,6 +165,7 @@ window.onload = function(){
                </div>
                  <!--给微博定位结束-->
             </div>
+            
 			@else
                 <div id="mainBannerContent2PeopleWord">
                     您还没有发布消息!
@@ -133,6 +173,7 @@ window.onload = function(){
 						
 			@endif
              <!--自己发微博的地方结束-->
+             
         </div>
         <!-- 左侧mainBannerDIV 结束 -->                       
         <!-- 右侧mainRight DIV开始 -->
