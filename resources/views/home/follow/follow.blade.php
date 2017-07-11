@@ -72,9 +72,17 @@
       @endforeach
 
 
-     <div id="mainRightPostionFirstLineWord1">               
-                            &nbsp;<font color="#005DC3" ><b><a href="/personal" class="a1">{{Session::get('homeuser')[0]->nickname}}  </a></b></font><br />
-                            </div>
+      <tr>
+        <td height="35" class="td2"></td>
+        <td height="35" class="td3"></td>
+      </tr>
+    </table>
+    <table width="200" border="0" cellpadding="0" cellspacing="0" id="tb2">
+      <tr>
+        <td height="65" align="left" class="font2">　
+        <br />　　天津 　滨海新区</td>
+      </tr>
+      <tr>
         <td height="60" class="font2"><br /><font color="#cccccc" size="3" face="微软小黑"><b>　　{{$datam}}       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       {{ $datas->follow_count }}      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    {{ $dataf->fans_count }}</b></font>
         <br />
         　　<font color="#005dc3"><a href="/personal">微博</a>　　<a href="/follow">关注</a>　　<a href="/fans">粉丝</a></font></td>
