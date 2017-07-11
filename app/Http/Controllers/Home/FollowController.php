@@ -5,13 +5,39 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use \App\Model\Follow;
+use \App\Model\Message;
+use \App\Model\Userinfo;
+
 
 class FollowController extends Controller
 {
-    public function index()
+    public function index(Request $request)
 	{
-   		//返回视图
-		return view("home.follow.follow");
+        //统计个人粉丝，关注，所发微博数量
+        $user_id = session()->get('homeuser')[0]->id;
+        $datas = Follow::where('id',$user_id)->orderBy('follow_count','desc')->first();
+        $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first();
+        $datam = count(Message::where('user_id',$user_id)->get());
+
+        //遍历关注人信息
+        $follow = Follow::all();
+        $list = [];
+        $user = [];
+        $users = [];
+        foreach ($follow as $k=>$v){
+            $list[$k]['suser_id'] = $v['suser_id'];
+        }
+        foreach ($list as $k=>$v){
+            $users[$k] = Userinfo::where('user_id',$v['suser_id'])->first()->toArray();
+            $user[$k]['picname'] = $users[$k]['picname'];
+            $user[$k]['nickname'] = $users[$k]['nickname'];
+            $user[$k]['address'] = $users[$k]['address'];
+            $user[$k]['signature'] = $users[$k]['signature'];
+        }
+
+        //dd($users);
+   		//返回视图,分配数据
+		return view("home.follow.follow",['datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam,'users'=>$users]);
     }
     
         /**
