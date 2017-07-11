@@ -222,7 +222,8 @@
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
 					<td><a href="#">点赞(1)</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">转发(2)</a></td>
+					<td><a href="#">转发(2)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">关注他(她)</a></td>
 
 					
 			</div>
@@ -260,9 +261,9 @@
                         	<!-- 右侧mainRightPostionFirstLineWord2 DIV 开始 -->
                           <div id="mainRightPostionFirstLineWord2">
                                 <ul>
-                                	<a href="/personal" class="a1"><li><font class="style1">2</font><br /><font class="style2">微博</font></li></a>
-   								    <a href="/follow" class="a1"><li><font class="style1">12</font><br /><font class="style2">关注</font></li></a>
-   								    <a href="/fans" class="a1"><li><font class="style1">23</font><br /><font class="style2">粉丝</font></li></a>
+                                	<a href="/personal" class="a1"><li><font class="style1">{{$datam}}</font><br /><font class="style2">微博</font></li></a>
+   								    <a href="/follow" class="a1"><li><font class="style1">{{ $datas->follow_count }}</font><br /><font class="style2">关注</font></li></a>
+   								    <a href="/fans" class="a1"><li><font class="style1">{{ $dataf->fans_count }}</font><br /><font class="style2">粉丝</font></li></a>
                                 </ul>
                            </div>
                            <!-- 右侧mainRightPostionFirstLineWord2 DIV 结束 -->                    

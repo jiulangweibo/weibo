@@ -79,7 +79,7 @@
     </table>
     <table width="200" border="0" cellpadding="0" cellspacing="0" id="tb2">
       <tr>
-        <td height="65" align="left" class="font2">　　李婷~viola
+        <td height="65" align="left" class="font2">　
         <br />　　天津 　滨海新区</td>
       </tr>
       <tr>
