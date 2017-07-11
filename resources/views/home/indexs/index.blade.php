@@ -8,6 +8,40 @@
 <script language="javascript" src="./script/CustomerIndex.js" ></script>
 <script language="javascript" src="./script/trim.js" ></script>
 <script language="javascript" src="./script/jquery-1.6.2.min.js"></script>
+<style>
+  .pagination {
+  display: inline-block;
+  padding-right: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+</style>
 </head>
 
 <body style="filter:alpha(opacity=100)" id="totop">
@@ -111,82 +145,7 @@
 			</script>
                     </form> 
           </div>
-          <!-- 表情DIV -->
-          <div id="biaoqing">
-          	<table width="200" border="1" cellspacing="0" cellpadding="0">
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-            </table>
 
-          </div>
         </div> 
             
             <!--id="mainBannerTitle 首页-->
@@ -218,7 +177,7 @@
                   </div>
 				  
                    <div class="stateImgShow"><img src="{{$v['tupian']}}" /></div>            
-             <div class="stateShowtime"> 
+					<div class="stateShowtime"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
 					<td><a href="#">点赞(1)</a></td>&nbsp&nbsp&nbsp
@@ -226,10 +185,12 @@
 					<td><a href="#">关注他(她)</a></td>
 
 					
-			</div>
+					</div>
 				  @endforeach
                 </div>
-				
+						   <center>
+                    	{{ $info->links() }} 
+                    </center>
                  <!--个人展示结束-->
                   <!--个人展示-->
 
@@ -292,6 +253,7 @@
                         <!-- 右侧mainRightPostionSecondLine DIV 结束 -->
                     </td>
                 </tr>
+				
                 <tr>
                   <td>  
                         <!-- 右侧mainRightPostionThirdLine DIV 开始 -->
@@ -378,6 +340,7 @@
                     </td>
                 </tr>
           </table>
+
      </div>
       <!-- 右侧mainRightDiv 结束 -->
   </div>
