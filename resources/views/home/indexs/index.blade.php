@@ -57,12 +57,13 @@
                     </div>
                     <div style="float:right;">您还可以输入<font id="counter1">140</font>字！
                     </div>
-                    <form action="/indexs/add" method="post">
+                    <form name="myform" action="/indexs/add" method="post" enctype="multipart/form-data" onsubmit="return doSubmit()">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                       <div id="mainBannerTopIssueForm">
                             <!--id="mainBannerTopIssueFrame-->
                             <div id="mainBannerTopIssueFrame">
                               <textarea name="content" rows="4" class="Size" id="textfield2"  style="overflow:hidden;border:1px #0CF solid;" onkeyup="calNum(this,counter1,0)"></textarea>
+							  
                             </div>
                             <!--id="mainBannerTopIssueInsert 插入链接-->
                         <div id="mainBannerTopIssueInsert">
@@ -70,9 +71,13 @@
                         </div>
                           <!--确认发布-->
                         <div id="mainBannerTopIssueSure">
-                        <div id="mainBannerTopIssueSure2"> <!-- <a href="file" class="a1">
+                        <div id="mainBannerTopIssueSure2">
+						<div id="mainBannerTopIssueInsert2">
+						<input type="file" name="picname" >
+						 </div>				
+						<!-- <a href="file" class="a1">
                             <div id="mainBannerTopIssueInsert1"></div>
-                            <div id="mainBannerTopIssueInsert2">插入图片 </div>
+                          
                             </a>
                             <div id="mainBannerTopIssueInsert3"></div>
                             <div id="mainBannerTopIssueInsert4">插入视频 </div>
@@ -80,10 +85,30 @@
                               <div id="mainBannerTopIssueInsert5"></div>
                               <div id="mainBannerTopIssueInsert6">插入表情</div>
                             </a> -->
-                            <input type="submit" value="发布" style="background-color:#3295E6; border:none">
+                            <input type="submit" onclick="" value="发布" style="background-color:#3295E6; border:none">
                         </div>
                         </div>
                         </div>
+									<script>
+				//提交判断
+				function doSubmit(){
+					return content();
+				}
+				
+				//验证姓名
+				function content(){
+					//获取姓名
+					var content=document.myform.content.value;
+					//判断
+					if(content.match(/^.+$/)==null){
+						alert("您输入的内容为空,请重新输入在完成发布!");
+						return false;
+					}
+					return true;
+				}
+
+			
+			</script>
                     </form> 
           </div>
           <!-- 表情DIV -->
@@ -192,114 +217,21 @@
                     </table>
                   </div>
 				  
-                   <div class="stateImgShow"><img src="./images/state1.jpg" /></div>            
-                  <div class="stateShowtime">{{$v-> publish_time}} </div>
-                  <div class="stateOp"><a class="opState" onclick="reXianShi(this)">回复</a><a class="opState">转发</a><a class="opState" onclick="delState(this)">删除</a></div>
-                  <div class="huifu"></div>
+                   <div class="stateImgShow"><img src="{{$v->picname}}" /></div>            
+             <div class="stateShowtime"> 
+                    <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">点赞(1)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">转发(2)</a></td>
+
+					
+			</div>
 				  @endforeach
                 </div>
 				
                  <!--个人展示结束-->
                   <!--个人展示-->
-                <div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
-                  <div class="stateShowWord">
-                    <table width="450" border="0" cellpadding="0" cellspacing="0" class="stateTable">
-                      <tr>
-                        <td width="70" align="center" valign="top"><a href="#"><img src="./images/mainBannerContent2People1Img.gif" width="54" height="54" alt="" title="" /></a></td>
-                        <td width="380"><a href="#">开心段子微博</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />【真相】 记得小时候书本上总说中国用世界7%的耕地养活了22%的人口，可是它没有告诉我们，这22%的人口养了世界60%的公务员；这22%的人口的教育经费只占世界的3%；这22%的人口的财富97%集中在其中1%的人手里；这22%的人口中的90%吃着全世界最毒的食物，缴纳着最高的税，干着最脏最累的活??? </td>
-                      </tr>
-                    </table>
-                  </div>
-                   <div class="stateImgShow"></div>            
-                  <div class="stateShowtime"> 07月31日 08:02 </div>
-                  <div class="stateOp"><a onclick="reXianShi(this)" class="opState">回复</a><a class="opState">转发</a><a class="opState" onclick="delState(this)">删除</a></div>
-                  <div class="huifu"></div>
-                </div>
-                 <!--个人展示结束-->
-                 <!--个人展示-->
-                <div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
-                  <div class="stateShowWord">
-                    <table width="450" border="0" cellpadding="0" cellspacing="0" class="stateTable">
-                      <tr>
-                        <td width="70" align="center" valign="top"><a href="#"><img src="./images/mainBannerContent2People2Img.gif" width="54" height="54" alt="" title="" /></a></td>
-                        <td width="380"><a href="#">不明真真相</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />你我都是这“奇迹”国中的一员花销。 </td>
-                      </tr>
-                    </table>
-                  </div>
-                   <div class="stateImgShow">
-                   	 <img src="./images/SCT.gif" width="34" height="166" alt="" title="" /></div>            
-                  <div class="stateShowtime"> 07月31日 08:02 </div>
-                  <div class="stateOp"><a onclick="reXianShi(this)" class="opState">回复</a><a class="opState">转发</a><a class="opState" onclick="delState(this)">删除</a></div>
-                   <div class="huifu"></div>
-                </div>
-                 <!--个人展示结束-->
-                  <!--个人展示-->
-                <div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
-                  <div class="stateShowWord">
-                    <table width="450" border="0" cellpadding="0" cellspacing="0" class="stateTable">
-                      <tr>
-                        <td width="70" align="center" valign="top"><a href="#"><img src="./images/mainBannerContent2People3Img.gif.gif" width="54" height="54" alt="" title="" /></a></td>
-                        <td width="380"><a href="#">经典微博语录</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />人民网总裁兼总编辑廖玒分析官民舆论场的对峙和分歧越来越大原因：“底层社会上升通道堵塞、中产阶层的被剥夺感、富裕阶层的移民倾向、特殊利益集团的末世情结”“民众的无力感和玉石俱焚的愤懑”。据廖玒7月27日上午在中国传媒领袖大堂上的演讲。 </td>
-                      </tr>
-                    </table>
-                  </div>
-                   <div class="stateImgShow">
-                   	 <img src="./images/people2.gif" /></div>            
-                  <div class="stateShowtime"> 07月31日 08:02 </div>
-                  <div class="stateOp"><a onclick="reXianShi(this)" class="opState">回复</a><a class="opState">转发</a><a class="opState" onclick="delState(this)">删除</a></div>
-                   <div class="huifu"></div>
-                </div>
-                 <!--个人展示结束-->
-                 <!--个人展示-->
-                <div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
-                  <div class="stateShowWord">
-                    <table width="450" border="0" cellpadding="0" cellspacing="0" class="stateTable">
-                      <tr>
-                        <td width="70" align="center" valign="top"><a href="#"><img src="./images/mainBannerContent2People1Img.gif" width="54" height="54" alt="" title="" /></a></td>
-                        <td width="380"><a href="#">漂流瓶</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />在德国达豪集中营入口处，刻着17世纪一位诗人的警示名言："当一个政权开始烧书的时候，若不加以阻止，它的下一步就要灭口!"埃德蒙.柏克说过："邪恶盛行的唯一条件，是善良的沉默。" </td>
-                      </tr>
-                    </table>
-                  </div>
-                   <div class="stateImgShow"></div>            
-                  <div class="stateShowtime"> 07月31日 08:02 </div>
-                  <div class="stateOp"><a onclick="reXianShi(this)" class="opState">回复</a><a class="opState">转发</a><a class="opState" onclick="delState(this)">删除</a></div>
-                   <div class="huifu"></div>
-                </div>
-                 <!--个人展示结束-->
-                  <!--个人展示-->
-                <div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
-                  <div class="stateShowWord">
-                    <table width="450" border="0" cellpadding="0" cellspacing="0" class="stateTable">
-                      <tr>
-                        <td width="70" align="center" valign="top"><a href="#"><img src="./images/state2.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="380"><a href="#">家人杂志</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />分享图片:二十多年前,林青霞和邓丽君在法国戛纳.当时最红的两位女子定格在一起,她们陪伴多少人走过那段流金岁月? </td>
-                      </tr>
-                    </table>
-                  </div>
-                   <div class="stateImgShow">
-                   	 <img src="./images/state3.jpg" /></div>            
-                  <div class="stateShowtime"> 07月31日 08:02 </div>
-                  <div class="stateOp"><a onclick="reXianShi(this)" class="opState">回复</a><a class="opState">转发</a><a class="opState" onclick="delState(this)">删除</a></div>
-                   <div class="huifu"></div>
-                </div>
-                 <!--个人展示结束-->
-                
-                    <div id="recieve">
-                        <div id="ff" style="float:left;"><font style="font-size:16px; color:#FDFDFD">&nbsp;&nbsp;&nbsp;&nbsp;回&nbsp;&nbsp;复</font></div>
-                        <div id="left" style="float:right; margin-top:10px; color:#FFF; margin-right:10px;">您还有可以输入<font id="counter2" color="#ffffff">140</font>字！&nbsp;&nbsp;&nbsp;<img src="./images/hongcha1.gif" alt="" width="14" height="13" align="absmiddle" title="" onclick="windowClose()" /></div><br />
-                        <div id="wt">
-                        <form action="" method="get">
-                          <textarea name="ta" cols="" rows="" id="ta1" onkeyup="calNum(this,counter2,1)" style="overflow:hidden;border:1px #0CF solid;">
-                            </textarea>
-                          <br />
-                            <div style="float:right; margin-right:25px; margin-top:7px; text-align:right;">
-                                <!--&nbsp;&nbsp;<input type="checkbox" name="引用原微博" value="复选框"/>&nbsp;&nbsp;引用原微博-->
-                                <input name="" type="button" value=" 回 复 " id="sub1" onclick="submitRstate()" />
-                            </div>
-                        </form>           
-                        </div> 
-                        <!-- 回复DIV 结束 -->
-                  </div>
+
                 
             </div>
       </div>

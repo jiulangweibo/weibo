@@ -12,13 +12,27 @@
 		</div>
 		<div class="widget-body am-fr">
 
-			<form class="am-form tpl-form-line-form" action="/admin/url" method="post">
+			<form name="myform" class="am-form tpl-form-line-form" enctype="multipart/form-data" action="/admin/url" method="post" onsubmit="return doSubmit()">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				 <div class="am-form-group">
 				 <span class="tpl-form-line-small-title">
 			
 					<div class="am-u-sm-9">
+						<input type="text" name="urlname" class="tpl-form-input" id="user-name" placeholder="请输入链接名字">
+					</div>
+				</div>
+				 <div class="am-form-group">
+				 <span class="tpl-form-line-small-title">
+			
+					<div class="am-u-sm-9">
 						<input type="text" name="url" class="tpl-form-input" id="user-name" placeholder="请输入链接地址">
+					</div>
+				</div>
+				<div class="am-form-group">
+				 <span class="tpl-form-line-small-title">
+			
+					<div class="am-u-sm-9">
+						<input type="file" name="picname" class="tpl-form-input" id="user-name">
 					</div>
 				</div>
 			<div class="am-form-group">
@@ -32,4 +46,23 @@
 		</div>
 	</div>
 </div>
+			<script>
+				//提交判断
+				function doSubmit(){
+					return checkEmail();
+				}
+				
+				//验证邮箱
+				function checkEmail(){
+					//获取邮箱
+					var url=document.myform.url.value;
+					//判断
+					if(url.match(/^\w+(\.\w+){1,3}$/)==null){
+						alert("您输入的邮箱格式有误!");
+						return false;
+					}
+					return true;
+				}
+			
+			</script>
 @endsection

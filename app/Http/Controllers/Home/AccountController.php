@@ -31,16 +31,48 @@ class AccountController extends Controller
 	}
     public function update(Request $request, $id)
     {
-        $input = $request->only('nickname','email','age','sex','sexual','birthday','address','name','QQ');
-        //$input = $request->all();
-		//return($input);die;
-        $m = Userinfo::where("user_id",$id)->update($input);
-		//dump($m);
-        if($m>0){
-            echo "修改成功!";
-            return redirect("/account");
-        }else{
-            echo "修改失败!";
-        }
+ 
+		 //$user_id = session()->get('homeuser')[0]->id;
+		 $path = [];
+		//判断文件是否上传
+    if($request->hasFile('picname')){
+			//获取文件
+            $file = $request->file('picname');
+			//初始化
+            $disk = \Storage::disk('qiniu');
+			//生成文件名
+            $fileName = md5($file->getClientOriginalName().time().rand()).'.'.$file->getClientOriginalExtension();
+			//开始上传
+            $bool = $disk->put($fileName,file_get_contents($file->getRealPath()));
+            //判断是否成功
+			if($bool){
+               
+				
+				//返回地址
+			    $input = $request->only('nickname','email','age','sex','sexual','birthday','address','name','QQ');
+				$input['picname']= (env('DEFAULT').'/'."$fileName");
+				//dump($input);die;
+			   $m = Userinfo::where("user_id",$id)->update($input);
+			  
+			   if($m){
+				  
+				   return redirect('/account');
+				   
+			   }
+			
+            }
+            return '上传失败';
+      }else{
+				$input = $request->only('nickname','email','age','sex','sexual','birthday','address','name','QQ');
+				//$input = $request->all();
+				//return($input);die;
+				$m = Userinfo::where("user_id",$id)->update($input);
+				   if($m){
+				   return redirect('/account');
+				   
+			   }else{
+				   return'上传失败';
+			   }
+			}	
     }
 }

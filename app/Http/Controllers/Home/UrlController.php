@@ -11,6 +11,9 @@ class UrlController extends Controller
     public function index()
 	{
    		//
+		$list =Url::orderBy('url_picname','desc')->take(6)->get();
+		dump($list);die;
+    	return view('admin.index.index',["list"=>$list]);
     }
     
         /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 use  App\Model\Userinfo;
 use  App\Model\Message;
+use  App\Model\Url;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,10 +16,12 @@ class IndexController extends Controller
      */
     public function index()
     {
-
-		$list = Userinfo::all();
-		$info = Message::all()->toArray();
-       
+		$url =Url::orderBy('id','desc')->take(3)->get();
+		//dump($url);die;
+		$list = Userinfo::orderBy('register_time','asc')->take(4)->get();
+		$info = Message::orderBy('onclicknum','desc')->take(4)->get()->toArray();
+     
+		//  dump($info);die;
 		$message = [];
 		$ccc = [];
 		$ddd = [];
@@ -52,7 +55,7 @@ class IndexController extends Controller
 		}
 		//echo"<pre>";
 		//var_dump($message);
-		return view('home.index.index',['list'=>$list,'message'=>$message]);
+		return view('home.index.index',['list'=>$list,'message'=>$message,'url'=>$url]);
 			
 			
     }

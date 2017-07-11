@@ -80,7 +80,7 @@
     	<!-- main部分左栏 -->
     	<div id="mainLeft">
         	<!-- main左栏的推荐用户部分 -->
-        	<div id="faceShowWord">他（她）们在这里</div>
+        	<div id="faceShowWord">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp新 添 加 用 户</div>
             
             <div id="faceShow">
            
@@ -167,6 +167,7 @@
           <div id="hotword">最新微博消息</div>
 		  
           <div id="stateShow">
+
 		  @foreach ($message as $v)
             <div class="stateShow" id="stateShow1">
 			
@@ -174,20 +175,29 @@
 			  
                 <table width="450" border="0" cellpadding="0" cellspacing="0">
 				
+				 @if($v['touxiang'])
                   <tr>
 				  
                     <td width="60" align="center" valign="top"><a href="#"><img src="http://{{$v['touxiang']}}" alt="" width="48" height="48" /></a></td>
                     <td width="390"><a href="#">{{$v['nickname']}}:</a>{{$v['content']}}</td>
                   </tr>
-				
+				  @else
+				  <tr>
+                    <td width="60" align="center" valign="top"><a href="#"><img src="./images/tx1.jpg" alt="" width="48" height="48" /></a></td>
+                    <td width="390"><a href="#">{{$v['nickname']}}:</a>{{$v['content']}}</td>
+                  </tr>
+				 @endif
                 </table>
 				
               </div>
-			   
-              <div class="stateShowtime"> 
-                    <td width="390"><a href="#">{{$v['publish_time']}}</a>
+			 <div class="stateShowtime"> 
+                    <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">点赞(1)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">转发(2)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">关注他(她)</a></td>
+					
 			</div>
-			   
             </div>
 			@endforeach
             <!--div class="stateShow" id="stateShow2">
@@ -240,26 +250,19 @@
         <!-- main部分右栏 -->
         <div id="mainRight">
         	<div id="mainRightRegister">
-            	这里有你认识的朋友吗？<br  />
-                立即加入灵步微博！
+            	 
             </div>
             <div id="registerButton"><a href="/register"><img src="./images/ico/register.gif" width="225" height="51"  /></a></div>
-            <div id="mobile">
+            <div id="mobile"><br/><br/>
             	<div id="mobileTip">用手机将精彩随身携带</div>
             	<div>
             	<table width="200" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="100" height="71" align="center"><a href="#"><img src="./images/ico/android.gif" width="64" height="63" alt="" /></a></td>
-                    <td width="100" align="center"><a href="#"><img src="./images/ico/iphone.gif" width="64" height="63" alt="" /></a></td>
+                @foreach($url as $v)
+				 <tr>
+                    <td width="100" height="71" align="center"><a href="http://{{$v->url}}" ><img src="http://{{$v->url_picname}}" width="64" title="{{$v->urlname}}" height="63" alt=""/></a></td>
+                    <td width="100" align="center"><a href="http://{{$v->url}}"><img src="http://{{$v->url_picname}}" width="64" height="63" title="{{$v->urlname}}" alt="" /></a></td>
                   </tr>
-                  <tr>
-                    <td height="71" align="center"><a href="#"><img src="./images/ico/symbianv3.gif" width="64" height="63" alt="" /></a></td>
-                    <td align="center"><a href="#"><img src="./images/ico/symbianv5.gif" width="64" height="63" alt="" /></a></td>
-                  </tr>
-                  <tr>
-                    <td height="71" align="center"><a href="#"><img src="./images/ico/Java.gif" width="64" height="63" alt="" /></a></td>
-                    <td align="center"><a href="#"><img src="./images/ico/BlackBery.gif" width="64" height="63" alt="" /></a></td>
-                  </tr>
+				@endforeach
                 </table>
                </div>
           </div>
