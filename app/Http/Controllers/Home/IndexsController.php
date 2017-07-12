@@ -6,19 +6,19 @@ use App\Model\Follow;
 use App\Model\Userinfo;
 use App\Model\Forward;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
 use App\Http\Controllers\Controller;
 
 class IndexsController extends Controller
 {
     public function index(Request $requst)
 	{	
-		
 			//统计个人发布的微博，关注，粉丝
    		 $user_id = session()->get('homeuser')[0]->id;
 		 $datas = Follow::where('id',$user_id)->orderBy('follow_count','desc')->first();
-		 $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first()->toArray();
+		 //dd($datas);
+		  $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first();
 		 $datam = count(Message::where('user_id',$user_id)->get());
+		
 		$id = session()->get("homeuser")[0]->id;
         //dd($id);die;
 		$list = Userinfo::where("user_id",$id)->first();
