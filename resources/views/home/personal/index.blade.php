@@ -134,6 +134,7 @@ window.onload = function(){
                         <div id="mainBannerContent2PeopleWord">
                          
                         <img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" /> <font class="f1"><a href="#" class="a1">{{$v->nickname}}:</a></font><font class="f2">&nbsp;&nbsp;{{$v->content}}</font><br />
+                        <div class="stateImgShow"><img src="{{$v->picname}}" /></div> 
 						<font class="f3">{{$v->publish_time}}<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
                         <a href="#" class="a1"><font class="style2">爱转发</font></a>&nbsp;&nbsp;<font class="f3">和其他31人转发过</font><br />
                             <!--微博回复栏-->

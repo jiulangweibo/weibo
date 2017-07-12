@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Home;
 use App\Model\Message;
 use App\Model\Follow;
-use App\Model\userinfo;
+use App\Model\Userinfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
