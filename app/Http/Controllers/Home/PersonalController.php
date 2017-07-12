@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Message;
 use App\Model\Userinfo;
+use App\Model\Follow;
 
 class personalController extends Controller
 {
@@ -17,7 +18,13 @@ class personalController extends Controller
       public function index()
     {
         //
-		
+		$user_id = session()->get('homeuser')[0]->id;
+		 $datas = Follow::where('id',$user_id)->orderBy('follow_count','desc')->first();
+		 //dd($datas);
+		  $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first();
+		 $datam = count(Message::where('user_id',$user_id)->get());
+		 
+		 
         $id = session()->get("homeuser")[0]->id;
         //dd ($id);
         $list= Userinfo::where("user_id",$id)->first();
@@ -31,7 +38,7 @@ class personalController extends Controller
 		//echo"<pre>";
 		//var_dump($add);die;
         //dump($info);
-		return view("home.personal.index",["add" => $add,"list"=>$list]);
+		return view("home.personal.index",["add" => $add,"list"=>$list,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam]);
     }
 
     /**

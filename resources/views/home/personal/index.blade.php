@@ -195,18 +195,16 @@ window.onload = function(){
                     <!-- 右侧mainRightPostionFirstLineWord2 DIV 开始 -->
                     <div id="mainRightPostionFirstLineWord2">
                     <ul id="ul1">
-                    <li><a href="/personal" class="a1"><font class="style1">2</font><br /><font class="style2">微博</font></a></li>
-                    <li><a href="/follow" class="a1"><font class="style1">12</font><br /><font class="style2">关注</font></a></li>
-                    <li><a href="/fans" class="a1"><font class="style1">23</font><br /><font class="style2">粉丝</font></a></li>
+                    <li><a href="/personal" class="a1"><font class="style1">{{$datam}}</font><br /><font class="style2">微博</font></a></li>
+                    <li><a href="/follow" class="a1"><font class="style1">{{ $datas->follow_count }}</font><br /><font class="style2">关注</font></a></li>
+                    <li><a href="/fans" class="a1"><font class="style1">{{ $dataf->fans_count }}</font><br /><font class="style2">粉丝</font></a></li>
                     </ul>
                     </div>
                 <!-- 右侧mainRightPostionFirstLineWord2 DIV 结束 -->                    
                 </div>
                 <!-- 右侧mainRightPostionFirstLine DIV 结束 -->
                 <div id="mainRightPostionFifthLine">
-                    <div id="mainRightPositionFifthLineContent">
-                    <a href="#" onclick="" class="a1"><font class="style4">我关注的话题</font>
-                    <img src="../images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>
+                    
                     </div>
               </div>
                 <!-- 右侧mainRightPostionSixthLine DIV 开始 -->
