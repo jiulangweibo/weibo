@@ -41,26 +41,7 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 
  
 });
-//Route::group(['prefix' => 'home','middleware'=>'home'], function () {
-  //  Route::get('/',"Home\RegisterController@index"); //前台定义前缀
 
-
-    //Route::resource('userinfo', 'Admin\UserinfoController'); //用户详情信息表
-    //Route::resource('register', 'Home\RegisterController'); //加载注册表
-    //Route::resource('follow', 'Admin\FollowController'); //粉丝表
-    //Route::resource('message', 'Admin\MessageController'); //微博内容表
-    //Route::resource('forward', 'Admin\ForwardController'); //转发微博表
-    //Route::resource('comments', 'Admin\CommentsController'); //评论表
-    //Route::resource('department', 'Admin\DepartmentController'); //评论表
-	//Route::resource('content', 'Admin\ContentController'); //内容状态表
-	//Route::resource('url', 'Admin\UrlController'); //友情链接
-	//Route::resource('admin', 'Admin\AdminController'); //管理员信息
-	//Route::resource('privileges', 'Admin\PrivilegesController'); //管理员权限
-	//Route::resource('/register', 'RegisterController'); //注册表
-	
-
- 
-//});
 Route::post('/dologin',"Home\LoginController@doLogin"); 	  //执行登录
 Route::get('/login',"Home\LoginController@login");            //执行加载登录
 Route::get('/register', 'RegisterController@index');          //加载注册页
@@ -82,7 +63,10 @@ Route::get('/setting',"Home\SettingController@index");		  //执行加载设置�
 Route::resource('/password',"Home\PasswordController");	  //执行加载修改密码视图
 Route::get('/avatar',"Home\AvatarController@index");		  //执行加载修改头像视图
 Route::post('/indexs/add',"Home\IndexsController@store");
-Route::post('/indexs/forward/{mid}/{uid}/{id}',"Home\IndexsController@forward"); //转发
+Route::post('/indexs/forward/{mid}/{uid}/{id}',"Home\IndexsController@indexs"); //转发
+Route::post('/indexs/forward/{mid}/{uid}/{id}/{content}',"Home\IndexsController@forward"); //转发
+
+Route::post('/indexs/praise/{mid}/{uid}',"Home\IndexsController@praise"); //点赞
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图
 
 Route::get('/follow',"Home\FollowController@index");      //加载关注主页

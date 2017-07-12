@@ -164,8 +164,12 @@
             	<!--个人展示-->
 				
             	<div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
+				
+					
 				@foreach ($message as $v)
                   <div class="stateShowWord">
+				  
+					
                     <table width="450" border="0" cellpadding="0" cellspacing="0" class="stateTable">
 					
                       <tr>
@@ -174,13 +178,14 @@
                       </tr>
 					  
                     </table>
+						
                   </div>
 				  
                    <div class="stateImgShow"><img src="{{$v['tupian']}}" /></div>            
 					<div class="stateShowtime"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<td><a href="#">评论</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">点赞</a></td>&nbsp&nbsp&nbsp
+					<td><a href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}})">点赞</a></td>&nbsp&nbsp&nbsp
 					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp&nbsp&nbsp
 					<td><a href="#">关注他(她)</a></td>
 
@@ -189,7 +194,38 @@
 					  
                       
 				  @endforeach
+				 
                 </div>
+				<form style="display:none;" action="" id="praise" name="praise" method="post" onsubmit="return doSubmit()">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				</form>
+				<script>
+			
+				function praise(mid,uid){
+					
+					alert(1);
+					/*$.ajax({
+					  type: 'POST',
+					  url: /indexs/praise,
+					  dataType:text,
+					  data:'mid='+mid+'&uid='+uid,
+					  success:function(data){ //成功回调函数
+								  document.praise.action = "/indexs/praise/"+mid+"/"+uid;
+								  document.praise.submit();
+								  alert('成功!');
+								  return true;
+								},
+					  error:function(){ //失败回调函数
+									alert("Ajax加载失败!");
+								  } 
+					   
+					}); */
+						//document.praise.action = "/indexs/praise/"+mid+"/"+uid;
+						//document.praise.submit();
+				}
+			
+				</script>
+				
 						   <center>
                     	{{ $info->links() }} 
                     </center>
@@ -377,27 +413,21 @@
 <!--总容器 container结束-->
  <p id="backtop"><a id="backtop1" href="#totop"><span></span>回到顶部</a></p>
 					
+					
+					
 					<form style="display:none;" action="" name="myform" method="post">
-					<input type="hidden" name="mid" value="{{ $v['message_id']}}">
-					<input type="hidden" name="uid" value="{{ $v['user_id']}}">
-					<input type="hidden" name="nickname" value="{{ $v['nickname']}}">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					</form>
+					
  
  
  <script>
 
-	//$('#zhuanfa').click(function(id){
-		
-	//	 document.myform.action = "/admin/url/"+id;
-      //   document.myform.submit();
-	
-	
-	//});
-	
- 
 	 function submit(mid,sud,id){
-		
+		 var val=prompt("需要说些什么话","");//将输入的内容赋给变量 val ，
+		// alert(val);
+		 if(val!=='' && val!==null){
+			
 			if(sud==id){
 				  alert('亲 不允许转发自己的微博哦!');
 				  
@@ -405,7 +435,7 @@
 				  if(confirm("是否转发此微博？")){
 			  
 		 
-			   document.myform.action = "/indexs/forward/"+mid+"/"+sud+"/"+id;
+			   document.myform.action = "/indexs/forward/"+mid+"/"+sud+"/"+id+"/"+val;
                document.myform.submit();
               // alert(mid);
               // alert(uid);
@@ -413,11 +443,31 @@
                }
             }
 
-		
+		 }if(val=='' && val!==null){
+			 val = null;
+			 if(sud==id){
+				  alert('亲 不允许转发自己的微博哦!');
+				  
+			  }else{
+				  if(confirm("是否转发此微博？")){
+			  
+		 
+			   document.myform.action = "/indexs/forward/"+mid+"/"+sud+"/"+id+"/"+val;
+               document.myform.submit();
+              // alert(mid);
+              // alert(uid);
+              // alert(id);
+               }
+            }
+			 
+			 
+		 }
 			
 		
 	}
- 
+	
+	
+	
  </script>
 </body>
 </html>

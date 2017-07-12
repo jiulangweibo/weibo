@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Message;
 use App\Model\Userinfo;
+use App\Model\Forward;
 use App\Model\Follow;
 
 class personalController extends Controller
@@ -18,10 +19,11 @@ class personalController extends Controller
       public function index()
     {
         //
+		//遍历关注粉丝微博数量
 		$user_id = session()->get('homeuser')[0]->id;
 		 $datas = Follow::where('id',$user_id)->orderBy('follow_count','desc')->first();
 		 //dd($datas);
-		  $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first();
+		 $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first();
 		 $datam = count(Message::where('user_id',$user_id)->get());
 		 
 		 
@@ -29,16 +31,29 @@ class personalController extends Controller
         //dd ($id);
         $list= Userinfo::where("user_id",$id)->first();
 		
-		$add= Message::where("user_id",$id)->orderBy('publish_time', 'desc')->paginate(4);
+		$add= Message::where("user_id",$id)->orderBy('publish_time', 'desc')->paginate(3);
+		
+		//
 		
 		foreach($add as $k=>$v){
 			$add[$k]->nickname = $list->nickname;
 		}
 		
+		
+		//遍历转发的微博消息
+		$forward = [];
+		$info= Forward::where("user_id",$user_id)->orderBy('forward_time','desc')->paginate(3);
+		foreach($info as $k=>$v){		
+			$forward[$k]=Message::where('message_id',$v['message_id'])->first();
+			$forward[$k]['nickname'] = Userinfo::where('user_id',$v['su_id'])->first()->nickname;
+			$forward[$k]['forward_time'] =$v['forward_time'];
+			$forward[$k]['forward_content'] =$v['forward_content'];
+		}
+		
 		//echo"<pre>";
-		//var_dump($add);die;
+	    //var_dump($forward);die;
         //dump($info);
-		return view("home.personal.index",["add" => $add,"list"=>$list,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam]);
+		return view("home.personal.index",["add" => $add,"list"=>$list,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam,'forward'=>$forward]);
     }
 
     /**

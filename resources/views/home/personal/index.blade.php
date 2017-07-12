@@ -123,6 +123,38 @@ window.onload = function(){
                   <div id="mainBannerContent2">
                      <!--个人微博-->
                      <div id="mainBannerContent2People">
+					  @foreach($forward as $v)
+                       <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 开始 -->
+                        <div id="mainBannerContent2PeopleImg">
+                          	<img src="http://{{$list->picname}}" width="54" height="54" alt="" title="" />
+                        </div>
+                        <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 结束 -->
+                        <!-- 第一个人微博 mainBannerContent2peopleWord DIV 开始  -->
+						@if($v->forward_content)
+                        <div id="mainBannerContent2PeopleWord">
+						<img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" />
+                        <font class="f1">{{$list->nickname}}<br/>转发并说:</font>{{$v->forward_content}}
+						<font class="f1">转自:<a href="#" class="a1">{{$v->nickname}}<br></a></font><font class="f2">{{$v->content}}</font><br />
+                        <div class="stateImgShow"><img src="{{$v->picname}}" /></div> 
+						<font class="f3">转发时间:{{$v->forward_time}}<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
+                        <a href="#" class="a1"><font class="style2">爱转发</font></a>&nbsp;&nbsp;<font class="f3">和其他31人转发过</font><br />
+						<br/>
+						</div>
+						@else
+					    <div id="mainBannerContent2PeopleWord">
+						<img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" />
+                        <font class="f1">{{$list->nickname}}<br/></font>
+						<font class="f1">转自:<a href="#" class="a1">{{$v->nickname}}</a></font><br/><font class="f2">{{$v->content}}</font><br />
+                        <div class="stateImgShow"><img src="{{$v->picname}}" /></div> 
+						<font class="f3">转发时间:{{$v->forward_time}}<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
+                        <a href="#" class="a1"><font class="style2">爱转发</font></a>&nbsp;&nbsp;<font class="f3">和其他31人转发过</font><br />
+						<br/>
+						</div>
+						@endif
+                        <!-- 第一个人微博 mainBannerContent2peopleWord DIV 结束  -->
+						@endforeach
+					 
+					 
                        @foreach($add as $v)
                        <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 开始 -->
                         <div id="mainBannerContent2PeopleImg">
@@ -166,15 +198,14 @@ window.onload = function(){
                </div>
                  <!--给微博定位结束-->
             </div>
-            
+
 			@else
-                <div id="mainBannerContent2PeopleWord">
-                    您还没有发布消息!
-                </div>
+                
 						
 			@endif
+			
              <!--自己发微博的地方结束-->
-             
+			
         </div>
         <!-- 左侧mainBannerDIV 结束 -->                       
         <!-- 右侧mainRight DIV开始 -->
