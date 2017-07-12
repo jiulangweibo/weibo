@@ -211,23 +211,19 @@ function windowClose(){
 
 /* 鼠标悬停时，设置背景为深色 */
 function stateMouseOver(divObj){
-	divObj.style.backgroundColor = "#f9f9f9";
+	divObj.style.backgroundColor = "#E9F4FA";
 	divObjchild = divObj.childNodes;
-	divObjchild[3].style.visibility = "visible";
-	var hdivObj = divObjchild[4].childNodes;//枚举回复窗口里面的控制div
-	for(var i=0;i < hdivObj.length; i++){
-		hdivObj[i].childNodes[3].style.visibility = "visible";
-	}
+	
+	
+	 
 }
 /* 鼠标离开时，设置背景为白色 */
 function stateMouseOut(divObj){
 	divObj.style.backgroundColor = "#ffffff";
 	divObjchild = divObj.childNodes;
-	divObjchild[3].style.visibility = "hidden";
-	var hdivObj = divObjchild[4].childNodes;//枚举回复窗口里面的控制div
-	for(var i=0;i < hdivObj.length; i++){
-		hdivObj[i].childNodes[3].style.visibility = "hidden";
-	}
+	
+	
+	 
 }
 
 /* 函数绑定*/

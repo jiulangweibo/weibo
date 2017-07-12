@@ -38,9 +38,11 @@ class LoginController extends Controller
                 session()->push("homeuser",$user);
                 return redirect("/indexs");
             }
+        }else{
+          return back()->with("msg","账号或密码错误！");
         }
         //return 1;
-        return back()->with("msg","账号或密码错误！");
+        
    }
  
    
