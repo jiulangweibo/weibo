@@ -117,9 +117,9 @@ class IndexsController extends Controller
 		$data['user_id'] = $id;
 		$data['message_id'] = $mid;
 		$data['su_id'] = $sud;
-		$id = $data->save();
+		$id = Forward::insertGetId($data);
 	
-				echo "$id";die;
+			
 			 return redirect('/indexs');
 	
 		
