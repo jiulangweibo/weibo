@@ -19,7 +19,7 @@ class IndexController extends Controller
 		$url =Url::orderBy('id','desc')->take(3)->get();
 		//dump($url);die;
 		$list = Userinfo::orderBy('register_time','asc')->take(4)->get();
-		$info = Message::orderBy('onclicknum','desc')->take(4)->get()->toArray();
+		$info = Message::orderBy('onclicknum','desc')->orderBy('publish_time','desc')->take(4)->get()->toArray();
      
 		//  dump($info);die;
 		$message = [];

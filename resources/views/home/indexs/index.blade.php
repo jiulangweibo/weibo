@@ -119,7 +119,7 @@
                               <div id="mainBannerTopIssueInsert5"></div>
                               <div id="mainBannerTopIssueInsert6">插入表情</div>
                             </a> -->
-                            <input type="submit" onclick="" value="发布" style="background-color:#3295E6; border:none">
+                            <input type="submit" name="button1" id="button1" value="发布" style="background-color:#3295E6; border:none"  />
                         </div>
                         </div>
                         </div>
@@ -137,6 +137,7 @@
 					if(content.match(/^.+$/)==null){
 						alert("您输入的内容为空,请重新输入在完成发布!");
 						return false;
+					
 					}
 					return true;
 				}
