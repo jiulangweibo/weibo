@@ -4,20 +4,21 @@ namespace App\Http\Controllers\Home;
 use App\Model\Message;
 use App\Model\Follow;
 use App\Model\Userinfo;
+use App\Model\Forward;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use App\Http\Controllers\Controller;
 
 class IndexsController extends Controller
 {
     public function index(Request $requst)
 	{	
+		
 			//统计个人发布的微博，关注，粉丝
    		 $user_id = session()->get('homeuser')[0]->id;
 		 $datas = Follow::where('id',$user_id)->orderBy('follow_count','desc')->first();
-		 //dd($datas);
-		  $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first();
+		 $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first()->toArray();
 		 $datam = count(Message::where('user_id',$user_id)->get());
-		
 		$id = session()->get("homeuser")[0]->id;
         //dd($id);die;
 		$list = Userinfo::where("user_id",$id)->first();
@@ -59,7 +60,9 @@ class IndexsController extends Controller
 		
 		return view("home.indexs.index",["list"=>$list,'info'=>$info,'message'=>$message,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam]);
     }
-     public function store(Request $request)
+	
+	
+	function store(Request $request)
     {
 		$user_id = session()->get('homeuser')[0]->id;
         //
@@ -107,5 +110,21 @@ class IndexsController extends Controller
 		}
 		
     }
+	
+	
+	function forward($mid,$sud,$id)
+    {
+		$data['user_id'] = $id;
+		$data['message_id'] = $mid;
+		$data['su_id'] = $sud;
+		$id = $data->save();
+	
+				echo "$id";die;
+			 return redirect('/indexs');
+	
+		
+		
+		
+	}
 
 }

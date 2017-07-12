@@ -90,7 +90,7 @@
                     </div>
                     <div style="float:right;">您还可以输入<font id="counter1">140</font>字！
                     </div>
-                    <form name="myform" action="/indexs/add" method="post" enctype="multipart/form-data" onsubmit="return doSubmit()">
+                    <form name="form" action="/indexs/add" method="post" enctype="multipart/form-data" onsubmit="return doSubmit()">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                       <div id="mainBannerTopIssueForm">
                             <!--id="mainBannerTopIssueFrame-->
@@ -131,7 +131,7 @@
 				//验证姓名
 				function content(){
 					//获取姓名
-					var content=document.myform.content.value;
+					var content=document.form.content.value;
 					//判断
 					if(content.match(/^.+$/)==null){
 						alert("您输入的内容为空,请重新输入在完成发布!");
@@ -179,13 +179,15 @@
                    <div class="stateImgShow"><img src="{{$v['tupian']}}" /></div>            
 					<div class="stateShowtime"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">点赞(1)</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">转发(2)</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">评论</a></td>&nbsp&nbsp&nbsp
+					<td><a href="#">点赞</a></td>&nbsp&nbsp&nbsp
+					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp&nbsp&nbsp
 					<td><a href="#">关注他(她)</a></td>
 
 					
 					</div>
+					  
+                      
 				  @endforeach
                 </div>
 						   <center>
@@ -374,5 +376,40 @@
 </div>
 <!--总容器 container结束-->
  <p id="backtop"><a id="backtop1" href="#totop"><span></span>回到顶部</a></p>
+					
+					<form style="display:none;" action="" name="myform" method="post">
+					<input type="hidden" name="mid" value="{{ $v['message_id']}}">
+					<input type="hidden" name="uid" value="{{ $v['user_id']}}">
+					<input type="hidden" name="nickname" value="{{ $v['nickname']}}">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					</form>
+ 
+ 
+ <script>
+
+	//$('#zhuanfa').click(function(id){
+		
+	//	 document.myform.action = "/admin/url/"+id;
+      //   document.myform.submit();
+	
+	
+	//});
+	
+ 
+	 function submit(mid,sud,id){
+		  if(confirm("是否转发此微博？")){
+			   document.myform.action = "/indexs/forward/"+mid+"/"+sud+"/"+id;
+               document.myform.submit();
+              // alert(mid);
+              // alert(uid);
+              // alert(id);
+              
+            }
+			
+	
+	}
+ 
+ </script>
 </body>
 </html>
+	
