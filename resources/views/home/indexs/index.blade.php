@@ -398,6 +398,9 @@
  
 	 function submit(mid,sud,id){
 		  if(confirm("是否转发此微博？")){
+			  if(sud==id){
+				  alert('亲 不允许转发自己的微博哦!')
+			  }
 			   document.myform.action = "/indexs/forward/"+mid+"/"+sud+"/"+id;
                document.myform.submit();
               // alert(mid);
