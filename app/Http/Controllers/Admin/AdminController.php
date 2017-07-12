@@ -45,11 +45,13 @@ class AdminController extends Controller
         //获取指定的部分数据
         $data = $request->only("admin_name","admin_password","admin_phone");
         $data['admin_password'] = md5($data['admin_password']);
+		$time = time()+480*60;
+        $data['admin_time'] = date("Y-m-d H:i:s",$time);
         $admin_id = Admin::insertGetId($data);
         
          if($admin_id>0){
-            echo "添加成功";
-            //return redirect('admin/admin');
+            //ssssecho "添加成功";
+            return redirect('admin/admin');
         }else{
            return back()->with("err","添加失败!");
         } 

@@ -5,6 +5,8 @@
 <title>好友管理 灵步网微博-点滴生活，精彩每一天！</title>
 <link href="../styles/global.css" type="text/css" rel="stylesheet">
 <link href="../styles/friend maneger.css" type="text/css" rel="stylesheet">
+
+<link href="../styles/global.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <!-- 页面整体 -->
@@ -28,12 +30,13 @@
         <!-- top部分的LogoDIV结束 -->
         
         <!-- top部分的文字导航 -->
-        <div id="topWordMenu">
+       <div id="topWordMenu">
         	<ul>
-            	<li>已有灵步账号，<a href="#">请登录</a></li>
-                <li><a href="SBGG.html">随便逛逛</a></li>
-                <li><a href="#">手机</a></li>
-                <li><a href="#">帮助</a></li>
+            	<li><a href="/indexs">首页</a></li>
+                <li><a href="/personal">我的微博</a></li>
+                <li><a href="/account">设置</a></li>
+                <li><a href="/password">修改密码</a></li>
+                <li><a href="/logout">退出</a></li>
             </ul>
         </div>
         <!-- top部分的文字导航结束 -->
@@ -46,7 +49,7 @@
       <tr>
         <td width="21" rowspan="7" class="td1"></td>
         <td height="60" align="center" valign="middle" bgcolor="#FFFFFF" class="td2">
-        <img src="../images/MainRightFirstLineTitle.gif" width="48" height="48" alt="" /></td>
+        <img src="http://{{$add->picname}}" width="48" height="48" alt="" /></td>
         <td height="60" class="td3"><font color="#000000" size="3"><b>你关注的人（{{ $datas->follow_count }}）</b></font></td>
         <td rowspan="7" class="td1 height"></td>
       </tr>
@@ -78,10 +81,22 @@
       </tr>
     </table>
     <table width="200" border="0" cellpadding="0" cellspacing="0" id="tb2">
-      <tr>
-        <td height="65" align="left" class="font2">　
-        <br />　　天津 　滨海新区</td>
-      </tr>
+	<tr>
+	<td height="101" align="left" valign="top">
+      <div id="mainBanner">
+            <!-- 左侧mainBannerTopDIV 开始 -->
+            <div id="mainBannerTop">
+                <!-- 左侧mainBannerTopImgDIV 开始 -->
+                <div id="mainBannerTopImg">
+                    <img src="http://{{$add->picname}}" width="95" height="97"/>
+                </div>
+            	<!-- 左侧mainBannerTopImgDIV 结束 -->
+                <!-- 左侧mainBannerToWordDIV 开始 -->
+                <div id="mainBannerTopWord"><font color="#330000" size="4" letter-spacing:8px ><b>{{$add->nickname}}</b></font>
+                </div>
+            	<!-- 左侧mainBannerTopWordDIV 结束 -->
+            </div>
+		</tr>
       <tr>
         <td height="60" class="font2"><br /><font color="#cccccc" size="3" face="微软小黑"><b>　　{{$datam}}       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       {{ $datas->follow_count }}      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    {{ $dataf->fans_count }}</b></font>
         <br />
