@@ -35,7 +35,7 @@
         <div id="topWordMenu">
         	<ul>
             	<li>已有灵步账号，<a href="/login">请登录</a></li>
-                <li><a href="SBGG.html">随便逛逛</a></li>
+                <li><a href="/register">注册</a></li>
                 <li><a href="#">手机</a></li>
                 <li><a href="#">帮助</a></li>
             </ul>

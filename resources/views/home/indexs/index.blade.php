@@ -71,7 +71,6 @@
                 <li><a href="/personal">我的微博</a></li>
                 <li><a href="/account">设置</a></li>
                 <li><a href="/password">修改密码</a></li>
-                <li><a href="#">手机</a></li>
                 <li><a href="/logout">退出</a></li>
             </ul>
         </div>
@@ -239,15 +238,15 @@
                         <div id="mainRightPostionSecondLine">
                             <!-- 右侧mainRightPositionSecondLineContent DIV 开始 -->
                             <div id="mainRightPositionSecondLineContent">
-                                <a href="#" class="a1"><font style="font-size:16px;font-weight:700; color:#000;">首页</font></a><br />
+                                <a href="/indexs" class="a1"><font style="font-size:16px;font-weight:700; color:#000;">首页</font></a><br />
                                 <hr color="#79BDD1" zize="2" style="" />
-                                <a href="#" class="a1"><font class="style3">@我的</font></a>
+                                <a href="/account" class="a1"><font class="style3">个人资料</font></a>
                                 <hr class="h1">
-                                <a href="#" class="a1"><font class="style3">我的私信</font></a>
+                                <a href="/personal" class="a1"><font class="style3">我发布的微博</font></a>
                                 <hr class="h1">
-                                <a href="#" class="a1"><font class="style3">转发</font></a>
+                                <a href="/follow" class="a1"><font class="style3">我关注的</font></a>
                                 <hr class="h1">
-                                <a href="#" class="a1"><font class="style3">我的收藏</font></a>
+                                <a href="/fans" class="a1"><font class="style3">我的粉丝</font></a>
                             </div>
                             <!-- 右侧mainRightPositionSecondLineContent DIV 开始 -->
                         </div>
