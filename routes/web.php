@@ -65,7 +65,13 @@ Route::get('/avatar',"Home\AvatarController@index");		  //执行加载修改头�
 Route::post('/indexs/add',"Home\IndexsController@store");
 Route::post('/indexs/forward/{mid}/{uid}/{id}',"Home\IndexsController@indexs"); //转发
 Route::post('/indexs/forward/{mid}/{uid}/{id}/{content}',"Home\IndexsController@forward"); //转发
+<<<<<<< HEAD
 Route::post('/indexs/praise/{mid}/{uid}',"Home\IndexsController@praise"); //点赞
+=======
+Route::get('/indexs/praise/{mid}/{uid}',"Home\IndexsController@praise"); //点赞
+Route::get('/indexs/praises/{mid}/{uid}',"Home\IndexsController@praises"); //点赞
+Route::post('/indexs/dd',"Home\IndexsController@dd"); //点赞
+>>>>>>> 18e980d3dc6c9e5efd86fe1cda634a339bc9f294
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图
 
 Route::get('/follow',"Home\FollowController@index");      //加载关注主页
