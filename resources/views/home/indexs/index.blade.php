@@ -192,7 +192,7 @@
 					
 					
 					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">关注他(她)</a></td>
+					<td><a href="javascript:dosubmit({{session('homeuser')[0]->id}},{{ $v['user_id']}})" id="guanzhu">关注他(她)</a></td>
 
 					
 					</div>
@@ -492,7 +492,24 @@
  
  
  <script>
+ 
+			<!--关注-->
 
+		function dosubmit(uid,sud){
+		  if(confirm("关注成功！")){
+			  document.myform.action = "/indexs/follow/"+uid+"/"+sud;
+              document.myform.submit();
+               //alert(mid);
+              //alert(uid);
+              // alert(id);
+              
+            }
+			
+	
+	}
+	
+	
+	
 	 function submit(mid,sud,id){
 		 var val=prompt("需要说些什么话","");//将输入的内容赋给变量 val ，
 		// alert(val);
