@@ -183,11 +183,13 @@
 				  
                    <div class="stateImgShow"><img src="{{$v['tupian']}}" /></div>            
 					<div class="stateShowtime"> 
-                    <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					<td><a href="#">评论</a></td>&nbsp&nbsp&nbsp
+                    <td width="390">{{$v['publish_time']}}</a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    
+					<td><a href="javascript:comments({{ $v['message_id'] }},{{session('homeuser')[0]->id}})" onclick="reXianShi(this)" >评论</a></td>&nbsp;&nbsp;&nbsp;
 					
 					
-					<td ><a id="did" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}})">点赞</a></td>&nbsp&nbsp&nbsp
+					<td ><a id="did" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}})">点赞</a></td>&nbsp;&nbsp;&nbsp;
 					
 					
 					
@@ -201,13 +203,40 @@
 				  @endforeach
 				 
                 </div>
+                <div id="recieve">
+                        <div id="ff" style="float:left;"><font style="font-size:16px; color:#FDFDFD">&nbsp;&nbsp;&nbsp;&nbsp;评&nbsp;&nbsp;论</font></div>
+                        <div id="left" style="float:right; margin-top:10px; color:#FFF; margin-right:10px;">您还有可以输入<font id="counter2" color="#ffffff">140</font>字！&nbsp;&nbsp;&nbsp;<img src="./images/hongcha1.gif" alt="" width="14" height="13" align="absmiddle" title="" onclick="windowClose()" /></div><br />
+                        <div id="wt">
+                        <form action="#" method="post" name="myform1" >
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <textarea name="content" cols="" rows="" id="ta1" onkeyup="calNum(this,counter2,1)" style="overflow:hidden;border:1px #0CF solid;">
+                          
+						  </textarea>
+                          <br />
+                        </form>   
+							<div style="float:right; margin-right:25px; margin-top:7px; text-align:right;">
+                                <input type="button" value=" 评 论 " id="dddd"  />
+                            </div>						
+                        </div> 
+                  </div>
 				<script>
-				//var did = document.getElementById("did");
-				//did.onclick = function(){
-						//alert(1);
-				//}
 				
 				
+
+				    function comments(mid,id){
+						
+						document.getElementById("dddd").onclick=function(){
+							var dd = document.getElementById("ta1").value;
+							if(dd){
+							document.myform.action = "/indexs/comments/"+mid+"/"+id+"/"+dd;
+							document.myform.submit();
+							}else{
+								alert("请输入内容!");
+							}
+						};
+						
+					}
+
             function praise(mid,uid){
                 
 				//获取请求参数

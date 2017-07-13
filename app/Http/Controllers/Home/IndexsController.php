@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Home;
+use Illuminate\Support\Facades\Redis;
 use App\Model\Message;
 use App\Model\Follow;
 use App\Model\Userinfo;
@@ -192,6 +193,20 @@ class IndexsController extends Controller
 		{
 			return $request->input('message_id');
 			
+		}
+
+
+		function comments($mid,$id,$content)
+		{
+			$comments = Redis::hmset("comment",["one"=>$mid,"two"=>$id,"three"=>$content]);
+			$bianlian = Redis::hgetall("comment");
+			//dd($bianlian);
+			var_dump($bianlian);
+			 
+		}
+		function content($content)
+		{
+
 		}
 
 }
