@@ -166,7 +166,7 @@
             	<div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
 				
 					
-				@foreach ($message as $v)
+				@foreach ($message as $k=>$v)
                   <div class="stateShowWord">
 				  
 					
@@ -187,7 +187,7 @@
 					<td><a href="#">评论</a></td>&nbsp&nbsp&nbsp
 					
 					
-					<td ><a id="did" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}})">点赞</a></td>&nbsp&nbsp&nbsp
+					<td ><a id="{{$k}}" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}},{{$k}})">点赞</a></td>&nbsp&nbsp&nbsp
 					
 					
 					
@@ -208,13 +208,15 @@
 				//}
 				
 				
-            function praise(mid,uid){
-                
+            function praise(mid,uid,i){
+        
+				
+				
 				//获取请求参数
 				   //var nodeList = $("#did");
-					//alert(nodeList.length)
+					
 					//return;
-               var dian = document.getElementById("did").innerHTML;
+               var dian = document.getElementById(i).innerHTML;
                if(dian=='点赞'){
                 //1. 创建一个请求对象
                 var xmlhttp;
@@ -232,8 +234,9 @@
                     if(xmlhttp.readyState==4){
                         //判断响应状态码:是否是200
                         if(xmlhttp.status == 200){ 
-						document.getElementById("did").innerHTML = ("已点赞");
-                            var str = xmlhttp.responseText;
+						//alert(i);
+						document.getElementById(i).innerHTML = ("已点赞");
+                            //var str = xmlhttp.responseText;
 							//alert(str);
                         }else{
                             alert("服务器端响应错误!");
@@ -252,8 +255,8 @@
                 
                 return false;
 			   }
-            
-			
+		
+		
 			if(dian=='已点赞'){
                 //1. 创建一个请求对象
                 var xmlhttp;
@@ -271,7 +274,7 @@
                     if(xmlhttp.readyState==4){
                         //判断响应状态码:是否是200
                         if(xmlhttp.status == 200){ 
-						document.getElementById("did").innerHTML = ("点赞");
+						document.getElementById(i).innerHTML = ("点赞");
                             var str = xmlhttp.responseText;
 							//alert(str);
                         }else{
