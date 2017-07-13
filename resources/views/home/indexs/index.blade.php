@@ -223,7 +223,7 @@
                     xmlhttp=new XMLHttpRequest();
                 }else{// code for IE6, IE5
                     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-                }
+                } 
 
                 //2. 设置回调函数
                 xmlhttp.onreadystatechange = function(){
