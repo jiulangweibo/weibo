@@ -72,5 +72,6 @@ Route::resource('/account',"Home\AccountController");		  //执行加载账号设
 
 Route::get('/follow',"Home\FollowController@index");      //加载关注主页
 Route::get('/fans',"Home\FansController@index");      //加载粉丝主页
+Route::get('/search',"Home\SearchController@index");      //加载搜索页
 });
 Route::post('/avatar/upload',"Home\AvatarController@uploadFile");	

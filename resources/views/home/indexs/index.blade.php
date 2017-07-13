@@ -384,8 +384,8 @@
                         <div id="mainRightPostionFouthLine">
                         	<!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->	
                         	<div id="mainRightPositionFourthLineContent">
-                            <form action="" method="get">
-                              <input type="text" name="textfield" id="textfield1"/>
+                            <form action="/home/search"" method="get">
+                              <input type="text" name="textfield" id="textfield1" name="nickname" placeholder="用户昵称"/>
                               <a href="#"><img src="./images/search.gif" alt="" width="27" height="25" align="middle" title="" border="0"/></a>
                             </form>
                             <a href="#" onclick="" class="a1"><font class="style4">热门话题</font>
