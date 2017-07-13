@@ -18,12 +18,12 @@
     	<!-- top部分的LogoDIV -->
    		<div id="topLogo">
         	<!-- topLogo部分的icoDIV -->
-            <div id="topLogoIco"> <a href="index.html"><img src="images/logo_ipad.png" width="72" height="72" alt="" /></a>
+            <div id="topLogoIco"> <a href="index.html"><img src="../images/logo_ipad.png" width="72" height="72" alt="" /></a>
           	</div>
             <!-- topLogo部分的icoDIV结束 -->
             
             <!-- topLogo部分的wordDIV -->
-            <div id="topLogoWord"> <a href="index.html"><img src="images/LogoMaker.gif" width="128" height="60" alt="" /></a>
+            <div id="topLogoWord"> <a href="index.html"><img src="../images/LogoMaker.gif" width="128" height="60" alt="" /></a>
           	</div>
             <!-- topLogo部分的wordDIV -->
       </div>
@@ -106,7 +106,7 @@
         </div>
         <!-- 换验证码 DIV 结束 -->
         <!-- 注册成功 DIV 开始 -->
-        <div id="success"> <img  id="link" src="images/ZCButton1.gif" border="0" onclick="checkAll()" /> </div>
+        <div id="success"> <img  id="link" src="../images/ZCButton1.gif" border="0" onclick="checkAll()" /> </div>
         <!-- 注册成功 DIV 结束 -->
         <!-- 头部拉起控制DIV 开始 -->
         <div id="hangUp"> <img src="images/UpArrow.gif" width="20" height="23" onclick="hangUp()" /> </div>
