@@ -166,7 +166,7 @@
             	<div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
 				
 					
-				@foreach ($message as $v)
+				@foreach ($message as $k=>$v)
                   <div class="stateShowWord">
 				  
 					
@@ -187,14 +187,11 @@
 
                     
 					<td><a href="javascript:comments({{ $v['message_id'] }},{{session('homeuser')[0]->id}})" onclick="reXianShi(this)" >评论</a></td>&nbsp;&nbsp;&nbsp;
-					
-					
-					<td ><a id="did" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}})">点赞</a></td>&nbsp;&nbsp;&nbsp;
-					
-					
-					
+			
+					<td ><a id="{{$k}}" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}},{{$k}})">点赞</a></td>&nbsp&nbsp&nbsp
+
 					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">关注他(她)</a></td>
+					<td><a href="javascript:dosubmit({{session('homeuser')[0]->id}},{{ $v['user_id']}})" id="guanzhu">关注他(她)</a></td>
 
 					
 					</div>
@@ -221,7 +218,6 @@
                   </div>
 				<script>
 				
-				
 
 				    function comments(mid,id){
 						
@@ -237,13 +233,9 @@
 						
 					}
 
-            function praise(mid,uid){
-                
-				//获取请求参数
-				   //var nodeList = $("#did");
-					//alert(nodeList.length)
-					//return;
-               var dian = document.getElementById("did").innerHTML;
+            function praise(mid,uid,i){
+        
+               var dian = document.getElementById(i).innerHTML;
                if(dian=='点赞'){
                 //1. 创建一个请求对象
                 var xmlhttp;
@@ -261,8 +253,9 @@
                     if(xmlhttp.readyState==4){
                         //判断响应状态码:是否是200
                         if(xmlhttp.status == 200){ 
-						document.getElementById("did").innerHTML = ("已点赞");
-                            var str = xmlhttp.responseText;
+						//alert(i);
+						document.getElementById(i).innerHTML = ("已点赞");
+                            //var str = xmlhttp.responseText;
 							//alert(str);
                         }else{
                             alert("服务器端响应错误!");
@@ -281,8 +274,8 @@
                 
                 return false;
 			   }
-            
-			
+		
+		
 			if(dian=='已点赞'){
                 //1. 创建一个请求对象
                 var xmlhttp;
@@ -300,7 +293,7 @@
                     if(xmlhttp.readyState==4){
                         //判断响应状态码:是否是200
                         if(xmlhttp.status == 200){ 
-						document.getElementById("did").innerHTML = ("点赞");
+						document.getElementById(i).innerHTML = ("点赞");
                             var str = xmlhttp.responseText;
 							//alert(str);
                         }else{
@@ -521,7 +514,24 @@
  
  
  <script>
+ 
+			<!--关注-->
 
+		function dosubmit(uid,sud){
+		  if(confirm("关注成功！")){
+			  document.myform.action = "/indexs/follow/"+uid+"/"+sud;
+              document.myform.submit();
+               //alert(mid);
+              //alert(uid);
+              // alert(id);
+              
+            }
+			
+	
+	}
+	
+	
+	
 	 function submit(mid,sud,id){
 		 var val=prompt("需要说些什么话","");//将输入的内容赋给变量 val ，
 		// alert(val);
