@@ -7,7 +7,7 @@
 <link href="./styles/global.css" type="text/css" rel="stylesheet" />
 <script language="javascript" src="./script/CustomerIndex.js" ></script>
 <script language="javascript" src="./script/trim.js" ></script>
-<script language="javascript" src="./script/jquery-1.6.2.min.js"></script>
+<script src="./script/jquery-1.8.3.min.js"></script>
 <style>
   .pagination {
   display: inline-block;
@@ -185,7 +185,12 @@
 					<div class="stateShowtime"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<td><a href="#">评论</a></td>&nbsp&nbsp&nbsp
-					<td><a href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}})">点赞</a></td>&nbsp&nbsp&nbsp
+					
+					
+					<td ><a id="did" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}})">点赞</a></td>&nbsp&nbsp&nbsp
+					
+					
+					
 					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp&nbsp&nbsp
 					<td><a href="#">关注他(她)</a></td>
 
@@ -196,33 +201,98 @@
 				  @endforeach
 				 
                 </div>
-				<form style="display:none;" action="" id="praise" name="praise" method="post" onsubmit="return doSubmit()">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				</form>
 				<script>
+				//var did = document.getElementById("did");
+				//did.onclick = function(){
+						//alert(1);
+				//}
+				
+				
+            function praise(mid,uid){
+                
+				//获取请求参数
+				   //var nodeList = $("#did");
+					//alert(nodeList.length)
+					//return;
+               var dian = document.getElementById("did").innerHTML;
+               if(dian=='点赞'){
+                //1. 创建一个请求对象
+                var xmlhttp;
+                if(window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{// code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                //2. 设置回调函数
+                xmlhttp.onreadystatechange = function(){
+                    //alert('ok:'+xmlhttp.readyState);
+                    //当前请求状态为4时
+                    if(xmlhttp.readyState==4){
+                        //判断响应状态码:是否是200
+                        if(xmlhttp.status == 200){ 
+						document.getElementById("did").innerHTML = ("已点赞");
+                            var str = xmlhttp.responseText;
+							//alert(str);
+                        }else{
+                            alert("服务器端响应错误!");
+                        }
+                    }
+                    
+                }
+                
+                //3. 初始化请求对象
+                xmlhttp.open("get","/indexs/praise/"+mid+"/"+uid,true);
+                //设置请求头信息,让其支持post的参数提交
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+                //4. 执行发送:
+                xmlhttp.send();
+                
+                return false;
+			   }
+            
 			
-				function praise(mid,uid){
-					
-					alert(1);
-					/*$.ajax({
-					  type: 'POST',
-					  url: /indexs/praise,
-					  dataType:text,
-					  data:'mid='+mid+'&uid='+uid,
-					  success:function(data){ //成功回调函数
-								  document.praise.action = "/indexs/praise/"+mid+"/"+uid;
-								  document.praise.submit();
-								  alert('成功!');
-								  return true;
-								},
-					  error:function(){ //失败回调函数
-									alert("Ajax加载失败!");
-								  } 
-					   
-					}); */
-						//document.praise.action = "/indexs/praise/"+mid+"/"+uid;
-						//document.praise.submit();
-				}
+			if(dian=='已点赞'){
+                //1. 创建一个请求对象
+                var xmlhttp;
+                if(window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{// code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                //2. 设置回调函数
+                xmlhttp.onreadystatechange = function(){
+                    //alert('ok:'+xmlhttp.readyState);
+                    //当前请求状态为4时
+                    if(xmlhttp.readyState==4){
+                        //判断响应状态码:是否是200
+                        if(xmlhttp.status == 200){ 
+						document.getElementById("did").innerHTML = ("点赞");
+                            var str = xmlhttp.responseText;
+							//alert(str);
+                        }else{
+                            alert("服务器端响应错误!");
+                        }
+                    }
+                    
+                }
+                
+                //3. 初始化请求对象
+                xmlhttp.open("get","/indexs/praises/"+mid+"/"+uid,true);
+                //设置请求头信息,让其支持post的参数提交
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+                //4. 执行发送:
+                xmlhttp.send();
+                
+                return false;
+			   }
+            }
+        
 			
 				</script>
 				

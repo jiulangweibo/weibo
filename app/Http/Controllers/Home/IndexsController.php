@@ -5,13 +5,18 @@ use App\Model\Message;
 use App\Model\Follow;
 use App\Model\Userinfo;
 use App\Model\Forward;
+use App\Model\Praise;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class IndexsController extends Controller
 {
     public function index(Request $requst)
-	{	
+	{
+
+		//$list = Praise::where('user_id',1)->where('message_id',97)->first();
+		//echo"<pre>";
+		//var_dump("$list");die;
 			//统计个人发布的微博，关注，粉丝
    		 $user_id = session()->get('homeuser')[0]->id;
 		 $datas = Follow::where('id',$user_id)->orderBy('follow_count','desc')->first();
@@ -138,8 +143,55 @@ class IndexsController extends Controller
 		
 	}
 	
-	function praise($mid,$uid){
-		return 1;
+	function praise($mid,$uid)
+	{
+		$list = Praise::where('user_id',$uid)->where('message_id',$mid)->first();
+		if($list==''){
+			$data['message_id'] = $mid;
+			$data['user_id'] = $uid;
+			$data['praise_count'] = 1;
+			$id = Praise::insertGetId($data);
+		}else{
+			
+			$praise_count = $list->praise_count++;
+			$data['praise_count'] =$list->praise_count;
+			$m = Praise::where('user_id',$uid)->where('message_id',$mid)->update($data);
+		}
+		
+	 
+			$info = Message::where('message_id',$mid)->first();
+			$praise_count = $info->praise_count++;
+			$cccc['praise_count'] =$info->praise_count;
+			$m = Message::where('message_id',$mid)->update($cccc);
+		
+		//return $data;
 	}
+	
+	
+	
+		function praises($mid,$uid)
+	{
+			$list = Praise::where('user_id',$uid)->where('message_id',$mid)->first();
+			$praise_count = $list->praise_count--;
+			$data['praise_count'] =$list->praise_count;
+			$m = Praise::where('user_id',$uid)->where('message_id',$mid)->update($data);
+			
+			
+				
+			$info = Message::where('message_id',$mid)->first();
+			$praise_count = $info->praise_count--;
+			$dddd['praise_count'] =$info->praise_count;
+			$m = Message::where('message_id',$mid)->update($dddd);
+			
+		
+		
+		//return $data;
+	}
+	
+		function dd(Request $request)
+		{
+			return $request->input('message_id');
+			
+		}
 
 }
