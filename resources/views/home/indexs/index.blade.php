@@ -247,10 +247,7 @@
 
 					
 					</div>
-					  
-                      
-				  @endforeach
-				 
+
                 </div>
 				<script>
 				//var did = document.getElementById("did");
