@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -48,11 +48,11 @@
 <!-- 总容器 container开 始-->
 <div>
 <div id="container">
-      <!-- topDIV 开始 -->
+	    <!-- topDIV 开始 -->
   <div id="top">
     <!-- top部分的LogoDIV -->
-      <div id="topLogo">
-          <!-- topLogo部分的icoDIV -->
+    	<div id="topLogo">
+        	<!-- topLogo部分的icoDIV -->
             <div id="topLogoIco"> <a href="CustomerIndex.html"><img src="./images/logo_ipad.png" width="72" height="72" alt="" /></a>
           </div>
             <!-- topLogo部分的icoDIV结束 -->
@@ -65,9 +65,9 @@
         <!-- top部分的LogoDIV结束 -->
         
         <!-- top部分的文字导航 -->
-  <div id="topWordMenu">
-          <ul>
-              <li><a href="/indexs">首页</a></li>
+	<div id="topWordMenu">
+        	<ul>
+            	<li><a href="/indexs">首页</a></li>
                 <li><a href="/personal">我的微博</a></li>
                 <li><a href="/account">设置</a></li>
                 <li><a href="/password">修改密码</a></li>
@@ -81,7 +81,7 @@
    <div id="main">
         <!-- 左侧mainBannerDIV 开始 -->
     <div id="mainBanner">
-          <!-- mainBannerTop DIV 开始 -->
+        	<!-- mainBannerTop DIV 开始 -->
       <div id="mainBannerTop">
             <!--id=mainBannerTopIssue 发布框-->
         <div id="mainBannerTopIssue">
@@ -96,7 +96,7 @@
                             <!--id="mainBannerTopIssueFrame-->
                             <div id="mainBannerTopIssueFrame">
                               <textarea name="content" rows="4" class="Size" id="textfield2"  style="overflow:hidden;border:1px #0CF solid;" onkeyup="calNum(this,counter1,0)"></textarea>
-                
+							  
                             </div>
                             <!--id="mainBannerTopIssueInsert 插入链接-->
                         <div id="mainBannerTopIssueInsert">
@@ -105,10 +105,10 @@
                           <!--确认发布-->
                         <div id="mainBannerTopIssueSure">
                         <div id="mainBannerTopIssueSure2">
-            <div id="mainBannerTopIssueInsert2">
-            <input type="file" name="picname" >
-             </div>       
-            <!-- <a href="file" class="a1">
+						<div id="mainBannerTopIssueInsert2">
+						<input type="file" name="picname" >
+						 </div>				
+						<!-- <a href="file" class="a1">
                             <div id="mainBannerTopIssueInsert1"></div>
                           
                             </a>
@@ -122,27 +122,27 @@
                         </div>
                         </div>
                         </div>
-                  <script>
-        //提交判断
-        function doSubmit(){
-          return content();
-        }
-        
-        //验证姓名
-        function content(){
-          //获取姓名
-          var content=document.form.content.value;
-          //判断
-          if(content.match(/^.+$/)==null){
-            alert("您输入的内容为空,请重新输入在完成发布!");
-            return false;
-          
-          }
-          return true;
-        }
+									<script>
+				//提交判断
+				function doSubmit(){
+					return content();
+				}
+				
+				//验证姓名
+				function content(){
+					//获取姓名
+					var content=document.form.content.value;
+					//判断
+					if(content.match(/^.+$/)==null){
+						alert("您输入的内容为空,请重新输入在完成发布!");
+						return false;
+					
+					}
+					return true;
+				}
 
-      
-      </script>
+			
+			</script>
                     </form> 
           </div>
 
@@ -161,93 +161,45 @@
             </div> 
             <!--不同人的内容-->
             <div id="mainBannerContent">
-              <!--个人展示-->
-        @foreach ($message as $v)
-          <div class="stateShow" >
-                  <div class="stateShowWord" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
-                    <table width="450" border="0" cellpadding="0" cellspacing="0" class="stateTable">
-                      <tr>
-                        <td width="70" align="center" valign="top"><a href="#"><img src="images/face/16.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="380" ><a href="#">{{$v['nickname']}}</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />{{$v['content']}}</td>
-                      </tr>
-                    </table>
-                  </div>
-                   <div class="stateImgShow"><img src="{{$v['tupian']}}" /></div>            
-                  <div class="stateShowtime"> {{$v['publish_time']}} </div>
-                  <div >
-                      <a  href="#" onclick="reXianShi(this)">回复</a>
-                      <a  href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a>
-                      <a  href="" onclick="delState(this)">删除</a></div>
-                  <div class="huifu"></div>
-                </div>
-                
-
-        @endforeach
-        <form style="display:none;" action="" id="praise" name="praise" method="post" onsubmit="return doSubmit()">
-                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                </form>
-        <div id="recieve">
-                        <div id="ff" style="float:left;"><font style="font-size:16px; color:#FDFDFD">&nbsp;&nbsp;&nbsp;&nbsp;回&nbsp;&nbsp;复</font></div>
-                        <div id="left" style="float:right; margin-top:10px; color:#FFF; margin-right:10px;">您还有可以输入<font id="counter2" color="#ffffff">140</font>字！&nbsp;&nbsp;&nbsp;<img src="images/hongcha1.gif" alt="" width="14" height="13" align="absmiddle" title="" onclick="windowClose()" /></div><br />
-                        <div id="wt">
-                        <form action="" method="get">
-                          <textarea name="ta" cols="" rows="" id="ta1" onkeyup="calNum(this,counter2,1)" style="overflow:hidden;border:1px #0CF solid;">
-                            </textarea>
-                          <br />
-                            <div style="float:right; margin-right:25px; margin-top:7px; text-align:right;">
-                                <!--&nbsp;&nbsp;<input type="checkbox" name="引用原微博" value="复选框"/>&nbsp;&nbsp;引用原微博-->
-                                <input name="" type="button" value=" 回 复 " id="sub1" onclick="submitRstate()" />
-                            </div>
-                        </form>           
-                        </div> 
-                        <!-- 回复DIV 结束 -->
-                  </div>
-              <!-- <div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
+            	<!--个人展示-->
+				
+            	<div class="stateShow" onmouseover="stateMouseOver(this)" onmouseout="stateMouseOut(this)">
+				
+					
+				@foreach ($message as $v)
                   <div class="stateShowWord">
+				  
+					
                     <table width="450" border="0" cellpadding="0" cellspacing="0" class="stateTable">
-          
+					
                       <tr>
                         <td width="70" align="center" valign="top"><a href="#"><img src="http://{{$v['touxiang']}}" alt="" width="48" height="48" /></a></td>
                         <td width="380" ><a href="#">{{$v['nickname']}}</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />{{$v['content']}}</td>
                       </tr>
-            
+					  
                     </table>
-            
+						
                   </div>
-          
+				  
                    <div class="stateImgShow"><img src="{{$v['tupian']}}" /></div>            
-
-          <div class="stateShowtime"> 
-            <!-- <div class="stateOp"> -->
-               <!-- {{$v['publish_time']}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="opState" onclick="reXianShi(this)">评论</a></td>&nbsp;&nbsp;&nbsp;
-                <a href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}})">点赞</a></td>&nbsp;&nbsp;&nbsp;
-                <a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a>&nbsp;&nbsp;&nbsp;
-                <a href="#">关注他(她)</a>
-           <!--  </div> -->
-            <!-- <div class="huifu"></div>
-          </div>  </div> --> 
-          
-        
-        
-               <center>
-                      {{ $info->links() }} 
-
 					<div class="stateShowtime"> 
-                    <td width="390">{{$v['publish_time']}}</a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<td><a href="#">评论</a></td>&nbsp;&nbsp;&nbsp;
+                    <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					<td><a href="#">评论</a></td>&nbsp&nbsp&nbsp
 					
 					
-					<td ><a id="did" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}})">点赞</a></td>&nbsp;&nbs;p&nbsp;
+					<td ><a id="did" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}})">点赞</a></td>&nbsp&nbsp&nbsp
 					
 					
 					
-					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp;&nbsp;&nbsp;
+					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp&nbsp&nbsp
 					<td><a href="#">关注他(她)</a></td>
 
 					
 					</div>
-
+					  
+                      
+				  @endforeach
+				 
                 </div>
 				<script>
 				//var did = document.getElementById("did");
@@ -271,7 +223,7 @@
                     xmlhttp=new XMLHttpRequest();
                 }else{// code for IE6, IE5
                     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-                }
+                } 
 
                 //2. 设置回调函数
                 xmlhttp.onreadystatechange = function(){
@@ -346,8 +298,9 @@
 				
 						   <center>
                     	{{ $info->links() }} 
->>>>>>> 18e980d3dc6c9e5efd86fe1cda634a339bc9f294
                     </center>
+                 <!--个人展示结束-->
+                  <!--个人展示-->
 
                 
             </div>
@@ -356,15 +309,15 @@
       <!-- 右侧mainRight DIV开始 -->
   <div id="mainRight">
           <table width="200" border="0" cellpadding="0" cellspacing="0" bgcolor="#E9F4FA">
-        <tr>
+ 				<tr>
                     <td bgcolor="#E9F4FA">
-                      <!-- 右侧mainRightPostionFirstLine DIV 开始 -->
-                      <div id="mainRightPostionFirstLine">
+                    	<!-- 右侧mainRightPostionFirstLine DIV 开始 -->
+                    	<div id="mainRightPostionFirstLine">
                             <!-- 右侧mainRightPostionFirstLineIcon DIV 开始 -->
                             
                             <div style="height:58px;">
                             <div id="mainRightPostionFirstLineIcon">
-                              <a href="/personal"><img src="http://{{$list->picname}}" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
+                            	<a href="/personal"><img src="http://{{$list->picname}}" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>
                             </div>
                             <!-- 右侧mainRightPostionFirstLineIcon DIV 结束 -->
                             <!-- 右侧mainRightPostionFirstLineWord1 DIV 开始 -->
@@ -374,12 +327,12 @@
                             </div>
                             
                             <!-- 右侧mainRightPostionFirstLineWord1 DIV 结束 -->
-                          <!-- 右侧mainRightPostionFirstLineWord2 DIV 开始 -->
+                        	<!-- 右侧mainRightPostionFirstLineWord2 DIV 开始 -->
                           <div id="mainRightPostionFirstLineWord2">
                                 <ul>
-                                  <a href="/personal" class="a1"><li><font class="style1">{{$datam}}</font><br /><font class="style2">微博</font></li></a>
-                      <a href="/follow" class="a1"><li><font class="style1">{{ $datas->follow_count }}</font><br /><font class="style2">关注</font></li></a>
-                      <a href="/fans" class="a1"><li><font class="style1">{{ $dataf->fans_count }}</font><br /><font class="style2">粉丝</font></li></a>
+                                	<a href="/personal" class="a1"><li><font class="style1">{{$datam}}</font><br /><font class="style2">微博</font></li></a>
+   								    <a href="/follow" class="a1"><li><font class="style1">{{ $datas->follow_count }}</font><br /><font class="style2">关注</font></li></a>
+   								    <a href="/fans" class="a1"><li><font class="style1">{{ $dataf->fans_count }}</font><br /><font class="style2">粉丝</font></li></a>
                                 </ul>
                            </div>
                            <!-- 右侧mainRightPostionFirstLineWord2 DIV 结束 -->                    
@@ -408,7 +361,7 @@
                         <!-- 右侧mainRightPostionSecondLine DIV 结束 -->
                     </td>
                 </tr>
-        
+				
                 <tr>
                   <td>  
                         <!-- 右侧mainRightPostionThirdLine DIV 开始 -->
@@ -419,8 +372,8 @@
                             <img src="./images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a></p>
                             <br />
                             <div id="d32" style="float:right"><a href="#" class="a1">查看更多</a></div>
-                            </div>                      
-                            <!-- 右侧mainRightPositionThirdLineContent DIV 结束 --> 
+                            </div>                    	
+                            <!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->	
                         </div>
                         <!-- 右侧mainRightPostionThirdLine DIV 开始 -->
                   </td>
@@ -429,8 +382,8 @@
                     <td>
                         <!-- 右侧mainRightPostionFourthLine DIV 开始 -->
                         <div id="mainRightPostionFouthLine">
-                          <!-- 右侧mainRightPositionThirdLineContent DIV 结束 --> 
-                          <div id="mainRightPositionFourthLineContent">
+                        	<!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->	
+                        	<div id="mainRightPositionFourthLineContent">
                             <form action="" method="get">
                               <input type="text" name="textfield" id="textfield1"/>
                               <a href="#"><img src="./images/search.gif" alt="" width="27" height="25" align="middle" title="" border="0"/></a>
@@ -438,7 +391,7 @@
                             <a href="#" onclick="" class="a1"><font class="style4">热门话题</font>
                             <img src="./images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>
                             <ul id="ul2" style="line-height:25px;">
-                              <a href="#" class="a1"><li><font class="style2">动车(49585)</font></li></a>
+                            	<a href="#" class="a1"><li><font class="style2">动车(49585)</font></li></a>
                                 <a href="#" class="a1"><li><font class="style2">高铁(48704)</font></li></a>
                                 <a href="#" class="a1"><li><font class="style2">遇难者(10616)</font></li></a>
                                 <a href="#" class="a1"><li><font class="style2">发言人(12875)</font></li></a>
@@ -450,7 +403,7 @@
                                 <a href="#" class="a1"><li><font class="style2">第三届网络原创歌曲大赛(27)</font></li></a>
                             </ul>
                             </div>
-                            <!-- 右侧mainRightPositionThirdLineContent DIV 结束 --> 
+                            <!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->	
                         </div>
                         <!-- 右侧mainRightPostionFoutrhLine DIV 结束 -->
                     </td>
@@ -458,8 +411,8 @@
                 <tr>
                     <td> <!-- 右侧mainRightPostionFifthLine DIV 开始 -->
                     <div id="mainRightPostionFifthLine">
-                      <div id="mainRightPositionFifthLineContent">
-                          <a href="#" onclick="" class="a1"><font class="style4">我关注的话题</font>
+                    	<div id="mainRightPositionFifthLineContent">
+                        	<a href="#" onclick="" class="a1"><font class="style4">我关注的话题</font>
                             <img src="./images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>
                         </div>
                     </div>
@@ -469,12 +422,12 @@
                 <tr>
                     <td><!-- 右侧mainRightPostionSixthLine DIV 开始 -->
                     <div id="mainRightPostionSixthLine">
-                      <div id="mainRightPositionSixthLineContent">
-                          <a href="#" onclick="" class="a1"><font class="style4">我关注的</font>
+                    	<div id="mainRightPositionSixthLineContent">
+                        	<a href="#" onclick="" class="a1"><font class="style4">我关注的</font>
                             <img src="./images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>
                         </div>
                         <ul>
-                          <a href="#" class="a1"><li><img src="./images/WBXM.gif" border="0" /><br /><font class="style2">微博小秘</font></li></a>
+                        	<a href="#" class="a1"><li><img src="./images/WBXM.gif" border="0" /><br /><font class="style2">微博小秘</font></li></a>
                             <a href="#" class="a1"><li><img src="./images/AXXR.gif" border="0" /><br /><font class="style2">&nbsp;&nbsp;转&nbsp;&nbsp;发</font></li></a>
                             <a href="#" class="a1"><li><img src="./images/LBXR.gif" border="0" /><br /><font class="style2">微博新人</font></li></a>
                         </ul>
@@ -503,24 +456,24 @@
     <!-- 内容总容器 mainDIV 结束-->
 
 <!-- footer部分 -->
-    <div id="footer">
-      <!-- footer网站链接部分 -->
-      <div id="footerLink">
-        <ul>
-          <li><a href="#" class="a2">灵步网介绍</a></li>
-          <li><a href="#" class="a2">广告服务</a></li>
-          <li><a href="#" class="a2">API</a></li>
-          <li><a href="#" class="a2">诚征英才</a></li>
-          <li><a href="#" class="a2">保护隐私权</a></li>
-          <li><a href="#" class="a2">免责条款</a></li>
-          <li><a href="#" class="a2">法律顾问</a></li>
-          <li><a href="#" class="a2">意见反馈</a></li>
-        </ul>
-      </div>
-      <!-- footer网站链接部分结束 -->
+  	<div id="footer">
+    	<!-- footer网站链接部分 -->
+    	<div id="footerLink">
+    	  <ul>
+    	    <li><a href="#" class="a2">灵步网介绍</a></li>
+    	    <li><a href="#" class="a2">广告服务</a></li>
+    	    <li><a href="#" class="a2">API</a></li>
+    	    <li><a href="#" class="a2">诚征英才</a></li>
+    	    <li><a href="#" class="a2">保护隐私权</a></li>
+    	    <li><a href="#" class="a2">免责条款</a></li>
+    	    <li><a href="#" class="a2">法律顾问</a></li>
+    	    <li><a href="#" class="a2">意见反馈</a></li>
+  	    </ul>
+  	  </div>
+    	<!-- footer网站链接部分结束 -->
         <!-- footer网站版权信息 -->
   <div id="footerCopy">
-          Copyright&copy;2011-2012 灵步小组 版权所有
+        	Copyright&copy;2011-2012 灵步小组 版权所有
         </div>
         <!-- footer网站版权信息结束 -->
     </div>
@@ -529,30 +482,30 @@
 </div>
 <!--总容器 container结束-->
  <p id="backtop"><a id="backtop1" href="#totop"><span></span>回到顶部</a></p>
-          
-          
-          
-          <form style="display:none;" action="" name="myform" method="post">
-          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-          </form>
-          
+					
+					
+					
+					<form style="display:none;" action="" name="myform" method="post">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					</form>
+					
  
  
  <script>
 
-   function submit(mid,sud,id){
-     var val=prompt("需要说些什么话","");//将输入的内容赋给变量 val ，
-    // alert(val);
-     if(val!=='' && val!==null){
-      
-      if(sud==id){
-          alert('亲 不允许转发自己的微博哦!');
-          
-        }else{
-          if(confirm("是否转发此微博？")){
-        
-     
-         document.myform.action = "/indexs/forward/"+mid+"/"+sud+"/"+id+"/"+val;
+	 function submit(mid,sud,id){
+		 var val=prompt("需要说些什么话","");//将输入的内容赋给变量 val ，
+		// alert(val);
+		 if(val!=='' && val!==null){
+			
+			if(sud==id){
+				  alert('亲 不允许转发自己的微博哦!');
+				  
+			  }else{
+				  if(confirm("是否转发此微博？")){
+			  
+		 
+			   document.myform.action = "/indexs/forward/"+mid+"/"+sud+"/"+id+"/"+val;
                document.myform.submit();
               // alert(mid);
               // alert(uid);
@@ -560,32 +513,32 @@
                }
             }
 
-     }if(val=='' && val!==null){
-       val = null;
-       if(sud==id){
-          alert('亲 不允许转发自己的微博哦!');
-          
-        }else{
-          if(confirm("是否转发此微博？")){
-        
-     
-         document.myform.action = "/indexs/forward/"+mid+"/"+sud+"/"+id+"/"+val;
+		 }if(val=='' && val!==null){
+			 val = null;
+			 if(sud==id){
+				  alert('亲 不允许转发自己的微博哦!');
+				  
+			  }else{
+				  if(confirm("是否转发此微博？")){
+			  
+		 
+			   document.myform.action = "/indexs/forward/"+mid+"/"+sud+"/"+id+"/"+val;
                document.myform.submit();
               // alert(mid);
               // alert(uid);
               // alert(id);
                }
             }
-       
-       
-     }
-      
-    
-  }
-  
-  
-  
+			 
+			 
+		 }
+			
+		
+	}
+	
+	
+	
  </script>
 </body>
 </html>
-  
+	
