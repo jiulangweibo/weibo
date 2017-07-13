@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -192,7 +192,7 @@
 					
 					
 					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">关注他(她)</a></td>
+					<td><a href="javascript:dosubmit({{session('homeuser')[0]->id}},{{ $v['user_id']}})" id="guanzhu">关注他(她)</a></td>
 
 					
 					</div>
@@ -387,9 +387,9 @@
                         <div id="mainRightPostionFouthLine">
                         	<!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->	
                         	<div id="mainRightPositionFourthLineContent">
-                            <form action="" method="get">
-                              <input type="text" name="textfield" id="textfield1"/>
-                              <a href="#"><img src="./images/search.gif" alt="" width="27" height="25" align="middle" title="" border="0"/></a>
+                            <form action="/indexs/search" method="get">
+                              <input type="text" class="am-form-field " name="nickname" placeholder="用户昵称">
+                              <button><img src="./images/search.gif" alt="" width="27" height="25" align="middle" title="" border="0"/></a></button>
                             </form>
                             <a href="#" onclick="" class="a1"><font class="style4">热门话题</font>
                             <img src="./images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>
@@ -495,7 +495,24 @@
  
  
  <script>
+ 
+			<!--关注-->
 
+		function dosubmit(uid,sud){
+		  if(confirm("关注成功！")){
+			  document.myform.action = "/indexs/follow/"+uid+"/"+sud;
+              document.myform.submit();
+               //alert(mid);
+              //alert(uid);
+              // alert(id);
+              
+            }
+			
+	
+	}
+	
+	
+	
 	 function submit(mid,sud,id){
 		 var val=prompt("需要说些什么话","");//将输入的内容赋给变量 val ，
 		// alert(val);
