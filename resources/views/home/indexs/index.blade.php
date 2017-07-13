@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -223,7 +223,7 @@
                     xmlhttp=new XMLHttpRequest();
                 }else{// code for IE6, IE5
                     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-                }
+                } 
 
                 //2. 设置回调函数
                 xmlhttp.onreadystatechange = function(){
@@ -384,9 +384,9 @@
                         <div id="mainRightPostionFouthLine">
                         	<!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->	
                         	<div id="mainRightPositionFourthLineContent">
-                            <form action="" method="get">
-                              <input type="text" name="textfield" id="textfield1"/>
-                              <a href="#"><img src="./images/search.gif" alt="" width="27" height="25" align="middle" title="" border="0"/></a>
+                            <form action="/indexs/search" method="get">
+                              <input type="text" class="am-form-field " name="nickname" placeholder="用户昵称">
+                              <button><img src="./images/search.gif" alt="" width="27" height="25" align="middle" title="" border="0"/></a></button>
                             </form>
                             <a href="#" onclick="" class="a1"><font class="style4">热门话题</font>
                             <img src="./images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>

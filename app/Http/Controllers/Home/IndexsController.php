@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 class IndexsController extends Controller
 {
-    public function index(Request $requst)
+    public function index(Request $request)
 	{
 
 		//$list = Praise::where('user_id',1)->where('message_id',97)->first();
@@ -229,5 +229,19 @@ class IndexsController extends Controller
 			return $request->input('message_id');
 			
 		}
+	
+	 function search(Request $request)
+	{
+		 $where = [];
+        if ($request->only('nickname')) {
+           $nickname = $request->input("nickname");   
+           $where['nickname']=$nickname;
+        }
+        
+        $bbb =Userinfo::where("nickname","like",'%'.$nickname.'%')->paginate(4);
+       // dd($list);
+    	return view('home.search.index',['bbb'=>$bbb,'where'=>$where]);
+		
+	}
 
 }
