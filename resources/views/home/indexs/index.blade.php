@@ -384,9 +384,9 @@
                         <div id="mainRightPostionFouthLine">
                         	<!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->	
                         	<div id="mainRightPositionFourthLineContent">
-                            <form action="/home/search"" method="get">
-                              <input type="text" name="textfield" id="textfield1" name="nickname" placeholder="用户昵称"/>
-                              <a href="#"><img src="./images/search.gif" alt="" width="27" height="25" align="middle" title="" border="0"/></a>
+                            <form action="/indexs/search" method="get">
+                              <input type="text" class="am-form-field " name="nickname" placeholder="用户昵称">
+                              <button><img src="./images/search.gif" alt="" width="27" height="25" align="middle" title="" border="0"/></a></button>
                             </form>
                             <a href="#" onclick="" class="a1"><font class="style4">热门话题</font>
                             <img src="./images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>

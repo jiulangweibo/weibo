@@ -1,11 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<link href="{{asset('myadmin/assets/css/bootstrap.min.css')}}" type="text/css" rel="stylesheet">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>明星主页 灵步网微博-点滴生活，精彩每一天！</title>
-<link href="styles/global.css" type="text/css" rel="stylesheet">
-<link href="styles/star.css" type="text/css" rel="stylesheet">
-<script src="script/star.js" type="text/javascript" >
+<link href="../styles/global.css" type="text/css" rel="stylesheet">
+<link href="../styles/star.css" type="text/css" rel="stylesheet">
+<script src="../script/star.js" type="text/javascript" >
 </script>
 </head>
 
@@ -30,13 +31,14 @@
         
       <!-- top部分的文字导航 -->
       <div id="topWordMenu">
-       	  <ul>
-           	  <li>已有灵步账号，<a href="login.html">请登录</a></li>
-              <li><a href="SBGG.html">随便逛逛</a></li>
-              <li><a href="#">手机</a></li>
-              <li><a href="#">帮助</a></li>
-          </ul>
-      </div>
+        	<ul>
+            	<li><a href="/indexs">首页</a></li>
+                <li><a href="/personal">我的微博</a></li>
+                <li><a href="/account">设置</a></li>
+                <li><a href="/password">修改密码</a></li>
+                <li><a href="/logout">退出</a></li>
+            </ul>
+        </div>
       <!-- top部分的文字导航结束 -->
     </div>
     <!-- top部分结束 -->
@@ -51,12 +53,8 @@
         <div id="topWord" class="topWord"> 点击生活，精彩世界，快来加入灵步网微博吧 </div>
         <!-- 字体DIV 结束 -->
         <!-- 文本框DIV 开始 -->
-        <div id="topTextDIV">
-          <input type="topText" value="请输入电子邮箱" id="topText" />
-        </div>
-        <!-- 文本框DIV 结束-->
-        <!-- 注册按钮 DIV 开始 -->
-        <div id="ZCButton"> <img src="images/ZCButton.gif"  onclick="quickZC()"/></div>
+       
+		
         <!-- 注册按钮 DIV 结束-->
         <!-- 电子邮箱 开始 -->
         <div id="mail1">电子邮箱 </div>
@@ -153,12 +151,13 @@
    <div id="banner">
    
    <!-- banner顶部部分 -->
+   @foreach ($bbb as $v)
      <div id="bannerTop">
-       <img src="" width="97" height="98" alt="" />
+       <img src="http://{{$v['picname']}}" width="97" height="98" alt="" />
      </div>
     <!-- bannerWord字的部分 -->
      <div id="bannerWord">
-       <font color="#000000" size="3"><b></b></font><img src="images/1.gif" width="17" height="15" alt="" />
+       <font color="#000000" size="3"><b>{{$v['nickname']}}</b></font><img src="images/1.gif" width="17" height="15" alt="" />
        <br/><font color="#0066FF"></font>
      </div>
      <!-- 加关注 -->
@@ -169,13 +168,11 @@
          </label>
        </form>
      </div>
+	 @endforeach
      <!-- banner微博部分 -->
-   
-     
-    
-    
-    
+    {{ $bbb->appends($where)->links() }} 
   </div> 
+  
   </div> 
       <!-- 脚部footer DIV 开始 -->
       <div id="footer">
