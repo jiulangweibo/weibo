@@ -109,7 +109,7 @@
         <div id="success"> <img  id="link" src="../images/ZCButton1.gif" border="0" onclick="checkAll()" /> </div>
         <!-- 注册成功 DIV 结束 -->
         <!-- 头部拉起控制DIV 开始 -->
-        <div id="hangUp"> <img src="images/UpArrow.gif" width="20" height="23" onclick="hangUp()" /> </div>
+        <div id="hangUp"> <img src="../images/UpArrow.gif" width="20" height="23" onclick="hangUp()" /> </div>
         <!-- 头部拉起控制DIV 结束 -->
     </div>
     <!-- 下部容器头部注内容册 DIV 结束 -->

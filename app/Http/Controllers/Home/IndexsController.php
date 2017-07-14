@@ -250,7 +250,7 @@ class IndexsController extends Controller
 		{
 			$comments = Redis::hmset("comment",["one"=>$mid,"two"=>$id,"three"=>$content]);
 			$bianlian = Redis::hgetall("comment");
-			//dd($bianlian);
+			dd($bianlian);
 			var_dump($bianlian);
 			 
 		}
