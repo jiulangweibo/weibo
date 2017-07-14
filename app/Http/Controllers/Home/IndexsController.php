@@ -124,11 +124,16 @@ class IndexsController extends Controller
 		$dksjd = Follow::where('id',$uid)->orderBy("follow_count","desc")->first();
 		
 		$dasdk = Follow::where('id',$sud)->orderBy("fans_count","desc")->first();
+		//$dksjd = Follow::where('user_id',$uid)->where('message_id',$mid)->orderby("follow_count","desc")->first();
+		//$dasdk = Follow::where('user_id',$uid)->where('message_id',$mid)->orderby("fans_count","desc")->first();
+		//$data['message_id'] = $mid;
+		//dump($mid);die;
 		//echo"<pre>";
 		//var_dump($dksjd->follow_count);die;
 	
 	 
 		//dd($dataf);die;
+		//$data['message'] = $mid;
 		$data['suser_id'] = $sud;
 		$data['id'] = $uid;
 		$follow_count = $dksjd->follow_count+1;
@@ -149,36 +154,33 @@ class IndexsController extends Controller
 		$dadd['fans_count'] = 1;
 		Follow::insertGetId($dadd);
 		}
-		return redirect('/indexs');
-	
-	}
 
-	function forward($mid,$sud,$id,$content)
-    {
-		
-		//var_dump($content);die;
-		$forward_time = time()+480*60;
-		$data['user_id'] = $id;
-		$data['message_id'] = $mid;
-		$data['su_id'] = $sud;
-		$data['forward_time']=date("Y-m-d H:i:s",$forward_time);
-		if($content=='null'){
-			
-		$data['forward_content']='';
-		$id = Forward::insertGetId($data);
-		}else{
-			$data['forward_content']=$content;
-			$id = Forward::insertGetId($data);
-		}
 	
-			
-			 return redirect('/indexs');
-	
-		
-		
-		
 	}
-	
+	//
+	function follows($uid,$sud)
+	{
+
+		$dksjd = Follow::where('id',$uid)->orderBy("follow_count","desc")->first();
+		$dasdk = Follow::where('id',$sud)->orderBy("fans_count","desc")->first();
+		
+		$data['suser_id'] = $sud;
+		$data['id'] = $uid;
+		
+		$follow_count = $dksjd->follow_count-1;
+		$data['follow_count'] = $follow_count;
+		
+		Follow::insertGetId($data);
+		//dump($sud);die;
+		if(!empty($dasdk)){
+		$dadd['id'] = $sud;
+		$dadd['user_id'] = $uid;
+		$fans_count = $dasdk->fans_count-1;
+		$dadd['fans_count'] = $fans_count;
+		Follow::insertGetId($dadd);
+
+	}
+	}
 	function praise($mid,$uid)
 	{
 		$list = Praise::where('user_id',$uid)->where('message_id',$mid)->first();
@@ -225,12 +227,26 @@ class IndexsController extends Controller
 		//return $data;
 	}
 	
-		function dd(Request $request)
-		{
-			return $request->input('message_id');
+
+		function forward($mid,$sud,$id,$content)
+    {
+		
+		//var_dump($content);die;
+		$forward_time = time()+480*60;
+		$data['user_id'] = $id;
+		$data['message_id'] = $mid;
+		$data['su_id'] = $sud;
+		$data['forward_time']=date("Y-m-d H:i:s",$forward_time);
+		if($content=='null'){
 			
+		$data['forward_content']='';
+		$id = Forward::insertGetId($data);
+		}else{
+			$data['forward_content']=$content;
+			$id = Forward::insertGetId($data);
 		}
-	
+			 return redirect('/indexs');
+	}
 	 function search(Request $request)
 	{
 		 $where = [];
