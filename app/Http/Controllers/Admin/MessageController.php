@@ -62,9 +62,11 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($message_id)
     {
-        //
+		$vo = Message::where("message_id","=",$message_id)->first();
+        
+         return view("admin.message.edit",['vo'=>$vo]);
     }
 
     /**
@@ -74,9 +76,16 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $message_id)
     {
-        //
+         $input = $request->only("status");
+		$m = Message::where("message_id",$message_id)->update($input);
+        if($m){
+            echo "修改用户状态成功!";
+            return redirect("admin/message");
+        }else{
+            echo "修改用户状态失败!";
+        }
     }
 
     /**

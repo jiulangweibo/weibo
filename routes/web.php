@@ -71,7 +71,8 @@ Route::get('/indexs/follows/{uid}/{sud}',"Home\IndexsController@follows"); //关
 Route::get('/indexs/praise/{mid}/{uid}',"Home\IndexsController@praise"); //点赞
 Route::get('/indexs/praises/{mid}/{uid}',"Home\IndexsController@praises"); //点赞
 Route::post('/indexs/dd',"Home\IndexsController@dd"); //点赞
-Route::post('/indexs/comments/{mid}/{id}/{content}',"Home\IndexsController@comments");
+Route::get('/indexs/comments/{mid}/{id}/{nickname}/{content}',"Home\IndexsController@comments");
+//Route::get('/indexs/content',"Home\IndexsController@content");
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图
 
 Route::get('/follow',"Home\FollowController@index");      //加载关注主页

@@ -34,17 +34,19 @@
                             <th>评论内容ID</th>
                             <th>评论内容</th>
                             <th>评论时间</th>
+                            <th>状态</th>
                             <th>操作</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($list as $vs)
                         <tr class="gradeX">
-                            <td>{{$vs->message_id}}</td>
+							<td>{{$vs->comments_id}}</td>
+							<td>{{$vs->message_id}}</td>
                             <td>{{$vs->user_id}}</td>
-                            <td>{{$vs->comments_id}}</td>
                             <td>{{$vs->comments_content}}</td>
                             <td>{{$vs->comments_time}}</td>
+                           <td>@if ($vs->status=="0")禁用 @else 启用 @endif</td>
                             <td>
 								<div class="tpl-table-black-operation">
 									<a href="/admin/comments/{{ $vs->comments_id }}/edit">

@@ -174,7 +174,7 @@
 					
                       <tr>
                         <td width="70" align="center" valign="top"><a href="#"><img src="http://{{$v['touxiang']}}" alt="" width="48" height="48" /></a></td>
-                        <td width="380" ><a href="#">{{$v['nickname']}}</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />{{$v['content']}}</td>
+                        <td width="380" ><a id="n{{$k}}" href="#">{{$v['nickname']}}</a><img src="./images/1.gif" align="absmiddle" style="border:none;" />{{$v['content']}}</td>
                       </tr>
 					  
                     </table>
@@ -182,24 +182,36 @@
                   </div>
 				  
                    <div class="stateImgShow"><img src="{{$v['tupian']}}" /></div>            
-					<div class="stateShowtime"> 
+					<div class="stateShowtime" id ="d{{$k}}"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                     
-					<td><a href="javascript:comments({{ $v['message_id'] }},{{session('homeuser')[0]->id}})" onclick="reXianShi(this)" >评论</a></td>&nbsp;&nbsp;&nbsp;
-			
+					<td id="lll"><a id="i{{$k}}" href="javascript:comments({{ $v['message_id'] }},{{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{$k}})" onclick="reXianShi(this)" >评论</a></td>&nbsp;&nbsp;&nbsp;
+					
+					 
 					<td ><a id="{{$k}}" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}},{{$k}})">点赞</a></td>&nbsp&nbsp&nbsp
 
+					
 					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp&nbsp&nbsp
+<<<<<<< HEAD
 					<td><a id="a{{$k}}" href="javascript:follow({{session('homeuser')[0]->id}},{{ $v['user_id']}},{{$k}})">关注他(她)</a></td>
 
+=======
+					<td><a id="s{{$k}}" href="javascript:follow({{session('homeuser')[0]->id}},{{ $v['user_id']}},{{$k}})" >关注他(她)</a></td>
+ 
+>>>>>>> 5f1542f57eb56a705016e42ee9cd1f7d74921ab0
 					
 					</div>
-					  
+					
+					 <br/>
+					 
+					 <div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='images/MainRightFirstLineTitle.gif' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>{{$v['mingzi']}}</a><img src='images/1.gif' align='absmiddle' style='border:none;' />{{$v['comments_content']}}</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>时间 </div><div class='stateOp'><a onclick='reXianShi(this)' class='opState'>回复</a><a class='opState'>转发</a><a class='opState' onclick='delState(this)'>删除</a></div></div>
                       
 				  @endforeach
+				 <br/>
 				 
                 </div>
+				
                 <div id="recieve">
                         <div id="ff" style="float:left;"><font style="font-size:16px; color:#FDFDFD">&nbsp;&nbsp;&nbsp;&nbsp;评&nbsp;&nbsp;论</font></div>
                         <div id="left" style="float:right; margin-top:10px; color:#FFF; margin-right:10px;">您还有可以输入<font id="counter2" color="#ffffff">140</font>字！&nbsp;&nbsp;&nbsp;<img src="./images/hongcha1.gif" alt="" width="14" height="13" align="absmiddle" title="" onclick="windowClose()" /></div><br />
@@ -217,15 +229,96 @@
                         </div> 
                   </div>
 				<script>
+<<<<<<< HEAD
 
 
 				    function comments(mid,id){
+=======
+		
+				
+						
+						function skjd(i,str,nickname,time){
+						
+						$("#d"+i).append(" <br/><div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='images/MainRightFirstLineTitle.gif' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>"+nickname+"</a><img src='images/1.gif' align='absmiddle' style='border:none;' />"+str+"</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>"+time+"</div><div class='stateOp'><a onclick='reXianShi(this)' class='opState'>回复</a><a class='opState'>转发</a><a class='opState' onclick='delState(this)'>删除</a><div/><div/>");
+					 
+						}
+					
+									
+					
+					
+		
+				    function comments(mid,id,nickname,i){
+>>>>>>> 5f1542f57eb56a705016e42ee9cd1f7d74921ab0
 						
 						document.getElementById("dddd").onclick=function(){
+							 
 							var dd = document.getElementById("ta1").value;
 							if(dd){
-							document.myform.action = "/indexs/comments/"+mid+"/"+id+"/"+dd;
-							document.myform.submit();
+							//alert(i);
+							  var dian = document.getElementById("i"+i).innerHTML;
+							   if(dian=='评论'){
+								//1. 创建一个请求对象
+								var xmlhttp;
+								if(window.XMLHttpRequest){
+									// code for IE7+, Firefox, Chrome, Opera, Safari
+									xmlhttp=new XMLHttpRequest();
+								}else{// code for IE6, IE5
+									xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+								} 
+
+								//2. 设置回调函数
+								xmlhttp.onreadystatechange = function(){
+									//alert('ok:'+xmlhttp.readyState);
+									//当前请求状态为4时
+									if(xmlhttp.readyState==4){
+										//判断响应状态码:是否是200
+										if(xmlhttp.status == 200){ 
+										//alert(i);
+										//document.getElementById(i).innerHTML = ("已点赞");
+											var str = xmlhttp.responseText;
+											//alert(i);
+											//document.myform.action = "/indexs/comments/"+mid+"/"+id+"/"+dd;
+											//document.myform.submit();
+											//alert(成);
+											var p = document.getElementById("recieve");
+											var f = document.getElementById("i"+i);
+											var d = document.getElementById("d"+i);
+											 var time = inittime();//取出当前时间
+											//var nickname = document.getElementById("n"+i).innerHTML;
+											skjd(i,str,nickname,time);
+										 
+											p.style.display = "none";
+											//var obj = eval('(' + str + ')');
+											//salert(obj.mesage_id);
+											f.onclick=function(){
+												                          
+												p.style.display = "block";
+												//reXianShi(this);
+											}
+											
+											
+											
+										}else{
+											alert("服务器端响应错误!");
+										}
+									}
+									
+								}
+								
+								//3. 初始化请求对象
+								xmlhttp.open("get","/indexs/comments/"+mid+"/"+id+"/"+nickname+"/"+dd,true);
+								//设置请求头信息,让其支持post的参数提交
+								xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+								//4. 执行发送:
+								xmlhttp.send();
+								
+								return false;
+								}
+							
+							
+							
+
 							}else{
 								alert("请输入内容!");
 							}
@@ -236,6 +329,7 @@
             function praise(mid,uid,i){
         
                var dian = document.getElementById(i).innerHTML;
+               //alert(dian);die;
                if(dian=='点赞'){
                 //1. 创建一个请求对象
                 var xmlhttp;
@@ -305,7 +399,7 @@
                 }
                 
                 //3. 初始化请求对象
-                xmlhttp.open("get","/indexs/praises/"+mid+"/"+uid,true);
+                xmlhttp.open("get","/indexs/praise/"+mid+"/"+uid,true);
                 //设置请求头信息,让其支持post的参数提交
                 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 
@@ -315,6 +409,90 @@
                 return false;
 			   }
             }
+            
+             function follow(uid,sud,p){
+                
+               var guan = document.getElementById("s"+p).innerHTML;
+               //alert(aa);die;
+               if(guan=='关注他(她)'){
+                //1. 创建一个请求对象
+                var xmlhttp;
+                if(window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{// code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                } 
+
+                //2. 设置回调函数
+                xmlhttp.onreadystatechange = function(){
+                    //alert('ok:'+xmlhttp.readyState);
+                    //当前请求状态为4时
+                    if(xmlhttp.readyState==4){
+                        //判断响应状态码:是否是200
+                        if(xmlhttp.status == 200){ 
+						//alert(p);
+						document.getElementById("s"+p).innerHTML = ("已关注");
+                            //var str = xmlhttp.responseText;
+							//alert(str);
+                        }else{
+                            alert("服务器端响应错误!");
+                        }
+                    }
+                    
+                }
+                
+                //3. 初始化请求对象
+                xmlhttp.open("get","/indexs/follow/"+uid+"/"+sud,true);
+                //设置请求头信息,让其支持post的参数提交
+                //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+                //4. 执行发送:
+                xmlhttp.send();
+                
+                return false;
+			   }
+		
+		
+			if(guan=='已关注'){
+                //1. 创建一个请求对象
+                var xmlhttp;
+                if(window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{// code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                //2. 设置回调函数
+                xmlhttp.onreadystatechange = function(){
+                    //alert('ok:'+xmlhttp.readyState);
+                    //当前请求状态为4时
+                    if(xmlhttp.readyState==4){
+                        //判断响应状态码:是否是200
+                        if(xmlhttp.status == 200){ 
+						document.getElementById("s"+p).innerHTML = ("关注他(她)");
+                            var str = xmlhttp.responseText;
+							//alert(str);
+                        }else{
+                            alert("服务器端响应错误!");
+                        }
+                    }
+                    
+                }
+                
+                //3. 初始化请求对象
+                xmlhttp.open("get","/indexs/follows/"+uid+"/"+sud,true);
+                //设置请求头信息,让其支持post的参数提交
+                //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+                //4. 执行发送:
+                xmlhttp.send();
+                
+                return false;
+			   }
+            }
+        
         
 			
 				</script>
@@ -375,7 +553,7 @@
                                 <hr class="h1">
                                 <a href="/personal" class="a1"><font class="style3">我发布的微博</font></a>
                                 <hr class="h1">
-                                <a href="/follow" class="a1"><font class="style3">我关注的</font></a>
+                                <a href="/follow" class="a1"><font id="asdlkja"	class="style3">我关注的</font></a>
                                 <hr class="h1">
                                 <a href="/fans" class="a1"><font class="style3">我的粉丝</font></a>
                             </div>
@@ -529,6 +707,7 @@
                     // code for IE7+, Firefox, Chrome, Opera, Safari
                     xmlhttp=new XMLHttpRequest();
 
+<<<<<<< HEAD
                 //2. 设置回调函数
                 xmlhttp.onreadystatechange = function(){
 					
@@ -606,6 +785,8 @@
             }
 	
 	
+=======
+>>>>>>> 5f1542f57eb56a705016e42ee9cd1f7d74921ab0
 	 function submit(mid,sud,id){
 		 var val=prompt("需要说些什么话","");//将输入的内容赋给变量 val ，
 		// alert(val);
