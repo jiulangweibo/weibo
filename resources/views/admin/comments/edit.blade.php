@@ -12,32 +12,15 @@
                 </div>
                 <div class="widget-body am-fr">
 
-                    <form class="am-form tpl-form-border-form tpl-form-border-br" action="/admin/comments/{{ $v->message_id }}" method="post">
+                    <form class="am-form tpl-form-border-form tpl-form-border-br" action="/admin/comments/{{$v->comments_id}}" method="post">
                         <input type="hidden" name="_method" value="put">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="am-form-group">
-						<label for="user-name" class="am-u-sm-3 am-form-label" name="message_id" value="{{$v->message_id}}">被评论微博ID</label>
-						<!--<label input type="text" name="message_id" value="{{$v->message_id}}">被评论者ID</label>-->
+						 <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label" name="status" >状态</label>
                             <div class="am-u-sm-9">
-                                <input type="text" style="width:200px" name="message_id"   class="tpl-form-input" id="user-name" placeholder="{{$v->message_id}}">
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label" name="user_id" value="{{$v->user_id}}">评论者ID</label>
-                            <div class="am-u-sm-9">
-                                <input type="text" name="user_id"  class="tpl-form-input" id="user-name" placeholder="{{$v->user_id}}">
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label" name="comments_content" value="{{$v->comments_content}}">评论内容id</label>
-                            <div class="am-u-sm-9">
-                                <input type="text" name="comments_content" class="tpl-form-input" id="user-name" placeholder="{{$v->comments_content}}">
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label" name="comments_time" value="{{$v->comments_time}}">评论时间</label>
-                            <div class="am-u-sm-9">
-                                <input type="text"  class="tpl-form-input" id="user-name" placeholder="{{$v->comments_time}}">
+                                <input type="radio" name="status" value="0" @if($v->status=='0') checked @endif />禁用
+                                <input type="radio" name="status" value="1" @if($v->status=='1') checked @endif />启用
                             </div>
                         </div>
                         <div class="am-form-group">

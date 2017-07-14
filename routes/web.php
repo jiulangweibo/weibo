@@ -66,7 +66,8 @@ Route::post('/indexs/add',"Home\IndexsController@store");
 Route::post('/indexs/forward/{mid}/{uid}/{id}',"Home\IndexsController@indexs"); //转发
 Route::post('/indexs/forward/{mid}/{uid}/{id}/{content}',"Home\IndexsController@forward"); //转发
 
-Route::post('/indexs/follow/{mid}/{sud}',"Home\IndexsController@follow"); //关注
+Route::get('/indexs/follow/{uid}/{sud}',"Home\IndexsController@follow"); //关注
+Route::get('/indexs/follows/{uid}/{sud}',"Home\IndexsController@follows"); //关注
 Route::get('/indexs/praise/{mid}/{uid}',"Home\IndexsController@praise"); //点赞
 Route::get('/indexs/praises/{mid}/{uid}',"Home\IndexsController@praises"); //点赞
 Route::post('/indexs/dd',"Home\IndexsController@dd"); //点赞
