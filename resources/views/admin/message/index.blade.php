@@ -44,7 +44,7 @@
                             <td>{{$v->user_id}}</td>
                             <td>{{$v->message_id}}</td>
                             <td>{{$v->content}}</td>
-                            <td>{{$v->picnam}}</td>
+                            <td><img src="{{$v['picname']}}" width="48" height="48" /></td>
                             <td>{{$v->praise_count}}</td>
                             <td>{{$v->foward_count}}</td>
                             <td>{{$v->onclicknum}}</td>
