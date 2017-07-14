@@ -191,8 +191,8 @@
 					<td ><a id="{{$k}}" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}},{{$k}})">点赞</a></td>&nbsp&nbsp&nbsp
 
 					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp&nbsp&nbsp
-					<td><a href="javascript:dosubmit({{session('homeuser')[0]->id}},{{ $v['user_id']}})" id="guanzhu">关注他(她)</a></td>
-
+					<td><a id="s{{$k}}" href="javascript:follow({{session('homeuser')[0]->id}},{{ $v['user_id']}},{{$k}})" >关注他(她)</a></td>
+ 
 					
 					</div>
 					  
@@ -236,6 +236,7 @@
             function praise(mid,uid,i){
         
                var dian = document.getElementById(i).innerHTML;
+               //alert(dian);die;
                if(dian=='点赞'){
                 //1. 创建一个请求对象
                 var xmlhttp;
@@ -314,6 +315,90 @@
                 return false;
 			   }
             }
+            
+             function follow(uid,sud,p){
+                
+               var guan = document.getElementById("s"+p).innerHTML;
+               //alert(aa);die;
+               if(guan=='关注他(她)'){
+                //1. 创建一个请求对象
+                var xmlhttp;
+                if(window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{// code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                } 
+
+                //2. 设置回调函数
+                xmlhttp.onreadystatechange = function(){
+                    //alert('ok:'+xmlhttp.readyState);
+                    //当前请求状态为4时
+                    if(xmlhttp.readyState==4){
+                        //判断响应状态码:是否是200
+                        if(xmlhttp.status == 200){ 
+						//alert(p);
+						document.getElementById("s"+p).innerHTML = ("已关注");
+                            //var str = xmlhttp.responseText;
+							//alert(str);
+                        }else{
+                            alert("服务器端响应错误!");
+                        }
+                    }
+                    
+                }
+                
+                //3. 初始化请求对象
+                xmlhttp.open("get","/indexs/follow/"+uid+"/"+sud,true);
+                //设置请求头信息,让其支持post的参数提交
+                //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+                //4. 执行发送:
+                xmlhttp.send();
+                
+                return false;
+			   }
+		
+		
+			if(guan=='已关注'){
+                //1. 创建一个请求对象
+                var xmlhttp;
+                if(window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{// code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                //2. 设置回调函数
+                xmlhttp.onreadystatechange = function(){
+                    //alert('ok:'+xmlhttp.readyState);
+                    //当前请求状态为4时
+                    if(xmlhttp.readyState==4){
+                        //判断响应状态码:是否是200
+                        if(xmlhttp.status == 200){ 
+						document.getElementById("s"+p).innerHTML = ("关注他(她)");
+                            var str = xmlhttp.responseText;
+							//alert(str);
+                        }else{
+                            alert("服务器端响应错误!");
+                        }
+                    }
+                    
+                }
+                
+                //3. 初始化请求对象
+                xmlhttp.open("get","/indexs/follows/"+uid+"/"+sud,true);
+                //设置请求头信息,让其支持post的参数提交
+                //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+                //4. 执行发送:
+                xmlhttp.send();
+                
+                return false;
+			   }
+            }
+        
         
 			
 				</script>
@@ -517,21 +602,6 @@
  
 			<!--关注-->
 
-		function dosubmit(uid,sud){
-		  if(confirm("关注成功！")){
-			  document.myform.action = "/indexs/follow/"+uid+"/"+sud;
-              document.myform.submit();
-               //alert(mid);
-              //alert(uid);
-              // alert(id);
-              
-            }
-			
-	
-	}
-	
-	
-	
 	 function submit(mid,sud,id){
 		 var val=prompt("需要说些什么话","");//将输入的内容赋给变量 val ，
 		// alert(val);
