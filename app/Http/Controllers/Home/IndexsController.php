@@ -164,17 +164,12 @@ function follow($uid,$sud)
 		Follow::insertGetId($dadd);
 		}
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 5f1542f57eb56a705016e42ee9cd1f7d74921ab0
-	
 	}
 	//
 	function follows($uid,$sud)
 	{
-<<<<<<< HEAD
-=======
+
 
 
 		$dksjd = Follow::where('id',$uid)->orderBy("follow_count","desc")->first();
@@ -197,28 +192,6 @@ function follow($uid,$sud)
 	}
 	}
     
->>>>>>> 5f1542f57eb56a705016e42ee9cd1f7d74921ab0
-
-		$dksjd = Follow::where('id',$uid)->orderBy("follow_count","desc")->first();
-		$dasdk = Follow::where('id',$sud)->orderBy("fans_count","desc")->first();
-		
-		$data['suser_id'] = $sud;
-		$data['id'] = $uid;
-		
-		$follow_count = $dksjd->follow_count-1;
-		$data['follow_count'] = $follow_count;
-		
-		Follow::insertGetId($data);
-		//dump($sud);die;
-		if(!empty($dasdk)){
-		$dadd['id'] = $sud;
-		$dadd['user_id'] = $uid;
-		$fans_count = $dasdk->fans_count-1;
-		$dadd['fans_count'] = $fans_count;
-		Follow::insertGetId($dadd);
-
-	}
-	}
 	function praise($mid,$uid)
 	{
 		$list = Praise::where('user_id',$uid)->where('message_id',$mid)->first();
@@ -272,8 +245,7 @@ function follow($uid,$sud)
 		
 		//return $data;
 	}
-<<<<<<< HEAD
-	
+
 
 		function forward($mid,$sud,$id,$content)
     {
@@ -294,10 +266,7 @@ function follow($uid,$sud)
 		}
 			 return redirect('/indexs');
 	}
-=======
 
-	
->>>>>>> 5f1542f57eb56a705016e42ee9cd1f7d74921ab0
 	 function search(Request $request)
 	{
 		 $where = [];

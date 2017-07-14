@@ -193,14 +193,12 @@
 
 					
 					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp&nbsp&nbsp
-<<<<<<< HEAD
+
 					<td><a id="a{{$k}}" href="javascript:follow({{session('homeuser')[0]->id}},{{ $v['user_id']}},{{$k}})">关注他(她)</a></td>
 
-=======
-					<td><a id="s{{$k}}" href="javascript:follow({{session('homeuser')[0]->id}},{{ $v['user_id']}},{{$k}})" >关注他(她)</a></td>
+
  
->>>>>>> 5f1542f57eb56a705016e42ee9cd1f7d74921ab0
-					
+
 					</div>
 					
 					 <br/>
@@ -229,11 +227,7 @@
                         </div> 
                   </div>
 				<script>
-<<<<<<< HEAD
 
-
-				    function comments(mid,id){
-=======
 		
 				
 						
@@ -248,7 +242,7 @@
 					
 		
 				    function comments(mid,id,nickname,i){
->>>>>>> 5f1542f57eb56a705016e42ee9cd1f7d74921ab0
+
 						
 						document.getElementById("dddd").onclick=function(){
 							 
@@ -707,7 +701,7 @@
                     // code for IE7+, Firefox, Chrome, Opera, Safari
                     xmlhttp=new XMLHttpRequest();
 
-<<<<<<< HEAD
+
                 //2. 设置回调函数
                 xmlhttp.onreadystatechange = function(){
 					
@@ -784,9 +778,7 @@
 			   }
             }
 	
-	
-=======
->>>>>>> 5f1542f57eb56a705016e42ee9cd1f7d74921ab0
+
 	 function submit(mid,sud,id){
 		 var val=prompt("需要说些什么话","");//将输入的内容赋给变量 val ，
 		// alert(val);
