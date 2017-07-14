@@ -49,10 +49,10 @@
                             <td>{{$v->foward_count}}</td>
                             <td>{{$v->onclicknum}}</td>
                             <td>{{$v->publish_time}}</td>
-                            <td>{{$v->status}}</td>
+                            <td>@if ($v->status=="0")禁用 @else 启用 @endif</td>
                             <td>
                                 <div class="tpl-table-black-operation">
-                                    <a href="javascript:;">
+                                    <a href="/admin/message/{{$v->message_id}}/edit">
                                         <i class="am-icon-pencil"></i> 编辑
                                     </a>
                                     <a href="javascript:;" class="tpl-table-black-operation-del">

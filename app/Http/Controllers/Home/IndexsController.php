@@ -29,7 +29,7 @@ class IndexsController extends Controller
         //dd($id);die;
 		$list = Userinfo::where("user_id",$id)->first();
         //dump($list);die;
-		$info = Message::orderBy('publish_time','desc')->paginate(8);
+		$info = Message::where('status',1)->orderBy('publish_time','desc')->paginate(8);
         
 		 //dump($info);die;
 		$message = [];
