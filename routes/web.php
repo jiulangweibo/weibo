@@ -37,10 +37,18 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 	Route::resource('url', 'Admin\UrlController'); //友情链接
 	Route::resource('admin', 'Admin\AdminController'); //管理员信息
 	Route::resource('privileges', 'Admin\PrivilegesController'); //管理员权限
+    Route::get('/admin/loadRole/{admin_id}','Admin\AdminController@loadRole');
+    Route::post('/saveRole','Admin\AdminController@saveRole');
+    Route::get('/admin/loadNode/{admin_id}','Admin\DepartmentController@loadNode');
+    Route::post('/saveNode','Admin\DepartmentController@saveNode');
+    //Route::post('/admin/rolelist','Admin\AdminController@saveRole');
+    //Route::get('admin/rolelist/{admin_id}/{admin_name}','Admin\AdminController@loadRole');
 	
 
  
 });
+
+
 
 Route::post('/dologin',"Home\LoginController@doLogin"); 	  //执行登录
 Route::get('/login',"Home\LoginController@login");            //执行加载登录

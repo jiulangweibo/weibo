@@ -39,7 +39,10 @@
                                     <thead>
                                         <tr>
                                             <th>ID号</th>
-                                            <th>权限描述</th>
+                                            <th>节点名称</th>
+                                            <th>请求方式</th>
+                                            <th>请求地址</th>
+                                            <th>状态</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -48,6 +51,9 @@
                                         <tr class="gradeX">
                                             <td>{{$v->id}}</td>
                                             <td>{{$v->title}}</td>
+                                            <td>{{$v->method}}</td>
+                                            <td>{{$v->url}}</td>
+                                            <td>@if ($v->state=="0")禁用 @else 启用 @endif</td>
                                             <td>
                                                 <div class="tpl-table-black-operation">
                                                     <a href="/admin/privileges/{{ $v->id }}/edit">

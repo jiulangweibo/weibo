@@ -1,6 +1,7 @@
 @extends('admin.base')
 @section('content')
 <link href="{{asset('myadmin/assets/css/bootstrap.min.css')}}" type="text/css" rel="stylesheet">
+
 <div class="row">
 
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
@@ -18,7 +19,7 @@
                                             <span class="am-input-group-btn">
                                                 <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="submit"></button>
                                             </span>
-                                        </div>
+                                      </div>
                                     </div>
                                 </form>
 							 
