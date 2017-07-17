@@ -186,7 +186,7 @@
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                     
-					<td id="lll"><a id="i{{$k}}" href="javascript:comments({{ $v['message_id'] }},{{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{$k}})" onclick="reXianShi(this)" >评论</a></td>&nbsp;&nbsp;&nbsp;
+					<td><a id="i{{$k}}" href="javascript:comments({{ $v['message_id'] }},{{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{$k}})" onclick="reXianShi(this)" >评论</a></td>&nbsp;&nbsp;&nbsp;
 					
 					 
 					<td ><a id="{{$k}}" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}},{{$k}})">点赞</a></td>&nbsp&nbsp&nbsp
@@ -199,9 +199,19 @@
 					</div>
 					
 					 <br/>
+					 @if($v['mingzi'])
+					 <div class='stateRshow'>
+						<div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='http://{{$v['touxiangs']}}' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>{{$v['mingzi']}}</a><img src='images/1.gif' align='absmiddle' style='border:none;' />{{$v['comments_content']}}</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>{{$v['comments_time']}}</div>
 					 
-					 <div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='images/MainRightFirstLineTitle.gif' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>{{$v['mingzi']}}</a><img src='images/1.gif' align='absmiddle' style='border:none;' />{{$v['comments_content']}}</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>时间 </div><div class='stateOp'><a onclick='reXianShi(this)' class='opState'>回复</a><a class='opState'>转发</a><a class='opState' onclick='delState(this)'>删除</a></div></div>
-                      
+					<div class="stateShowtime" id ="d{{$k}}"> 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<td id="h{{$k}}"><a href="javascript:huifu({{ $v['message_id'] }},{{$v['user_id']}},'{{session('homeuser')[0]->nickname}}',{{$k}})" onclick="reXianShi(this)" >回复</a></td >
+					<td id="d{{$k}}"><a href="">删除</a></td>
+					</div>
+					 </div>
+                      @else
+						  
+					  @endif
 				  @endforeach
 				 <br/>
 				 
@@ -229,7 +239,7 @@
 						
 						function skjd(i,str,nickname,time){
 						
-						$("#d"+i).append(" <br/><div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='images/MainRightFirstLineTitle.gif' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>"+nickname+"</a><img src='images/1.gif' align='absmiddle' style='border:none;' />"+str+"</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>"+time+"</div><div class='stateOp'><a onclick='reXianShi(this)' class='opState'>回复</a><a class='opState'>转发</a><a class='opState' onclick='delState(this)'>删除</a><div/><div/>");
+						$("#d"+i).append(" <br/><div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='images/MainRightFirstLineTitle.gif' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>"+nickname+"</a><img src='images/1.gif' align='absmiddle' style='border:none;' />"+str+"</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>"+time+"</div><div/>");
 					 
 						}
 					
@@ -399,10 +409,14 @@
             }
             
              function follow(uid,sud,p){
-                
+                if(uid==sud){
+					alert('亲 不可以关注自己哦!')
+					return;
+				}
                var guan = document.getElementById("s"+p).innerHTML;
                //alert(aa);die;
-               if(guan=='关注他(她)'){
+              
+			  if(guan=='关注他(她)'){
                 //1. 创建一个请求对象
                 var xmlhttp;
                 if(window.XMLHttpRequest){

@@ -55,7 +55,8 @@ class IndexsController extends Controller
 		foreach($message as $k=>$v){
 			
 			$ddd[$k]= Userinfo::where('user_id',$v['user_id'])->first();
-			$lasd[$k]= Comments::where('message_id',$v['message_id'])->first();
+			$lasd[$k]= Comments::where('message_id',$v['message_id'])->orderBy('comments_time','desc')->first();
+			$asda[$k]= Userinfo::where('user_id',$lasd[$k]['user_id'])->first();
 			$ccc[$k]['nickname']=$ddd[$k]['nickname'];
 			$ccc[$k]['picname']=$ddd[$k]['picname'];
 			
@@ -64,6 +65,8 @@ class IndexsController extends Controller
 			$message[$k]['touxiang'] = $ccc[$k]['picname'];
 			$message[$k]['comments_content'] = $lasd[$k]['comments_content'];
 			$message[$k]['mingzi'] = $lasd[$k]['nickname'];
+			$message[$k]['comments_time'] = $lasd[$k]['comments_time'];
+			$message[$k]['touxiangs'] = $asda[$k]['picname'];
 	 
 		}		
 		
@@ -71,7 +74,7 @@ class IndexsController extends Controller
 
 			 
 		//echo"<pre>";
-		//var_dump($lasd);die;
+		//var_dump($asda);die;
 		//$bianlian = Redis::hgetall("comment");
 		return view("home.indexs.index",["list"=>$list,'info'=>$info,'message'=>$message,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam]);
     }
