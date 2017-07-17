@@ -141,10 +141,10 @@
               </div>
 			 <div class="stateShowtime"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					
+					@if(session('homeuser')[0]->id)
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><a id="s{{$k}}" href="javascript:follow({{session('homeuser')[0]->id}},{{ $v['user_id']}},{{$k}})" >关注他(她)</a></td>
-					
+					@endif
 			
 			</div>
             </div>

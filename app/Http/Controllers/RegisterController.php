@@ -99,10 +99,10 @@ class RegisterController extends Controller
 			}
 			if($dd){
 			$follow['id']=$id;
-			$follow['suser_id']=null;
-			$follow['user_id']=null;
-			$follow['follow_count']=0;
-			$follow['fans_count']=0;		
+			$follow['suser_id']=7;
+			$follow['user_id']=7;
+			$follow['follow_count']=1;
+			$follow['fans_count']=1;		
 			$cc = Follow::insertGetId($follow);
 			}else{
 				return back()->with("err","注册失败,请重新注册！");
