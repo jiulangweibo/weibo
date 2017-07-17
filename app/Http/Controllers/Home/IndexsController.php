@@ -7,6 +7,7 @@ use App\Model\Follow;
 use App\Model\Userinfo;
 use App\Model\Forward;
 use App\Model\Praise;
+use App\Model\Comments;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,12 +15,15 @@ class IndexsController extends Controller
 {
     public function index(Request $request)
 	{
-
-		//$list = Praise::where('user_id',1)->where('message_id',97)->first();
+		 $user_id = session()->get('homeuser')[0]->id;
+		
+		
+	
+		
 		//echo"<pre>";
-		//var_dump("$list");die;
+		//var_dump($list);die;
 			//统计个人发布的微博，关注，粉丝
-   		 $user_id = session()->get('homeuser')[0]->id;
+   		
 		 $datas = Follow::where('id',$user_id)->orderBy('follow_count','desc')->first();
 		 //dd($datas);
 		  $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first();
@@ -29,41 +33,51 @@ class IndexsController extends Controller
         //dd($id);die;
 		$list = Userinfo::where("user_id",$id)->first();
         //dump($list);die;
+
 		$info = Message::where('status',1)->orderBy('publish_time','desc')->paginate(8);
         
-		 //dump($info);die;
 		$message = [];
 		$ccc = [];
 		$ddd = [];
 		//$acc = [];
 		foreach($info as $k=>$v){
+			
 			$message[$k]['user_id'] = $v['user_id'];
 			$message[$k]['content'] = $v['content'];
 			$message[$k]['tupian'] = $v['picname'];
 			$message[$k]['publish_time'] = $v['publish_time'];
 			$message[$k]['message_id'] = $v['message_id'];
+			//$praise = Praise::where('user_id',$user_id)->get()->toArray();
+			//$dasdasd[$k] = Praise::where('message_id',$praise[$k]['message_id'])->first()->toArray();
 			
-		
-		
-		//$id = session()->get("homeuser")[0]->id;		
-		
-		//$message[] = Userinfo::where("user_id",$aa)->get();
-		//$acc=Message::where("user_id",$aa)->first();
-		//$message[$k]->content=$acc->content;
-		//$message[$k]->publish_time=$acc->publish_time;
-		
+			
 		}
 		foreach($message as $k=>$v){
 			
 			$ddd[$k]= Userinfo::where('user_id',$v['user_id'])->first();
+			$lasd[$k]= Comments::where('message_id',$v['message_id'])->orderBy('comments_time','desc')->first();
+			$asda[$k]= Userinfo::where('user_id',$lasd[$k]['user_id'])->first();
 			$ccc[$k]['nickname']=$ddd[$k]['nickname'];
 			$ccc[$k]['picname']=$ddd[$k]['picname'];
 			
+		
 			$message[$k]['nickname'] = $ccc[$k]['nickname'];
 			$message[$k]['touxiang'] = $ccc[$k]['picname'];
+			$message[$k]['comments_content'] = $lasd[$k]['comments_content'];
+			$message[$k]['mingzi'] = $lasd[$k]['nickname'];
+			$message[$k]['comments_time'] = $lasd[$k]['comments_time'];
+			$message[$k]['comments_id'] = $lasd[$k]['comments_id'];
+			$message[$k]['comments_userid'] = $lasd[$k]['user_id'];
+			$message[$k]['touxiangs'] = $asda[$k]['picname'];
 	 
-		}
+		}		
 		
+		 
+
+			 
+		//echo"<pre>";
+		//var_dump($asda);die;
+		//$bianlian = Redis::hgetall("comment");
 		return view("home.indexs.index",["list"=>$list,'info'=>$info,'message'=>$message,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam]);
     }
 	
@@ -156,35 +170,80 @@ function follow($uid,$sud)
 		}
 
 
-	
 	}
 	//
 	function follows($uid,$sud)
 	{
 
-
-		$dksjd = Follow::where('id',$uid)->orderBy("follow_count","desc")->first();
-		$dasdk = Follow::where('id',$sud)->orderBy("fans_count","desc")->first();
+			Follow::where("id",$uid)->where("suser_id",$sud)->delete();
+			
+		 
+			Follow::where("id",$sud)->where("user_id",$uid)->delete();
+		  
+		  
 		
-		$data['suser_id'] = $sud;
-		$data['id'] = $uid;
-		$follow_count = $dksjd->follow_count-1;
-		$data['follow_count'] = $follow_count;
-		Follow::insertGetId($data);
-		//dump($sud);die;
-		if(!empty($dasdk)){
-		$dadd['id'] = $sud;
-		$dadd['user_id'] = $uid;
-		$fans_count = $dasdk->fans_count-1;
-		$dadd['fans_count'] = $fans_count;
-		Follow::insertGetId($dadd);
+	
 
-
+	
 	}
-	}
-    
+	
 
-	function forward($mid,$sud,$id,$content)
+	function praise($mid,$uid)
+	{
+		$list = Praise::where('user_id',$uid)->where('message_id',$mid)->first();
+		//dump($list);die;
+		if($list==''){
+				$data['message_id'] = $mid;
+				$data['user_id'] = $uid;
+				$id = Praise::insertGetId($data);	
+				
+				$info = Message::where('message_id',$mid)->first();
+				if($info->praise_count!=null){
+					$praise_count = $info->praise_count+1;
+					$date['praise_count'] =$info->praise_count;
+					$m = Message::where('message_id',$mid)->update($date);
+				}else{
+					$date['praise_count'] =1;
+					$m = Message::where('message_id',$mid)->update($date);
+				}
+		}elseif($list->praise_count=='1'){
+				
+				$praise_count = $list->praise_count--;
+				$data['praise_count'] =$list->praise_count;
+				$d = Praise::where('user_id',$uid)->where('message_id',$mid)->update($data);
+				
+				$info = Message::where('message_id',$mid)->first();
+				if($info->praise_count!=null){
+				$praise_count = $info->praise_count--;
+				$dddd['praise_count'] =$info->praise_count;
+				$m = Message::where('message_id',$mid)->update($dddd);
+			}else{
+				$date['praise_count'] =0;
+				$m = Message::where('message_id',$mid)->update($date);
+			}
+		}elseif($list->praise_count=='0'){
+				$praise_count = $list->praise_count++;
+				$data['praise_count'] =$list->praise_count;
+				$d = Praise::where('user_id',$uid)->where('message_id',$mid)->update($data);
+				
+				$info = Message::where('message_id',$mid)->first();
+				if($info->praise_count!=null){
+				$praise_count = $info->praise_count++;
+				$dddd['praise_count'] =$info->praise_count;
+				$m = Message::where('message_id',$mid)->update($dddd);
+			}else{
+				$date['praise_count'] =1;
+				$m = Message::where('message_id',$mid)->update($date);
+			}
+		}
+		
+	 
+		
+		//return $data;
+	}
+
+
+		function forward($mid,$sud,$id,$content)
     {
 		
 		//var_dump($content);die;
@@ -201,67 +260,9 @@ function follow($uid,$sud)
 			$data['forward_content']=$content;
 			$id = Forward::insertGetId($data);
 		}
-	
-			
 			 return redirect('/indexs');
-	
-		
-		
-		
 	}
-	
-	function praise($mid,$uid)
-	{
-		$list = Praise::where('user_id',$uid)->where('message_id',$mid)->first();
-		//dump($list);die;
-		if($list==''){
-			$data['message_id'] = $mid;
-			$data['user_id'] = $uid;
-			$data['praise_count'] = 1;
-			$id = Praise::insertGetId($data);
-		}else{
-			
-			$praise_count = $list->praise_count++;
-			$data['praise_count'] =$list->praise_count;
-			$m = Praise::where('user_id',$uid)->where('message_id',$mid)->update($data);
-		}
-		
-	 
-			$info = Message::where('message_id',$mid)->first();
-			$praise_count = $info->praise_count++;
-			$cccc['praise_count'] =$info->praise_count;
-			$m = Message::where('message_id',$mid)->update($cccc);
-		
-		//return $data;
-	}
-	
-	
-	
-		function praises($mid,$uid)
-	{
-			$list = Praise::where('user_id',$uid)->where('message_id',$mid)->first();
-			$praise_count = $list->praise_count--;
-			$data['praise_count'] =$list->praise_count;
-			$m = Praise::where('user_id',$uid)->where('message_id',$mid)->update($data);
-			
-			
-				
-			$info = Message::where('message_id',$mid)->first();
-			$praise_count = $info->praise_count--;
-			$dddd['praise_count'] =$info->praise_count;
-			$m = Message::where('message_id',$mid)->update($dddd);
-			
-		
-		
-		//return $data;
-	}
-	
-		function dd(Request $request)
-		{
-			return $request->input('message_id');
-			
-		}
-	
+
 	 function search(Request $request)
 	{
 		 $where = [];
@@ -277,17 +278,24 @@ function follow($uid,$sud)
 	}
 
 
-		function comments($mid,$id,$content)
-		{
-			$comments = Redis::hmset("comment",["one"=>$mid,"two"=>$id,"three"=>$content]);
-			$bianlian = Redis::hgetall("comment");
-			dd($bianlian);
-			var_dump($bianlian);
-			 
-		}
-		function content($content)
+		function comments($mid,$id,$nickname,$content)
 		{
 
+			//$ acc = [];
+			$comments = Redis::hmset("comment",["message_id"=>$mid,"user_id"=>$id,"nickname"=>$nickname,"content"=>$content]);
+			$sjdd = Redis::hgetall("comment");
+			$data['message_id'] = $mid;
+			$data['user_id'] = $id;
+			$data['nickname'] = $nickname;
+			$data['comments_content'] = $content;
+			$comments_time = time()+480*60;
+			$data['comments_time'] = date("Y-m-d H:i:s",$comments_time);
+			Comments::insertGetId($data);
+			//dd($bianlian);
+			echo(":".$sjdd['content']);
+			//echo(":".$sjdd['nickname']);
+			 //return $sjdd;
 		}
+
 
 }

@@ -84,7 +84,7 @@
     	<!-- main部分左栏 -->
     	<div id="mainLeft">
         	<!-- main左栏的推荐用户部分 -->
-        	<div id="faceShowWord">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新 添 加 用 户</div>
+        	<div id="faceShowWord">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用 户</div>
             
             <div id="faceShow">
            
@@ -105,62 +105,7 @@
                     </table>
               </div>
                
-           <!--    <div id="faceShow2">
-                	<table width="180" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td width="60" height="60"  align="center"><a href="#" title="怪帥姜聲揚"><img src="./images/face/4.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60"  align="center"><a href="#" title="袁博"><img src="./images/face/5.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60" align="center"><a href="#" title="柯云路"><img src="./images/face/6.jpg" alt="" width="48" height="48" /></a></td>
-                      </tr>
-                      <tr>
-                        <td height="20"  align="center"><a href="#">怪帥姜聲揚</a></td>
-                        <td  align="center"><a href="#">袁博</a></td>
-                        <td  align="center"><a href="#">柯云路</a></td>
-                      </tr>
-                </table>
-                </div> -->
-              	<!--  <div id="faceShow3">
-                     <table width="180" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td width="60" height="60"  align="center"><a href="#" title="李立军"><img src="./images/face/7.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60"  align="center"><a href="#" title="黄海波"><img src="./images/face/8.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60" align="center"><a href="#" title="时事辩论"><img src="./images/face/9.jpg" alt="" width="48" height="48" /></a></td>
-                      </tr>
-                      <tr>
-                        <td height="20"  align="center"><a href="#">李立君</a></td>
-                        <td  align="center"><a href="#">黄海波</a></td>
-                        <td  align="center"><a href="#">时事辩论</a></td>
-                      </tr>
-                    </table>
-                </div> -->
-             <!--  <div id="faceShow4">
-                	<table width="180" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td width="60" height="60"  align="center"><a href="#" title="程鹤麟"><img src="./images/face/10.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60"  align="center"><a href="#" title="冯磊"><img src="./images/face/11.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60" align="center"><a href="#" title="邓浩志"><img src="./images/face/12.jpg" alt="" width="48" height="48" /></a></td>
-                      </tr>
-                      <tr>
-                        <td height="20"  align="center"><a href="#">程鹤麟</a></td>
-                        <td  align="center"><a href="#">冯磊</a></td>
-                        <td  align="center"><a href="#">邓浩志</a></td>
-                      </tr>
-                  </table>
-                 </div> -->
-              <!--     <div id="faceShow5">
-                	<table width="180" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td width="60" height="60"  align="center"><a href="#" title="程鹤麟"><img src="./images/face/13.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60"  align="center"><a href="#" title="黄海波"><img src="./images/face/14.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60" align="center"><a href="#" title="怪帥姜聲"><img src="./images/face/15.jpg" alt="" width="48" height="48" /></a></td>
-                      </tr>
-                      <tr>
-                        <td height="20"  align="center"><a href="#">程鹤麟</a></td>
-                        <td  align="center"><a href="#">黄海波</a></td>
-                        <td  align="center"><a href="#">怪帥姜聲</a></td>
-                      </tr>
-                    </table>
-                </div> -->
+
           </div>
             <!-- main左栏的推荐用户部分结束 -->
         </div>
@@ -172,7 +117,7 @@
 		  
           <div id="stateShow">
 
-		  @foreach ($message as $v)
+		  @foreach ($message as $k=>$v)
             <div class="stateShow" id="stateShow1">
 			
               <div class="stateShowWord">
@@ -196,58 +141,15 @@
               </div>
 			 <div class="stateShowtime"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">点赞(1)</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">转发(2)</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">关注他(她)</a></td>
 					
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td><a id="s{{$k}}" href="javascript:follow({{session('homeuser')[0]->id}},{{ $v['user_id']}},{{$k}})" >关注他(她)</a></td>
+					
+			
 			</div>
             </div>
 			@endforeach
-            <!--div class="stateShow" id="stateShow2">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/17.gif" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">经典微博语录</a>分享图片看到睡佛的人，1分钟内转发，霉运尽除，好运相伴~！不转不发者~！呵呵~！看吧~！请关注</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月31日 16:14 </div>
-            </div>
-            <div class="stateShow" id="stateShow3">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/7.jpg" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">传说中的老蒋</a> 经济最虚，文化最烂。外交最弱，军事最熊。 房价最高，医药最贵。教育最差，就业最难。 犯罪最凶，假货最多。污染最重，环境最劣。 工人最苦，农民最穷，学生最累，股民最惨。 旗帜最红，理论最好。口号最响，实干最少。 </td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月29日 12:20 </div>
-            </div>
-            <div class="stateShow" id="stateShow4">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/18.gif" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">天涯海阁</a> 分享图片看到睡佛的人，1分钟内转发，霉运尽除，好运相伴~！不转不发者~！呵呵~！看吧~！请关注</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月31日 08:02 </div>
-            </div>
-            <div class="stateShow" id="stateShow5">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/17.jpg" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">烟台是个小鸟</a>烟台大学女生在厕所被杀，因女孩父母是农村人，且穷，校方极力推卸责任，几乎封锁了全国的媒体。 该女生父母二人在学校下跪。求讨一个说法。 此消息现几乎只能在博客等非正规媒体上传播了，有心人请转发此微博，以引起有关部门注意，为女孩讨个说法！！</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月31日 17:53 </div>
-            </div-->
+           
           </div>
   </div>
         <!-- main部分中间部分结束 -->
@@ -298,6 +200,97 @@
     </div>
     <!-- footer部分结束 -->
 </div>
+<script>
+             function follow(uid,sud,p){
+                if(uid==sud){
+					alert('亲 不可以关注自己哦!')
+					return;
+				}
+               var guan = document.getElementById("s"+p).innerHTML;
+               //alert(aa);die;
+              
+			  if(guan=='关注他(她)'){
+                //1. 创建一个请求对象
+                var xmlhttp;
+                if(window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{// code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                } 
+
+                //2. 设置回调函数
+                xmlhttp.onreadystatechange = function(){
+                    //alert('ok:'+xmlhttp.readyState);
+                    //当前请求状态为4时
+                    if(xmlhttp.readyState==4){
+                        //判断响应状态码:是否是200
+                        if(xmlhttp.status == 200){ 
+						//alert(p);
+						document.getElementById("s"+p).innerHTML = ("已关注");
+                            //var str = xmlhttp.responseText;
+							//alert(str);
+                        }else{
+                            alert("服务器端响应错误!");
+                        }
+                    }
+                    
+                }
+                
+                //3. 初始化请求对象
+                xmlhttp.open("get","/indexs/follow/"+uid+"/"+sud,true);
+                //设置请求头信息,让其支持post的参数提交
+                //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+                //4. 执行发送:
+                xmlhttp.send();
+                
+                return false;
+			   }
+		
+		
+			if(guan=='已关注'){
+                //1. 创建一个请求对象
+                var xmlhttp;
+                if(window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{// code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                //2. 设置回调函数
+                xmlhttp.onreadystatechange = function(){
+                    //alert('ok:'+xmlhttp.readyState);
+                    //当前请求状态为4时
+                    if(xmlhttp.readyState==4){
+                        //判断响应状态码:是否是200
+                        if(xmlhttp.status == 200){ 
+						document.getElementById("s"+p).innerHTML = ("关注他(她)");
+                            var str = xmlhttp.responseText;
+							//alert(str);
+                        }else{
+                            alert("服务器端响应错误!");
+                        }
+                    }
+                    
+                }
+                
+                //3. 初始化请求对象
+                xmlhttp.open("get","/indexs/follows/"+uid+"/"+sud,true);
+                //设置请求头信息,让其支持post的参数提交
+                //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+                //4. 执行发送:
+                xmlhttp.send();
+                
+                return false;
+			   }
+            }
+        
+        
+			
+				</script>
 <!-- 总容器DIV结束 -->
 </body>
 </html>
