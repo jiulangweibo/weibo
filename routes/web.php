@@ -72,6 +72,7 @@ Route::get('/indexs/praise/{mid}/{uid}',"Home\IndexsController@praise"); //点�
 Route::get('/indexs/praises/{mid}/{uid}',"Home\IndexsController@praises"); //点赞
 Route::post('/indexs/dd',"Home\IndexsController@dd"); //点赞
 Route::get('/indexs/comments/{mid}/{id}/{nickname}/{content}',"Home\IndexsController@comments");
+Route::get('/comments/del/{id}',"Home\CommentsController@del");
 //Route::get('/indexs/content',"Home\IndexsController@content");
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图
 

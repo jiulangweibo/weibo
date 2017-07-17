@@ -66,6 +66,8 @@ class IndexsController extends Controller
 			$message[$k]['comments_content'] = $lasd[$k]['comments_content'];
 			$message[$k]['mingzi'] = $lasd[$k]['nickname'];
 			$message[$k]['comments_time'] = $lasd[$k]['comments_time'];
+			$message[$k]['comments_id'] = $lasd[$k]['comments_id'];
+			$message[$k]['comments_userid'] = $lasd[$k]['user_id'];
 			$message[$k]['touxiangs'] = $asda[$k]['picname'];
 	 
 		}		

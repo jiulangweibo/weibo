@@ -185,7 +185,7 @@
 					<div class="stateShowtime" id ="d{{$k}}"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                    
+                     @if(session('homeuser')[0]->id!==$v['user_id'])
 					<td><a id="i{{$k}}" href="javascript:comments({{ $v['message_id'] }},{{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{$k}})" onclick="reXianShi(this)" >评论</a></td>&nbsp;&nbsp;&nbsp;
 					
 					 
@@ -193,28 +193,33 @@
 
 					
 					<td><a href="javascript:submit({{ $v['message_id'] }},{{ $v['user_id']}},{{session('homeuser')[0]->id}})" id="zhuanfa">转发</a></td>&nbsp&nbsp&nbsp
+					
 					<td><a id="s{{$k}}" href="javascript:follow({{session('homeuser')[0]->id}},{{ $v['user_id']}},{{$k}})" >关注他(她)</a></td>
- 
+					 @endif
 					
 					</div>
 					
 					 <br/>
 					 @if($v['mingzi'])
-					 <div class='stateRshow'>
+					 <div class='stateRshow' id="asdk">
 						<div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='http://{{$v['touxiangs']}}' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>{{$v['mingzi']}}</a><img src='images/1.gif' align='absmiddle' style='border:none;' />{{$v['comments_content']}}</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>{{$v['comments_time']}}</div>
 					 
-					<div class="stateShowtime" id ="d{{$k}}"> 
+					
+					<div class="stateShowtime"> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<td id="h{{$k}}"><a href="javascript:huifu({{ $v['message_id'] }},{{$v['user_id']}},'{{session('homeuser')[0]->nickname}}',{{$k}})" onclick="reXianShi(this)" >回复</a></td >
-					<td id="d{{$k}}"><a href="">删除</a></td>
+					<td ><a id="h{{$k}}" href="javascript:huifu({{ $v['message_id'] }},{{$v['user_id']}},'{{session('homeuser')[0]->nickname}}',{{$k}})" onclick="reXianShi(this)" >回复</a></td >
+					<!--td ><a	id="d{{$k}}" onclick="del({{session('homeuser')[0]->id}},{{$v['user_id']}},{{$v['comments_id']}})" href="#">删除</a></td-->
+					@if(session('homeuser')[0]->id==$v['comments_userid'])
+					<td ><a	id="del{{$k}}" href="javascript:del({{$v['comments_id']}},{{$k}})">删除</a></td>
+					@endif
 					</div>
+					
+					
 					 </div>
-                      @else
-						  
 					  @endif
 				  @endforeach
 				 <br/>
-				 
+
                 </div>
 				
                 <div id="recieve">
@@ -235,11 +240,66 @@
                   </div>
 				<script>
 		
-				
+					 function del(id,i){
+						
+						var dd = document.getElementById("del"+i).onclick=function(){
+										 
+							
+							//1. 创建一个请求对象
+							var xmlhttp;
+							if(window.XMLHttpRequest){
+								// code for IE7+, Firefox, Chrome, Opera, Safari
+								xmlhttp=new XMLHttpRequest();
+							}else{// code for IE6, IE5
+								xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+							}
+
+							//2. 设置回调函数
+							xmlhttp.onreadystatechange = function(){
+								//alert('ok:'+xmlhttp.readyState);
+								//当前请求状态为4时
+								if(xmlhttp.readyState==4){
+									//判断响应状态码:是否是200
+									if(xmlhttp.status == 200){ 
+									var sdas = document.getElementById("asdk");
+									sdas.style.display = "none";
+										alert("删除成功!");
+									}else{
+										alert("服务器端响应错误!");
+									}
+								}
+								
+							}
+							
+							//3. 初始化请求对象
+							xmlhttp.open("get","/comments/del/"+id,true);
+							//设置请求头信息,让其支持post的参数提交
+							//xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+							//4. 执行发送:
+							xmlhttp.send();
+							
+							return false;
+						   } 
+								 
+						
+						
+					}
+						
+						 function ddd(id,uid,usid){
+							 if(uid==usid){
+							if(confirm("确定删除吗?")){
+								 window.location.href="/comments/del/"+id;
+								}
+							 }else{
+								 alert("")
+							 }
+						 }
+						
 						
 						function skjd(i,str,nickname,time){
 						
-						$("#d"+i).append(" <br/><div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='images/MainRightFirstLineTitle.gif' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>"+nickname+"</a><img src='images/1.gif' align='absmiddle' style='border:none;' />"+str+"</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>"+time+"</div><div/>");
+						$("#d"+i).append(" <br/><div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>"+nickname+"</a><img src='images/1.gif' align='absmiddle' style='border:none;' />"+str+"</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>"+time+"</div><div/>");
 					 
 						}
 					
@@ -281,7 +341,7 @@
 											//alert(成);
 											var p = document.getElementById("recieve");
 											var f = document.getElementById("i"+i);
-											var d = document.getElementById("d"+i);
+											 
 											 var time = inittime();//取出当前时间
 											//var nickname = document.getElementById("n"+i).innerHTML;
 											skjd(i,str,nickname,time);
