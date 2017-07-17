@@ -168,29 +168,23 @@ function follow($uid,$sud)
 		}
 
 
-	
 	}
 	//
 	function follows($uid,$sud)
 	{
 
-		
-		//$dksjd = Follow::where('id',$uid)->orderBy("follow_count","desc")->first();
-		//$dasdk = Follow::where('id',$sud)->orderBy("fans_count","desc")->first();
-		  
-			$d= Follow::where("id",$uid)->where("suser_id",$sud)->delete();
+			Follow::where("id",$uid)->where("suser_id",$sud)->delete();
 			
-		  if(2>1){
-			    Follow::where("id",$sud)->where("user_id",$uid)->delete();
-		  }
+		 
+			Follow::where("id",$sud)->where("user_id",$uid)->delete();
+		  
 		  
 		
 	
 
 	
 	}
-    
-
+	
 	function forward($mid,$sud,$id,$content)
     {
 		
@@ -220,6 +214,7 @@ function follow($uid,$sud)
 		
 	}
 	
+
 	function praise($mid,$uid)
 	{
 		$list = Praise::where('user_id',$uid)->where('message_id',$mid)->first();
@@ -274,7 +269,27 @@ function follow($uid,$sud)
 		//return $data;
 	}
 
-	
+
+		function forward($mid,$sud,$id,$content)
+    {
+		
+		//var_dump($content);die;
+		$forward_time = time()+480*60;
+		$data['user_id'] = $id;
+		$data['message_id'] = $mid;
+		$data['su_id'] = $sud;
+		$data['forward_time']=date("Y-m-d H:i:s",$forward_time);
+		if($content=='null'){
+			
+		$data['forward_content']='';
+		$id = Forward::insertGetId($data);
+		}else{
+			$data['forward_content']=$content;
+			$id = Forward::insertGetId($data);
+		}
+			 return redirect('/indexs');
+	}
+
 	 function search(Request $request)
 	{
 		 $where = [];
