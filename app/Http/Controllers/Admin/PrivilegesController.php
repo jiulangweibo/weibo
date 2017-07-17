@@ -48,7 +48,8 @@ class PrivilegesController extends Controller
         ]);
 
         //获取指定的部分数据
-        $data = $request->only('title');
+        $data = $request->only('title','method','url');
+        $data['state'] = 1;
         $id = Privileges::insertGetId($data);
         
         if($id>0){
@@ -92,7 +93,7 @@ class PrivilegesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $input = $request->only(['title']);
+        $input = $request->only('title','method','url','state');
         $m = Privileges::where("id",$id)->update($input);
         if($m){
             echo "修改用户状态成功!";

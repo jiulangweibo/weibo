@@ -40,7 +40,7 @@
                                         <tr>
                                             <th>ID号</th>
                                             <th>部门名</th>
-                                            <th>权限ID</th>
+                                            <th>当前状态</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -49,7 +49,7 @@
                                         <tr class="gradeX">
                                             <td>{{$v->id}}</td>
                                             <td>{{$v->title}}</td>
-                                            <td>{{$v->privileges_id}}</td>
+                                            <td>@if ($v->status=="0")禁用 @else 启用 @endif</td>
                                             <td>
                                                 <div class="tpl-table-black-operation">
                                                     <a href="/admin/department/{{ $v->id }}/edit">
@@ -57,6 +57,9 @@
                                                     </a>
                                                     <a href="javascript:doDel({{ $v->id }});" class="tpl-table-black-operation-del">
                                                         <i class="am-icon-trash"></i> 删除
+                                                    </a>
+                                                    <a href="/admin/admin/loadNode/{{ $v->id }}">
+                                                        <i class="am-icon-pencil"></i> 分配节点
                                                     </a>
                                                 </div>
                                             </td>

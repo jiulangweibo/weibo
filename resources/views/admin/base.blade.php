@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{asset('myadmin/assets/css/amazeui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('myadmin/assets/css/amazeui.datatables.min.css')}}" />
     <link rel="stylesheet" href="{{asset('myadmin/assets/css/app.css')}}">
+    <script src="{{asset('myadmin/assets/js/jquery-1.8.3.min.js')}}"></script>
+    <script src="{{asset('myadmin/assets/js/xdl-modal-alert-confirm.js')}}"></script>
     <script src="{{asset('myadmin/assets/js/jquery.min.js')}}"></script>
 
 </head>
@@ -251,12 +253,12 @@
                 </li>
 				<li class="sidebar-nav-link">
                     <a href="/admin/privileges">
-					<i class="am-icon-table sidebar-nav-link-logo"></i> 管理员权限
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 节点管理
                     </a>
                 </li>
 								<li class="sidebar-nav-link">
                     <a href="/admin/department">
-					<i class="am-icon-table sidebar-nav-link-logo"></i> 部门
+					<i class="am-icon-table sidebar-nav-link-logo"></i> 角色管理
                     </a>
                 </li>
             </ul>

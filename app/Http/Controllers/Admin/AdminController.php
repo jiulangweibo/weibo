@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \App\Model\Admin;
+use \App\Model\Department;
+use \App\Model\Admin_Department;
 
 class AdminController extends Controller
 {
@@ -112,6 +115,52 @@ class AdminController extends Controller
         //
         Admin::where("admin_id",$admin_id)->delete();
 
+        return redirect('admin/admin');
+    }
+
+    //为当前用户准备分配角色信息
+    public function loadRole($admin_id=0)
+    {
+        //获取所有角色信息
+        $rolelist = Department::get();
+        //dd($admin_id);
+        // $role = [];
+        // foreach ($rolelist as $v) {
+        //     //dd($v['id']);
+        //     //dd($v->id);
+        //     //$role[$k]['id'] = $v['id']; 
+        // }
+        // $department = [];
+        // dd($role->id);
+        //获取当前用户的角色id
+        $dids = \DB::table("admin_department") ->where("admin_id",$admin_id)->pluck("did")->toArray();
+        //$list = array_intersect($rolelist,$dids);
+        // foreach ($dids as $k => $v) {
+        //     $rolelist[$k]->chekced = ;
+        //     //dd($v);
+        // }
+        //dd($dids);
+        //加载模板
+        return view("admin.admin.rolelist",["admin_id"=>$admin_id,"rolelist"=>$rolelist,"dids"=>$dids]);
+    }
+
+    public function saveRole(Request $request){
+        //return 111;
+         //dd($request);
+        $admin_id = $request->input("admin_id");
+        //清除数据
+        Admin_Department::where("admin_id",$admin_id)->delete();
+        
+        $dids = $request->input("dids");
+        if(!empty($dids)){
+            //处理添加数据
+            $data = [];
+            foreach($dids as $v){
+                $data[] = ["admin_id"=>$admin_id,"did"=>$v];
+            }
+            //添加数据
+            Admin_Department::insert($data);
+        }
         return redirect('admin/admin');
     }
 }
