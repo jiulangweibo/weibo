@@ -84,7 +84,7 @@
     	<!-- main部分左栏 -->
     	<div id="mainLeft">
         	<!-- main左栏的推荐用户部分 -->
-        	<div id="faceShowWord">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用 户</div>
+        	<div id="faceShowWord">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新 添 加 用 户</div>
             
             <div id="faceShow">
            
@@ -105,7 +105,62 @@
                     </table>
               </div>
                
-
+           <!--    <div id="faceShow2">
+                	<table width="180" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="60" height="60"  align="center"><a href="#" title="怪帥姜聲揚"><img src="./images/face/4.jpg" alt="" width="48" height="48" /></a></td>
+                        <td width="60"  align="center"><a href="#" title="袁博"><img src="./images/face/5.jpg" alt="" width="48" height="48" /></a></td>
+                        <td width="60" align="center"><a href="#" title="柯云路"><img src="./images/face/6.jpg" alt="" width="48" height="48" /></a></td>
+                      </tr>
+                      <tr>
+                        <td height="20"  align="center"><a href="#">怪帥姜聲揚</a></td>
+                        <td  align="center"><a href="#">袁博</a></td>
+                        <td  align="center"><a href="#">柯云路</a></td>
+                      </tr>
+                </table>
+                </div> -->
+              	<!--  <div id="faceShow3">
+                     <table width="180" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="60" height="60"  align="center"><a href="#" title="李立军"><img src="./images/face/7.jpg" alt="" width="48" height="48" /></a></td>
+                        <td width="60"  align="center"><a href="#" title="黄海波"><img src="./images/face/8.jpg" alt="" width="48" height="48" /></a></td>
+                        <td width="60" align="center"><a href="#" title="时事辩论"><img src="./images/face/9.jpg" alt="" width="48" height="48" /></a></td>
+                      </tr>
+                      <tr>
+                        <td height="20"  align="center"><a href="#">李立君</a></td>
+                        <td  align="center"><a href="#">黄海波</a></td>
+                        <td  align="center"><a href="#">时事辩论</a></td>
+                      </tr>
+                    </table>
+                </div> -->
+             <!--  <div id="faceShow4">
+                	<table width="180" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="60" height="60"  align="center"><a href="#" title="程鹤麟"><img src="./images/face/10.jpg" alt="" width="48" height="48" /></a></td>
+                        <td width="60"  align="center"><a href="#" title="冯磊"><img src="./images/face/11.jpg" alt="" width="48" height="48" /></a></td>
+                        <td width="60" align="center"><a href="#" title="邓浩志"><img src="./images/face/12.jpg" alt="" width="48" height="48" /></a></td>
+                      </tr>
+                      <tr>
+                        <td height="20"  align="center"><a href="#">程鹤麟</a></td>
+                        <td  align="center"><a href="#">冯磊</a></td>
+                        <td  align="center"><a href="#">邓浩志</a></td>
+                      </tr>
+                  </table>
+                 </div> -->
+              <!--     <div id="faceShow5">
+                	<table width="180" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="60" height="60"  align="center"><a href="#" title="程鹤麟"><img src="./images/face/13.jpg" alt="" width="48" height="48" /></a></td>
+                        <td width="60"  align="center"><a href="#" title="黄海波"><img src="./images/face/14.jpg" alt="" width="48" height="48" /></a></td>
+                        <td width="60" align="center"><a href="#" title="怪帥姜聲"><img src="./images/face/15.jpg" alt="" width="48" height="48" /></a></td>
+                      </tr>
+                      <tr>
+                        <td height="20"  align="center"><a href="#">程鹤麟</a></td>
+                        <td  align="center"><a href="#">黄海波</a></td>
+                        <td  align="center"><a href="#">怪帥姜聲</a></td>
+                      </tr>
+                    </table>
+                </div> -->
           </div>
             <!-- main左栏的推荐用户部分结束 -->
         </div>
@@ -141,15 +196,14 @@
               </div>
 			 <div class="stateShowtime"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					@if(session('homeuser')[0]->id)
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td><a id="s{{$k}}" href="javascript:follow({{session('homeuser')[0]->id}},{{ $v['user_id']}},{{$k}})" >关注他(她)</a></td>
-					@endif
+					
+					
+					
 			
 			</div>
             </div>
 			@endforeach
-           
+          
           </div>
   </div>
         <!-- main部分中间部分结束 -->
@@ -200,97 +254,6 @@
     </div>
     <!-- footer部分结束 -->
 </div>
-<script>
-             function follow(uid,sud,p){
-                if(uid==sud){
-					alert('亲 不可以关注自己哦!')
-					return;
-				}
-               var guan = document.getElementById("s"+p).innerHTML;
-               //alert(aa);die;
-              
-			  if(guan=='关注他(她)'){
-                //1. 创建一个请求对象
-                var xmlhttp;
-                if(window.XMLHttpRequest){
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp=new XMLHttpRequest();
-                }else{// code for IE6, IE5
-                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-                } 
-
-                //2. 设置回调函数
-                xmlhttp.onreadystatechange = function(){
-                    //alert('ok:'+xmlhttp.readyState);
-                    //当前请求状态为4时
-                    if(xmlhttp.readyState==4){
-                        //判断响应状态码:是否是200
-                        if(xmlhttp.status == 200){ 
-						//alert(p);
-						document.getElementById("s"+p).innerHTML = ("已关注");
-                            //var str = xmlhttp.responseText;
-							//alert(str);
-                        }else{
-                            alert("服务器端响应错误!");
-                        }
-                    }
-                    
-                }
-                
-                //3. 初始化请求对象
-                xmlhttp.open("get","/indexs/follow/"+uid+"/"+sud,true);
-                //设置请求头信息,让其支持post的参数提交
-                //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
-                //4. 执行发送:
-                xmlhttp.send();
-                
-                return false;
-			   }
-		
-		
-			if(guan=='已关注'){
-                //1. 创建一个请求对象
-                var xmlhttp;
-                if(window.XMLHttpRequest){
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp=new XMLHttpRequest();
-                }else{// code for IE6, IE5
-                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-                }
-
-                //2. 设置回调函数
-                xmlhttp.onreadystatechange = function(){
-                    //alert('ok:'+xmlhttp.readyState);
-                    //当前请求状态为4时
-                    if(xmlhttp.readyState==4){
-                        //判断响应状态码:是否是200
-                        if(xmlhttp.status == 200){ 
-						document.getElementById("s"+p).innerHTML = ("关注他(她)");
-                            var str = xmlhttp.responseText;
-							//alert(str);
-                        }else{
-                            alert("服务器端响应错误!");
-                        }
-                    }
-                    
-                }
-                
-                //3. 初始化请求对象
-                xmlhttp.open("get","/indexs/follows/"+uid+"/"+sud,true);
-                //设置请求头信息,让其支持post的参数提交
-                //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
-                //4. 执行发送:
-                xmlhttp.send();
-                
-                return false;
-			   }
-            }
-        
-        
-			
-				</script>
 <!-- 总容器DIV结束 -->
 </body>
 </html>
