@@ -207,13 +207,15 @@
 					
 					<div class="stateShowtime"> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					@if(session('homeuser')[0]->id!==$v['comments_userid'])
 					<td ><a id="h{{$k}}" href="javascript:huifu({{ $v['message_id'] }},{{$v['user_id']}},'{{session('homeuser')[0]->nickname}}',{{$k}})" onclick="reXianShi(this)" >回复</a></td >
+					@endif
 					<!--td ><a	id="d{{$k}}" onclick="del({{session('homeuser')[0]->id}},{{$v['user_id']}},{{$v['comments_id']}})" href="#">删除</a></td-->
 					@if(session('homeuser')[0]->id==$v['comments_userid'])
 					<td ><a	id="del{{$k}}" href="javascript:del({{$v['comments_id']}},{{$k}})">删除</a></td>
 					@endif
-					</div>
 					
+					</div>
 					
 					 </div>
 					  @endif
@@ -241,10 +243,8 @@
 				<script>
 		
 					 function del(id,i){
-						
+						if(confirm("确定删除吗?")){
 						var dd = document.getElementById("del"+i).onclick=function(){
-										 
-							
 							//1. 创建一个请求对象
 							var xmlhttp;
 							if(window.XMLHttpRequest){
@@ -281,7 +281,7 @@
 							
 							return false;
 						   } 
-								 
+						} 
 						
 						
 					}
