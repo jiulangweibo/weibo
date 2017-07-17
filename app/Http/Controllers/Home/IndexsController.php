@@ -8,6 +8,7 @@ use App\Model\Userinfo;
 use App\Model\Forward;
 use App\Model\Praise;
 use App\Model\Comments;
+use App\Model\Reply;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -31,7 +32,7 @@ class IndexsController extends Controller
 		
 		$id = session()->get("homeuser")[0]->id;
         //dd($id);die;
-		$list = Userinfo::where("user_id",$id)->first();
+		$list = Userinfo::where("user_id",$id)->where("status",1)->first();
         //dump($list);die;
 
 		$info = Message::where('status',1)->orderBy('publish_time','desc')->paginate(8);
@@ -56,6 +57,7 @@ class IndexsController extends Controller
 			
 			$ddd[$k]= Userinfo::where('user_id',$v['user_id'])->first();
 			$lasd[$k]= Comments::where('message_id',$v['message_id'])->orderBy('comments_time','desc')->first();
+			$sdasd[$k]= Reply::where('comments_id',$lasd[$k]['comments_id'])->orderBy('reply_time','desc')->first();
 			$asda[$k]= Userinfo::where('user_id',$lasd[$k]['user_id'])->first();
 			$ccc[$k]['nickname']=$ddd[$k]['nickname'];
 			$ccc[$k]['picname']=$ddd[$k]['picname'];
@@ -69,6 +71,11 @@ class IndexsController extends Controller
 			$message[$k]['comments_id'] = $lasd[$k]['comments_id'];
 			$message[$k]['comments_userid'] = $lasd[$k]['user_id'];
 			$message[$k]['touxiangs'] = $asda[$k]['picname'];
+			$message[$k]['reply_uname'] = $sdasd[$k]['uname'];
+			$message[$k]['reply_cname'] = $sdasd[$k]['cname'];
+			$message[$k]['reply_content'] = $sdasd[$k]['reply_content'];
+			$message[$k]['reply_time'] = $sdasd[$k]['reply_time'];
+			 
 		 
 	 
 		}		
@@ -77,7 +84,7 @@ class IndexsController extends Controller
 
 			 
 		//echo"<pre>";
-		//var_dump($asda);die;
+		//var_dump($message);die;
 		//$bianlian = Redis::hgetall("comment");
 		return view("home.indexs.index",["list"=>$list,'info'=>$info,'message'=>$message,'datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam]);
     }
@@ -296,6 +303,17 @@ function follow($uid,$sud)
 			echo(":".$sjdd['content']);
 			//echo(":".$sjdd['nickname']);
 			 //return $sjdd;
+		}
+		
+		public function pinglun($id)
+		{
+			$lasd= Comments::where('message_id',$id)->orderBy('comments_time','desc')->get();
+			foreach($lasd as $k=>$v){
+				$sddas[$k]= Userinfo::where("user_id",$v['user_id'])->first();
+				$lasd[$k]['picname'] =$sddas[$k]['picname'];
+			}
+			echo"<pre>";
+			var_dump ($lasd);
 		}
 
 

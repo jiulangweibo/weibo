@@ -93,11 +93,7 @@ class RegisterController extends Controller
 			if($id){
             $data['user_id']=$id;
             $dd = Userinfo::insertGetId($data);
-			}else{
-				return back()->with("err","注册失败,请重新注册！");
-				die;
-			}
-			if($dd){
+			
 			$follow['id']=$id;
 			$follow['suser_id']=7;
 			$follow['user_id']=7;
@@ -107,8 +103,9 @@ class RegisterController extends Controller
 			}else{
 				return back()->with("err","注册失败,请重新注册！");
 				die;
-				 
 			}
+			
+		
          if($dd>0 && $id>0){
              return redirect('/');
          }else{
