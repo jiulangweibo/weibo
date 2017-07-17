@@ -185,35 +185,6 @@ function follow($uid,$sud)
 	
 	}
 	
-	function forward($mid,$sud,$id,$content)
-    {
-		
-		//var_dump($content);die;
-		$forward_time = time()+480*60;
-		$data['user_id'] = $id;
-		$data['message_id'] = $mid;
-		$data['su_id'] = $sud;
-		$data['forward_time']=date("Y-m-d H:i:s",$forward_time);
-		
-		if($content=='null'){
-			
-		$data['forward_content']='';
-		$id = Forward::insertGetId($data);
-		}else{
-			$data['forward_content']=$content;
-			$id = Forward::insertGetId($data);
-			
-			
-		}
-	
-			
-			 return redirect('/indexs');
-	
-		
-		
-		
-	}
-	
 
 	function praise($mid,$uid)
 	{
