@@ -305,15 +305,18 @@ function follow($uid,$sud)
 			 //return $sjdd;
 		}
 		
-		public function pinglun($id)
+		public function pinglun($mid)
 		{
-			$lasd= Comments::where('message_id',$id)->orderBy('comments_time','desc')->get();
+			$lasd= Comments::where('message_id',$mid)->orderBy('comments_time','desc')->get()->toArray();
 			foreach($lasd as $k=>$v){
 				$sddas[$k]= Userinfo::where("user_id",$v['user_id'])->first();
 				$lasd[$k]['picname'] =$sddas[$k]['picname'];
+				
+				$lasd[$k]['huifu'] = Reply::where('comments_id',$v['comments_id'])->get()->toArray();
+				$dd = $lasd[$k]['huifu'];
 			}
 			echo"<pre>";
-			var_dump ($lasd);
+			var_dump($lasd);
 		}
 
 
