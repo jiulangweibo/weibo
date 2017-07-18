@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Model\Comments;
+use App\Model\Reply;
 use App\Http\Controllers\Controller;
 
 class CommentsController extends Controller
@@ -21,10 +22,21 @@ class CommentsController extends Controller
 	public function del($id)
 	{
 		 $m = Comments::where("comments_id",$id)->delete();
-		 if($m>0){
-			  return redirect('/indexs');
+		 
+	}
+	public function reply($id,$cid,$uname,$cname,$content){
+		 $data['user_id'] = $id;
+		 $data['comments_id'] = $cid;
+		 $data['uname'] = $uname;
+		 $data['cname'] = $cname;
+		 $reply_time = time()+480*60;
+		 $data['reply_time'] = date("Y-m-d H:i:s",$reply_time);
+		 $data['reply_content'] = $content;
+		 $id = Reply::insertGetId($data);
+		 if($id>0){
+			 return "OK";
 		 }else{
-			 return "删除失败";
+			 return false;
 		 }
 	}
 }

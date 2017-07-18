@@ -201,21 +201,35 @@
 					
 					 <br/>
 					 @if($v['mingzi'])
-					 <div class='stateRshow' id="asdk">
+					 <div class='stateRshow' id="hh{{$k}}">
 						<div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='http://{{$v['touxiangs']}}' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>{{$v['mingzi']}}</a><img src='images/1.gif' align='absmiddle' style='border:none;' />{{$v['comments_content']}}</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>{{$v['comments_time']}}</div>
 					 
 					
 					<div class="stateShowtime"> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					@if(session('homeuser')[0]->id!==$v['comments_userid'])
-					<td ><a id="h{{$k}}" href="javascript:huifu({{ $v['message_id'] }},{{$v['user_id']}},'{{session('homeuser')[0]->nickname}}',{{$k}})" onclick="reXianShi(this)" >回复</a></td >
+					
+				
+					@if($v['reply_content'])
+					@else
+					<td ><a id="h{{$k}}" href="javascript:huifu({{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{ $v['comments_id'] }},'{{$v['mingzi']}}',{{$k}})" >回复</a></td >
+					@endif
+
+				 
+					@if($v['reply_content'])
+					<div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'></td><td width='310' ><a href='#'>{{$v['reply_uname']}}</a>回复<a href='#'>{{$v['reply_cname']}}</a><img src='images/1.gif' align='absmiddle' style='border:none;' />{{$v['reply_content']}}</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>{{$v['reply_time']}}<td ><a id="h{{$k}}" href="javascript:huifu({{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{ $v['comments_id'] 	}},'{{$v['mingzi']}}',{{$k}})" >&nbsp;&nbsp;&nbsp;&nbsp;回复</a></td ></div></div>
+					@endif
+					
 					@endif
 					<!--td ><a	id="d{{$k}}" onclick="del({{session('homeuser')[0]->id}},{{$v['user_id']}},{{$v['comments_id']}})" href="#">删除</a></td-->
 					@if(session('homeuser')[0]->id==$v['comments_userid'])
-					<td ><a	id="del{{$k}}" href="javascript:del({{$v['comments_id']}},{{$k}})">删除</a></td>
+					<td ><a	id="ddd{{$k}}" href="javascript:del({{$v['comments_id']}},{{$k}})">删除</a></td>
 					@endif
 					
 					</div>
+					<a id="cha{{$k}}" href ="javascript:aa({{$k}},{{$v['message_id']}})">查看评论</a>
+					
+	
 					
 					 </div>
 					  @endif
@@ -223,7 +237,54 @@
 				 <br/>
 
                 </div>
+				<script type="text/javascript">
+		 
 				
+				
+				
+				
+				function aa(i,mid){
+					//1. 创建一个请求对象
+							var xmlhttp;
+							if(window.XMLHttpRequest){
+								// code for IE7+, Firefox, Chrome, Opera, Safari
+								xmlhttp=new XMLHttpRequest();
+							}else{// code for IE6, IE5
+								xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+							}
+
+							//2. 设置回调函数
+							xmlhttp.onreadystatechange = function(){
+								//alert('ok:'+xmlhttp.readyState);
+								//当前请求状态为4时
+								if(xmlhttp.readyState==4){
+									//判断响应状态码:是否是200
+									if(xmlhttp.status == 200){ 
+									
+									 
+										$("#sdasd"+i).toggle();
+									var str = xmlhttp.responseText;
+										alert(str);
+									}else{
+										alert("服务器端响应错误!");
+									}
+								}
+								
+							}
+							
+							//3. 初始化请求对象
+							xmlhttp.open("get","/indexs/pinglun/"+mid,true);
+							//设置请求头信息,让其支持post的参数提交
+							//xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+							//4. 执行发送:
+							xmlhttp.send();
+							
+							return false;
+				 
+				}
+				 
+				</script>
                 <div id="recieve">
                         <div id="ff" style="float:left;"><font style="font-size:16px; color:#FDFDFD">&nbsp;&nbsp;&nbsp;&nbsp;评&nbsp;&nbsp;论</font></div>
                         <div id="left" style="float:right; margin-top:10px; color:#FFF; margin-right:10px;">您还有可以输入<font id="counter2" color="#ffffff">140</font>字！&nbsp;&nbsp;&nbsp;<img src="./images/hongcha1.gif" alt="" width="14" height="13" align="absmiddle" title="" onclick="windowClose()" /></div><br />
@@ -240,12 +301,23 @@
                             </div>						
                         </div> 
                   </div>
+				  
+
 				<script>
 		
-					 function del(id,i){
-						if(confirm("确定删除吗?")){
-						var dd = document.getElementById("del"+i).onclick=function(){
-							//1. 创建一个请求对象
+		
+		
+					function sdasdas(uname,cname,time,val,i){
+						$("#hh"+i).append(" <br/><div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'></td><td width='310' ><a href='#'>"+uname+"</a>回复<a href='#'>"+cname+"</a><img src='images/1.gif' align='absmiddle' style='border:none;' />"+val+"</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>"+time+"</div><div/>");
+					}
+
+
+					
+					function huifu(id,uname,cid,cname,i){
+						  var val=prompt("请输入你要回复的内容!","")
+						  
+						  if(val){
+							  							//1. 创建一个请求对象
 							var xmlhttp;
 							if(window.XMLHttpRequest){
 								// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -261,7 +333,59 @@
 								if(xmlhttp.readyState==4){
 									//判断响应状态码:是否是200
 									if(xmlhttp.status == 200){ 
-									var sdas = document.getElementById("asdk");
+									
+									 var time = inittime();//取出当前时间
+											//var nickname = document.getElementById("n"+i).innerHTML;
+										sdasdas(uname,cname,time,val,i);
+									
+										 
+									}else{
+										alert("服务器端响应错误!");
+									}
+								}
+								
+							}
+							
+							//3. 初始化请求对象
+							xmlhttp.open("get","/comments/reply/"+id+"/"+cid+"/"+uname+"/"+cname+"/"+val,true);
+							//设置请求头信息,让其支持post的参数提交
+							//xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+							//4. 执行发送:
+							xmlhttp.send();
+							
+							return false;
+							  
+							  
+						  }
+						  
+					}
+		
+		
+		
+					 function del(id,i){
+						  var dd = document.getElementById("ddd"+i);
+						if(confirm("确定删除吗?")){
+							dd.onclick=function(){
+						
+							//1. 创建一个请求对象
+							var xmlhttp;
+							if(window.XMLHttpRequest){
+								// code for IE7+, Firefox, Chrome, Opera, Safari
+								xmlhttp=new XMLHttpRequest();
+							}else{// code for IE6, IE5
+								xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+							}
+
+							//2. 设置回调函数
+							xmlhttp.onreadystatechange = function(){
+								//alert('ok:'+xmlhttp.readyState);
+								//当前请求状态为4时
+								if(xmlhttp.readyState==4){
+									//判断响应状态码:
+									
+									if(xmlhttp.status == 200){ 
+									var sdas = document.getElementById("hh"+i);
 									sdas.style.display = "none";
 										alert("删除成功!");
 									}else{
@@ -281,10 +405,8 @@
 							
 							return false;
 						   } 
-						} 
-						
-						
-					}
+						}
+						}
 						
 						 function ddd(id,uid,usid){
 							 if(uid==usid){
@@ -647,7 +769,7 @@
                         <div id="mainRightPostionFouthLine">
                         	<!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->	
                         	<div id="mainRightPositionFourthLineContent">
-                            <form action="/indexs/search" method="get">
+                            <form action="/search" method="get">
                               <input type="text" class="am-form-field " name="nickname" placeholder="用户昵称">
                               <button><img src="./images/search.gif" alt="" width="27" height="25" align="middle" title="" border="0"/></a></button>
                             </form>

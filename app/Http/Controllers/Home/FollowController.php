@@ -24,7 +24,7 @@ class FollowController extends Controller
 	
 		
         //遍历关注人信息
-        $follow = Follow::where('id',$user_id)->get();
+        $follow = Follow::where('id',$user_id)->paginate(3);
         //dd($follow);
         $list = [];
         $user = [];
@@ -48,7 +48,7 @@ class FollowController extends Controller
 
         //dd($users);
    		//返回视图,分配数据
-		return view("home.follow.follow",['datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam,'users'=>$users,'add'=>$add]);
+		return view("home.follow.follow",['datas'=>$datas,'dataf'=>$dataf,'follow'=>$follow,'datam'=>$datam,'users'=>$users,'add'=>$add]);
     }
     
         /**
