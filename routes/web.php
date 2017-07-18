@@ -38,7 +38,7 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 	Route::resource('admin', 'Admin\AdminController'); //管理员信息
 	Route::resource('privileges', 'Admin\PrivilegesController'); //管理员权限
 
-	Route::resource('opinion', 'Admin\OpinionController'); //意见反馈
+	Route::resource('/opinion', 'Admin\OpinionController'); //意见反馈
 
     Route::get('/admin/loadRole/{admin_id}','Admin\AdminController@loadRole');
     Route::post('/saveRole','Admin\AdminController@saveRole');

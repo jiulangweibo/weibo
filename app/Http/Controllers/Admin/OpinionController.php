@@ -59,8 +59,8 @@ class OpinionController extends Controller
      */
     public function show($id)
     {
-        $v = Userinfo::where("id","=",$id)->first();
-        return view("admin.userinfo.show",['v'=>$v]);
+        $v = Opinion::where("id","=",$id)->first();
+        return view("admin.opinion.show",['v'=>$v]);
     }
 
     /**

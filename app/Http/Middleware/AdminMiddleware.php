@@ -19,6 +19,7 @@ class AdminMiddleware
         if(!$request->session()->has('adminuser')){
             return redirect('admin/login');
         }
+		  return $next($request);
         //return $next($request);//继续往后走
         //dd(session("adminuser"));
        //  判断是否是超级用户
@@ -41,7 +42,7 @@ class AdminMiddleware
             }
                 
         }
-        return back()->with("err","抱歉你没有此操作权限!");
+        return back()->with("err","抱歉你没有此操作权限!");  
 
 
         
