@@ -90,6 +90,8 @@ Route::resource('/account',"Home\AccountController");		  //执行加载账号设
 Route::get('/follow',"Home\FollowController@index");      //加载关注主页
 Route::get('/fans',"Home\FansController@index");      //加载粉丝主页
 Route::get('/search',"Home\IndexsController@search");      //加载搜索页
+Route::get('/search/follow/{uid}/{sud}',"Home\IndexsController@follow"); //关注
+Route::get('/search/follows/{uid}/{sud}',"Home\IndexsController@follows"); //关注
 
 });
 Route::post('/avatar/upload',"Home\AvatarController@uploadFile");	
