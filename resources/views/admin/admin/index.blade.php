@@ -58,9 +58,9 @@
                                                     <a href="/admin/admin/{{$vo->admin_id}}/edit">
                                                         <i class="am-icon-pencil"></i> 编辑
                                                     </a>
-                                                    <a href="javascript:doDel({{ $vo->admin_id }});" class="tpl-table-black-operation-del">
+                                                    <!-- <a href="javascript:doDel({{ $vo->admin_id }});" class="tpl-table-black-operation-del">
                                                         <i class="am-icon-trash"></i> 删除
-                                                    </a>
+                                                    </a> -->
                                                     <a href="/admin/admin/loadRole/{{ $vo->admin_id}}">
                                                         <i class="am-icon-pencil"></i> 分配角色
                                                     </a>

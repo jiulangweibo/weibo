@@ -215,7 +215,7 @@
 					<td ><a id="h{{$k}}" href="javascript:huifu({{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{ $v['comments_id'] }},'{{$v['mingzi']}}',{{$k}})" >回复</a></td >
 					@endif
 
-				
+				 
 					@if($v['reply_content'])
 					<div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'></td><td width='310' ><a href='#'>{{$v['reply_uname']}}</a>回复<a href='#'>{{$v['reply_cname']}}</a><img src='images/1.gif' align='absmiddle' style='border:none;' />{{$v['reply_content']}}</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>{{$v['reply_time']}}<td ><a id="h{{$k}}" href="javascript:huifu({{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{ $v['comments_id'] 	}},'{{$v['mingzi']}}',{{$k}})" >&nbsp;&nbsp;&nbsp;&nbsp;回复</a></td ></div></div>
 					@endif
@@ -229,11 +229,7 @@
 					</div>
 					<a id="cha{{$k}}" href ="javascript:aa({{$k}},{{$v['message_id']}})">查看评论</a>
 					
-					
-					
-		
-					
-					
+	
 					
 					 </div>
 					  @endif
@@ -242,7 +238,11 @@
 
                 </div>
 				<script type="text/javascript">
-		
+		 
+				
+				
+				
+				
 				function aa(i,mid){
 					//1. 创建一个请求对象
 							var xmlhttp;
@@ -263,8 +263,8 @@
 									
 									 
 										$("#sdasd"+i).toggle();
-									
-										 
+									var str = xmlhttp.responseText;
+										alert(str);
 									}else{
 										alert("服务器端响应错误!");
 									}
@@ -357,9 +357,7 @@
 							return false;
 							  
 							  
-						  }else{
-							  alert("请输入内容!")
-							  }
+						  }
 						  
 					}
 		

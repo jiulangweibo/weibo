@@ -30,9 +30,6 @@
                             <th>微博消息ID</th>
                             <th>内容</th>
                             <th>图片</th>
-                            <th>点赞数</th>
-                            <th>转发数</th>
-                            <th>点击数</th>
                             <th>发表时间</th>
                             <th>状态</th>
                             <th>操作</th>
@@ -44,19 +41,13 @@
                             <td>{{$v->user_id}}</td>
                             <td>{{$v->message_id}}</td>
                             <td>{{$v->content}}</td>
-                            <td><img src="{{$v['picname']}}" width="48" height="48" /></td>
-                            <td>{{$v->praise_count}}</td>
-                            <td>{{$v->foward_count}}</td>
-                            <td>{{$v->onclicknum}}</td>
+                            <td><img src="http://{{$v['picname']}}" width="48" height="48" /></td>
                             <td>{{$v->publish_time}}</td>
                             <td>@if ($v->status=="0")禁用 @else 启用 @endif</td>
                             <td>
                                 <div class="tpl-table-black-operation">
                                     <a href="/admin/message/{{$v->message_id}}/edit">
                                         <i class="am-icon-pencil"></i> 编辑
-                                    </a>
-                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                        <i class="am-icon-trash"></i> 删除
                                     </a>
                                 </div>
                             </td>

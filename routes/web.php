@@ -64,10 +64,8 @@ Route::get('/',"Home\IndexController@index"); //前台首页
 
 
 Route::group(['prefix' => '/','middleware'=>'home'], function () {
-
 Route::get('/indexs',"Home\IndexsController@index");		  //执行加载登录后首页
-Route::get('/indexs/{id}',"Home\IndexsController@index");		  //执行加载登录后首页
-Route::get('/indexs/pinglun/{id}',"Home\IndexsController@pinglun");		  //执行加载登录后首页
+Route::get('/indexs/pinglun/{mid}',"Home\IndexsController@pinglun");		  //执行加载登录后首页
 Route::get('/personal',"Home\personalController@index");      //加载个人主页
 Route::get('/setting',"Home\SettingController@index");		  //执行加载设置视图
 Route::resource('/password',"Home\PasswordController");	  //执行加载修改密码视图
@@ -84,6 +82,7 @@ Route::post('/indexs/dd',"Home\IndexsController@dd"); //点赞
 Route::get('/indexs/comments/{mid}/{id}/{nickname}/{content}',"Home\IndexsController@comments");
 Route::get('/comments/del/{id}',"Home\CommentsController@del");
 Route::get('/comments/reply/{id}/{cid}/{uname}/{cname}/{content}',"Home\CommentsController@reply");
+Route::get('/message/del/{id}',"Home\MessageController@del");
 //Route::get('/indexs/content',"Home\IndexsController@content");
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图
 

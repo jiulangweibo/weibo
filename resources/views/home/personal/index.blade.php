@@ -136,9 +136,9 @@ window.onload = function(){
                         <font class="f1">{{$list->nickname}}<br/>转发并说:</font>{{$v->forward_content}}
 						<font class="f1">转自:<a href="#" class="a1">{{$v->nickname}}<br></a></font><font class="f2">{{$v->content}}</font><br />
                         <div class="stateImgShow"><img src="{{$v->picname}}" /></div> 
-						<font class="f3">转发时间:{{$v->forward_time}}<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
-                        <a href="#" class="a1"><font class="style2">爱转发</font></a>&nbsp;&nbsp;<font class="f3">和其他31人转发过</font><br />
-						<br/>
+						<font class="f3">转发时间:{{$v->forward_time}}</font><br />
+                       
+						 
 						</div>
 						@else
 					    <div id="mainBannerContent2PeopleWord">
@@ -146,9 +146,9 @@ window.onload = function(){
                         <font class="f1">{{$list->nickname}}<br/></font>
 						<font class="f1">转自:<a href="#" class="a1">{{$v->nickname}}</a></font><br/><font class="f2">{{$v->content}}</font><br />
                         <div class="stateImgShow"><img src="{{$v->picname}}" /></div> 
-						<font class="f3">转发时间:{{$v->forward_time}}<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
-                        <a href="#" class="a1"><font class="style2">爱转发</font></a>&nbsp;&nbsp;<font class="f3">和其他31人转发过</font><br />
-						<br/>
+						<font class="f3">转发时间:{{$v->forward_time}}</font><br />
+               
+						 
 						</div>
 						@endif
                         <!-- 第一个人微博 mainBannerContent2peopleWord DIV 结束  -->
@@ -167,22 +167,11 @@ window.onload = function(){
                          
                         <img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" /> <font class="f1"><a href="#" class="a1">{{$v->nickname}}:</a></font><font class="f2">&nbsp;&nbsp;{{$v->content}}</font><br />
                         <div class="stateImgShow"><img src="{{$v->picname}}" /></div> 
-						<font class="f3">{{$v->publish_time}}<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
-                        <a href="#" class="a1"><font class="style2">爱转发</font></a>&nbsp;&nbsp;<font class="f3">和其他31人转发过</font><br />
+						<font class="f3"><div id="textright"><a	href="javascript:ddd({{$v['message_id']}})">删除</a></div></font><br />
+                        <font class="style2">{{$v->publish_time}}</font><br />
                             <!--微博回复栏-->
 							
-                            <div id="mainBannerContent2PeopleWordBack">
-                                 <table width="400" border="0" cellpadding="0" cellspacing="0">
-                                      <tr>
-                                        <td><img src="../images/huifu3.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@依然</a>：事实胜于雄辩~~~<span style="color:#ccc">今天 12:20</span>   <a href="#">回复</a></td>
-                                      </tr>
-                                      <tr>
-                                        <td><img src="../images/huifu2.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@呆呆</a>：让那帮吃人饭不办人事的人去坐动车吧！！！<span style="color:#ccc">今天 12:10</span><a href="#">回复</a></td>
-                                      </tr>
-                                      
-                                    </table>
-                                    
-                            </div><br/>
+                          <br/>
                         
 						</div>
 				
@@ -205,7 +194,15 @@ window.onload = function(){
 			@endif
 			
              <!--自己发微博的地方结束-->
+			<script>
+				 function ddd(id){
+							 
+							if(confirm("确定删除吗?")){
+								 window.location.href="/message/del/"+id;
+								}	 
+						 }
 			
+			</script>
         </div>
         <!-- 左侧mainBannerDIV 结束 -->                       
         <!-- 右侧mainRight DIV开始 -->
