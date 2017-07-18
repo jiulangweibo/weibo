@@ -25,7 +25,7 @@ class FansController extends Controller
         $datam = count(Message::where('user_id',$user_id)->get());
         $userss = Userinfo::where('user_id',$user_id)->first();
 
-        $follow = Follow::where('id',$user_id)->get();  
+        $follow = Follow::where('id',$user_id)->paginate(2);  
         //dd($follow);
         $list = [];
         $user = [];
@@ -49,7 +49,7 @@ class FansController extends Controller
         }
  //dd($users);
 
-		return view("home.fans.fans",['datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam,'userss'=>$userss,'users'=>$users]);
+		return view("home.fans.fans",['datas'=>$datas,'follow'=>$follow,'dataf'=>$dataf,'datam'=>$datam,'userss'=>$userss,'users'=>$users]);
 	}
 
     public function create()

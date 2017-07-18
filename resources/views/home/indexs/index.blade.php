@@ -769,7 +769,7 @@
                         <div id="mainRightPostionFouthLine">
                         	<!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->	
                         	<div id="mainRightPositionFourthLineContent">
-                            <form action="/indexs/search" method="get">
+                            <form action="/search" method="get">
                               <input type="text" class="am-form-field " name="nickname" placeholder="用户昵称">
                               <button><img src="./images/search.gif" alt="" width="27" height="25" align="middle" title="" border="0"/></a></button>
                             </form>

@@ -5,6 +5,40 @@
 <title>好友管理 灵步网微博-点滴生活，精彩每一天！</title>
 <link href="./styles/global.css" type="text/css" rel="stylesheet">
 <link href="./styles/friend.css" type="text/css" rel="stylesheet">
+<style>
+  .pagination {
+  display: inline-block;
+  padding-right: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+</style>
 </head>
 <body>
 <!-- 页面整体 -->
@@ -28,13 +62,11 @@
         <!-- top部分的文字导航 -->
         <div id="topWordMenu">
         	<ul>
-            	<li><a href="CustomerIndex.html">首页</a></li>
-                <li><a href="MyWB.html">我的微博</a></li>
-                <li><a href="#">找人</a></li>
-                <li><a href="setting.html">设置</a></li>
-                <li><a href="#">手机</a></li>
-                <li><a href="#">帮助</a></li>
-                <li><a href="index.html">退出</a></li>
+            	<li><a href="/indexs">首页</a></li>
+                <li><a href="/personal">我的微博</a></li>
+                <li><a href="/account">设置</a></li>
+                <li><a href="/password">修改密码</a></li>
+                <li><a href="/logout">退出</a></li>
             </ul>
         </div>
         <!-- top部分的文字导航结束 -->
@@ -47,7 +79,7 @@
       <tr>
         <td width="21" rowspan="6" class="td1"></td>
         <td height="60" align="center" valign="middle" bgcolor="#FFFFFF" class="td2">
-        <img src="./images/MainRightFirstLineTitle.gif" width="48" height="48" alt="" /></td>
+        <img src="http://{{$userss->picname}}" width="48" height="48" alt="" /></td>
         <td height="60" class="td3"><font color="#000000" size="3"><b>关注你的人（{{ $datas->follow_count }}）</b></font></td>
         <td rowspan="6" class="td1 height"></td>
       </tr>
@@ -73,8 +105,7 @@
       </tr>
  
       <tr>
-        <td height="41" class="td2 height"></td>
-        <td height="41" class="td3 height"></td>
+        <td height="41" width="300" align="center">{{ $follow->links() }} </td>
       </tr>
     </table>
     <table width="200" border="0" cellpadding="0" cellspacing="0" id="tb2">
