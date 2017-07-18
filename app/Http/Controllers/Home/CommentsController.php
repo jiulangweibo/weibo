@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
+use App\Model\Comments;
+use App\Model\Reply;
 use App\Http\Controllers\Controller;
 
 class CommentsController extends Controller
@@ -17,69 +19,24 @@ class CommentsController extends Controller
         return view('Home.comments.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	public function del($id)
+	{
+		 $m = Comments::where("comments_id",$id)->delete();
+		 
+	}
+	public function reply($id,$cid,$uname,$cname,$content){
+		 $data['user_id'] = $id;
+		 $data['comments_id'] = $cid;
+		 $data['uname'] = $uname;
+		 $data['cname'] = $cname;
+		 $reply_time = time()+480*60;
+		 $data['reply_time'] = date("Y-m-d H:i:s",$reply_time);
+		 $data['reply_content'] = $content;
+		 $id = Reply::insertGetId($data);
+		 if($id>0){
+			 return "OK";
+		 }else{
+			 return false;
+		 }
+	}
 }

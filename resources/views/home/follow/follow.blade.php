@@ -7,6 +7,40 @@
 <link href="../styles/friend maneger.css" type="text/css" rel="stylesheet">
 
 <link href="../styles/global.css" type="text/css" rel="stylesheet" />
+<style>
+  .pagination {
+  display: inline-block;
+  padding-right: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+</style>
 </head>
 <body>
 <!-- 页面整体 -->
@@ -76,8 +110,7 @@
 
 
       <tr>
-        <td height="35" class="td2"></td>
-        <td height="35" class="td3"></td>
+        <td height="35" width="300" align="center">{{ $follow->links() }} </td>
       </tr>
     </table>
     <table width="200" border="0" cellpadding="0" cellspacing="0" id="tb2">

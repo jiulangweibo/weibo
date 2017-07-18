@@ -151,7 +151,7 @@
    <div id="banner">
    
    <!-- banner顶部部分 -->
-   @foreach ($bbb as $v)
+   @foreach ($bbb as $k=>$v)
      <div id="bannerTop">
        <img src="http://{{$v['picname']}}" width="97" height="98" alt="" />
      </div>
@@ -162,17 +162,100 @@
      </div>
      <!-- 加关注 -->
      <div id="bannerFocus">
-       <form id="form1" name="form1" method="post" action="login.html">
-         <label>
-           <input name="btn1" type="submit" class="btn1" id="btn1" value="加关注" />
-         </label>
-       </form>
+       <a id="{{$k}}" href="javascript:follow({{session('homeuser')[0]->id}},{{ $v['user_id']}},{{$k}})" >关注他(她)</a>
      </div>
 	 @endforeach
      <!-- banner微博部分 -->
     {{ $bbb->appends($where)->links() }} 
   </div> 
-  
+  <script>
+    function follow(uid,sud,p){
+        if(uid==sud){
+            alert('亲 不可以关注自己哦!')
+            return;
+        }
+        var guan = document.getElementById(p).innerHTML;
+        //alert(aa);die;
+          
+        if(guan=='关注他(她)'){
+        //1. 创建一个请求对象
+        var xmlhttp;
+        if(window.XMLHttpRequest){
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }else{// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        } 
+
+        //2. 设置回调函数
+        xmlhttp.onreadystatechange = function(){
+            //alert('ok:'+xmlhttp.readyState);
+            //当前请求状态为4时
+            if(xmlhttp.readyState==4){
+                //判断响应状态码:是否是200
+                if(xmlhttp.status == 200){ 
+                //alert(p);
+                document.getElementById(p).innerHTML = ("已关注");
+                    //var str = xmlhttp.responseText;
+                    //alert(str);
+                }else{
+                    alert("服务器端响应错误!");
+                }
+            }
+            
+        }
+        
+        //3. 初始化请求对象
+        xmlhttp.open("get","/indexs/follow/"+uid+"/"+sud,true);
+        //设置请求头信息,让其支持post的参数提交
+        //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+        //4. 执行发送:
+        xmlhttp.send();
+        
+        return false;
+        }
+
+
+    if(guan=='已关注'){
+        //1. 创建一个请求对象
+        var xmlhttp;
+        if(window.XMLHttpRequest){
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }else{// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        //2. 设置回调函数
+        xmlhttp.onreadystatechange = function(){
+            //alert('ok:'+xmlhttp.readyState);
+            //当前请求状态为4时
+            if(xmlhttp.readyState==4){
+                //判断响应状态码:是否是200
+                if(xmlhttp.status == 200){ 
+                document.getElementById(p).innerHTML = ("关注他(她)");
+                    var str = xmlhttp.responseText;
+                    //alert(str);
+                }else{
+                    alert("服务器端响应错误!");
+                }
+            }
+            
+        }
+        
+        //3. 初始化请求对象
+        xmlhttp.open("get","/indexs/follows/"+uid+"/"+sud,true);
+        //设置请求头信息,让其支持post的参数提交
+        //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+        //4. 执行发送:
+        xmlhttp.send();
+        
+        return false;
+       }
+    }
+    </script>
   </div> 
       <!-- 脚部footer DIV 开始 -->
       <div id="footer">
