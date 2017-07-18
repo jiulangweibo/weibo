@@ -20,13 +20,17 @@ class OpinionController extends Controller
 		
       //$where = [];
         //if ($request->only('opinion_id')) {
-          $nickname = $request->input("opinion_id");   
+          $sscontent = $request->input("opinion_content");   
           // $where['nickname']=$nickname;
        // }
-        
-        $list =Opinion::where("opinion_id","like",'%'.$nickname.'%')->paginate(2);
+         $where = [];
+        if ($request->only('id')) {
+           $content = $request->input("opinion_content");   
+           $where['opinion_content']=$sscontent;
+        }
+        $list =Opinion::where("opinion_content","like",'%'.$content.'%')->paginate(2);
        // dd($list);
-    	return view('admin.opinion.index',["list"=>$list]);
+    	return view('admin.opinion.index',["list"=>$list,"where"=>$where]);
     	//return view('admin.opinion.index');
     }
 
@@ -59,8 +63,8 @@ class OpinionController extends Controller
      */
     public function show($id)
     {
-        $v = Opinion::where("id","=",$id)->first();
-        return view("admin.opinion.show",['v'=>$v]);
+        $v = Userinfo::where("id","=",$id)->first();
+        return view("admin.userinfo.show",['v'=>$v]);
     }
 
     /**
