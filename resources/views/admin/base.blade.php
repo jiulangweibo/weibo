@@ -259,6 +259,11 @@
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 部门
                     </a>
                 </li>
+				<li class="sidebar-nav-link">
+                    <a href="/admin/opinion">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 意见反馈
+                    </a>
+                </li>
             </ul>
         </div>
 

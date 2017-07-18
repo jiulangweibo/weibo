@@ -294,6 +294,21 @@ function follow($uid,$sud)
 			//echo(":".$sjdd['nickname']);
 			 //return $sjdd;
 		}
+		//意见提交
+		function opinion($id,$content)
+		{
+
+			//$ acc = [];
+			$data['opinion_id'] = $id;
+			$data['opinion_content'] = $content;
+			$opinion_time = time()+480*60;
+			$data['opinion_time'] = date("Y-m-d H:i:s",$opinion_time);
+			Opinion::insertGetId($data);
+			//dd($bianlian);
+			//echo(":".$sjdd['opinion']);
+			//echo(":".$sjdd['nickname']);
+			 //return $sjdd;
+		}
 
 
 }

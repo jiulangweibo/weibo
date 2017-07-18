@@ -71,6 +71,7 @@
                 <li><a href="/personal">我的微博</a></li>
                 <li><a href="/account">设置</a></li>
                 <li><a href="/password">修改密码</a></li>
+                <li><a href="/opinion">意见反馈</a></li>
                 <li><a href="/logout">退出</a></li>
             </ul>
         </div>
@@ -217,6 +218,7 @@
 				 
                 </div>
 				
+               
                 <div id="recieve">
                         <div id="ff" style="float:left;"><font style="font-size:16px; color:#FDFDFD">&nbsp;&nbsp;&nbsp;&nbsp;评&nbsp;&nbsp;论</font></div>
                         <div id="left" style="float:right; margin-top:10px; color:#FFF; margin-right:10px;">您还有可以输入<font id="counter2" color="#ffffff">140</font>字！&nbsp;&nbsp;&nbsp;<img src="./images/hongcha1.gif" alt="" width="14" height="13" align="absmiddle" title="" onclick="windowClose()" /></div><br />
@@ -233,6 +235,9 @@
                             </div>						
                         </div> 
                   </div>
+				 
+          
+				 
 				<script>
 		
 				
@@ -324,6 +329,8 @@
 						};
 						
 					}
+					
+					
 
             function praise(mid,uid,i){
         
@@ -642,9 +649,11 @@
                     <td><!-- 右侧mainRightPostionSeventhLine DIV 开始 -->
                     <div id="mainRightPostionSeventhLine">
                         <div id="mainRightPositionSevenLineContent">
-                        灵步微博的成长，离不开你们。<br />
-                        <font class="style2"><a href="#" class="a1">有意见要提（点击） </a><br /><br />
+                        灵步微博的成长，离不开你们。<br/>
+				
+                        <font class="style2"><a href="/opinion" class="a1" >有意见要提（点击） </a><br /><br />
                         <a href="#" class="a1" onclick="set()" >不良信息举报中心</a></font> 
+                        
                         </div>
                     </div>
                     <!-- 右侧mainRightPostionSeventhLine DIV 结束 -->
@@ -697,6 +706,7 @@
  <script>
  
 			<!--关注-->
+
 
 	 function submit(mid,sud,id){
 		 var val=prompt("需要说些什么话","");//将输入的内容赋给变量 val ，

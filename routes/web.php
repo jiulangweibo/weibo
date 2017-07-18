@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 	Route::resource('url', 'Admin\UrlController'); //友情链接
 	Route::resource('admin', 'Admin\AdminController'); //管理员信息
 	Route::resource('privileges', 'Admin\PrivilegesController'); //管理员权限
+	Route::resource('opinion', 'Admin\OpinionController'); //管理员权限
 	
 
  
@@ -72,6 +73,8 @@ Route::get('/indexs/praise/{mid}/{uid}',"Home\IndexsController@praise"); //点�
 Route::get('/indexs/praises/{mid}/{uid}',"Home\IndexsController@praises"); //点赞
 Route::post('/indexs/dd',"Home\IndexsController@dd"); //点赞
 Route::get('/indexs/comments/{mid}/{id}/{nickname}/{content}',"Home\IndexsController@comments");
+Route::get('/opinion',"Home\OpinionController@index");//意见
+Route::post('/opinion/{list}',"Home\OpinionController@store");//添加到数据库
 //Route::get('/indexs/content',"Home\IndexsController@content");
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图
 
