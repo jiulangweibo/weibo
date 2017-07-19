@@ -34,6 +34,7 @@ class RegisterController extends Controller
 	 //定义方法显示
     public function index()
     {	//返回视图
+		
         return view('home.register.index');
     }
 	
@@ -100,18 +101,22 @@ class RegisterController extends Controller
 			$follow['follow_count']=1;
 			$follow['fans_count']=1;		
 			Follow::insertGetId($follow);
-			}
+			
 			
 		
-         if($id>0){
-             return redirect('/');
-         }else{
-            return back()->with("err","注册失败,请重新注册！");
-         }
-        }
-        return back()->with("err","手机号或昵称重复！");
+			 if($id>0){
+				 return redirect('/');
+			 }else{
+				return back()->with("err","注册失败,请重新注册！");
+			 }
         
-    }
+			  }else{
+						  return back()->with("err","手机号或昵称重复！");
+						var_dump(session('err'));die;  
+					}
+        
+    
+	}
 
           
 }
