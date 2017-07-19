@@ -103,7 +103,7 @@ class RegisterController extends Controller
 			}
 			
 		
-         if($dd>0 && $id>0){
+         if($id>0){
              return redirect('/');
          }else{
             return back()->with("err","注册失败,请重新注册！");
