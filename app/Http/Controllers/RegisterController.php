@@ -81,9 +81,8 @@ class RegisterController extends Controller
         $nickname = $request->input("nickname");
         $password = $request->input("password");
         $user = Register::where("phone",$phone)->first();
-        $nickname = Register::where("nickname",$nickname)->first();
         
-		if(empty($user && $nickname)){
+		if(empty($user)){
             $data = $request->only('phone','password','nickname');
             $data['password'] = md5($data['password']);
 			$time = time()+480*60;
@@ -102,7 +101,6 @@ class RegisterController extends Controller
 			$cc = Follow::insertGetId($follow);
 			}else{
 				return back()->with("err","注册失败,请重新注册！");
-				die;
 			}
 			
 		
