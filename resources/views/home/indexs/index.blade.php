@@ -240,7 +240,7 @@
 				
 				
                
-				function aa(i,mid){
+				function aa(d,mid){
 					//1. 创建一个请求对象
 							var xmlhttp;
 							if(window.XMLHttpRequest){
