@@ -47,10 +47,12 @@ class AccountController extends Controller
             //判断是否成功
 			if($bool){
                
-				
+				$v = Userinfo::where("user_id",$id)->first();
 				//返回地址
 			    $input = $request->only('nickname','email','age','sex','sexual','birthday','address','name','QQ');
 				$input['picname']= (env('DEFAULT').'/'."$fileName");
+				$input['register_time']= $v->register_time;
+
 				//dump($input);die;
 			   $m = Userinfo::where("user_id",$id)->update($input);
 			  
