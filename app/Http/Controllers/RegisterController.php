@@ -107,12 +107,16 @@ class RegisterController extends Controller
 			 if($id>0){
 				 return redirect('/');
 			 }else{
-				return back()->with("err","注册失败,请重新注册！");
+				session()->put("err","注册失败,请重新注册！");
+				return redirect("/register");
 			 }
         
 			  }else{
-						  return back()->with("err","手机号或昵称重复！");
-						var_dump(session('err'));die;  
+						session()->put('err','手机号已被注册!');
+						
+						return redirect("/register");
+						
+						
 					}
         
     

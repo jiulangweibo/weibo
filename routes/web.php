@@ -15,6 +15,15 @@
  //    return view('home.index.index');
 // });
 
+Route::get('/login',"Home\LoginController@login");            //执行加载登录
+Route::get('/register', 'RegisterController@index');          //加载注册页
+Route::post('/dologin',"Home\LoginController@doLogin"); 	  //执行登录
+
+Route::post('/register/add', 'RegisterController@store');	  //加载注册方法
+Route::get('/register/sendMobileCode', 'RegisterController@sendMobileCode');
+Route::post('/register/code', 'RegisterController@code');  
+Route::get('/logout',"Home\LoginController@logout");		  //执行登录退出
+
 
 
 //网站后台路由配置
@@ -53,14 +62,6 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 });
 
 
-
-Route::post('/dologin',"Home\LoginController@doLogin"); 	  //执行登录
-Route::get('/login',"Home\LoginController@login");            //执行加载登录
-Route::get('/register', 'RegisterController@index');          //加载注册页
-Route::post('/register/add', 'RegisterController@store');	  //加载注册方法
-Route::get('/register/sendMobileCode', 'RegisterController@sendMobileCode');
-Route::post('/register/code', 'RegisterController@code');  
-Route::get('/logout',"Home\LoginController@logout");		  //执行登录退出
 
 
 
