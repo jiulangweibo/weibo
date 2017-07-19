@@ -76,8 +76,8 @@ class IndexsController extends Controller
 			$message[$k]['reply_content'] = $sdasd[$k]['reply_content'];
 			$message[$k]['reply_time'] = $sdasd[$k]['reply_time'];
 			 
-		 
-	 
+			$ddd= Userinfo::where('user_id',$id)->first();
+			$message[$k]['zijitouxiang'] = $ddd->picname;
 		}		
 		
 		 
@@ -309,14 +309,14 @@ function follow($uid,$sud)
 		{
 			$lasd= Comments::where('message_id',$mid)->orderBy('comments_time','desc')->get()->toArray();
 			foreach($lasd as $k=>$v){
-				$sddas[$k]= Userinfo::where("user_id",$v['user_id'])->first();
+				$sddas[$k]= Userinfo::where("user_id",$v['user_id'])->first()->toArray();
 				$lasd[$k]['picname'] =$sddas[$k]['picname'];
 				
-				$lasd[$k]['huifu'] = Reply::where('comments_id',$v['comments_id'])->get()->toArray();
-				$dd = $lasd[$k]['huifu'];
+				//$lasd[$k]['huifu'] = Reply::where('comments_id',$v['comments_id'])->get()->toArray();
+				//$dd = $lasd[$k]['huifu'];
 			}
-			echo"<pre>";
-			var_dump($lasd);
+			//echo"<pre>";
+			return($lasd);
 		}
 
 

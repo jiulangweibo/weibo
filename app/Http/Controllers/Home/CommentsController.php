@@ -16,12 +16,16 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        return view('Home.comments.index');
+		$nickname = session()->get('homeuser')[0]->nickname;
+		$sdasd= Reply::where('cname',$nickname)->orderBy('reply_time','desc')->get()->toArray();
+		
+        return view('Home.comments.index',['sdasd'=>$sdasd]);
     }
 
 	public function del($id)
 	{
-		 $m = Comments::where("comments_id",$id)->delete();
+		Comments::where("comments_id",$id)->delete();
+	    Reply::where("comments_id",$id)->delete();
 		 
 	}
 	public function reply($id,$cid,$uname,$cname,$content){
@@ -39,4 +43,5 @@ class CommentsController extends Controller
 			 return false;
 		 }
 	}
+
 }

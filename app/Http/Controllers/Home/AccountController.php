@@ -63,15 +63,15 @@ class AccountController extends Controller
             }
             return '上传失败';
       }else{
-				$input = $request->only('nickname','email','age','sex','sexual','birthday','address','name','QQ');
+				$input = $request->only('nickname','phone','email','age','sex','sexual','birthday','address','name','QQ');
+				$dddd = $request->only('nickname','phone');
 				//$input = $request->all();
 				//return($input);die;
 				$m = Userinfo::where("user_id",$id)->update($input);
+				$d = Register::where("id",$id)->update($dddd);
 				   if($m){
 				   return redirect('/account');
 				   
-			   }else{
-				   return'上传失败';
 			   }
 			}	
     }

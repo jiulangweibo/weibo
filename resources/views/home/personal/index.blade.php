@@ -175,7 +175,7 @@ window.onload = function(){
                         
 						</div>
 				
-                        <!-- 第一个人微博 mainBannerContent2peopleWord DIV 结束  -->
+                        <!-- 第一个人微博 mainBannerContent2peopleWord DIV 结束 -->
                     @endforeach
                     <center>
                     	{{ $add->links() }} 

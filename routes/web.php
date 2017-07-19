@@ -82,6 +82,7 @@ Route::post('/indexs/dd',"Home\IndexsController@dd"); //点赞
 Route::get('/indexs/comments/{mid}/{id}/{nickname}/{content}',"Home\IndexsController@comments");
 Route::get('/comments/del/{id}',"Home\CommentsController@del");
 Route::get('/comments/reply/{id}/{cid}/{uname}/{cname}/{content}',"Home\CommentsController@reply");
+Route::get('/comments',"Home\CommentsController@index");
 Route::get('/message/del/{id}',"Home\MessageController@del");
 //Route::get('/indexs/content',"Home\IndexsController@content");
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图

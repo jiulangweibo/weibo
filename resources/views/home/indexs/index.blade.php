@@ -186,7 +186,7 @@
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                      @if(session('homeuser')[0]->id!==$v['user_id'])
-					<td><a id="i{{$k}}" href="javascript:comments({{ $v['message_id'] }},{{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{$k}})" onclick="reXianShi(this)" >评论</a></td>&nbsp;&nbsp;&nbsp;
+					<td><a id="i{{$k}}" href="javascript:comments({{ $v['message_id'] }},{{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{$k}},'{{$v['zijitouxiang']}}')" onclick="reXianShi(this)" >评论</a></td>&nbsp;&nbsp;&nbsp;
 					
 					 
 					<td ><a id="{{$k}}" href="javascript:praise({{ $v['message_id'] }},{{session('homeuser')[0]->id}},{{$k}})">点赞</a></td>&nbsp&nbsp&nbsp
@@ -217,7 +217,7 @@
 
 				 
 					@if($v['reply_content'])
-					<div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'></td><td width='310' ><a href='#'>{{$v['reply_uname']}}</a>回复<a href='#'>{{$v['reply_cname']}}</a><img src='images/1.gif' align='absmiddle' style='border:none;' />{{$v['reply_content']}}</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>{{$v['reply_time']}}<td ><a id="h{{$k}}" href="javascript:huifu({{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{ $v['comments_id'] 	}},'{{$v['mingzi']}}',{{$k}})" >&nbsp;&nbsp;&nbsp;&nbsp;回复</a></td ></div></div>
+					<div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'></td><td width='310' ><a href='#'>{{$v['reply_uname']}}</a>回复<a href='#'>{{$v['reply_cname']}}</a><img src='images/1.gif' align='absmiddle' style='border:none;' />{{$v['reply_content']}}</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>{{$v['reply_time']}}<td ><a id="h{{$k}}" href="javascript:huifu({{session('homeuser')[0]->id}},'{{session('homeuser')[0]->nickname}}',{{$v['comments_id']}},'{{$v['mingzi']}}',{{$k}})" >&nbsp;&nbsp;&nbsp;&nbsp;回复</a></td ></div>
 					@endif
 					
 					@endif
@@ -227,11 +227,8 @@
 					@endif
 					
 					</div>
-					<a id="cha{{$k}}" href ="javascript:aa({{$k}},{{$v['message_id']}})">查看评论</a>
-					
-	
-					
-					 </div>
+					<a id="cha{{$k}}" style="float:right" href ="javascript:aa({{$k}},{{$v['message_id']}})">查看评论</a>
+					</div>
 					  @endif
 				  @endforeach
 				 <br/>
@@ -243,7 +240,7 @@
 				
 				
 				
-				function aa(i,mid){
+				function aa(d,mid){
 					//1. 创建一个请求对象
 							var xmlhttp;
 							if(window.XMLHttpRequest){
@@ -262,9 +259,21 @@
 									if(xmlhttp.status == 200){ 
 									
 									 
-										$("#sdasd"+i).toggle();
-									var str = xmlhttp.responseText;
-										alert(str);
+										//$("#sdasd"+i).toggle();
+									var dd = xmlhttp.response;
+										//alert(str[1]);
+										//alert(str);
+									var js=eval("("+dd+")"); 
+										//alert(js.length);
+										for(var i=0;i<js.length;i++){
+										$("#hh"+d).append(" <br/><div id='sasd' class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='http://"+js[i+1].picname+ "' width='48' height='48' /></a></td><td width='310' ><a href='#'>"+js[i+1].nickname+"</a><img src='images/1.gif' align='absmiddle' style='border:none;' />"+js[i+1].comments_content+"</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>"+js[i+1].comments_time+"</div><div/>");
+										}
+										var display =$('#sasd').css('display');
+										if(display == 'block'){
+											$("#sasd").hide;
+										}
+										
+										
 									}else{
 										alert("服务器端响应错误!");
 									}
@@ -365,8 +374,9 @@
 		
 					 function del(id,i){
 						  var dd = document.getElementById("ddd"+i);
-						if(confirm("确定删除吗?")){
-							dd.onclick=function(){
+						dd.onclick=function(){
+							if(confirm("确定删除吗?")){
+							
 						
 							//1. 创建一个请求对象
 							var xmlhttp;
@@ -419,9 +429,9 @@
 						 }
 						
 						
-						function skjd(i,str,nickname,time){
+						function skjd(i,str,nickname,time,picname){
 						
-						$("#d"+i).append(" <br/><div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>"+nickname+"</a><img src='images/1.gif' align='absmiddle' style='border:none;' />"+str+"</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>"+time+"</div><div/>");
+						$("#d"+i).append(" <br/><div class='stateRshow'><div class='stateRshowWord'><table width='380' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='http://"+picname+"' alt='' width='48' height='48' /></a></td><td width='310' ><a href='#'>"+nickname+"</a><img src='images/1.gif' align='absmiddle' style='border:none;' />"+str+"</td></tr></table></div><div class='stateRimgShow'></div><div class='stateRshowtime'>"+time+"</div><div/>");
 					 
 						}
 					
@@ -429,7 +439,7 @@
 					
 					
 		
-				    function comments(mid,id,nickname,i){
+				    function comments(mid,id,nickname,i,picname){
 						
 						document.getElementById("dddd").onclick=function(){
 							 
@@ -466,7 +476,7 @@
 											 
 											 var time = inittime();//取出当前时间
 											//var nickname = document.getElementById("n"+i).innerHTML;
-											skjd(i,str,nickname,time);
+											skjd(i,str,nickname,time,picname);
 										 
 											p.style.display = "none";
 											//var obj = eval('(' + str + ')');
@@ -733,13 +743,16 @@
                             <div id="mainRightPositionSecondLineContent">
                                 <a href="/indexs" class="a1"><font style="font-size:16px;font-weight:700; color:#000;">首页</font></a><br />
                                 <hr color="#79BDD1" zize="2" style="" />
-                                <a href="/account" class="a1"><font class="style3">个人资料</font></a>
-                                <hr class="h1">
+                                 
+                               
                                 <a href="/personal" class="a1"><font class="style3">我发布的微博</font></a>
                                 <hr class="h1">
                                 <a href="/follow" class="a1"><font id="asdlkja"	class="style3">我关注的</font></a>
                                 <hr class="h1">
                                 <a href="/fans" class="a1"><font class="style3">我的粉丝</font></a>
+								<hr class="h1">
+                                <a href="/comments" class="a1"><font class="style3">回复我的</font></a>
+							    <hr class="h1">
                             </div>
                             <!-- 右侧mainRightPositionSecondLineContent DIV 开始 -->
                         </div>
