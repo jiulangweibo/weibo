@@ -19,7 +19,7 @@ class CommentsController extends Controller
 		$nickname = session()->get('homeuser')[0]->nickname;
 		$sdasd= Reply::where('cname',$nickname)->orderBy('reply_time','desc')->get()->toArray();
 		
-        return view('Home.comments.index',['sdasd'=>$sdasd]);
+        return view('home.comments.index',['sdasd'=>$sdasd]);
     }
 
 	public function del($id)
