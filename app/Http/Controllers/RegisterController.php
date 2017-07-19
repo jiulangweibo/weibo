@@ -86,21 +86,20 @@ class RegisterController extends Controller
             $data = $request->only('phone','password','nickname');
             $data['password'] = md5($data['password']);
 			$time = time()+480*60;
-            $data['register_time'] = date("Y-m-d H:i:s",$time);
-                
-            $id = Register::insertGetId($data);
-			if($id){
+            $data['register_time'] = date("Y-m-d H:i:s",$time);    
+           
+   		    $id = Register::insertGetId($data);
             $data['user_id']=$id;
-            $dd = Userinfo::insertGetId($data);
+			
+            Userinfo::insertGetId($data);
+			
 			
 			$follow['id']=$id;
 			$follow['suser_id']=7;
 			$follow['user_id']=7;
 			$follow['follow_count']=1;
 			$follow['fans_count']=1;		
-			$cc = Follow::insertGetId($follow);
-			}else{
-				return back()->with("err","注册失败,请重新注册！");
+			Follow::insertGetId($follow);
 			}
 			
 		
