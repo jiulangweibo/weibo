@@ -1,46 +1,112 @@
 <?php
-namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Gregwar\Captcha\CaptchaBuilder;
+namespace App\Http\Middleware;
 
-class LoginController extends Controller
+use Closure;
+
+class AdminMiddleware
 {
-   //加载登录模板
-   public function login()
-   {
-       return view("admin.login");
-   }
-   
-   //执行用户登录
-  public function doLogin(Request $request)
-   {
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        //判断会员是否没有登录
+        if(!$request->session()->has('adminuser')){
+            return redirect('admin/login');
+        }
+        
+        return $next($request);//继续往后走
+    }
+}
+//namespace App\Http\Middleware;
 
+//use Closure;
+
+///class AdminMiddleware
+//{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+   // public function handle($request, Closure $next)
+    //{
+        //判断会员是否没有登录
+       // if(!$request->session()->has('adminuser')){
+          //  return redirect('admin/login');
+       // }
+   // }
+
+        //return $next($request);//继续往后走
+        //dd(session("adminuser"));
+       //  判断是否是超级用户
+
+        // if(session("adminuser")->admin_id==1){
+        //     return $next($request);
+        // }
+      //  判断权限   
+       //dd(session("nodelist"));
+        //$nodelist = session("nodelist");
+       // $res = session('res');
+       // dd($nodelist);//dd($nodelist);
+       //dd($res);
+        // $n = 0;
+        // foreach($res[0] as $k => $v){
+        //     $n++;
+        //     //dd($res[0][1]);
+        //     if($request->is($v->url) && $request->isMethod($v->method)){
+        //         return $next($request);
+        //     }elseif($n != count($res[0])){
+        //         continue;
+        //     }else{
+        //         return redirect("admin");
+        //     }
+        //}
 
         
-        //执行登陆判断
-        $admin_name = $request->input("admin_name");
-        $admin_password = $request->input("admin_password");
-        //获取对应用户信息
-        $user = \DB::table("admin")->where("admin_name",$admin_name)->first();
-        if(!empty($user)){
-            //判断密码
-            if(md5($admin_password)==$user->admin_password){
-                //存储session跳转页面
-                session()->push("adminuser",$user);
-                return redirect("admin");
-                //echo "测试成功!";
+
+
+
+
+        /*
+        foreach($nodelist as $k=>$v){
+            //判断权限
+            //dd($request);
+            //dd($v);
+            foreach ($v as $key => $value) {
+                foreach($v as $key2 => $value2){
+                    if($value['url']==$value2['url'] && $value['method']==$value2['method']){
+                        return $next($request);
+                    }
+                }
+
+
+
+
+
+              // if($request->is($value['url']) && $request->isMethod($value['method'])){
+
+              //       //dd($request->is($value['url']) && $request->isMethod($value['method']));
+              //       //dd($request->is($value['url']));
+              //       //dd([$value['url'],$value['method']]);
+              //       //dd($n);
+              //       return $next($request);
+              //   }else{
+              //       return redirect("admin");
+              //   }
             }
+                
         }
-        return back()->with("msg","账号或密码错误！");
-   }
- 
-   
-   //执行退出
-   public function logout(Request $request)
-   {
-       $request->session()->forget('adminuser');
-       return redirect("admin/login");
-   }
-}
+
+        //return back()->with("err","抱歉你没有此操作权限!");
+        */
+
+        
+    //}
