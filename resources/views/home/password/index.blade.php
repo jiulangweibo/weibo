@@ -1,9 +1,12 @@
 @extends('home.base')
 @section('content')
-<div id="container">
+<div id="container" align='center'>
     <!-- banner部分DIV -->
     <div id="banner">
         <!-- bannerLeft部分DIV -->
+		<form id="form1" name="form1"  action="/password/{{ $list->user_id }}" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="_method" value="put">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="left" id="left">
             <table width="564" border="0" cellspacing="0" cellpadding="0">
                  <!-- 当前密码 -->
@@ -51,6 +54,7 @@
             <p>设置强度较高的账户密码（建议使用6~20位字母+数字+特殊符号，字幕区分大小写）</p>
             <p>避免使用用户名，连续或相同的数字作为密码 </p>
         </div>
+		</form>
       <!-- bannerRight部分DIV结束 -->
   </div>
   <!-- banner部分DIV结束 -->

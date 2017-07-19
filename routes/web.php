@@ -37,12 +37,16 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 	Route::resource('url', 'Admin\UrlController'); //友情链接
 	Route::resource('admin', 'Admin\AdminController'); //管理员信息
 	Route::resource('privileges', 'Admin\PrivilegesController'); //管理员权限
+
+	Route::resource('/opinion', 'Admin\OpinionController'); //意见反馈
+
     Route::get('/admin/loadRole/{admin_id}','Admin\AdminController@loadRole');
     Route::post('/saveRole','Admin\AdminController@saveRole');
     Route::get('/admin/loadNode/{admin_id}','Admin\DepartmentController@loadNode');
     Route::post('/saveNode','Admin\DepartmentController@saveNode');
     //Route::post('/admin/rolelist','Admin\AdminController@saveRole');
     //Route::get('admin/rolelist/{admin_id}/{admin_name}','Admin\AdminController@loadRole');
+
 	
 
  
@@ -80,16 +84,22 @@ Route::get('/indexs/praise/{mid}/{uid}',"Home\IndexsController@praise"); //点�
 Route::get('/indexs/praises/{mid}/{uid}',"Home\IndexsController@praises"); //点赞
 Route::post('/indexs/dd',"Home\IndexsController@dd"); //点赞
 Route::get('/indexs/comments/{mid}/{id}/{nickname}/{content}',"Home\IndexsController@comments");
+Route::get('/opinion',"Home\OpinionController@index");//意见
+Route::post('/opinion/{list}',"Home\OpinionController@store");//添加到数据库
+
 Route::get('/comments/del/{id}',"Home\CommentsController@del");
 Route::get('/comments/reply/{id}/{cid}/{uname}/{cname}/{content}',"Home\CommentsController@reply");
 Route::get('/comments',"Home\CommentsController@index");
 Route::get('/message/del/{id}',"Home\MessageController@del");
+
 //Route::get('/indexs/content',"Home\IndexsController@content");
 Route::resource('/account',"Home\AccountController");		  //执行加载账号设置视图
 
 Route::get('/follow',"Home\FollowController@index");      //加载关注主页
 Route::get('/fans',"Home\FansController@index");      //加载粉丝主页
 Route::get('/search',"Home\IndexsController@search");      //加载搜索页
+Route::get('/search/follow/{uid}/{sud}',"Home\IndexsController@follow"); //关注
+Route::get('/search/follows/{uid}/{sud}',"Home\IndexsController@follows"); //关注
 
 });
 Route::post('/avatar/upload',"Home\AvatarController@uploadFile");	

@@ -59,9 +59,9 @@
                                                     <a href="/admin/privileges/{{ $v->id }}/edit">
                                                         <i class="am-icon-pencil"></i> 编辑
                                                     </a>
-                                                    <a href="javascript:doDel({{ $v->id }});" class="tpl-table-black-operation-del">
+                                                    <!-- <a href="javascript:doDel({{ $v->id }});" class="tpl-table-black-operation-del">
                                                         <i class="am-icon-trash"></i> 删除
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </td>
                                         </tr>

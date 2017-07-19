@@ -221,26 +221,26 @@
                     </a>
 				</li>
 			
-				<li class="sidebar-nav-link">
+				<!-- <li class="sidebar-nav-link">
                     <a href="/admin/follow">
 					<i class="am-icon-table sidebar-nav-link-logo"></i>关注 粉丝
                     </a>
-                </li>
+                </li> -->
 				<li class="sidebar-nav-link">
                     <a href="/admin/message">
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 微博内容
                     </a>
                 </li>
-				<li class="sidebar-nav-link">
+				<!-- <li class="sidebar-nav-link">
                     <a href="/admin/forward">
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 转发
                     </a>
-                </li>
-				<li class="sidebar-nav-link">
+                </li> -->
+				<!-- <li class="sidebar-nav-link">
                     <a href="/admin/comments">
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 评论
                     </a>
-                </li>
+                </li> -->
 				<li class="sidebar-nav-link">
                     <a href="/admin/url">
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 友情链接
@@ -259,6 +259,11 @@
 								<li class="sidebar-nav-link">
                     <a href="/admin/department">
 					<i class="am-icon-table sidebar-nav-link-logo"></i> 角色管理
+                    </a>
+                </li>
+				<li class="sidebar-nav-link">
+                    <a href="/admin/opinion">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 意见反馈
                     </a>
                 </li>
             </ul>

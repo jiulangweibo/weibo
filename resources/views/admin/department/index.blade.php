@@ -6,7 +6,7 @@
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">用户管理</div>
+                                <div class="widget-title am-fl">角色管理</div>
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>
@@ -55,9 +55,9 @@
                                                     <a href="/admin/department/{{ $v->id }}/edit">
                                                         <i class="am-icon-pencil"></i> 编辑
                                                     </a>
-                                                    <a href="javascript:doDel({{ $v->id }});" class="tpl-table-black-operation-del">
+                                                    <!-- <a href="javascript:doDel({{ $v->id }});" class="tpl-table-black-operation-del">
                                                         <i class="am-icon-trash"></i> 删除
-                                                    </a>
+                                                    </a> -->
                                                     <a href="/admin/admin/loadNode/{{ $v->id }}">
                                                         <i class="am-icon-pencil"></i> 分配节点
                                                     </a>
