@@ -98,7 +98,7 @@
           </tr>
       </table>
       @if(session("err"))
-            <center><p class="login-box-msg" style="color:red;">{{session("err")}}</p></center>
+            <center><p class="login-box-msg" style="color:red;">{{session()->pull("err")}}</p></center>
       @endif
     </form>
     </div>

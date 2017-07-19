@@ -16,15 +16,15 @@
                         <input type="hidden" name="_method" value="put">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label" name="admin_name" value="{{$vo->admin_name}}">管理员名称</label>
+                            <label for="user-name" class="am-u-sm-3 am-form-label" name="admin_name">管理员名称</label>
                             <div class="am-u-sm-9">
-                                <input type="text" style="width:200px" class="tpl-form-input" name="admin_name" id="user-name">
+                                <input type="text" style="width:200px" class="tpl-form-input" name="admin_name"  value="admin_name" id="user-name">
                             </div>
                         </div>
                         <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label" name="admin_phone" value="{{$vo->admin_phone}}">联系方式</label>
+                            <label for="user-name" class="am-u-sm-3 am-form-label" name="admin_phone" >联系方式</label>
                             <div class="am-u-sm-9">
-                                <input type="text" style="width:200px" name="admin_phone" class="tpl-form-input" id="user-name">
+                                <input type="text" style="width:200px" name="admin_phone" class="tpl-form-input" value="{{$vo->admin_phone}}" id="user-name">
                             </div>
                         </div>
                         <div class="am-form-group">

@@ -15,12 +15,16 @@ class FollowController extends Controller
 	{
         //统计个人粉丝，关注，所发微博数量
         $user_id = session()->get('homeuser')[0]->id;
+		$add= Userinfo::where("user_id",$user_id)->first();//名字
+		
         $datas = Follow::where('id',$user_id)->orderBy('follow_count','desc')->first();
         $dataf = Follow::where('id',$user_id)->orderBy('fans_count','desc')->first();
-        $datam = count(Message::where('user_id',$user_id)->get());
-
+      
+    	$datam = count(Message::where('user_id',$user_id)->get());
+	
+		
         //遍历关注人信息
-        $follow = Follow::where('id',$user_id)->get();
+        $follow = Follow::where('id',$user_id)->paginate(3);
         //dd($follow);
         $list = [];
         $user = [];
@@ -44,7 +48,7 @@ class FollowController extends Controller
 
         //dd($users);
    		//返回视图,分配数据
-		return view("home.follow.follow",['datas'=>$datas,'dataf'=>$dataf,'datam'=>$datam,'users'=>$users]);
+		return view("home.follow.follow",['datas'=>$datas,'dataf'=>$dataf,'follow'=>$follow,'datam'=>$datam,'users'=>$users,'add'=>$add]);
     }
     
         /**

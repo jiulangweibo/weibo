@@ -35,7 +35,7 @@
         <div id="topWordMenu">
         	<ul>
             	<li>已有灵步账号，<a href="/login">请登录</a></li>
-                <li><a href="SBGG.html">随便逛逛</a></li>
+                <li><a href="/register">注册</a></li>
                 <li><a href="#">手机</a></li>
                 <li><a href="#">帮助</a></li>
             </ul>
@@ -94,7 +94,7 @@
                       
                       @foreach ($list as $v)
                       <tr>
-                        <td width="60" height="60" align="center"><a href="star.html" title="黄海波"><img src="http://{{$v['picname']}}" alt="" width="48" height="48" /></a></td>
+                        <td width="60" height="60" align="center" title="{{$v->nickname}}"><a href="#" ><img src="http://{{$v['picname']}}" alt="" width="48" height="48" /></a></td>
                       </tr>
 					  
                       <tr>
@@ -172,7 +172,7 @@
 		  
           <div id="stateShow">
 
-		  @foreach ($message as $v)
+		  @foreach ($message as $k=>$v)
             <div class="stateShow" id="stateShow1">
 			
               <div class="stateShowWord">
@@ -196,58 +196,14 @@
               </div>
 			 <div class="stateShowtime"> 
                     <td width="390">{{$v['publish_time']}}</a></td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					<td><a href="#">评论(3)</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">点赞(1)</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">转发(2)</a></td>&nbsp&nbsp&nbsp
-					<td><a href="#">关注他(她)</a></td>
 					
+					
+					
+			
 			</div>
             </div>
 			@endforeach
-            <!--div class="stateShow" id="stateShow2">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/17.gif" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">经典微博语录</a>分享图片看到睡佛的人，1分钟内转发，霉运尽除，好运相伴~！不转不发者~！呵呵~！看吧~！请关注</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月31日 16:14 </div>
-            </div>
-            <div class="stateShow" id="stateShow3">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/7.jpg" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">传说中的老蒋</a> 经济最虚，文化最烂。外交最弱，军事最熊。 房价最高，医药最贵。教育最差，就业最难。 犯罪最凶，假货最多。污染最重，环境最劣。 工人最苦，农民最穷，学生最累，股民最惨。 旗帜最红，理论最好。口号最响，实干最少。 </td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月29日 12:20 </div>
-            </div>
-            <div class="stateShow" id="stateShow4">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/18.gif" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">天涯海阁</a> 分享图片看到睡佛的人，1分钟内转发，霉运尽除，好运相伴~！不转不发者~！呵呵~！看吧~！请关注</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月31日 08:02 </div>
-            </div>
-            <div class="stateShow" id="stateShow5">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="./images/face/17.jpg" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">烟台是个小鸟</a>烟台大学女生在厕所被杀，因女孩父母是农村人，且穷，校方极力推卸责任，几乎封锁了全国的媒体。 该女生父母二人在学校下跪。求讨一个说法。 此消息现几乎只能在博客等非正规媒体上传播了，有心人请转发此微博，以引起有关部门注意，为女孩讨个说法！！</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月31日 17:53 </div>
-            </div-->
+          
           </div>
   </div>
         <!-- main部分中间部分结束 -->

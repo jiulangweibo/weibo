@@ -10,13 +10,14 @@ class CommentsController extends Controller
 {
     public function index(Request $request)
 	{
-   		// $list = Comments::all();
+   		// $add = Comments::all();
          $where = [];
         if ($request->only('user_id')) {
            $user_id = $request->input("user_id");   
            $where['user_id']=$user_id;
         }
         $list =Comments::where("user_id","like",'%'.$user_id.'%')->paginate(2);
+		//dd($list);
     	return view("admin.comments.index",["list"=>$list,'where'=>$where]);
     }
     
@@ -69,9 +70,11 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($message_id)
+    public function edit($id)
     {
-		$v = Comments::where("message_id","=",$message_id)->first();
+		//dd($id);
+		$v = Comments::where("comments_id",$id)->first();
+		//dd($v->status);
         return view("admin.comments.edit",['v'=>$v]);
     }
 
@@ -84,35 +87,35 @@ class CommentsController extends Controller
      */
 	 
 	 
-	 /*
-    public function update(Request $request, $id)
+	 
+   /*  public function update(Request $request, $id)
     {
-        //$input = $request->only(['status']);
-        $m = Comments::where("comments_id",$id)->update($input);
+        $input = $request->only("status");
+		$m = Comments::where("comments_id",$id)->update($input);
         if($m){
             echo "修改用户状态成功!";
             return redirect("admin/comments");
         }else{
             echo "修改用户状态失败!";
         }
-    }
-	*/
-	 public function update(Request $request,$message_id)
+    } */
+	
+	 public function update(Request $request,$comments_id)
     {
         
         //获取要修改的数据
-        $data = $request->only('user_id','comments_content','comments_time');
+        $data = $request->only('status');
         //执行修改
-        $sid = Comments::where("message_id",$message_id)->update($data);
+        $sid = Comments::where("comments_id",$comments_id)->update($data);
         //判断
-        if($sid>0){
-            $info = "评论修改成功！";
+        if($sid){
+            return redirect("admin/comments");
         }else{
-            $info = "修改失败！";
+             echo "修改用户状态失败!";
         }
         
         //return view("admin.stu.info",['info'=>$info]);
-        return redirect("admin/comments")->with("err",$info);
+        //return redirect("admin/comments")->with("err",$info);
     }
 
     /**

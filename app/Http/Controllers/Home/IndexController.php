@@ -16,10 +16,11 @@ class IndexController extends Controller
      */
     public function index()
     {
+		
 		$url =Url::orderBy('id','desc')->take(3)->get();
 		//dump($url);die;
-		$list = Userinfo::orderBy('register_time','asc')->take(4)->get();
-		$info = Message::orderBy('onclicknum','desc')->take(4)->get()->toArray();
+		$list = Userinfo::orderBy('register_time','desc')->take(4)->get();
+		$info = Message::where('status',1)->orderBy('publish_time','desc')->take(4)->get();
      
 		//  dump($info);die;
 		$message = [];
@@ -27,6 +28,7 @@ class IndexController extends Controller
 		$ddd = [];
 		//$acc = [];
 		foreach($info as $k=>$v){
+	 
 			$message[$k]['user_id'] = $v['user_id'];
 			$message[$k]['content'] = $v['content'];
 			$message[$k]['tupian'] = $v['picname'];
@@ -51,7 +53,7 @@ class IndexController extends Controller
 			
 			$message[$k]['nickname'] = $ccc[$k]['nickname'];
 			$message[$k]['touxiang'] = $ccc[$k]['picname'];
-	 
+		
 		}
 		//echo"<pre>";
 		//var_dump($message);

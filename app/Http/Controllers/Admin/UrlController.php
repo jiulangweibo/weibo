@@ -43,9 +43,9 @@ class UrlController extends Controller
     {
         //
 		 //获取要添加的数据
-        $data = $request->only('url');
+        $data = $request->only('url','urlname');
         //执行添加
-        $id = \DB::table("url")->insertGetId($data);
+        $id = \DB::table("url",'urlname')->insertGetId($data);
 	
 		 $path = [];
 		//判断文件是否上传

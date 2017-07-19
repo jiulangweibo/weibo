@@ -21,12 +21,6 @@
                             </div>
                         </div>
                         <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label" name="privileges_id" >权限ID</label>
-                            <div class="am-u-sm-9" >
-                                <input style="width:200px" type="text" name="privileges_id" class="tpl-form-input" id="user-name">
-                            </div>
-                        </div>
-                        <div class="am-form-group">
                             <div class="am-u-sm-9 am-u-sm-push-3">
                                 <input type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success " value="提交" />
                             </div>

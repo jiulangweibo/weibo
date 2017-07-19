@@ -123,6 +123,38 @@ window.onload = function(){
                   <div id="mainBannerContent2">
                      <!--个人微博-->
                      <div id="mainBannerContent2People">
+					  @foreach($forward as $v)
+                       <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 开始 -->
+                        <div id="mainBannerContent2PeopleImg">
+                          	<img src="http://{{$list->picname}}" width="54" height="54" alt="" title="" />
+                        </div>
+                        <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 结束 -->
+                        <!-- 第一个人微博 mainBannerContent2peopleWord DIV 开始  -->
+						@if($v->forward_content)
+                        <div id="mainBannerContent2PeopleWord">
+						<img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" />
+                        <font class="f1">{{$list->nickname}}<br/>转发并说:</font>{{$v->forward_content}}
+						<font class="f1">转自:<a href="#" class="a1">{{$v->nickname}}<br></a></font><font class="f2">{{$v->content}}</font><br />
+                        <div class="stateImgShow"><img src="{{$v->picname}}" /></div> 
+						<font class="f3">转发时间:{{$v->forward_time}}</font><br />
+                       
+						 
+						</div>
+						@else
+					    <div id="mainBannerContent2PeopleWord">
+						<img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" />
+                        <font class="f1">{{$list->nickname}}<br/></font>
+						<font class="f1">转自:<a href="#" class="a1">{{$v->nickname}}</a></font><br/><font class="f2">{{$v->content}}</font><br />
+                        <div class="stateImgShow"><img src="{{$v->picname}}" /></div> 
+						<font class="f3">转发时间:{{$v->forward_time}}</font><br />
+               
+						 
+						</div>
+						@endif
+                        <!-- 第一个人微博 mainBannerContent2peopleWord DIV 结束  -->
+						@endforeach
+					 
+					 
                        @foreach($add as $v)
                        <!-- 第一个人微博 mainBannerContent2PeopleImg DIV 开始 -->
                         <div id="mainBannerContent2PeopleImg">
@@ -134,26 +166,16 @@ window.onload = function(){
                         <div id="mainBannerContent2PeopleWord">
                          
                         <img src="../images/biao.gif" alt="" width="17" height="13" align="absmiddle" id="pic1" title="" /> <font class="f1"><a href="#" class="a1">{{$v->nickname}}:</a></font><font class="f2">&nbsp;&nbsp;{{$v->content}}</font><br />
-						<font class="f3">{{$v->publish_time}}<div id="textright"><a href="#" class="a2">查看</a>&nbsp;&nbsp;<a href="#" class="a2">回复(3</a>)&nbsp;&nbsp;<a href="#" class="a2">转发</a>&nbsp;&nbsp;<img src="../images/star.gif" alt="" width="16" height="17" align="absmiddle" title="" /></div></font><br />
-                        <a href="#" class="a1"><font class="style2">爱转发</font></a>&nbsp;&nbsp;<font class="f3">和其他31人转发过</font><br />
+                        <div class="stateImgShow"><img src="{{$v->picname}}" /></div> 
+						<font class="f3"><div id="textright"><a	href="javascript:ddd({{$v['message_id']}})">删除</a></div></font><br />
+                        <font class="style2">{{$v->publish_time}}</font><br />
                             <!--微博回复栏-->
 							
-                            <div id="mainBannerContent2PeopleWordBack">
-                                 <table width="400" border="0" cellpadding="0" cellspacing="0">
-                                      <tr>
-                                        <td><img src="../images/huifu3.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@依然</a>：事实胜于雄辩~~~<span style="color:#ccc">今天 12:20</span>   <a href="#">回复</a></td>
-                                      </tr>
-                                      <tr>
-                                        <td><img src="../images/huifu2.gif" width="25" height="25" align="absmiddle" /><a href="#" class="a1">@呆呆</a>：让那帮吃人饭不办人事的人去坐动车吧！！！<span style="color:#ccc">今天 12:10</span><a href="#">回复</a></td>
-                                      </tr>
-                                      
-                                    </table>
-                                    
-                            </div><br/>
+                          <br/>
                         
 						</div>
 				
-                        <!-- 第一个人微博 mainBannerContent2peopleWord DIV 结束  -->
+                        <!-- 第一个人微博 mainBannerContent2peopleWord DIV 结束 -->
                     @endforeach
                     <center>
                     	{{ $add->links() }} 
@@ -165,15 +187,22 @@ window.onload = function(){
                </div>
                  <!--给微博定位结束-->
             </div>
-            
+
 			@else
-                <div id="mainBannerContent2PeopleWord">
-                    您还没有发布消息!
-                </div>
+                
 						
 			@endif
+			
              <!--自己发微博的地方结束-->
-             
+			<script>
+				 function ddd(id){
+							 
+							if(confirm("确定删除吗?")){
+								 window.location.href="/message/del/"+id;
+								}	 
+						 }
+			
+			</script>
         </div>
         <!-- 左侧mainBannerDIV 结束 -->                       
         <!-- 右侧mainRight DIV开始 -->
@@ -194,18 +223,16 @@ window.onload = function(){
                     <!-- 右侧mainRightPostionFirstLineWord2 DIV 开始 -->
                     <div id="mainRightPostionFirstLineWord2">
                     <ul id="ul1">
-                    <li><a href="/personal" class="a1"><font class="style1">2</font><br /><font class="style2">微博</font></a></li>
-                    <li><a href="/follow" class="a1"><font class="style1">12</font><br /><font class="style2">关注</font></a></li>
-                    <li><a href="/fans" class="a1"><font class="style1">23</font><br /><font class="style2">粉丝</font></a></li>
+                    <li><a href="/personal" class="a1"><font class="style1">{{$datam}}</font><br /><font class="style2">微博</font></a></li>
+                    <li><a href="/follow" class="a1"><font class="style1">{{ $datas->follow_count }}</font><br /><font class="style2">关注</font></a></li>
+                    <li><a href="/fans" class="a1"><font class="style1">{{ $dataf->fans_count }}</font><br /><font class="style2">粉丝</font></a></li>
                     </ul>
                     </div>
                 <!-- 右侧mainRightPostionFirstLineWord2 DIV 结束 -->                    
                 </div>
                 <!-- 右侧mainRightPostionFirstLine DIV 结束 -->
                 <div id="mainRightPostionFifthLine">
-                    <div id="mainRightPositionFifthLineContent">
-                    <a href="#" onclick="" class="a1"><font class="style4">我关注的话题</font>
-                    <img src="../images/ThirdLineUpArrow.gif" alt="" width="12" height="14" align="right" title="" border="0"/></a>
+                    
                     </div>
               </div>
                 <!-- 右侧mainRightPostionSixthLine DIV 开始 -->

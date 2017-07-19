@@ -14,7 +14,7 @@ class LoginController extends Controller
    }
    
    //执行用户登录
-	public function doLogin(Request $request)
+  public function doLogin(Request $request)
    {
 
 

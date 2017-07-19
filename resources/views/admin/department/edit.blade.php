@@ -22,9 +22,10 @@
                             </div>
                         </div>
                         <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label" name="privileges_id" value="{{$v->privileges_id}}">权限ID</label>
+                            <label for="user-name" class="am-u-sm-3 am-form-label" name="status" value="{{$v->status}}">当前状态</label>
                             <div class="am-u-sm-9">
-                                <input type="text" class="tpl-form-input" id="user-name" name="privileges_id"  placeholder="{{$v->privileges_id}}">
+                                <input type="radio" name="status" value="0" @if($v->status=='0') checked @endif />禁用
+                                <input type="radio" name="status" value="1" @if($v->status=='1') checked @endif />启用
                             </div>
                         </div>
                         <div class="am-form-group">

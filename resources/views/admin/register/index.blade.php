@@ -30,7 +30,7 @@
                                             <th>手机号</th>
                                             <th>用户昵称</th>
                                             <th>注册时间</th>
-                                            <th>操作</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -40,16 +40,6 @@
                                             <td>{{$v->phone}}</td>
                                             <td>{{$v->nickname}}</td>
                                             <td>{{$v->register_time}}</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
                                         </tr>
                                     @endforeach
                                         <!-- more data -->

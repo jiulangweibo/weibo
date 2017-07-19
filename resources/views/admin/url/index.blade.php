@@ -37,6 +37,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID号</th>
+                                            <th>名字</th>
                                             <th>图片</th>
                                             <th>链接地址</th>
                                             <th>操作</th>	
@@ -46,15 +47,13 @@
                                     @foreach ($list as $v)
                                         <tr class="gradeX">
                                             <td>{{$v->id}}</td>
+                                            <td>{{$v->urlname}}</td>
                                             <td><img src="http://{{$v['url_picname']}}" alt="" width="48" height="48" /></td>
                                             <td>{{$v->url}}</td>
                                             <td>
                                                 <div class="tpl-table-black-operation">
                                                     <a href="/admin/url/{{$v->id}}/edit">
                                                         <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:doDel({{ $v->id }});" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
                                                     </a>
                                                 </div>
                                             </td>

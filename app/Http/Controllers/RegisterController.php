@@ -34,6 +34,7 @@ class RegisterController extends Controller
 	 //定义方法显示
     public function index()
     {	//返回视图
+		
         return view('home.register.index');
     }
 	
@@ -81,43 +82,45 @@ class RegisterController extends Controller
         $nickname = $request->input("nickname");
         $password = $request->input("password");
         $user = Register::where("phone",$phone)->first();
-        $nickname = Register::where("nickname",$nickname)->first();
         
-		if(empty($user && $nickname)){
+		if(empty($user)){
             $data = $request->only('phone','password','nickname');
             $data['password'] = md5($data['password']);
 			$time = time()+480*60;
-            $data['register_time'] = date("Y-m-d H:i:s",$time);
-                
-            $id = Register::insertGetId($data);
-			if($id){
+            $data['register_time'] = date("Y-m-d H:i:s",$time);    
+           
+   		    $id = Register::insertGetId($data);
             $data['user_id']=$id;
-            $dd = Userinfo::insertGetId($data);
-			}else{
-				return back()->with("err","注册失败,请重新注册！");
-				die;
-			}
-			if($dd){
+			
+            Userinfo::insertGetId($data);
+			
+			
 			$follow['id']=$id;
-			$follow['suser_id']=null;
-			$follow['user_id']=null;
-			$follow['follow_count']=0;
-			$follow['fans_count']=0;		
-			$cc = Follow::insertGetId($follow);
-			}else{
-				return back()->with("err","注册失败,请重新注册！");
-				die;
-				 
-			}
-         if($dd>0 && $id>0){
-             return redirect('/');
-         }else{
-            return back()->with("err","注册失败,请重新注册！");
-         }
-        }
-        return back()->with("err","手机号或昵称重复！");
+			$follow['suser_id']=7;
+			$follow['user_id']=7;
+			$follow['follow_count']=1;
+			$follow['fans_count']=1;		
+			Follow::insertGetId($follow);
+			
+			
+		
+			 if($id>0){
+				 return redirect('/');
+			 }else{
+				session()->put("err","注册失败,请重新注册！");
+				return redirect("/register");
+			 }
         
-    }
+			  }else{
+						session()->put('err','手机号已被注册!');
+						
+						return redirect("/register");
+						
+						
+					}
+        
+    
+	}
 
           
 }
